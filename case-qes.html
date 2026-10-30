@@ -1,0 +1,256 @@
+<title>Secure Signing – Olha Datsenko, Product Design</title>
+<meta name="description" content="How I redesigned Oneflow's most secure signing option (QES) and cut setup time by 96%.">
+<meta property="og:title" content="Secure Signing – Olha Datsenko, Product Design">
+<meta property="og:image" content="images/case-signing.jpg">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="nav" id="siteNav">
+  <div class="nav-inner">
+    <a class="logo" href="index.html">OLHA<span class="dot">.</span></a>
+    <nav class="nav-links">
+      <a href="index.html#work">Work</a>
+      <a href="about.html">About</a>
+      <a class="icon-link" href="https://www.linkedin.com/in/olgadatsenko/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+      </a>
+      <a class="btn" href="mailto:olya.datsenko@gmail.com">Email me</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-top">
+    <a class="logo" href="index.html">OLHA<span class="dot">.</span></a>
+    <button class="menu-toggle" id="menuClose" aria-label="Close menu">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+    </button>
+  </div>
+  <nav>
+    <a href="index.html#work">Work</a>
+    <a href="about.html">About</a>
+    <div class="social-row">
+      <a class="icon-link" href="https://www.linkedin.com/in/olgadatsenko/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+      </a>
+    </div>
+    <a class="btn" href="mailto:olya.datsenko@gmail.com">Email me</a>
+  </nav>
+</div>
+
+<main id="main" class="wrap">
+  <section class="case-hero reveal">
+    <div class="tags">
+      <span class="tag">B2B</span>
+      <span class="tag">Product design</span>
+      <span class="tag">Compliance</span>
+      <span class="tag">0&rarr;1</span>
+    </div>
+    <h1>High-security contract signing</h1>
+    <p class="lede">Users couldn't discover Oneflow's most secure signing option (QES), creating a major gap between product capability and adoption.</p>
+
+    <div class="case-hero-media">
+      <img src="images/case-signing.jpg" alt="Oneflow electronic signature marketplace screen on a tablet" width="1400" height="1050">
+    </div>
+
+    <div class="meta-grid">
+      <div><span>Domain</span><strong>Secure contract signing</strong></div>
+      <div><span>Timeline</span><strong>Q2 2025</strong></div>
+      <div><span>Role</span><strong>Lead designer</strong></div>
+      <div><span>Team</span><strong>+4</strong></div>
+    </div>
+  </section>
+
+  <section class="section-block reveal">
+    <h2>Context</h2>
+    <p class="body-text">Oneflow is a contract management platform for B2B teams. Most users never found its most secure signature option &mdash; QES. It was only possible to enable it through support.</p>
+  </section>
+
+  <section class="section-block reveal">
+    <h2>Problem</h2>
+    <div class="two-col">
+      <div>
+        <p class="section-eyebrow">Research</p>
+        <ul class="check-list">
+          <li>Analyzed 30+ support tickets</li>
+          <li>Interviewed 12 internal stakeholders</li>
+          <li>Mapped signing flows for 2 key user personas</li>
+        </ul>
+        <p class="section-eyebrow">Root causes</p>
+        <ul class="check-list">
+          <li>QES was not discoverable (disabled toggle + no in-product indicators)</li>
+          <li>Users didn't understand signature levels (AdES vs QES vs simple signatures)</li>
+        </ul>
+      </div>
+      <div class="callout-stat">
+        <div class="num">85%</div>
+        <div class="label">Users missed QES</div>
+        <div class="why"><strong>Why it matters:</strong> Lost upsell opportunities + legal/compliance risk for enterprise accounts.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-block reveal">
+    <h2>My approach</h2>
+    <ol class="approach-list" style="gap:18px;">
+      <li style="font-size:1.15rem;"><span>01</span>Redesigned marketplace IA to surface QES prominently</li>
+      <li style="font-size:1.15rem;"><span>02</span>Document and template setup redesign</li>
+      <li style="font-size:1.15rem;"><span>03</span>Ran 3 testing rounds with enterprise users</li>
+      <li style="font-size:1.15rem;"><span>04</span>Extended design system with selection patterns</li>
+    </ol>
+  </section>
+
+  <section class="section-block reveal">
+    <h2>Results and impact</h2>
+    <div class="results-row">
+      <div class="result-card">
+        <div class="num">96%</div>
+        <div class="label">Setup time cut</div>
+        <div class="detail">1 day with support &rarr; 15 minutes solo</div>
+      </div>
+      <div class="result-card">
+        <div class="num">30%</div>
+        <div class="label">Support ticket reduction</div>
+        <div class="detail">Users understood what they were signing</div>
+      </div>
+      <div class="result-card">
+        <div class="num">90%</div>
+        <div class="label">Backend performance boost</div>
+        <div class="detail">Simplified logic, 1-second faster response</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-block reveal">
+    <h2>Key challenges</h2>
+    <p class="body-text">Why did 85% miss our most secure signature option? Users scanned the marketplace but saw no information about QES &mdash; only confusing structure and provider names. No explanations and hidden pricing.</p>
+    <div class="quote-block">
+      <p>&ldquo;I didn't even know QES was an option here.&rdquo;</p>
+      <cite>&mdash; User quote</cite>
+    </div>
+    <div class="solution-media"><img src="images/qes-1.jpg" alt="Oneflow marketplace screen showing electronic signature options" loading="lazy"></div>
+
+    <div class="challenge-card">
+      <h3>QES not visible</h3>
+      <p>Users didn't know QES existed; toggle disabled.</p>
+    </div>
+    <div class="challenge-card">
+      <h3>Compliance uncertainty</h3>
+      <p>Missing legal guidance, impossible to make compliant choices.</p>
+    </div>
+    <div class="challenge-card">
+      <h3>Hidden pricing</h3>
+      <p>Hidden pricing reduced trust, blocked activation decisions.</p>
+    </div>
+    <div class="challenge-card">
+      <h3>Confusing contract template setup</h3>
+      <p>Users were confused by the "Signature mode" concept and the "Basic" option that included both Advanced and Simple signatures. Many called support, worried that their signature might not be valid.</p>
+      <p class="impact">Impact: 30% increase in support tickets + users questioning signature validity.</p>
+    </div>
+    <div class="quote-block">
+      <p>&ldquo;Why does my BankID end up under Basic? Is it no longer legally valid?&rdquo;</p>
+      <cite>&mdash; Customer in a support call</cite>
+    </div>
+  </section>
+
+  <section class="section-block reveal">
+    <h2>Design solutions</h2>
+
+    <div class="solution-block">
+      <h3>Marketplace: signature levels and pricing</h3>
+      <p>I rebuilt the entire marketplace around what users actually needed: "Electronic signatures" with clear security levels &mdash; SES for simple docs, AdES for business, QES for legal protection.</p>
+      <p class="result-tag">Result: Obvious choices, no more guessing games.</p>
+      <div class="solution-media"><img src="images/qes-2.jpg" alt="Redesigned electronic signature marketplace comparison" loading="lazy"></div>
+    </div>
+
+    <div class="solution-block">
+      <h3>QES enablement flow</h3>
+      <p>Instead of scattered providers, I created one unified list with smart toggles. Users could enable multiple options, filter by country, and see pricing update instantly.</p>
+      <p class="result-tag">Result: Leveraged existing backend for speed.</p>
+      <div class="solution-media"><img src="images/qes-3.jpg" alt="Unified signature provider list with toggles and pricing" loading="lazy"></div>
+    </div>
+
+    <div class="solution-block">
+      <h3>Contract template setup mental model</h3>
+      <p>I tested a simple question: "Where would you look to set up secure signatures?" 8 out of 8 users clicked "Signing method" immediately.</p>
+      <p class="result-tag">Result: Users already knew where to look. Reused existing mental model.</p>
+    </div>
+
+    <div class="solution-block">
+      <h3>Backend win (bonus)</h3>
+      <p>The real breakthrough wasn't visual &mdash; it was simplifying the logic. I worked with engineers to cut conditional checks from 60+ to just 4.</p>
+      <p class="result-tag">Result: Simpler code = faster responses. Win-win for users and engineers.</p>
+    </div>
+
+    <div class="solution-block">
+      <h3>Design system updates</h3>
+      <p>Extended components for: marketplace toggles, country filter, pricing card, and system messages.</p>
+    </div>
+  </section>
+
+  <section class="section-block reveal">
+    <h2>Learnings and reflections</h2>
+    <div class="learn-grid">
+      <div class="learn-col">
+        <h4>Didn't work</h4>
+        <ul><li>Combining all providers into one list wasn't technically possible due to backend constraints</li></ul>
+      </div>
+      <div class="learn-col">
+        <h4>Surprised me</h4>
+        <ul>
+          <li>Pricing transparency increased conversion</li>
+          <li>Backend simplification (60&rarr;4 checks) was possible</li>
+        </ul>
+      </div>
+      <div class="learn-col">
+        <h4>Would do differently</h4>
+        <ul>
+          <li>Test terminology with non-technical users earlier</li>
+          <li>Involve CSM in initial research</li>
+          <li>Push for backend unification sooner</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="more-projects reveal">
+    <p class="section-eyebrow">More projects</p>
+    <div class="more-grid">
+      <a class="more-card" href="case-approval-flows.html">
+        <img src="images/case-approvals.jpg" alt="Contract approval flows case study">
+        <div class="more-card-body">
+          <h4>Contract approval flows</h4>
+          <span class="stat-mini">CSAT 82%</span>
+        </div>
+      </a>
+      <a class="more-card" href="case-suggestions.html">
+        <img src="images/case-collaboration.jpg" alt="Contract collaboration case study">
+        <div class="more-card-body">
+          <h4>Contract collaboration</h4>
+          <span class="stat-mini">Adoption &uarr; 35%</span>
+        </div>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>
+      <p class="fine">&copy; <a class="fine-link" href="about.html">Olha Datsenko | Product Designer</a></p>
+      <p class="fine">Designed and built by me</p>
+    </div>
+    <div class="footer-social">
+      <a class="icon-link" href="https://www.linkedin.com/in/olgadatsenko/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>

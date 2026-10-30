@@ -1,0 +1,258 @@
+<title>Approval Flows – Olha Datsenko, Product Design</title>
+<meta name="description" content="How I designed contract approval workflows for Oneflow that made contract lifecycles trackable, compliant, and fast to review.">
+<meta property="og:title" content="Approval Flows – Olha Datsenko, Product Design">
+<meta property="og:image" content="images/case-approvals.jpg">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="nav" id="siteNav">
+  <div class="nav-inner">
+    <a class="logo" href="index.html">OLHA<span class="dot">.</span></a>
+    <nav class="nav-links">
+      <a href="index.html#work">Work</a>
+      <a href="about.html">About</a>
+      <a class="icon-link" href="https://www.linkedin.com/in/olgadatsenko/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+      </a>
+      <a class="btn" href="mailto:olya.datsenko@gmail.com">Email me</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-top">
+    <a class="logo" href="index.html">OLHA<span class="dot">.</span></a>
+    <button class="menu-toggle" id="menuClose" aria-label="Close menu">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/></svg>
+    </button>
+  </div>
+  <nav>
+    <a href="index.html#work">Work</a>
+    <a href="about.html">About</a>
+    <div class="social-row">
+      <a class="icon-link" href="https://www.linkedin.com/in/olgadatsenko/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+      </a>
+    </div>
+    <a class="btn" href="mailto:olya.datsenko@gmail.com">Email me</a>
+  </nav>
+</div>
+
+<main id="main" class="wrap">
+  <section class="case-hero reveal">
+    <div class="tags">
+      <span class="tag">B2B</span>
+      <span class="tag">Product design</span>
+      <span class="tag">Compliance</span>
+      <span class="tag">Workflows</span>
+      <span class="tag">0&rarr;1</span>
+    </div>
+    <h1>Contract approval flow</h1>
+    <p class="lede">Designed approval workflows that made contract lifecycles trackable, compliant, and fast to review.</p>
+
+    <div class="case-hero-media">
+      <img src="images/case-approval-flows-hero.jpg" alt="Oneflow contract approval status screen" width="1400" height="1304">
+    </div>
+
+    <div class="meta-grid">
+      <div><span>Domain</span><strong>Contract approval flow</strong></div>
+      <div><span>Timeline</span><strong>Q3 2023</strong></div>
+      <div><span>Role</span><strong>Lead designer</strong></div>
+      <div><span>Team</span><strong>+4</strong></div>
+    </div>
+  </section>
+
+  <section class="section-block reveal">
+    <h2>Context</h2>
+    <p class="body-text">Oneflow is a contract management platform for B2B teams. Approvals happened across email, Slack, and checklists, making it impossible to track who needed to sign and where contracts got blocked.</p>
+  </section>
+
+  <section class="section-block reveal">
+    <h2>Problem</h2>
+    <div class="two-col">
+      <div>
+        <p class="section-eyebrow">Research</p>
+        <ul class="check-list">
+          <li>Analyzed enterprise workflows + support tickets + sales requests</li>
+          <li>Approval steps were invisible, inconsistent, and not tracked, leading to delays and missed handoffs</li>
+        </ul>
+        <p class="section-eyebrow">Root causes</p>
+        <ul class="check-list">
+          <li>No structured way to request/track approvals</li>
+          <li>Unclear responsibilities</li>
+          <li>Decisions scattered across channels</li>
+        </ul>
+      </div>
+      <div class="callout-stat">
+        <div class="num">0</div>
+        <div class="label">Tracking of approval progress</div>
+        <div class="why"><strong>Why it matters:</strong> Slow approvals created compliance gaps and revenue risks.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-block reveal">
+    <h2>My approach</h2>
+    <ol class="approach-list" style="gap:18px;">
+      <li style="font-size:1.15rem;"><span>01</span>Mapped real approval workflows across legal, finance, and sales</li>
+      <li style="font-size:1.15rem;"><span>02</span>Designed parallel/simple Approval Flows</li>
+      <li style="font-size:1.15rem;"><span>03</span>Ensured backend compatibility, reused existing patterns</li>
+      <li style="font-size:1.15rem;"><span>04</span>Tested flows with enterprise users</li>
+    </ol>
+  </section>
+
+  <section class="section-block reveal">
+    <h2>Results and impact</h2>
+    <div class="quote-block">
+      <p>&ldquo;This approval flow finally gives us the audit trail we need for compliance, and our sales team can actually see where contracts get stuck.&rdquo;</p>
+      <cite>&mdash; Enterprise Customer Success Manager</cite>
+    </div>
+    <div class="results-row">
+      <div class="result-card">
+        <div class="num">82%</div>
+        <div class="label">Early adopters CSAT</div>
+        <div class="detail">User survey after first use</div>
+      </div>
+      <div class="result-card">
+        <div class="num">6 weeks</div>
+        <div class="label">To MVP</div>
+        <div class="detail">Designed and handed off for development in 6 weeks</div>
+      </div>
+      <div class="result-card">
+        <div class="num">70%</div>
+        <div class="label">Logic reused</div>
+        <div class="detail">Reused most of the backend logic</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-block reveal">
+    <h2>Working with constraints</h2>
+    <h3 style="margin-top:0;">No new roles or states possible</h3>
+    <p class="body-text">We had to design the flow entirely within existing architecture. Building a brand new "Approval" role would slow delivery and create technical debt; creating a new approval flow would take months of development.</p>
+    <p class="body-text"><strong>Impact:</strong> Months of development vs. weeks &mdash; had to get creative with existing architecture.</p>
+  </section>
+
+  <section class="section-block reveal">
+    <h2>Key design challenges</h2>
+
+    <div class="challenge-card">
+      <h3>Participants clutter</h3>
+      <p>The current Participants tab mixed signers with approvers, creating visual noise and confusion about who needed to do what.</p>
+      <p class="impact">Impact: Users couldn't quickly scan approval status or identify bottlenecks, leading to confusion and lower customer satisfaction.</p>
+    </div>
+    <div class="challenge-card">
+      <h3>Status confusion</h3>
+      <p>After renaming documents to "Approval pending," users stayed confused &mdash; the document still behaved like a draft, creating mixed signals.</p>
+      <p class="impact">Impact: More support calls and confused users, delayed approvals.</p>
+    </div>
+    <div class="challenge-card">
+      <h3>Send modal issues</h3>
+      <p>User tests showed the Send modal left users guessing: would messages go to approvers or signers? This uncertainty caused hesitation and testing mistakes.</p>
+      <p class="impact">Impact: Important approvals delayed because users weren't sure who would get notified.</p>
+    </div>
+
+    <div class="solution-media"><img src="images/approval-flows-1.jpg" alt="Oneflow participants list showing approvers and signers" loading="lazy"></div>
+  </section>
+
+  <section class="section-block reveal">
+    <h2>Design solutions</h2>
+
+    <div class="solution-block">
+      <h3>Reuse over rebuild</h3>
+      <p>Extended the participant list UI with approval roles instead of building separate flows. Reused existing signing workflow logic for consistency.</p>
+      <p class="result-tag">Result: Faster delivery, familiar patterns. Cut engineering build time from months to weeks.</p>
+      <div class="solution-media"><img src="images/approval-flows-2.jpg" alt="Participant list extended with approval roles" loading="lazy"></div>
+    </div>
+
+    <div class="solution-block">
+      <h3>Renamed state back to Draft</h3>
+      <p>I renamed status to "Draft &ndash; Approval pending" for crystal-clear communication about document state. Users expected drafts to behave like drafts.</p>
+      <p class="result-tag">Result: Clear labeling eliminated confusion. "Draft &ndash; Approval pending" mimicked real user mental models.</p>
+    </div>
+
+    <div class="solution-block">
+      <h3>Restructured and unified participants</h3>
+      <p>Participants and counterparties are now clearly labeled with role distinction, status visibility, and real-time progress updates.</p>
+      <p class="result-tag">Result: Restructured information hierarchy to reduce cognitive load and improve scanning.</p>
+      <div class="solution-media"><img src="images/approval-flows-3.jpg" alt="Restructured participant status view on mobile" loading="lazy"></div>
+    </div>
+
+    <div class="solution-block">
+      <h3>Send modal structure makeover</h3>
+      <p>Introduced clear visual separation between approvers and signatories, with immediate understanding of who receives what messages.</p>
+      <p class="result-tag">Result: Visual grouping eliminated guesswork and reduced user anxiety about message targeting.</p>
+    </div>
+
+    <div class="solution-block">
+      <h3>Design system updates</h3>
+      <p>Created components for: colors, statuses, buttons, modal filters, participants, avatars, and contract cards.</p>
+    </div>
+  </section>
+
+  <section class="section-block reveal">
+    <h2>Learnings and reflections</h2>
+    <div class="learn-grid">
+      <div class="learn-col">
+        <h4>Didn't work</h4>
+        <ul>
+          <li>Early prototypes didn't cover cases when approvers can also sign the contract</li>
+          <li>Adding a proper approval status to contracts would add backend work</li>
+        </ul>
+      </div>
+      <div class="learn-col">
+        <h4>Surprised me</h4>
+        <ul><li>A flexible flow could be built without backend changes</li></ul>
+      </div>
+      <div class="learn-col">
+        <h4>Would do differently</h4>
+        <ul>
+          <li>Involve engineers sooner to avoid rollback and rework related to contract status</li>
+          <li>Validate mixed approver/signer roles earlier in the process</li>
+          <li>Made the Send flow a multi-step flow</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="more-projects reveal">
+    <p class="section-eyebrow">More projects</p>
+    <div class="more-grid">
+      <a class="more-card" href="case-suggestions.html">
+        <img src="images/case-collaboration.jpg" alt="Contract collaboration case study">
+        <div class="more-card-body">
+          <h4>Contract collaboration</h4>
+          <span class="stat-mini">Adoption &uarr; 35%</span>
+        </div>
+      </a>
+      <a class="more-card" href="case-qes.html">
+        <img src="images/case-signing.jpg" alt="High-security signing case study">
+        <div class="more-card-body">
+          <h4>High-security signing</h4>
+          <span class="stat-mini">Setup time &darr; 96%</span>
+        </div>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <div>
+      <p class="fine">&copy; <a class="fine-link" href="about.html">Olha Datsenko | Product Designer</a></p>
+      <p class="fine">Designed and built by me</p>
+    </div>
+    <div class="footer-social">
+      <a class="icon-link" href="https://www.linkedin.com/in/olgadatsenko/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
