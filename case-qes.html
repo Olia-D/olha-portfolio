@@ -64,6 +64,8 @@
       <div><span>Role</span><strong>Lead designer</strong></div>
       <div><span>Team</span><strong>+4</strong></div>
     </div>
+
+    <div class="solution-media"><img src="images/qes-1.jpg" alt="Oneflow marketplace with electronic signature options" loading="lazy"></div>
   </section>
 
   <section class="section-block reveal">
@@ -88,6 +90,7 @@
         </ul>
       </div>
       <div class="callout-stat">
+        <p class="section-eyebrow">Adoption gap</p>
         <div class="num">85%</div>
         <div class="label">Users missed QES</div>
         <div class="why"><strong>Why it matters:</strong> Lost upsell opportunities + legal/compliance risk for enterprise accounts.</div>
@@ -98,10 +101,10 @@
   <section class="section-block reveal">
     <h2>My approach</h2>
     <ol class="approach-list" style="gap:18px;">
-      <li style="font-size:1.15rem;"><span>01</span>Redesigned marketplace IA to surface QES prominently</li>
-      <li style="font-size:1.15rem;"><span>02</span>Document and template setup redesign</li>
-      <li style="font-size:1.15rem;"><span>03</span>Ran 3 testing rounds with enterprise users</li>
-      <li style="font-size:1.15rem;"><span>04</span>Extended design system with selection patterns</li>
+      <li style="font-size:1.15rem;"><span>01</span>Marketplace IA redesign<small>Redesigned marketplace IA to surface QES prominently</small></li>
+      <li style="font-size:1.15rem;"><span>02</span>QES setup flow redesign<small>Document and template setup redesign</small></li>
+      <li style="font-size:1.15rem;"><span>03</span>Validation<small>Ran 3 testing rounds with enterprise users</small></li>
+      <li style="font-size:1.15rem;"><span>04</span>Design system<small>Extended design system with selection patterns</small></li>
     </ol>
   </section>
 
@@ -133,7 +136,7 @@
       <p>&ldquo;I didn't even know QES was an option here.&rdquo;</p>
       <cite>&mdash; User quote</cite>
     </div>
-    <div class="solution-media"><img src="images/qes-1.jpg" alt="Oneflow marketplace screen showing electronic signature options" loading="lazy"></div>
+    <div class="solution-media"><img src="images/qes-problem-marketplace.png" alt="Annotated original marketplace showing signature providers with no QES information or pricing" loading="lazy"></div>
 
     <div class="challenge-card">
       <h3>QES not visible</h3>
@@ -147,6 +150,7 @@
       <h3>Hidden pricing</h3>
       <p>Hidden pricing reduced trust, blocked activation decisions.</p>
     </div>
+    <div class="solution-media"><img src="images/qes-problem-template.png" alt="Original template settings with the confusing Signature mode and Basic option" loading="lazy"></div>
     <div class="challenge-card">
       <h3>Confusing contract template setup</h3>
       <p>Users were confused by the "Signature mode" concept and the "Basic" option that included both Advanced and Simple signatures. Many called support, worried that their signature might not be valid.</p>
@@ -172,24 +176,27 @@
       <h3>QES enablement flow</h3>
       <p>Instead of scattered providers, I created one unified list with smart toggles. Users could enable multiple options, filter by country, and see pricing update instantly.</p>
       <p class="result-tag">Result: Leveraged existing backend for speed.</p>
-      <div class="solution-media"><img src="images/qes-3.jpg" alt="Unified signature provider list with toggles and pricing" loading="lazy"></div>
+      <div class="solution-media"><img src="images/qes-enablement.png" alt="Unified signature provider list with toggles, country filter and pricing" loading="lazy"></div>
     </div>
 
     <div class="solution-block">
       <h3>Contract template setup mental model</h3>
       <p>I tested a simple question: "Where would you look to set up secure signatures?" 8 out of 8 users clicked "Signing method" immediately.</p>
       <p class="result-tag">Result: Users already knew where to look. Reused existing mental model.</p>
+      <div class="solution-media"><img src="images/qes-3.jpg" alt="Contract template setup with secure signatures under Signing method" loading="lazy"></div>
     </div>
 
     <div class="solution-block">
       <h3>Backend win (bonus)</h3>
       <p>The real breakthrough wasn't visual &mdash; it was simplifying the logic. I worked with engineers to cut conditional checks from 60+ to just 4.</p>
       <p class="result-tag">Result: Simpler code = faster responses. Win-win for users and engineers.</p>
+      <div class="solution-media"><img src="images/qes-backend.png" alt="Simplified signing logic, from 60+ conditional checks to 4" loading="lazy"></div>
     </div>
 
     <div class="solution-block">
       <h3>Design system updates</h3>
       <p>Extended components for: marketplace toggles, country filter, pricing card, and system messages.</p>
+      <div class="solution-media"><img src="images/qes-design-system.png" alt="Design system components: marketplace toggles, country filter, pricing card and system messages" loading="lazy"></div>
     </div>
   </section>
 

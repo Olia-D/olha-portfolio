@@ -64,6 +64,8 @@
       <div><span>Role</span><strong>Lead designer</strong></div>
       <div><span>Team</span><strong>+6</strong></div>
     </div>
+
+    <div class="solution-media"><img src="images/suggestions-1.jpg" alt="Oneflow contract document view with an inline suggestion" loading="lazy"></div>
   </section>
 
   <section class="section-block reveal">
@@ -87,6 +89,7 @@
         </ul>
       </div>
       <div class="callout-stat">
+        <p class="section-eyebrow">Fragmented workflow</p>
         <div class="num">4 days</div>
         <div class="label">Slower review cycle</div>
         <div class="why"><strong>Why it matters:</strong> Fragmented collaboration + slow review cycles.</div>
@@ -97,10 +100,10 @@
   <section class="section-block reveal">
     <h2>My approach</h2>
     <ol class="approach-list" style="gap:18px;">
-      <li style="font-size:1.15rem;"><span>01</span>Mapped collaboration flows to identify friction points</li>
-      <li style="font-size:1.15rem;"><span>02</span>Designed inline Suggestions cross-platform</li>
-      <li style="font-size:1.15rem;"><span>03</span>Created bulk notifications system to reduce noise</li>
-      <li style="font-size:1.15rem;"><span>04</span>Tested and iterated 4 versions with enterprise users</li>
+      <li style="font-size:1.15rem;"><span>01</span>Mapped flows<small>Mapped collaboration flows to identify friction points</small></li>
+      <li style="font-size:1.15rem;"><span>02</span>Inline Suggestions<small>Designed inline Suggestions cross-platform</small></li>
+      <li style="font-size:1.15rem;"><span>03</span>Bulk notifications<small>Created bulk notifications system to reduce noise and group relevant updates</small></li>
+      <li style="font-size:1.15rem;"><span>04</span>Onboarding flows<small>Tested and iterated on 4 versions with enterprise users based on the onboarding flow data</small></li>
     </ol>
   </section>
 
@@ -126,8 +129,10 @@
   </section>
 
   <section class="section-block reveal">
+    <p class="section-eyebrow">The process</p>
     <h2>Working with constraints</h2>
     <h3 style="margin-top:0;">No "suggestion mode" possible</h3>
+    <p class="body-text">I faced one major constraint that shaped my design decisions:</p>
     <p class="body-text">Our architecture didn't support a suggestion-layer. A "true" Suggestion mode wasn't technically feasible with our system.</p>
     <p class="body-text"><strong>Impact:</strong> Spending months reinventing a "true" Suggestions mode was in no way sustainable, nor scalable. We risked losing the UK customers for whom the feature was a deal breaker.</p>
   </section>
@@ -141,6 +146,7 @@
       <p>On mobile devices, our floating toolbar was completely inaccessible.</p>
       <p class="impact">Impact: 95% mobile session abandonment rate.</p>
     </div>
+    <div class="solution-media media-row"><img src="images/suggestions-mobile-before.png" alt="Original mobile view where the floating suggestion toolbar is inaccessible" loading="lazy"><img src="images/suggestions-mobile-after.png" alt="Redesigned mobile sliding toolbar and drawer for suggestions" loading="lazy"></div>
     <div class="challenge-card">
       <h3>Action hierarchy confusion</h3>
       <p>8 out of 10 users clicked "Resolve" thinking it would close their suggestion. Instead, it marked feedback as resolved and removed it from view.</p>
@@ -152,24 +158,24 @@
       <p class="impact">Impact: 3.2 days average response time.</p>
     </div>
 
-    <div class="solution-media"><img src="images/suggestions-1.jpg" alt="Oneflow contract review screen with inline suggestion" loading="lazy"></div>
+    <div class="solution-media"><img src="images/suggestions-3.jpg" alt="Email notifications sent for every single suggestion" loading="lazy"></div>
   </section>
 
   <section class="section-block reveal">
     <h2>Design solutions</h2>
+    <p class="body-text">After rounds of validation, here's what I delivered:</p>
 
     <div class="solution-block">
       <h3>Mobile-first workflow</h3>
       <p>I redesigned the floating approach entirely, collaborating with engineering to create a sliding toolbar and reusable drawer component that works seamlessly across mobile devices.</p>
       <p class="result-tag">Result: Research showed 30% of contract reviews happened on mobile (often during commutes), making mobile optimization critical.</p>
-      <div class="solution-media"><img src="images/suggestions-2.jpg" alt="Mobile suggestion toolbar redesign" loading="lazy"></div>
     </div>
 
     <div class="solution-block">
       <h3>Contextual action system</h3>
       <p>I redesigned with two-step confirmation: click the three-dot menu to reveal options, then choose "Accept" or "Reject".</p>
       <p class="result-tag">Result: User testing revealed workflow clarity mattered more than UI simplicity &mdash; reducing cognitive load increased completion rates by 32%.</p>
-      <div class="solution-media"><img src="images/suggestions-3.jpg" alt="Two-step accept or reject confirmation UI" loading="lazy"></div>
+      <div class="solution-media media-row"><img src="images/suggestions-actions.png" alt="Suggestion card with a three-dot menu revealing Accept and Reject" loading="lazy"><img src="images/suggestions-email.png" alt="Email notification about an accepted suggestion" loading="lazy"></div>
     </div>
 
     <div class="solution-block">
@@ -186,6 +192,7 @@
     <div class="solution-block">
       <h3>Design system components</h3>
       <p>I created reusable components to ensure consistency across the collaboration experience, including notification patterns, action states, and mobile-responsive layouts that became foundational for future product development.</p>
+      <div class="solution-media"><img src="images/suggestions-2.jpg" alt="Collaboration design system components: notifications, action states and mobile layouts" loading="lazy"></div>
     </div>
   </section>
 

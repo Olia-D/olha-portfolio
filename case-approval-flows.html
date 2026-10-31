@@ -65,6 +65,8 @@
       <div><span>Role</span><strong>Lead designer</strong></div>
       <div><span>Team</span><strong>+4</strong></div>
     </div>
+
+    <div class="solution-media"><img src="images/approval-flows-1.jpg" alt="Oneflow contract with approvers and signers in the participants list" loading="lazy"></div>
   </section>
 
   <section class="section-block reveal">
@@ -89,6 +91,7 @@
         </ul>
       </div>
       <div class="callout-stat">
+        <p class="section-eyebrow">No visibility</p>
         <div class="num">0</div>
         <div class="label">Tracking of approval progress</div>
         <div class="why"><strong>Why it matters:</strong> Slow approvals created compliance gaps and revenue risks.</div>
@@ -99,10 +102,10 @@
   <section class="section-block reveal">
     <h2>My approach</h2>
     <ol class="approach-list" style="gap:18px;">
-      <li style="font-size:1.15rem;"><span>01</span>Mapped real approval workflows across legal, finance, and sales</li>
-      <li style="font-size:1.15rem;"><span>02</span>Designed parallel/simple Approval Flows</li>
-      <li style="font-size:1.15rem;"><span>03</span>Ensured backend compatibility, reused existing patterns</li>
-      <li style="font-size:1.15rem;"><span>04</span>Tested flows with enterprise users</li>
+      <li style="font-size:1.15rem;"><span>01</span>Mapped flows<small>Mapped real approval workflows across legal, finance, and sales to identify blockers</small></li>
+      <li style="font-size:1.15rem;"><span>02</span>Designed approval flows<small>Designed Approval Flows supporting simple and parallel flows</small></li>
+      <li style="font-size:1.15rem;"><span>03</span>Backend compatibility<small>Ensured backend compatibility, reused existing patterns</small></li>
+      <li style="font-size:1.15rem;"><span>04</span>Testing<small>Tested flows with enterprise users</small></li>
     </ol>
   </section>
 
@@ -116,12 +119,12 @@
       <div class="result-card">
         <div class="num">82%</div>
         <div class="label">Early adopters CSAT</div>
-        <div class="detail">User survey after first use</div>
+        <div class="detail">User survey after using the feature for the first time</div>
       </div>
       <div class="result-card">
         <div class="num">6 weeks</div>
         <div class="label">To MVP</div>
-        <div class="detail">Designed and handed off for development in 6 weeks</div>
+        <div class="detail">MVP designed and handed off for development in 6 weeks</div>
       </div>
       <div class="result-card">
         <div class="num">70%</div>
@@ -132,9 +135,14 @@
   </section>
 
   <section class="section-block reveal">
+    <p class="section-eyebrow">The process</p>
     <h2>Working with constraints</h2>
     <h3 style="margin-top:0;">No new roles or states possible</h3>
-    <p class="body-text">We had to design the flow entirely within existing architecture. Building a brand new "Approval" role would slow delivery and create technical debt; creating a new approval flow would take months of development.</p>
+    <p class="body-text">We had to design the flow entirely within existing architecture:</p>
+    <ul class="check-list">
+      <li>Building a brand new "Approval" role would slow delivery and create technical debt.</li>
+      <li>Creating a new approval flow would take months of development.</li>
+    </ul>
     <p class="body-text"><strong>Impact:</strong> Months of development vs. weeks &mdash; had to get creative with existing architecture.</p>
   </section>
 
@@ -146,18 +154,19 @@
       <p>The current Participants tab mixed signers with approvers, creating visual noise and confusion about who needed to do what.</p>
       <p class="impact">Impact: Users couldn't quickly scan approval status or identify bottlenecks, leading to confusion and lower customer satisfaction.</p>
     </div>
+    <div class="solution-media media-row"><img src="images/approval-participants-before.png" alt="Original Participants tab mixing signers and approvers" loading="lazy"><img src="images/approval-participants-before-2.png" alt="Original participant list with unclear approval status" loading="lazy"></div>
     <div class="challenge-card">
       <h3>Status confusion</h3>
       <p>After renaming documents to "Approval pending," users stayed confused &mdash; the document still behaved like a draft, creating mixed signals.</p>
       <p class="impact">Impact: More support calls and confused users, delayed approvals.</p>
     </div>
+    <div class="solution-media media-row"><img src="images/approval-status-before.png" alt="Original Approval pending document status" loading="lazy"><img src="images/approval-status-before-2.png" alt="Document in Approval pending state still behaving like a draft" loading="lazy"></div>
     <div class="challenge-card">
       <h3>Send modal issues</h3>
       <p>User tests showed the Send modal left users guessing: would messages go to approvers or signers? This uncertainty caused hesitation and testing mistakes.</p>
       <p class="impact">Impact: Important approvals delayed because users weren't sure who would get notified.</p>
     </div>
 
-    <div class="solution-media"><img src="images/approval-flows-1.jpg" alt="Oneflow participants list showing approvers and signers" loading="lazy"></div>
   </section>
 
   <section class="section-block reveal">
@@ -167,31 +176,33 @@
       <h3>Reuse over rebuild</h3>
       <p>Extended the participant list UI with approval roles instead of building separate flows. Reused existing signing workflow logic for consistency.</p>
       <p class="result-tag">Result: Faster delivery, familiar patterns. Cut engineering build time from months to weeks.</p>
-      <div class="solution-media"><img src="images/approval-flows-2.jpg" alt="Participant list extended with approval roles" loading="lazy"></div>
     </div>
 
     <div class="solution-block">
       <h3>Renamed state back to Draft</h3>
       <p>I renamed status to "Draft &ndash; Approval pending" for crystal-clear communication about document state. Users expected drafts to behave like drafts.</p>
       <p class="result-tag">Result: Clear labeling eliminated confusion. "Draft &ndash; Approval pending" mimicked real user mental models.</p>
+      <div class="solution-media"><img src="images/approval-draft-status.png" alt="Draft – Approval pending status label" loading="lazy"></div>
     </div>
 
     <div class="solution-block">
       <h3>Restructured and unified participants</h3>
       <p>Participants and counterparties are now clearly labeled with role distinction, status visibility, and real-time progress updates.</p>
-      <p class="result-tag">Result: Restructured information hierarchy to reduce cognitive load and improve scanning.</p>
-      <div class="solution-media"><img src="images/approval-flows-3.jpg" alt="Restructured participant status view on mobile" loading="lazy"></div>
+      <p class="result-tag">Result: Restructured information hierarchy to reduce cognitive load and improve scanning. Clear roles, statuses, and actions.</p>
+      <div class="solution-media media-row"><img src="images/approval-participant-view.png" alt="Restructured participant view with approvers and signers grouped" loading="lazy"><img src="images/approval-participant-card.png" alt="Participant card showing role and approval status" loading="lazy"></div>
     </div>
 
     <div class="solution-block">
       <h3>Send modal structure makeover</h3>
       <p>Introduced clear visual separation between approvers and signatories, with immediate understanding of who receives what messages.</p>
-      <p class="result-tag">Result: Visual grouping eliminated guesswork and reduced user anxiety about message targeting.</p>
+      <p class="result-tag">Result: Visual grouping eliminated guesswork and reduced user anxiety about message targeting. Clear separation between approvers and signers.</p>
+      <div class="solution-media media-row"><img src="images/approval-send-modal.png" alt="Send modal with approvers and signatories separated" loading="lazy"><img src="images/approval-flows-3.jpg" alt="Send flow on mobile with approvers and signers grouped" loading="lazy"></div>
     </div>
 
     <div class="solution-block">
       <h3>Design system updates</h3>
       <p>Created components for: colors, statuses, buttons, modal filters, participants, avatars, and contract cards.</p>
+      <div class="solution-media"><img src="images/approval-flows-2.jpg" alt="Design system components: statuses, buttons, participants, avatars and contract cards" loading="lazy"></div>
     </div>
   </section>
 
