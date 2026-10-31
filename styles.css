@@ -190,7 +190,7 @@ a { color: inherit; }
 
 /* ===== Hero ===== */
 .hero {
-  padding: 96px 0 72px;
+  padding-top: 96px; padding-bottom: 72px;
 }
 .hero h1 {
   font-size: clamp(3rem, 9vw, 6.2rem);
@@ -236,7 +236,7 @@ a { color: inherit; }
 }
 
 /* ===== Case studies ===== */
-.work-section { padding: 48px 0 80px; }
+.work-section { padding-top: 48px; padding-bottom: 80px; }
 .section-eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.12em;
@@ -323,7 +323,7 @@ a { color: inherit; }
 /* ===== CTA / Footer ===== */
 .cta {
   text-align: center;
-  padding: 90px 0;
+  padding-top: 90px; padding-bottom: 90px;
   border-top: 1px solid var(--line);
 }
 .cta h2 {
@@ -650,7 +650,7 @@ h1, h2, h3 { font-family: inherit; }
 .work-card-link:hover .read-more svg { transform: translateX(4px); }
 
 /* ===== Tools marquee ===== */
-.tools-marquee { padding: 48px 0 90px; overflow: hidden; }
+.tools-marquee { padding-top: 48px; padding-bottom: 90px; overflow: hidden; }
 .marquee-track {
   display: flex;
   align-items: center;
