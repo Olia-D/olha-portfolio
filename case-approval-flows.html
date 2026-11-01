@@ -5,13 +5,17 @@
 <title>Approval Flows – Olha Datsenko, Product Design</title>
 <meta name="description" content="How I designed contract approval workflows for Oneflow that made contract lifecycles trackable, compliant, and fast to review.">
 <meta property="og:title" content="Approval Flows – Olha Datsenko, Product Design">
-<meta property="og:image" content="images/case-approvals.jpg">
+<meta property="og:image" content="https://olia-d.github.io/olha-portfolio/images/og-approvals.jpg">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&display=swap">
+<link rel="stylesheet" href="styles.css?v=2">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="nav" id="siteNav">
+  <div class="read-progress" id="readProgress" aria-hidden="true"></div>
   <div class="nav-inner">
     <a class="logo" href="index.html">OLHA<span class="dot">.</span></a>
     <nav class="nav-links">
@@ -48,7 +52,7 @@
 </div>
 
 <main id="main" class="wrap">
-  <section class="case-hero reveal">
+  <section class="case-hero">
     <div class="tags">
       <span class="tag">B2B</span>
       <span class="tag">Product design</span>
@@ -58,9 +62,10 @@
     </div>
     <h1>Contract approval flow</h1>
     <p class="lede">Designed approval workflows that made contract lifecycles trackable, compliant, and fast to review.</p>
+    <p class="stat-shift case-shift"><span class="from">Approvals over email and Slack</span> <svg class="shift-arrow" width="22" height="12" viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6.5c5-1.2 11-1 19-.4"/><path d="M15.5 2.2 20.4 6l-4.6 3.9"/></svg><span class="visually-hidden"> became </span> <span class="to">Approvals tracked in the contract</span></p>
 
     <div class="case-hero-media">
-      <img src="images/case-approval-flows-hero.jpg" alt="Oneflow contract approval status screen" width="1400" height="1304">
+      <img style="view-transition-name: shot-approvals; view-transition-class: shot" fetchpriority="high" src="images/case-approval-flows-hero-1600.webp" srcset="images/case-approval-flows-hero-800.webp 800w, images/case-approval-flows-hero-1200.webp 1200w, images/case-approval-flows-hero-1600.webp 1600w, images/case-approval-flows-hero-2400.webp 2400w, images/case-approval-flows-hero-3600.webp 3600w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="3608" height="3364" alt="Oneflow contract approval status screen">
     </div>
 
     <div class="meta-grid">
@@ -70,7 +75,7 @@
       <div><span>Team</span><strong>+4</strong></div>
     </div>
 
-    <div class="solution-media"><img src="images/approval-flows-1.jpg" alt="Oneflow contract with approvers and signers in the participants list" loading="lazy"></div>
+    <div class="solution-media"><img src="images/approval-flows-1-1600.webp" srcset="images/approval-flows-1-800.webp 800w, images/approval-flows-1-1200.webp 1200w, images/approval-flows-1-1600.webp 1600w, images/approval-flows-1-2400.webp 2400w, images/approval-flows-1-3600.webp 3600w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="5176" height="3082" alt="Oneflow contract with approvers and signers in the participants list" loading="lazy" style="max-width:2588px"></div>
   </section>
 
   <section class="section-block reveal">
@@ -158,13 +163,13 @@
       <p>The current Participants tab mixed signers with approvers, creating visual noise and confusion about who needed to do what.</p>
       <p class="impact">Impact: Users couldn't quickly scan approval status or identify bottlenecks, leading to confusion and lower customer satisfaction.</p>
     </div>
-    <div class="solution-media media-row"><img src="images/approval-participants-before.png" alt="Original Participants tab mixing signers and approvers" loading="lazy"><img src="images/approval-participants-before-2.png" alt="Original participant list with unclear approval status" loading="lazy"></div>
+    <div class="solution-media media-row"><img src="images/approval-participants-before-1600.webp" srcset="images/approval-participants-before-800.webp 800w, images/approval-participants-before-1200.webp 1200w, images/approval-participants-before-1600.webp 1600w, images/approval-participants-before-1752.webp 1752w" sizes="(max-width: 760px) calc(100vw - 112px), 524px" width="1752" height="1938" alt="Original Participants tab mixing signers and approvers" loading="lazy" style="max-width:876px"><img src="images/approval-participants-before-2-1600.webp" srcset="images/approval-participants-before-2-800.webp 800w, images/approval-participants-before-2-1200.webp 1200w, images/approval-participants-before-2-1600.webp 1600w, images/approval-participants-before-2-1694.webp 1694w" sizes="(max-width: 760px) calc(100vw - 112px), 524px" width="1694" height="1308" alt="Original participant list with unclear approval status" loading="lazy" style="max-width:847px"></div>
     <div class="challenge-card">
       <h3>Status confusion</h3>
       <p>After renaming documents to "Approval pending," users stayed confused &mdash; the document still behaved like a draft, creating mixed signals.</p>
       <p class="impact">Impact: More support calls and confused users, delayed approvals.</p>
     </div>
-    <div class="solution-media media-row"><img src="images/approval-status-before.png" alt="Original Approval pending document status" loading="lazy"><img src="images/approval-status-before-2.png" alt="Document in Approval pending state still behaving like a draft" loading="lazy"></div>
+    <div class="solution-media media-row"><img src="images/approval-status-before-952.webp" srcset="images/approval-status-before-800.webp 800w, images/approval-status-before-952.webp 952w" sizes="(max-width: 760px) calc(100vw - 112px), 524px" width="952" height="466" alt="Original Approval pending document status" loading="lazy" style="max-width:476px"><img src="images/approval-status-before-2-1600.webp" srcset="images/approval-status-before-2-800.webp 800w, images/approval-status-before-2-1200.webp 1200w, images/approval-status-before-2-1600.webp 1600w, images/approval-status-before-2-1688.webp 1688w" sizes="(max-width: 760px) calc(100vw - 112px), 524px" width="1688" height="1798" alt="Document in Approval pending state still behaving like a draft" loading="lazy" style="max-width:844px"></div>
     <div class="challenge-card">
       <h3>Send modal issues</h3>
       <p>User tests showed the Send modal left users guessing: would messages go to approvers or signers? This uncertainty caused hesitation and testing mistakes.</p>
@@ -186,27 +191,27 @@
       <h3>Renamed state back to Draft</h3>
       <p>I renamed status to "Draft &ndash; Approval pending" for crystal-clear communication about document state. Users expected drafts to behave like drafts.</p>
       <p class="result-tag">Result: Clear labeling eliminated confusion. "Draft &ndash; Approval pending" mimicked real user mental models.</p>
-      <div class="solution-media"><img src="images/approval-draft-status.png" alt="Draft – Approval pending status label" loading="lazy"></div>
+      <div class="solution-media"><img src="images/approval-draft-status-555.webp" srcset="images/approval-draft-status-555.webp 555w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="555" height="404" alt="Draft – Approval pending status label" loading="lazy" style="max-width:277px"></div>
     </div>
 
     <div class="solution-block">
       <h3>Restructured and unified participants</h3>
       <p>Participants and counterparties are now clearly labeled with role distinction, status visibility, and real-time progress updates.</p>
       <p class="result-tag">Result: Restructured information hierarchy to reduce cognitive load and improve scanning. Clear roles, statuses, and actions.</p>
-      <div class="solution-media media-row"><img src="images/approval-participant-view.png" alt="Restructured participant view with approvers and signers grouped" loading="lazy"><img src="images/approval-participant-card.png" alt="Participant card showing role and approval status" loading="lazy"></div>
+      <div class="solution-media media-row"><img src="images/approval-participant-view-352.webp" srcset="images/approval-participant-view-352.webp 352w" sizes="(max-width: 760px) calc(100vw - 112px), 524px" width="352" height="1241" alt="Restructured participant view with approvers and signers grouped" loading="lazy" style="max-width:176px"><img src="images/approval-participant-card-320.webp" srcset="images/approval-participant-card-320.webp 320w" sizes="(max-width: 760px) calc(100vw - 112px), 524px" width="320" height="863" alt="Participant card showing role and approval status" loading="lazy" style="max-width:160px"></div>
     </div>
 
     <div class="solution-block">
       <h3>Send modal structure makeover</h3>
       <p>Introduced clear visual separation between approvers and signatories, with immediate understanding of who receives what messages.</p>
       <p class="result-tag">Result: Visual grouping eliminated guesswork and reduced user anxiety about message targeting. Clear separation between approvers and signers.</p>
-      <div class="solution-media media-row"><img src="images/approval-send-modal.png" alt="Send modal with approvers and signatories separated" loading="lazy"><img src="images/approval-flows-3.jpg" alt="Send flow on mobile with approvers and signers grouped" loading="lazy"></div>
+      <div class="solution-media media-row"><img src="images/approval-send-modal-1332.webp" srcset="images/approval-send-modal-800.webp 800w, images/approval-send-modal-1200.webp 1200w, images/approval-send-modal-1332.webp 1332w" sizes="(max-width: 760px) calc(100vw - 112px), 524px" width="1332" height="1004" alt="Send modal with approvers and signatories separated" loading="lazy" style="max-width:666px"><img src="images/approval-flows-3-1321.webp" srcset="images/approval-flows-3-800.webp 800w, images/approval-flows-3-1200.webp 1200w, images/approval-flows-3-1321.webp 1321w" sizes="(max-width: 760px) calc(100vw - 112px), 524px" width="1321" height="2407" alt="Send flow on mobile with approvers and signers grouped" loading="lazy" style="max-width:660px"></div>
     </div>
 
     <div class="solution-block">
       <h3>Design system updates</h3>
       <p>Created components for: colors, statuses, buttons, modal filters, participants, avatars, and contract cards.</p>
-      <div class="solution-media"><img src="images/approval-flows-2.jpg" alt="Design system components: statuses, buttons, participants, avatars and contract cards" loading="lazy"></div>
+      <div class="solution-media"><img src="images/approval-flows-2-1600.webp" srcset="images/approval-flows-2-800.webp 800w, images/approval-flows-2-1200.webp 1200w, images/approval-flows-2-1600.webp 1600w, images/approval-flows-2-2400.webp 2400w, images/approval-flows-2-2886.webp 2886w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="2886" height="2090" alt="Design system components: statuses, buttons, participants, avatars and contract cards" loading="lazy" style="max-width:1443px"></div>
     </div>
   </section>
 
@@ -239,14 +244,14 @@
     <p class="section-eyebrow">More projects</p>
     <div class="more-grid">
       <a class="more-card" href="case-suggestions.html">
-        <img src="images/case-collaboration.jpg" alt="Contract collaboration case study">
+        <img style="view-transition-name: shot-suggestions; view-transition-class: shot" src="images/case-collaboration-1600.webp" srcset="images/case-collaboration-800.webp 800w, images/case-collaboration-1200.webp 1200w, images/case-collaboration-1600.webp 1600w, images/case-collaboration-1942.webp 1942w" sizes="(max-width: 860px) calc(100vw - 64px), 560px" width="1942" height="2188" alt="Contract collaboration case study">
         <div class="more-card-body">
           <h4>Contract collaboration</h4>
           <span class="stat-mini">Adoption &uarr; 35%</span>
         </div>
       </a>
       <a class="more-card" href="case-qes.html">
-        <img src="images/case-signing.jpg" alt="High-security signing case study">
+        <img style="view-transition-name: shot-qes; view-transition-class: shot" src="images/case-signing-1600.webp" srcset="images/case-signing-800.webp 800w, images/case-signing-1200.webp 1200w, images/case-signing-1600.webp 1600w, images/case-signing-2400.webp 2400w, images/case-signing-3600.webp 3600w" sizes="(max-width: 860px) calc(100vw - 64px), 560px" width="4000" height="3000" alt="High-security signing case study">
         <div class="more-card-body">
           <h4>High-security signing</h4>
           <span class="stat-mini">Setup time &darr; 96%</span>
@@ -270,4 +275,4 @@
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script src="script.js?v=2"></script>

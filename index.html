@@ -6,10 +6,13 @@
 <meta name="description" content="Olha Datsenko is a Product Designer based in Stockholm specializing in complex B2B SaaS. 15+ years across product design, content strategy, and UX writing.">
 <meta property="og:title" content="Olha Datsenko – Product Designer">
 <meta property="og:description" content="Product Designer specializing in complex B2B SaaS, based in Stockholm.">
-<meta property="og:image" content="images/portrait.jpg">
+<meta property="og:image" content="https://olia-d.github.io/olha-portfolio/images/og-portrait.jpg">
 <meta property="og:type" content="website">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&display=swap">
+<link rel="stylesheet" href="styles.css?v=2">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
@@ -51,38 +54,40 @@
 
 <main id="main">
   <section class="hero wrap">
-    <h1>Product<br><span class="line2">Designer</span></h1>
-    <p class="hero-sub">I specialize in B2B SaaS products that are:</p>
-    <div class="cycle-word" id="cycleWord" aria-live="polite">
-      <span>complex yet intuitive</span>
-    </div>
-    <div>
-      <a class="btn" href="#work">View my work</a>
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <h1 class="springy" id="springy">Product<br><span class="line2">Designer</span></h1>
+        <p class="hero-sub">I specialize in B2B SaaS products that are
+          <span class="typer" id="typer" aria-hidden="true"><span class="ty-text">complex yet intuitive</span><span class="ty-caret"></span></span><span class="visually-hidden">complex yet intuitive, powerful yet simple, and designed and written together.</span>
+        </p>
+        <a class="btn" href="#work">View my work</a>
+      </div>
+      <div class="polaroid-stage">
+        <figure class="polaroid" id="polaroid">
+          <img src="images/portrait-800.webp" srcset="images/portrait-800.webp 800w, images/portrait-860.webp 860w" sizes="320px" width="860" height="559" alt="Olha Datsenko, smiling" draggable="false">
+          <figcaption>Olha, Stockholm</figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
   <section class="work-section wrap" id="work">
-    <p class="section-eyebrow reveal">Selected work</p>
+    <h2 class="work-title reveal">Selected work</h2>
+    <p class="work-intro reveal">Three 0&rarr;1 projects from Oneflow, a contract platform for B2B teams.</p>
 
     <a class="work-card-link reveal" href="case-qes.html">
       <article class="case">
         <div class="case-media">
-          <img src="images/case-signing.jpg" alt="Oneflow electronic signature screen shown on a tablet, resting on a wooden desk" loading="lazy" width="1400" height="1050">
+          <img style="view-transition-name: shot-qes; view-transition-class: shot" src="images/case-signing-1600.webp" srcset="images/case-signing-800.webp 800w, images/case-signing-1200.webp 1200w, images/case-signing-1600.webp 1600w, images/case-signing-2400.webp 2400w, images/case-signing-3600.webp 3600w" sizes="(max-width: 860px) calc(100vw - 64px), 560px" width="4000" height="3000" alt="Oneflow electronic signature screen shown on a tablet, resting on a wooden desk" loading="lazy">
         </div>
         <div class="case-copy">
           <h3>Designing a <b>high-security</b> contract signing setup</h3>
-          <p class="case-client">Oneflow &bull; Enterprise Platform</p>
-          <div class="tags">
-            <span class="tag">B2B</span>
-            <span class="tag">Compliance</span>
-            <span class="tag">Product design</span>
-            <span class="tag">0&rarr;1</span>
-          </div>
           <p>Redesigned a legally binding signing flow to feel as simple as a click. Balanced strict compliance with intuitive UX, turning a high-friction setup into a self-serve experience that dramatically increased completion rates.</p>
           <div class="stat">
             <span class="stat-num">96%</span>
-            <span class="stat-label">&darr; Setup time</span>
+            <span class="stat-label">less setup time</span>
           </div>
+          <p class="stat-shift"><span class="from">1 day with support</span> <svg class="shift-arrow" width="22" height="12" viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6.5c5-1.2 11-1 19-.4"/><path d="M15.5 2.2 20.4 6l-4.6 3.9"/></svg><span class="visually-hidden"> became </span> <span class="to">15 minutes, self-serve</span></p>
           <p class="read-more">Read the case study
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </p>
@@ -93,22 +98,16 @@
     <a class="work-card-link reveal" href="case-suggestions.html">
       <article class="case flip">
         <div class="case-media">
-          <img src="images/case-collaboration.jpg" alt="A hand holding a phone showing an inline suggestion and comment on a contract" loading="lazy" width="1400" height="1580">
+          <img style="view-transition-name: shot-suggestions; view-transition-class: shot" src="images/case-collaboration-1600.webp" srcset="images/case-collaboration-800.webp 800w, images/case-collaboration-1200.webp 1200w, images/case-collaboration-1600.webp 1600w, images/case-collaboration-1942.webp 1942w" sizes="(max-width: 860px) calc(100vw - 64px), 560px" width="1942" height="2188" alt="A hand holding a phone showing an inline suggestion and comment on a contract" loading="lazy">
         </div>
         <div class="case-copy">
           <h3>Contract <b>collaboration</b> brought back to product</h3>
-          <p class="case-client">Oneflow &bull; Enterprise Platform</p>
-          <div class="tags">
-            <span class="tag">B2B</span>
-            <span class="tag">Collaboration</span>
-            <span class="tag">Product design</span>
-            <span class="tag">0&rarr;1</span>
-          </div>
           <p>Designed a "Suggestions" feature that moved collaboration from Slack and email directly into the product. Enabled participants to propose edits in context, with tracked markup and approval flows. Reduced friction and increased contract velocity.</p>
           <div class="stat">
             <span class="stat-num">35%</span>
-            <span class="stat-label">&uarr; Feature adoption</span>
+            <span class="stat-label">feature adoption</span>
           </div>
+          <p class="stat-shift"><span class="from">Edits proposed over email</span> <svg class="shift-arrow" width="22" height="12" viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6.5c5-1.2 11-1 19-.4"/><path d="M15.5 2.2 20.4 6l-4.6 3.9"/></svg><span class="visually-hidden"> became </span> <span class="to">Edits suggested in the contract</span></p>
           <p class="read-more">Read the case study
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </p>
@@ -119,22 +118,16 @@
     <a class="work-card-link reveal" href="case-approval-flows.html">
       <article class="case">
         <div class="case-media">
-          <img src="images/case-approvals.jpg" alt="A phone on a terrazzo surface showing a document approved confirmation screen" loading="lazy" width="1400" height="900">
+          <img style="view-transition-name: shot-approvals; view-transition-class: shot" src="images/case-approvals-1600.webp" srcset="images/case-approvals-800.webp 800w, images/case-approvals-1200.webp 1200w, images/case-approvals-1600.webp 1600w, images/case-approvals-2400.webp 2400w, images/case-approvals-3600.webp 3600w" sizes="(max-width: 860px) calc(100vw - 64px), 560px" width="5220" height="3364" alt="A phone on a terrazzo surface showing a document approved confirmation screen" loading="lazy">
         </div>
         <div class="case-copy">
           <h3>Contract <b>approvals</b> made simple and scalable</h3>
-          <p class="case-client">Oneflow &bull; Enterprise Platform</p>
-          <div class="tags">
-            <span class="tag">B2B</span>
-            <span class="tag">Compliance</span>
-            <span class="tag">Product design</span>
-            <span class="tag">0&rarr;1</span>
-          </div>
           <p>Designed a flexible contract approval system that brought structure to complex reviews. Sped up decisions, increased accountability, and fit seamlessly into existing architecture without adding friction.</p>
           <div class="stat">
             <span class="stat-num">82%</span>
-            <span class="stat-label">Customer satisfaction</span>
+            <span class="stat-label">early adopter CSAT</span>
           </div>
+          <p class="stat-shift"><span class="from">No approval tracking</span> <svg class="shift-arrow" width="22" height="12" viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6.5c5-1.2 11-1 19-.4"/><path d="M15.5 2.2 20.4 6l-4.6 3.9"/></svg><span class="visually-hidden"> became </span> <span class="to">A full audit trail</span></p>
           <p class="read-more">Read the case study
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
           </p>
@@ -166,7 +159,7 @@
   </section>
 
   <section class="cta wrap reveal">
-    <h2>Let's build something<br>worth using.</h2>
+    <h2>Let's build something<br><span class="scribble">worth using.<svg viewBox="0 0 200 16" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M4 11c30-6 62-7 96-4 30 2.6 62 1 96-3"/></svg></span></h2>
     <a class="btn" href="mailto:olya.datsenko@gmail.com">Email me</a>
   </section>
 </main>
@@ -185,4 +178,4 @@
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script src="script.js?v=2"></script>

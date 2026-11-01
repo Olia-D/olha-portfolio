@@ -5,13 +5,17 @@
 <title>Suggestions Feature – Olha Datsenko, Product Design</title>
 <meta name="description" content="How I designed real-time contract collaboration for Oneflow, reducing review time by 29%.">
 <meta property="og:title" content="Suggestions Feature – Olha Datsenko, Product Design">
-<meta property="og:image" content="images/case-collaboration.jpg">
+<meta property="og:image" content="https://olia-d.github.io/olha-portfolio/images/og-collaboration.jpg">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&display=swap">
+<link rel="stylesheet" href="styles.css?v=2">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="nav" id="siteNav">
+  <div class="read-progress" id="readProgress" aria-hidden="true"></div>
   <div class="nav-inner">
     <a class="logo" href="index.html">OLHA<span class="dot">.</span></a>
     <nav class="nav-links">
@@ -48,7 +52,7 @@
 </div>
 
 <main id="main" class="wrap">
-  <section class="case-hero reveal">
+  <section class="case-hero">
     <div class="tags">
       <span class="tag">B2B</span>
       <span class="tag">Product design</span>
@@ -57,9 +61,10 @@
     </div>
     <h1>Real-time contract collaboration</h1>
     <p class="lede">Reduced contract collaboration time by 29% and increased product stickiness.</p>
+    <p class="stat-shift case-shift"><span class="from">3-day replies</span> <svg class="shift-arrow" width="22" height="12" viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6.5c5-1.2 11-1 19-.4"/><path d="M15.5 2.2 20.4 6l-4.6 3.9"/></svg><span class="visually-hidden"> became </span> <span class="to">1.5-day replies</span></p>
 
     <div class="case-hero-media">
-      <img src="images/case-collaboration.jpg" alt="Hand holding a phone showing an inline suggestion on a contract" width="1400" height="1580">
+      <img style="view-transition-name: shot-suggestions; view-transition-class: shot" fetchpriority="high" src="images/case-collaboration-1600.webp" srcset="images/case-collaboration-800.webp 800w, images/case-collaboration-1200.webp 1200w, images/case-collaboration-1600.webp 1600w, images/case-collaboration-1942.webp 1942w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="1942" height="2188" alt="Hand holding a phone showing an inline suggestion on a contract">
     </div>
 
     <div class="meta-grid">
@@ -69,7 +74,7 @@
       <div><span>Team</span><strong>+6</strong></div>
     </div>
 
-    <div class="solution-media"><img src="images/suggestions-1.jpg" alt="Oneflow contract document view with an inline suggestion" loading="lazy"></div>
+    <div class="solution-media"><img src="images/suggestions-1-1600.webp" srcset="images/suggestions-1-800.webp 800w, images/suggestions-1-1200.webp 1200w, images/suggestions-1-1600.webp 1600w, images/suggestions-1-2400.webp 2400w, images/suggestions-1-3600.webp 3600w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="5760" height="3132" alt="Oneflow contract document view with an inline suggestion" loading="lazy" style="max-width:2880px"></div>
   </section>
 
   <section class="section-block reveal">
@@ -150,7 +155,7 @@
       <p>On mobile devices, our floating toolbar was completely inaccessible.</p>
       <p class="impact">Impact: 95% mobile session abandonment rate.</p>
     </div>
-    <div class="solution-media media-row"><img src="images/suggestions-mobile-before.png" alt="Original mobile view where the floating suggestion toolbar is inaccessible" loading="lazy"><img src="images/suggestions-mobile-after.png" alt="Redesigned mobile sliding toolbar and drawer for suggestions" loading="lazy"></div>
+    <div class="solution-media media-row"><img src="images/suggestions-mobile-before-1416.webp" srcset="images/suggestions-mobile-before-800.webp 800w, images/suggestions-mobile-before-1200.webp 1200w, images/suggestions-mobile-before-1416.webp 1416w" sizes="(max-width: 760px) calc(100vw - 112px), 524px" width="1416" height="1684" alt="Original mobile view where the floating suggestion toolbar is inaccessible" loading="lazy" style="max-width:708px"><img src="images/suggestions-mobile-after-1600.webp" srcset="images/suggestions-mobile-after-800.webp 800w, images/suggestions-mobile-after-1200.webp 1200w, images/suggestions-mobile-after-1600.webp 1600w, images/suggestions-mobile-after-2400.webp 2400w, images/suggestions-mobile-after-2451.webp 2451w" sizes="(max-width: 760px) calc(100vw - 112px), 524px" width="2451" height="2973" alt="Original suggestion drawer where the Reject icon reads as a Close button" loading="lazy" style="max-width:1225px"></div>
     <div class="challenge-card">
       <h3>Action hierarchy confusion</h3>
       <p>8 out of 10 users clicked "Resolve" thinking it would close their suggestion. Instead, it marked feedback as resolved and removed it from view.</p>
@@ -162,7 +167,7 @@
       <p class="impact">Impact: 3.2 days average response time.</p>
     </div>
 
-    <div class="solution-media"><img src="images/suggestions-3.jpg" alt="Email notifications sent for every single suggestion" loading="lazy"></div>
+    <div class="solution-media"><img src="images/suggestions-3-1600.webp" srcset="images/suggestions-3-800.webp 800w, images/suggestions-3-1200.webp 1200w, images/suggestions-3-1600.webp 1600w, images/suggestions-3-1836.webp 1836w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="1836" height="1405" alt="Email notifications sent for every single suggestion" loading="lazy" style="max-width:918px"></div>
   </section>
 
   <section class="section-block reveal">
@@ -179,7 +184,7 @@
       <h3>Contextual action system</h3>
       <p>I redesigned with two-step confirmation: click the three-dot menu to reveal options, then choose "Accept" or "Reject".</p>
       <p class="result-tag">Result: User testing revealed workflow clarity mattered more than UI simplicity &mdash; reducing cognitive load increased completion rates by 32%.</p>
-      <div class="solution-media media-row"><img src="images/suggestions-actions.png" alt="Suggestion card with a three-dot menu revealing Accept and Reject" loading="lazy"><img src="images/suggestions-email.png" alt="Email notification about an accepted suggestion" loading="lazy"></div>
+      <div class="solution-media media-row"><img src="images/suggestions-actions-1146.webp" srcset="images/suggestions-actions-800.webp 800w, images/suggestions-actions-1146.webp 1146w" sizes="(max-width: 760px) calc(100vw - 112px), 524px" width="1146" height="1134" alt="Suggestion card with a three-dot menu revealing Accept and Reject" loading="lazy" style="max-width:573px"><img src="images/suggestions-email-1220.webp" srcset="images/suggestions-email-800.webp 800w, images/suggestions-email-1200.webp 1200w, images/suggestions-email-1220.webp 1220w" sizes="(max-width: 760px) calc(100vw - 112px), 524px" width="1220" height="1155" alt="Email notification about an accepted suggestion" loading="lazy" style="max-width:610px"></div>
     </div>
 
     <div class="solution-block">
@@ -196,7 +201,7 @@
     <div class="solution-block">
       <h3>Design system components</h3>
       <p>I created reusable components to ensure consistency across the collaboration experience, including notification patterns, action states, and mobile-responsive layouts that became foundational for future product development.</p>
-      <div class="solution-media"><img src="images/suggestions-2.jpg" alt="Collaboration design system components: notifications, action states and mobile layouts" loading="lazy"></div>
+      <div class="solution-media"><img src="images/suggestions-2-1600.webp" srcset="images/suggestions-2-800.webp 800w, images/suggestions-2-1200.webp 1200w, images/suggestions-2-1600.webp 1600w, images/suggestions-2-2400.webp 2400w, images/suggestions-2-2564.webp 2564w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="2564" height="1698" alt="Collaboration design system components: notifications, action states and mobile layouts" loading="lazy" style="max-width:1282px"></div>
     </div>
   </section>
 
@@ -225,14 +230,14 @@
     <p class="section-eyebrow">More projects</p>
     <div class="more-grid">
       <a class="more-card" href="case-approval-flows.html">
-        <img src="images/case-approvals.jpg" alt="Contract approval flows case study">
+        <img style="view-transition-name: shot-approvals; view-transition-class: shot" src="images/case-approvals-1600.webp" srcset="images/case-approvals-800.webp 800w, images/case-approvals-1200.webp 1200w, images/case-approvals-1600.webp 1600w, images/case-approvals-2400.webp 2400w, images/case-approvals-3600.webp 3600w" sizes="(max-width: 860px) calc(100vw - 64px), 560px" width="5220" height="3364" alt="Contract approval flows case study">
         <div class="more-card-body">
           <h4>Contract approval flows</h4>
           <span class="stat-mini">CSAT 82%</span>
         </div>
       </a>
       <a class="more-card" href="case-qes.html">
-        <img src="images/case-signing.jpg" alt="High-security signing case study">
+        <img style="view-transition-name: shot-qes; view-transition-class: shot" src="images/case-signing-1600.webp" srcset="images/case-signing-800.webp 800w, images/case-signing-1200.webp 1200w, images/case-signing-1600.webp 1600w, images/case-signing-2400.webp 2400w, images/case-signing-3600.webp 3600w" sizes="(max-width: 860px) calc(100vw - 64px), 560px" width="4000" height="3000" alt="High-security signing case study">
         <div class="more-card-body">
           <h4>High-security signing</h4>
           <span class="stat-mini">Setup time &darr; 96%</span>
@@ -256,4 +261,4 @@
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script src="script.js?v=2"></script>

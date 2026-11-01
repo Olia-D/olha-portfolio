@@ -5,13 +5,17 @@
 <title>Secure Signing – Olha Datsenko, Product Design</title>
 <meta name="description" content="How I redesigned Oneflow's most secure signing option (QES) and cut setup time by 96%.">
 <meta property="og:title" content="Secure Signing – Olha Datsenko, Product Design">
-<meta property="og:image" content="images/case-signing.jpg">
+<meta property="og:image" content="https://olia-d.github.io/olha-portfolio/images/og-signing.jpg">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&display=swap">
+<link rel="stylesheet" href="styles.css?v=2">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="nav" id="siteNav">
+  <div class="read-progress" id="readProgress" aria-hidden="true"></div>
   <div class="nav-inner">
     <a class="logo" href="index.html">OLHA<span class="dot">.</span></a>
     <nav class="nav-links">
@@ -48,7 +52,7 @@
 </div>
 
 <main id="main" class="wrap">
-  <section class="case-hero reveal">
+  <section class="case-hero">
     <div class="tags">
       <span class="tag">B2B</span>
       <span class="tag">Product design</span>
@@ -57,9 +61,10 @@
     </div>
     <h1>High-security contract signing</h1>
     <p class="lede">Users couldn't discover Oneflow's most secure signing option (QES), creating a major gap between product capability and adoption.</p>
+    <p class="stat-shift case-shift"><span class="from">1 day with support</span> <svg class="shift-arrow" width="22" height="12" viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6.5c5-1.2 11-1 19-.4"/><path d="M15.5 2.2 20.4 6l-4.6 3.9"/></svg><span class="visually-hidden"> became </span> <span class="to">15 minutes, self-serve</span></p>
 
     <div class="case-hero-media">
-      <img src="images/case-signing.jpg" alt="Oneflow electronic signature marketplace screen on a tablet" width="1400" height="1050">
+      <img style="view-transition-name: shot-qes; view-transition-class: shot" fetchpriority="high" src="images/case-signing-1600.webp" srcset="images/case-signing-800.webp 800w, images/case-signing-1200.webp 1200w, images/case-signing-1600.webp 1600w, images/case-signing-2400.webp 2400w, images/case-signing-3600.webp 3600w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="4000" height="3000" alt="Oneflow electronic signature marketplace screen on a tablet">
     </div>
 
     <div class="meta-grid">
@@ -69,7 +74,7 @@
       <div><span>Team</span><strong>+4</strong></div>
     </div>
 
-    <div class="solution-media"><img src="images/qes-1.jpg" alt="Oneflow marketplace with electronic signature options" loading="lazy"></div>
+    <div class="solution-media"><img src="images/qes-1-1600.webp" srcset="images/qes-1-800.webp 800w, images/qes-1-1200.webp 1200w, images/qes-1-1600.webp 1600w, images/qes-1-2400.webp 2400w, images/qes-1-3600.webp 3600w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="4371" height="3069" alt="Oneflow marketplace with electronic signature options" loading="lazy" style="max-width:2185px"></div>
   </section>
 
   <section class="section-block reveal">
@@ -140,7 +145,7 @@
       <p>&ldquo;I didn't even know QES was an option here.&rdquo;</p>
       <cite>&mdash; User quote</cite>
     </div>
-    <div class="solution-media"><img src="images/qes-problem-marketplace.png" alt="Annotated original marketplace showing signature providers with no QES information or pricing" loading="lazy"></div>
+    <div class="solution-media"><img src="images/qes-problem-marketplace-1600.webp" srcset="images/qes-problem-marketplace-800.webp 800w, images/qes-problem-marketplace-1200.webp 1200w, images/qes-problem-marketplace-1600.webp 1600w, images/qes-problem-marketplace-2400.webp 2400w, images/qes-problem-marketplace-3600.webp 3600w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="4740" height="4212" alt="Annotated original marketplace showing signature providers with no QES information or pricing" loading="lazy" style="max-width:2370px"></div>
 
     <div class="challenge-card">
       <h3>QES not visible</h3>
@@ -154,7 +159,7 @@
       <h3>Hidden pricing</h3>
       <p>Hidden pricing reduced trust, blocked activation decisions.</p>
     </div>
-    <div class="solution-media"><img src="images/qes-problem-template.png" alt="Original template settings with the confusing Signature mode and Basic option" loading="lazy"></div>
+    <div class="solution-media"><img src="images/qes-problem-template-1248.webp" srcset="images/qes-problem-template-800.webp 800w, images/qes-problem-template-1200.webp 1200w, images/qes-problem-template-1248.webp 1248w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="1248" height="1596" alt="Original template settings with the confusing Signature mode and Basic option" loading="lazy" style="max-width:624px"></div>
     <div class="challenge-card">
       <h3>Confusing contract template setup</h3>
       <p>Users were confused by the "Signature mode" concept and the "Basic" option that included both Advanced and Simple signatures. Many called support, worried that their signature might not be valid.</p>
@@ -173,34 +178,45 @@
       <h3>Marketplace: signature levels and pricing</h3>
       <p>I rebuilt the entire marketplace around what users actually needed: "Electronic signatures" with clear security levels &mdash; SES for simple docs, AdES for business, QES for legal protection.</p>
       <p class="result-tag">Result: Obvious choices, no more guessing games.</p>
-      <div class="solution-media"><img src="images/qes-2.jpg" alt="Redesigned electronic signature marketplace comparison" loading="lazy"></div>
+      <figure class="compare" style="--pos: 50%">
+        <div class="compare-frame">
+          <div class="compare-pane compare-after"><img alt="After: the redesigned Electronic signatures page with SES, AdES and QES levels" loading="lazy" src="images/qes-1-1600.webp" srcset="images/qes-1-800.webp 800w, images/qes-1-1200.webp 1200w, images/qes-1-1600.webp 1600w, images/qes-1-2400.webp 2400w, images/qes-1-3600.webp 3600w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="4371" height="3069"></div>
+          <div class="compare-pane compare-before"><img alt="Before: the original Electronic IDs marketplace, annotated with the problems users hit" loading="lazy" src="images/qes-problem-marketplace-1600.webp" srcset="images/qes-problem-marketplace-800.webp 800w, images/qes-problem-marketplace-1200.webp 1200w, images/qes-problem-marketplace-1600.webp 1600w, images/qes-problem-marketplace-2400.webp 2400w, images/qes-problem-marketplace-3600.webp 3600w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="4740" height="4212"></div>
+          <span class="compare-tag compare-tag-before" aria-hidden="true">Before</span>
+          <span class="compare-tag compare-tag-after" aria-hidden="true">After</span>
+          <span class="compare-handle" aria-hidden="true"></span>
+          <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Drag to compare the old and new marketplace">
+        </div>
+        <figcaption>Drag to compare the original marketplace with the redesign.</figcaption>
+      </figure>
+      <div class="solution-media"><img src="images/qes-2-1600.webp" srcset="images/qes-2-800.webp 800w, images/qes-2-1200.webp 1200w, images/qes-2-1600.webp 1600w, images/qes-2-2400.webp 2400w, images/qes-2-2565.webp 2565w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="2565" height="1611" alt="Redesigned electronic signature marketplace comparison" loading="lazy" style="max-width:1282px"></div>
     </div>
 
     <div class="solution-block">
       <h3>QES enablement flow</h3>
       <p>Instead of scattered providers, I created one unified list with smart toggles. Users could enable multiple options, filter by country, and see pricing update instantly.</p>
       <p class="result-tag">Result: Leveraged existing backend for speed.</p>
-      <div class="solution-media"><img src="images/qes-enablement.png" alt="Unified signature provider list with toggles, country filter and pricing" loading="lazy"></div>
+      <div class="solution-media"><img src="images/qes-enablement-1600.webp" srcset="images/qes-enablement-800.webp 800w, images/qes-enablement-1200.webp 1200w, images/qes-enablement-1600.webp 1600w, images/qes-enablement-2316.webp 2316w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="2316" height="3204" alt="Unified signature provider list with toggles, country filter and pricing" loading="lazy" style="max-width:1158px"></div>
     </div>
 
     <div class="solution-block">
       <h3>Contract template setup mental model</h3>
       <p>I tested a simple question: "Where would you look to set up secure signatures?" 8 out of 8 users clicked "Signing method" immediately.</p>
       <p class="result-tag">Result: Users already knew where to look. Reused existing mental model.</p>
-      <div class="solution-media"><img src="images/qes-3.jpg" alt="Contract template setup with secure signatures under Signing method" loading="lazy"></div>
+      <div class="solution-media"><img src="images/qes-3-1600.webp" srcset="images/qes-3-800.webp 800w, images/qes-3-1200.webp 1200w, images/qes-3-1600.webp 1600w, images/qes-3-2400.webp 2400w, images/qes-3-3600.webp 3600w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="3663" height="2343" alt="Contract template setup with secure signatures under Signing method" loading="lazy" style="max-width:1831px"></div>
     </div>
 
     <div class="solution-block">
       <h3>Backend win (bonus)</h3>
       <p>The real breakthrough wasn't visual &mdash; it was simplifying the logic. I worked with engineers to cut conditional checks from 60+ to just 4.</p>
       <p class="result-tag">Result: Simpler code = faster responses. Win-win for users and engineers.</p>
-      <div class="solution-media"><img src="images/qes-backend.png" alt="Simplified signing logic, from 60+ conditional checks to 4" loading="lazy"></div>
+      <div class="solution-media"><img src="images/qes-backend-1600.webp" srcset="images/qes-backend-800.webp 800w, images/qes-backend-1200.webp 1200w, images/qes-backend-1600.webp 1600w, images/qes-backend-2400.webp 2400w, images/qes-backend-3600.webp 3600w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="3738" height="3066" alt="Simplified signing logic, from 60+ conditional checks to 4" loading="lazy" style="max-width:1869px"></div>
     </div>
 
     <div class="solution-block">
       <h3>Design system updates</h3>
       <p>Extended components for: marketplace toggles, country filter, pricing card, and system messages.</p>
-      <div class="solution-media"><img src="images/qes-design-system.png" alt="Design system components: marketplace toggles, country filter, pricing card and system messages" loading="lazy"></div>
+      <div class="solution-media"><img src="images/qes-design-system-1600.webp" srcset="images/qes-design-system-800.webp 800w, images/qes-design-system-1200.webp 1200w, images/qes-design-system-1600.webp 1600w, images/qes-design-system-2400.webp 2400w, images/qes-design-system-3530.webp 3530w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="3530" height="1671" alt="Design system components: marketplace toggles, country filter, pricing card and system messages" loading="lazy" style="max-width:1765px"></div>
     </div>
   </section>
 
@@ -233,14 +249,14 @@
     <p class="section-eyebrow">More projects</p>
     <div class="more-grid">
       <a class="more-card" href="case-approval-flows.html">
-        <img src="images/case-approvals.jpg" alt="Contract approval flows case study">
+        <img style="view-transition-name: shot-approvals; view-transition-class: shot" src="images/case-approvals-1600.webp" srcset="images/case-approvals-800.webp 800w, images/case-approvals-1200.webp 1200w, images/case-approvals-1600.webp 1600w, images/case-approvals-2400.webp 2400w, images/case-approvals-3600.webp 3600w" sizes="(max-width: 860px) calc(100vw - 64px), 560px" width="5220" height="3364" alt="Contract approval flows case study">
         <div class="more-card-body">
           <h4>Contract approval flows</h4>
           <span class="stat-mini">CSAT 82%</span>
         </div>
       </a>
       <a class="more-card" href="case-suggestions.html">
-        <img src="images/case-collaboration.jpg" alt="Contract collaboration case study">
+        <img style="view-transition-name: shot-suggestions; view-transition-class: shot" src="images/case-collaboration-1600.webp" srcset="images/case-collaboration-800.webp 800w, images/case-collaboration-1200.webp 1200w, images/case-collaboration-1600.webp 1600w, images/case-collaboration-1942.webp 1942w" sizes="(max-width: 860px) calc(100vw - 64px), 560px" width="1942" height="2188" alt="Contract collaboration case study">
         <div class="more-card-body">
           <h4>Contract collaboration</h4>
           <span class="stat-mini">Adoption &uarr; 35%</span>
@@ -264,4 +280,4 @@
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script src="script.js?v=2"></script>

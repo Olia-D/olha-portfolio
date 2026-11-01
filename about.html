@@ -5,10 +5,13 @@
 <title>About – Olha Datsenko, Product Designer</title>
 <meta name="description" content="Product Designer with 15+ years across product design, content strategy, UX writing and information architecture. Based in Stockholm, Sweden.">
 <meta property="og:title" content="About – Olha Datsenko, Product Designer">
-<meta property="og:image" content="images/portrait.jpg">
+<meta property="og:image" content="https://olia-d.github.io/olha-portfolio/images/og-portrait.jpg">
 <meta property="og:type" content="website">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&display=swap">
+<link rel="stylesheet" href="styles.css?v=2">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
@@ -50,14 +53,16 @@
 
 <main id="main" class="wrap">
   <section class="about-hero">
-    <h1>About<br><span class="line2">me</span></h1>
+    <div class="about-intro">
+      <h1>About<br><span class="line2">me</span></h1>
+      <p class="lede">I'm a <b>Product Designer</b> with <b>15+ years of combined experience</b> across product design, content strategy, UX writing, and information architecture.</p>
+    </div>
     <div class="about-photo">
-      <img src="images/portrait.jpg" alt="Portrait of Olha Datsenko" width="700" height="595">
+      <img src="images/portrait-860.webp" srcset="images/portrait-800.webp 800w, images/portrait-860.webp 860w" sizes="(max-width: 760px) 320px, 480px" width="860" height="559" alt="Portrait of Olha Datsenko">
     </div>
   </section>
 
   <section class="reveal">
-    <p class="lede">I'm a <b>Product Designer</b> with <b>15+ years of combined experience</b> across product design, content strategy, UX writing, and information architecture.</p>
     <p class="body-text">I started my career designing content systems and simplifying complex technical communication. Over time, I moved into product design, where I shape the full experience &mdash; not just what it says, but how it works, scales, and supports people in their daily workflows.</p>
   </section>
 
@@ -68,7 +73,7 @@
       <li><span>02</span>Design the solution.</li>
       <li><span>03</span>Choose the right words.</li>
       <li><span>04</span>Measure what matters.</li>
-      <li><span>05</span>Repeat until it works.</li>
+      <li class="approach-loop"><span>05</span>Repeat until it works.<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><polyline points="3 3 3 9 9 9"/></svg></li>
     </ol>
   </section>
 
@@ -93,7 +98,7 @@
         <div class="now-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 22s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12Z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
         <div>
           <h4>Based in</h4>
-          <p>Stockholm, Sweden</p>
+          <p>Stockholm, Sweden<span class="local-time" id="localTime" hidden></span></p>
         </div>
       </div>
       <div class="now-item">
@@ -108,6 +113,7 @@
 
   <section class="skills-section reveal">
     <p class="section-eyebrow">Skills &amp; expertise</p>
+    <div class="skill-pit" id="skillPit" aria-hidden="true"><p class="pit-hint">Grab one and throw it</p></div>
 
     <div class="skill-row">
       <h3>Product design</h3>
@@ -215,4 +221,5 @@
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js" defer></script>
+<script src="script.js?v=2" defer></script>
