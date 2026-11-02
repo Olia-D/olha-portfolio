@@ -13,6 +13,15 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
+  /* Nav stays dark while it sits over the dark hero */
+  var heroBlock = document.getElementById("hero");
+  if (nav && heroBlock && heroBlock.dataset.nav && "IntersectionObserver" in window) {
+    var tone = "on-" + (heroBlock.dataset.nav || "dark");
+    new IntersectionObserver(function (entries) {
+      nav.classList.toggle(tone, entries[0].isIntersecting);
+    }, { rootMargin: "-72px 0px 0px 0px", threshold: 0 }).observe(heroBlock);
+  }
+
   /* Mobile menu */
   var menuToggle = document.getElementById("menuToggle");
   var menuClose = document.getElementById("menuClose");
@@ -76,44 +85,6 @@
         }
       })();
     }
-  }
-
-  /* Polaroid: drag it around; a spring pulls it home and it swings as it goes */
-  var polaroid = document.getElementById("polaroid");
-  if (polaroid && !reduceMotion && window.matchMedia("(pointer: fine)").matches) {
-    polaroid.classList.add("is-draggable");
-    var px = 0, py = 0, vx = 0, vy = 0, rot = -4, dragging = false, grabX = 0, grabY = 0, lastX = 0, lastY = 0, raf = null;
-    var tick = function () {
-      if (!dragging) {
-        vx = (vx - px * 0.05) * 0.86;
-        vy = (vy - py * 0.05) * 0.86;
-        px += vx; py += vy;
-      }
-      rot += (-4 + Math.max(-16, Math.min(16, vx * 0.8)) - rot) * 0.18;
-      polaroid.style.transform = "translate(" + px + "px," + py + "px) rotate(" + rot + "deg)";
-      var moving = Math.abs(px) + Math.abs(py) + Math.abs(vx) + Math.abs(vy) + Math.abs(rot + 4) > 0.05;
-      raf = dragging || moving ? requestAnimationFrame(tick) : null;
-    };
-    var kick = function () { if (!raf) raf = requestAnimationFrame(tick); };
-    polaroid.addEventListener("pointerdown", function (e) {
-      dragging = true;
-      polaroid.setPointerCapture(e.pointerId);
-      grabX = e.clientX - px; grabY = e.clientY - py;
-      lastX = e.clientX; lastY = e.clientY;
-      polaroid.classList.add("is-dragging");
-      kick();
-    });
-    polaroid.addEventListener("pointermove", function (e) {
-      if (!dragging) return;
-      vx = e.clientX - lastX; vy = e.clientY - lastY;
-      lastX = e.clientX; lastY = e.clientY;
-      px = e.clientX - grabX; py = e.clientY - grabY;
-    });
-    var release = function () { dragging = false; polaroid.classList.remove("is-dragging"); kick(); };
-    polaroid.addEventListener("pointerup", release);
-    polaroid.addEventListener("pointercancel", release);
-    /* One small nudge on load so people notice it moves */
-    setTimeout(function () { if (!dragging) { vx = 7; kick(); } }, 1600);
   }
 
   /* Skills playground: the skill pills drop into a box and can be grabbed and thrown */
@@ -206,60 +177,6 @@
     }, { threshold: 0.4 }).observe(pit);
   }
 
-  /* Headline letters duck away from the cursor and spring back */
-  var springy = document.getElementById("springy");
-  if (springy && !reduceMotion && window.matchMedia("(pointer: fine)").matches) {
-    springy.setAttribute("aria-label", springy.innerText.replace(/\s+/g, " ").trim());
-    var chars = [];
-    var split = function (node) {
-      Array.prototype.slice.call(node.childNodes).forEach(function (child) {
-        if (child.nodeType === 3) {
-          var frag = document.createDocumentFragment();
-          child.textContent.split("").forEach(function (c) {
-            var span = document.createElement("span");
-            span.className = "ch";
-            span.setAttribute("aria-hidden", "true");
-            span.textContent = c;
-            frag.appendChild(span);
-            chars.push({ el: span, y: 0, r: 0, vy: 0, vr: 0 });
-          });
-          node.replaceChild(frag, child);
-        } else if (child.nodeType === 1 && child.tagName !== "BR") {
-          split(child);
-        }
-      });
-    };
-    split(springy);
-    var cursor = null, loop = null;
-    var step = function () {
-      var busy = false;
-      chars.forEach(function (c) {
-        var push = 0, spin = 0;
-        if (cursor) {
-          var box = c.el.getBoundingClientRect();
-          var dx = box.left + box.width / 2 - cursor.x, dy = box.top + box.height / 2 - cursor.y;
-          var d = Math.sqrt(dx * dx + dy * dy);
-          if (d < 140) { var k = 1 - d / 140; push = (dy > 0 ? 1 : -1) * k * 26; spin = (dx > 0 ? 1 : -1) * k * 14; }
-        }
-        c.vy = (c.vy + (push - c.y) * 0.16) * 0.72;
-        c.vr = (c.vr + (spin - c.r) * 0.16) * 0.72;
-        c.y += c.vy; c.r += c.vr;
-        if (Math.abs(c.y) + Math.abs(c.vy) + Math.abs(c.r) > 0.05) busy = true;
-        c.el.style.transform = "translateY(" + c.y.toFixed(2) + "px) rotate(" + c.r.toFixed(2) + "deg)";
-      });
-      loop = busy || cursor ? requestAnimationFrame(step) : null;
-    };
-    var hero = springy.closest(".hero") || springy;
-    hero.addEventListener("pointermove", function (e) {
-      cursor = { x: e.clientX, y: e.clientY };
-      if (!loop) loop = requestAnimationFrame(step);
-    });
-    hero.addEventListener("pointerleave", function () {
-      cursor = null;
-      if (!loop) loop = requestAnimationFrame(step);
-    });
-  }
-
   /* Reading progress on case studies */
   var progress = document.getElementById("readProgress");
   if (progress) {
@@ -269,6 +186,22 @@
     };
     window.addEventListener("scroll", updateProgress, { passive: true });
     updateProgress();
+  }
+
+  /* Contents rail: mark the section being read */
+  var tocLinks = document.querySelectorAll(".case-toc a");
+  if (tocLinks.length && "IntersectionObserver" in window) {
+    var byId = {};
+    tocLinks.forEach(function (a) { byId[a.getAttribute("href").slice(1)] = a; });
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        tocLinks.forEach(function (a) { a.classList.remove("is-current"); a.removeAttribute("aria-current"); });
+        var link = byId[entry.target.id];
+        if (link) { link.classList.add("is-current"); link.setAttribute("aria-current", "true"); }
+      });
+    }, { rootMargin: "-30% 0px -60% 0px" });
+    Object.keys(byId).forEach(function (id) { var el = document.getElementById(id); if (el) spy.observe(el); });
   }
 
   /* Live local time in Stockholm */
@@ -282,28 +215,42 @@
   }
 
   /* Count up big numbers the first time they scroll into view */
-  var counters = document.querySelectorAll(".stat-num, .result-card .num, .callout-stat .num");
+  var counters = document.querySelectorAll(".stat-num, .result-card .num, .callout-stat .num, .rs-tile .num");
   if ("IntersectionObserver" in window && !reduceMotion) {
     var countIO = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
         countIO.unobserve(entry.target);
-        var el = entry.target;
-        var match = el.textContent.match(/^(\D*)(\d+)(.*)$/);
+        /* Only the leading text changes, so a small unit (like "weeks") keeps its styling */
+        var node = entry.target.firstChild;
+        if (!node || node.nodeType !== 3) return;
+        var match = node.textContent.match(/^(\D*)(\d+)(.*)$/);
         if (!match) return;
         var target = +match[2], start = null;
         var step = function (t) {
           if (start === null) start = t;
           var k = Math.min((t - start) / 1100, 1);
-          el.textContent = match[1] + Math.round(target * (1 - Math.pow(1 - k, 3))) + match[3];
+          node.textContent = match[1] + Math.round(target * (1 - Math.pow(1 - k, 3))) + match[3];
           if (k < 1) requestAnimationFrame(step);
         };
         requestAnimationFrame(step);
         /* If the browser pauses animation frames, still land on the real number */
-        setTimeout(function () { el.textContent = match[1] + target + match[3]; }, 1400);
+        setTimeout(function () { node.textContent = match[1] + target + match[3]; }, 1400);
       });
     }, { threshold: 0.6 });
     counters.forEach(function (el) { countIO.observe(el); });
+  }
+
+  /* Result bars grow once when the band scrolls into view */
+  var rsBand = document.querySelector("[data-rs]");
+  if (rsBand) {
+    if ("IntersectionObserver" in window && !reduceMotion) {
+      var rsIO = new IntersectionObserver(function (es) {
+        if (es[0].isIntersecting) { rsBand.classList.add("is-in"); rsIO.disconnect(); }
+      }, { threshold: 0.4 });
+      rsIO.observe(rsBand);
+      setTimeout(function () { var r = rsBand.getBoundingClientRect(); if (r.top < innerHeight) rsBand.classList.add("is-in"); }, 1500);
+    } else { rsBand.classList.add("is-static"); }
   }
 
   /* Scroll reveal — triggers early so content is never caught blank */
@@ -337,6 +284,99 @@
     update();
   });
 
+  /* Coded UI illustrations play their small moment once, when they come into view */
+  var uis = document.querySelectorAll(".ui");
+  if (uis.length) {
+    if ("IntersectionObserver" in window && !reduceMotion) {
+      var uiIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-live");
+          uiIO.unobserve(entry.target);
+        });
+      }, { threshold: 0.4 });
+      uis.forEach(function (el) { uiIO.observe(el); });
+    } else {
+      uis.forEach(function (el) { el.classList.add("is-live"); });
+    }
+  }
+
+  /* Home: show projects by skill */
+  var workGrid = document.getElementById("workGrid");
+  var filterButtons = document.querySelectorAll(".work-filter button");
+  if (workGrid && filterButtons.length) {
+    var tiles = workGrid.querySelectorAll(".work-tile");
+    var workCount = document.getElementById("workCount");
+    filterButtons.forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var skill = btn.getAttribute("data-skill");
+        var shown = 0;
+        filterButtons.forEach(function (b) { b.setAttribute("aria-pressed", String(b === btn)); });
+        tiles.forEach(function (tile) {
+          var match = skill === "all" || tile.getAttribute("data-skills").split(" ").indexOf(skill) !== -1;
+          tile.hidden = !match;
+          if (match) shown++;
+        });
+        workGrid.classList.toggle("is-filtered", skill !== "all");
+        if (workCount) workCount.textContent = shown + (shown === 1 ? " project" : " projects") + " shown";
+      });
+    });
+  }
+
+  /* Hide the top-bar Email button while the contact block is on screen */
+  var ctaBlock = document.querySelector(".t-cta-panel");
+  if (nav && ctaBlock && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries) {
+      nav.classList.toggle("cta-in-view", entries[0].isIntersecting);
+    }, { threshold: 0.3 }).observe(ctaBlock);
+  }
+
+  /* Case studies: click a screenshot to see it full size */
+  var zoomables = [].filter.call(document.querySelectorAll(".case-body .solution-media img"), function (i) { return !i.closest(".scr"); });
+  if (zoomables.length && window.HTMLDialogElement) {
+    var box = document.createElement("dialog");
+    box.className = "lightbox";
+    box.setAttribute("aria-label", "Enlarged image");
+    box.innerHTML = '<button class="lb-close" type="button" aria-label="Close">&times;</button><img alt="">';
+    document.body.appendChild(box);
+    var bigImg = box.querySelector("img");
+    zoomables.forEach(function (img) {
+      var btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "zoom-btn";
+      btn.setAttribute("aria-label", "Enlarge image: " + img.alt);
+      img.parentNode.insertBefore(btn, img);
+      btn.appendChild(img);
+      btn.addEventListener("click", function () {
+        var options = (img.getAttribute("srcset") || "").split(",");
+        bigImg.src = options.length > 1 ? options[options.length - 1].trim().split(" ")[0] : img.currentSrc || img.src;
+        bigImg.alt = img.alt;
+        box.classList.remove("is-zoomed");
+        box.showModal();
+      });
+    });
+    bigImg.addEventListener("click", function () { box.classList.toggle("is-zoomed"); });
+    box.addEventListener("click", function (e) {
+      if (e.target === box || e.target.classList.contains("lb-close")) box.close();
+    });
+  }
+
+  /* Screen recordings play only while on screen, and never for reduced motion */
+  var videos = document.querySelectorAll("video.shot-video");
+  if (videos.length) {
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      videos.forEach(function (v) { v.controls = true; });
+    } else {
+      var videoIO = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) { entry.target.play().catch(function () { entry.target.controls = true; }); }
+          else { entry.target.pause(); }
+        });
+      }, { threshold: 0.35 });
+      videos.forEach(function (v) { videoIO.observe(v); });
+    }
+  }
+
   /* FAQ accordion */
   document.querySelectorAll(".faq-item").forEach(function (item) {
     var btn = item.querySelector(".faq-q");
@@ -361,4 +401,261 @@
       }
     });
   });
+})();
+
+/* Coded screens: hotspots that spotlight a zone and show the original annotation */
+(function () {
+  var screens = document.querySelectorAll("[data-notes]");
+  var seen = "IntersectionObserver" in window ? new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("is-seen"); seen.unobserve(e.target); } });
+  }, { threshold: 0.35 }) : null;
+  screens.forEach(function (fig) {
+    var layer = fig.querySelector(".hs-layer");
+    var dots = fig.querySelectorAll(".hs");
+    var list = fig.querySelector(".hs-list");
+    var all = fig.querySelector(".hs-all");
+    var css = getComputedStyle(layer);
+    var W = +css.getPropertyValue("--w"), H = +css.getPropertyValue("--h");
+    var NS = "http://www.w3.org/2000/svg";
+    var dim = document.createElementNS(NS, "svg");
+    dim.setAttribute("class", "hs-dim");
+    dim.setAttribute("viewBox", "0 0 " + W + " " + H);
+    dim.setAttribute("preserveAspectRatio", "none");
+    dim.setAttribute("aria-hidden", "true");
+    var hole = document.createElementNS(NS, "path");
+    dim.appendChild(hole);
+    layer.insertBefore(dim, layer.firstChild);
+    if (seen) seen.observe(fig); else fig.classList.add("is-seen");
+    /* room for a 250px note column beside the screen? */
+    var frame = fig.querySelector(".scr-frame");
+    function fit() {
+      fig.classList.remove("has-side");
+      fig.classList.toggle("has-side", fig.clientWidth - Math.min(frame.offsetWidth, 440) >= 300);
+      open().forEach(place);
+    }
+    fit();
+    window.addEventListener("resize", fit);
+
+    dots.forEach(function (dot, i) {
+      dot.style.setProperty("--i", i);
+      dot.rects = (dot.dataset.zones || "").split(";").filter(Boolean).map(function (z) { return z.trim().split(/\s+/).map(Number); });
+      dot.zones = dot.rects.map(function (r) {
+        var el = document.createElement("i");
+        el.className = "hs-zone";
+        el.style.cssText = "left:" + r[0] + "em;top:" + r[1] + "em;width:" + r[2] + "em;height:" + r[3] + "em";
+        layer.insertBefore(el, dim.nextSibling);
+        return el;
+      });
+      var note = dot.querySelector(".hs-note");
+      var li = document.createElement("li");
+      li.textContent = note.textContent;
+      list.appendChild(li);
+      note.innerHTML = '<span class="hs-kicker">' + (fig.dataset.tone === "fix" ? "Change " : "Problem ") + (i + 1) + " of " + dots.length + '</span><span class="hs-text"></span>';
+      note.lastChild.textContent = li.textContent;
+      dot.setAttribute("aria-label", "Note " + (i + 1) + ": " + li.textContent);
+      dot.addEventListener("click", function () { toggle(dot, dot.getAttribute("aria-expanded") !== "true"); });
+      dot.addEventListener("mouseenter", function () { if (!fig.classList.contains("show-all")) spot([dot]); });
+      dot.addEventListener("mouseleave", function () { if (!fig.classList.contains("show-all")) spot(open()); });
+    });
+
+    function open() { return [].filter.call(dots, function (d) { return d.getAttribute("aria-expanded") === "true"; }); }
+    /* light the zones of the given dots and cut them out of the dimmed layer */
+    function spot(active) {
+      var d = "M0 0H" + W + "V" + H + "H0Z";
+      dots.forEach(function (dot) {
+        var on = active.indexOf(dot) > -1;
+        dot.zones.forEach(function (z) { z.classList.toggle("is-on", on); });
+        if (on) dot.rects.forEach(function (r) {
+          var x = r[0], y = r[1], w = r[2], h = r[3], k = Math.min(6, w / 2, h / 2);
+          d += "M" + (x + k) + " " + y + "H" + (x + w - k) + "Q" + (x + w) + " " + y + " " + (x + w) + " " + (y + k) + "V" + (y + h - k) + "Q" + (x + w) + " " + (y + h) + " " + (x + w - k) + " " + (y + h) + "H" + (x + k) + "Q" + x + " " + (y + h) + " " + x + " " + (y + h - k) + "V" + (y + k) + "Q" + x + " " + y + " " + (x + k) + " " + y + "Z";
+        });
+      });
+      hole.setAttribute("d", d);
+      fig.classList.toggle("is-focus", active.length > 0);
+    }
+    function toggle(dot, show) {
+      dots.forEach(function (d) { if (d !== dot) d.setAttribute("aria-expanded", "false"); });
+      dot.setAttribute("aria-expanded", String(show));
+      if (!fig.classList.contains("show-all")) spot(show ? [dot] : []);
+      if (show) place(dot);
+    }
+    /* keep the note inside the screen: right of the dot, else left, else below */
+    function place(dot) {
+      var note = dot.querySelector(".hs-note");
+      var box = layer.getBoundingClientRect();
+      dot.classList.remove("flip", "below", "side");
+      note.style.removeProperty("--dx");
+      if (fig.classList.contains("has-side")) {
+        var d = dot.getBoundingClientRect();
+        dot.style.setProperty("--off", Math.round(box.right + 36 - d.right) + "px");
+        dot.classList.add("side");
+        return;
+      }
+      var r = note.getBoundingClientRect();
+      if (r.right <= box.right - 8) return;
+      dot.classList.add("flip");
+      r = note.getBoundingClientRect();
+      if (r.left >= box.left + 8) return;
+      dot.classList.remove("flip");
+      dot.classList.add("below");
+      r = note.getBoundingClientRect();
+      var dx = Math.min(0, box.right - 8 - r.right) + Math.max(0, box.left + 8 - r.left);
+      note.style.setProperty("--dx", dx + "px");
+    }
+    all.addEventListener("click", function () {
+      var on = all.getAttribute("aria-pressed") !== "true";
+      all.setAttribute("aria-pressed", String(on));
+      all.textContent = on ? "Hide notes" : "Show all notes";
+      fig.classList.toggle("show-all", on);
+      list.hidden = !on;
+      dots.forEach(function (d) { d.setAttribute("aria-expanded", "false"); });
+      spot(on ? [].slice.call(dots) : []);
+    });
+    document.addEventListener("click", function (e) { if (!fig.contains(e.target) && open().length) toggle(open()[0], false); });
+    fig.addEventListener("keydown", function (e) { if (e.key === "Escape" && open().length) { var d = open()[0]; toggle(d, false); d.focus(); } });
+  });
+})();
+
+/* Coded "after" screens: short looping demos of the redesigned flows.
+   They play only while on screen, can be paused, and stay still for reduced motion. */
+(function () {
+  var figs = document.querySelectorAll("[data-ani]");
+  if (!figs.length) return;
+  var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function player(fig, scr, steps, reset, rest, loops) {
+    var timer = null, i = 0, on = false, paused = false;
+    function next() {
+      if (!on || paused) return;
+      if (i >= steps.length) {
+        if (!loops) return;
+        i = 0; timer = setTimeout(function () { reset(); next(); }, 0); return;
+      }
+      var step = steps[i++];
+      timer = setTimeout(function () { step[1](); next(); }, step[0]);
+    }
+    function play() { if (on && !paused && timer === null) { next(); } }
+    function stop() { clearTimeout(timer); timer = null; }
+    if (still) { rest(); return; }
+    reset();
+    if (loops) {
+      var btn = document.createElement("button");
+      btn.type = "button"; btn.className = "ani-pause"; btn.setAttribute("aria-pressed", "false");
+      btn.setAttribute("aria-label", "Pause animation");
+      btn.addEventListener("click", function () {
+        paused = !paused; btn.setAttribute("aria-pressed", String(paused));
+        btn.setAttribute("aria-label", paused ? "Play animation" : "Pause animation");
+        if (paused) { stop(); } else { timer = null; play(); }
+      });
+      (scr.closest(".phone") || fig).appendChild(btn);
+    }
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) { on = e.isIntersecting; if (on) { timer = null; play(); } else { stop(); } });
+    }, { threshold: 0.4 }).observe(scr);
+  }
+
+  function pointer(scr, cls) { var p = document.createElement("i"); p.className = cls; scr.appendChild(p); return p; }
+  function at(p, x, y) { p.style.setProperty("--px", x); p.style.setProperty("--py", y); }
+  function press(el) { el.classList.add("is-press"); setTimeout(function () { el.classList.remove("is-press"); }, 180); }
+
+  figs.forEach(function (fig) {
+    var kind = fig.dataset.ani;
+
+    if (kind === "doc") {
+      var scr = fig.querySelector(".sdv"), input = scr.querySelector(".sdv-compose input");
+      var send = scr.querySelector(".sdv-compose .sdv-send"), accept = scr.querySelector(".sdv-accept");
+      var cur = pointer(scr, "ani-cursor"), word = "Ann Connor", typing = [];
+      for (var k = 1; k <= word.length; k++) (function (n) { typing.push([85, function () { input.value = word.slice(0, n); }]); })(k);
+      function setState(st, open) { scr.dataset.state = st; scr.classList.toggle("card-open", open); }
+      player(fig, scr, [[700, function () { at(cur, 640, 372); }], [700, function () { cur.classList.add("is-text"); }]]
+        .concat(typing)
+        .concat([
+          [450, function () { cur.classList.remove("is-text"); at(cur, 904, 373); }],
+          [800, function () { press(send); }],
+          [220, function () { setState("review", true); }],
+          [1500, function () { at(cur, 840, 365); }],
+          [800, function () { press(accept); }],
+          [220, function () { setState("accepted", false); at(cur, 980, 520); }],
+          [2600, function () {}]
+        ]),
+        function () { setState("compose", false); input.value = ""; cur.classList.remove("is-text"); at(cur, 1000, 560); },
+        function () { setState("review", true); },
+        true);
+    }
+
+    if (kind === "sheet") {
+      var s2 = fig.querySelector(".sms"), kebab = s2.querySelector(".sms-kebab"), acc = s2.querySelector(".sms-acc");
+      var tap = pointer(s2, "ani-tap");
+      function menu(open) { s2.classList.toggle("menu-open", open); }
+      player(fig, s2, [
+          [700, function () { at(tap, 353, 476); tap.classList.add("is-on"); }],
+          [700, function () { press(tap); press(kebab); }],
+          [200, function () { menu(true); }],
+          [1100, function () { at(tap, 322, 530); }],
+          [650, function () { acc.classList.add("is-hover"); press(tap); }],
+          [350, function () { menu(false); acc.classList.remove("is-hover"); tap.classList.remove("is-on"); }],
+          [2400, function () {}]
+        ],
+        function () { menu(false); acc.classList.remove("is-hover"); tap.classList.remove("is-on"); at(tap, 300, 640); },
+        function () { menu(true); },
+        true);
+    }
+
+    if (kind === "email") {
+      var s3 = fig.querySelector(".sem");
+      player(fig, s3, [[150, function () { s3.classList.add("is-in"); }]],
+        function () { s3.classList.remove("is-in"); },
+        function () { s3.classList.add("is-in"); },
+        false);
+    }
+  });
+})();
+
+/* Mobile suggest-edit demo: select, toolbar, type a suggestion, send, open it */
+(function () {
+  var fig = document.querySelector('[data-ani="mobile"]');
+  if (!fig) return;
+  var scr = fig.querySelector(".smf"), typed = scr.querySelector(".smf-typed span");
+  var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (still) { scr.classList.add("show-name", "show-reply"); return; }
+  var tap = document.createElement("i"); tap.className = "ani-tap"; scr.appendChild(tap);
+  function at(x, y) { tap.style.setProperty("--px", x); tap.style.setProperty("--py", y); }
+  function show(cls, on) { scr.classList.toggle(cls, on); }
+  function press() { tap.classList.add("is-press"); setTimeout(function () { tap.classList.remove("is-press"); }, 180); }
+  var word = "Ann Connor", steps = [
+    [700, function () { at(78, 403); tap.classList.add("is-on"); }],
+    [650, function () { tap.classList.add("is-hold"); }],
+    [650, function () { show("show-hl", true); tap.classList.remove("is-hold"); }],
+    [350, function () { show("show-menu", true); tap.classList.remove("is-on"); }],
+    [1100, function () { at(216, 665); tap.classList.add("is-on"); }],
+    [650, press],
+    [200, function () { show("show-menu", false); show("show-hl", false); show("show-kb", true); tap.classList.remove("is-on"); }]
+  ];
+  for (var k = 1; k <= word.length; k++) (function (n) { steps.push([n === 1 ? 800 : 110, function () { typed.textContent = word.slice(0, n); scr.classList.add("is-typed"); }]); })(k);
+  steps = steps.concat([
+    [600, function () { at(352, 473); tap.classList.add("is-on"); }],
+    [650, press],
+    [200, function () { show("show-kb", false); show("show-name", true); tap.classList.remove("is-on"); }],
+    [1300, function () { at(160, 408); tap.classList.add("is-on"); }],
+    [650, press],
+    [200, function () { show("show-reply", true); tap.classList.remove("is-on"); }],
+    [3000, function () {}]
+  ]);
+  function reset() { ["show-hl", "show-menu", "show-kb", "show-name", "show-reply"].forEach(function (c) { show(c, false); }); typed.textContent = ""; scr.classList.remove("is-typed"); tap.className = "ani-tap"; at(200, 600); }
+  var i = 0, timer = null, on = false, paused = false;
+  function next() {
+    if (!on || paused) return;
+    if (i >= steps.length) { i = 0; reset(); }
+    var s = steps[i++];
+    timer = setTimeout(function () { s[1](); next(); }, s[0]);
+  }
+  reset();
+  var btn = document.createElement("button");
+  btn.type = "button"; btn.className = "ani-pause"; btn.setAttribute("aria-pressed", "false"); btn.setAttribute("aria-label", "Pause animation");
+  btn.addEventListener("click", function () {
+    paused = !paused; btn.setAttribute("aria-pressed", String(paused)); btn.setAttribute("aria-label", paused ? "Play animation" : "Pause animation");
+    clearTimeout(timer); if (!paused) next();
+  });
+  (scr.closest(".phone") || fig).appendChild(btn);
+  new IntersectionObserver(function (es) { es.forEach(function (e) { on = e.isIntersecting; clearTimeout(timer); if (on) next(); }); }, { threshold: 0.4 }).observe(scr);
 })();
