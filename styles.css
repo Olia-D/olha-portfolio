@@ -2140,3 +2140,18 @@ a.t-tile:hover { background: var(--emph-hover); }
 .case-head .case-shift-line { margin-bottom: 0; }
 .case-head { padding-bottom: clamp(32px, 4vw, 56px); }
 @media (min-width: 861px) { .case-head-visual.case-head-bleed img { transform: translateY(14%); } }
+/* case heroes fit the first screen on laptops: sizes follow the viewport height too */
+@media (min-width: 861px) {
+  .case-head { padding-top: clamp(20px, 3.5vh, 56px); }
+  .case-head h1 { font-size: clamp(2.6rem, min(5.6vw, 8.4vh), 5.2rem); margin-bottom: 16px; }
+  .case-head .case-lede { margin-bottom: 20px; }
+  .case-head-visual img { max-height: calc(100svh - 330px); width: auto; object-fit: contain; }
+  .case-head-visual.case-head-bleed img { width: min(132%, calc((100svh - 300px) * 4 / 3)); max-height: none; }
+  .case-head .wrap > .case-facts, .case-head .case-facts { padding-block: 18px; }
+}
+/* big bleeding heroes (Approvals, QES): height follows the screen, width runs off the right edge */
+@media (min-width: 861px) {
+  .case-head-visual.case-head-bleed { justify-items: start; align-self: end; }
+  .case-head-visual.case-head-bleed img { width: auto; height: clamp(360px, calc(100svh - 330px), 640px); aspect-ratio: auto; max-width: none; max-height: none; padding: 0; object-fit: fill; transform: none; }
+}
+@media (max-width: 860px) { .case-head-visual.case-head-bleed img { width: 125%; max-width: none; margin-left: 0; padding: 0; } }
