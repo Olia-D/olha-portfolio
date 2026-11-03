@@ -1982,8 +1982,8 @@ a.t-tile:hover { background: #0e3230; }
   --mute: #8b8b88;
   --line: #e6e6e3;
   /* the one accent: outcomes only (result numbers, Delivered, Fix) */
-  --out: #123c3a;
-  --out-on-dark: #8fd0c2;
+  --out: #0a7d55;
+  --out-on-dark: #34d399;
   --fjord: var(--out);
   --teal: var(--out);
   --accent-ink: var(--out);
@@ -2016,8 +2016,8 @@ a.t-tile:hover { background: #0e3230; }
   --mute: #8a8d8a;
   --line: #2e302f;
   --paper: #f1f1ef;
-  --out: #8fd0c2;
-  --out-on-dark: #8fd0c2;
+  --out: #34d399;
+  --out-on-dark: #34d399;
   --emph: #2a2d2b;
   --emph-hover: #333634;
   --on-emph: #f1f1ef;
@@ -2038,8 +2038,8 @@ a.t-tile:hover { background: #0e3230; }
     --mute: #8a8d8a;
     --line: #2e302f;
     --paper: #f1f1ef;
-    --out: #8fd0c2;
-    --out-on-dark: #8fd0c2;
+    --out: #34d399;
+    --out-on-dark: #34d399;
     --emph: #2a2d2b;
     --emph-hover: #333634;
     --on-emph: #f1f1ef;
@@ -2056,7 +2056,7 @@ a.t-tile:hover { background: var(--emph-hover); }
 .t-tile.t-photo { background: var(--surface); }
 .rs-lead .num, .case-body .cn-done .cn-t, .t-quote p, .t-tile, .t-cta-panel { color: var(--on-emph); }
 .rs-after i { background: var(--out-on-dark); }
-.rs-after span { color: #123c3a; }
+.rs-after span { color: #06281b; }
 /* structural marks in ink, outcomes in the accent */
 .case-body .approach-timeline li::after, .case-toc a.is-current::before, .read-progress { background: var(--ink); }
 .case-body .callout-stat .num, .case-body .zz-text .impact b { color: var(--ink); }
