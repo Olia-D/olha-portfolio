@@ -1919,3 +1919,42 @@ img.cutout { background: none; object-fit: contain; object-position: center bott
 /* radius outliers */
 .case-facts { border-radius: var(--r-lg); }
 .scr-frame.sdv-frame { border-radius: var(--r-lg); overflow: hidden; }
+
+/* ----- homepage consistency pass ----- */
+/* hero: left-aligned name and positioning line, with the work on the first screen */
+.t-hero { text-align: left; padding-top: clamp(48px, 7vw, 96px); }
+.t-hero-inner { justify-items: start; }
+.t-hero-title { max-width: 20ch; font-size: clamp(2rem, 5.4vw, 4.6rem); line-height: 1.04; letter-spacing: -0.04em; font-weight: 600; }
+.t-hero-title .mute { color: var(--mute); }
+.t-hero-inner .btn { margin-top: 32px; }
+.t-hero-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; width: 100%; margin-top: clamp(40px, 5vw, 64px); animation: fadeUp var(--dur-deliberate) 0.3s var(--ease) both; }
+.t-hero-strip a { display: block; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--r-lg); background: var(--surface); }
+.t-hero-strip img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform var(--dur-slow) var(--ease-out); }
+.t-hero-strip img.cutout { object-fit: contain; object-position: center bottom; padding: 8% 10% 0; }
+.t-hero-strip a:hover img { transform: scale(1.03); }
+.t-hero-strip a:focus-visible { outline: 3px solid var(--teal); outline-offset: 3px; }
+@media (max-width: 560px) { .t-hero-strip { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; } .t-hero-strip a { border-radius: var(--r-md); } }
+
+/* work cards: whole title in ink, sentence-case tags, grey photo surface, labelled action */
+.row-copy h3 { color: var(--ink); font-weight: 600; }
+.row-tags li { text-transform: none; letter-spacing: 0; font-size: var(--fs-xs); font-weight: 500; }
+.row-media { background: var(--surface); }
+.row-go { width: auto; height: 48px; gap: 10px; padding: 0 18px 0 22px; border-radius: var(--r-pill); font-size: var(--fs-sm); font-weight: 500; display: inline-flex; align-items: center; }
+.row-go svg { width: 18px; height: 18px; }
+.work-row.flip:hover .row-go { transform: translateX(4px); }
+
+/* emphasis colour matches the case studies: dark green, not near-black */
+.t-tile, .t-cta-panel { background: var(--fjord); }
+a.t-tile:hover { background: #0e3230; }
+
+/* customer voices instead of repeating the card numbers */
+.t-voices { grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 1.5fr); }
+.t-quote p { margin: 0; font-size: clamp(1.15rem, 1.7vw, 1.45rem); line-height: 1.35; font-weight: 500; letter-spacing: -0.015em; color: #fff; }
+.t-quote p::before { content: "\201C"; display: block; height: 0.55em; margin-bottom: 14px; font-size: 3.4rem; line-height: 1; color: var(--teal-light); }
+.t-quote .t-src { margin-top: 28px; font-size: var(--fs-xs); color: rgb(255 255 255 / 0.7); }
+@media (max-width: 860px) { .t-voices { grid-template-columns: 1fr; } .t-voices .t-photo { min-height: 260px; } }
+
+/* tools: one calm static row */
+.marquee-track.tools-row { width: auto; flex-wrap: wrap; gap: 28px 48px; animation: none; transform: none; }
+.tools-marquee { overflow: visible; }
+.t-tile.t-photo { background: var(--surface); }
