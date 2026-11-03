@@ -10,8 +10,8 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&display=swap">
-<link rel="stylesheet" href="styles.css?v=2">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap">
+<link rel="stylesheet" href="styles.css?v=24">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
@@ -21,9 +21,6 @@
     <nav class="nav-links">
       <a href="index.html#work">Work</a>
       <a href="about.html" aria-current="page">About</a>
-      <a class="icon-link" href="https://www.linkedin.com/in/olgadatsenko/" target="_blank" rel="noopener" aria-label="LinkedIn">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
-      </a>
       <a class="btn" href="mailto:olya.datsenko@gmail.com">Email me</a>
     </nav>
     <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
@@ -51,23 +48,24 @@
   </nav>
 </div>
 
-<main id="main" class="wrap">
-  <section class="about-hero">
-    <div class="about-intro">
-      <h1>About<br><span class="line2">me</span></h1>
-      <p class="lede">I'm a <b>Product Designer</b> with <b>15+ years of combined experience</b> across product design, content strategy, UX writing, and information architecture.</p>
+<main id="main">
+  <header class="about-head" id="hero">
+    <div class="wrap hero-grid about-head-grid">
+      <div>
+        <h1 class="hero-title"><span class="line"><span>About</span></span><span class="line"><span>me</span></span></h1>
+        <p class="about-lede">I'm a <b>Product Designer</b> with <b>15+ years of combined experience</b> across product design, content strategy, UX writing, and information architecture.</p>
+      </div>
+      <figure class="hero-portrait"><img src="images/portrait-860.webp" srcset="images/portrait-800.webp 800w, images/portrait-860.webp 860w" sizes="(max-width: 860px) 70vw, 420px" width="860" height="559" alt="Olha Datsenko, smiling" fetchpriority="high"></figure>
     </div>
-    <div class="about-photo">
-      <img src="images/portrait-860.webp" srcset="images/portrait-800.webp 800w, images/portrait-860.webp 860w" sizes="(max-width: 760px) 320px, 480px" width="860" height="559" alt="Portrait of Olha Datsenko">
-    </div>
-  </section>
+  </header>
+  <div class="wrap about-body">
 
-  <section class="reveal">
+  <section class="about-story">
     <p class="body-text">I started my career designing content systems and simplifying complex technical communication. Over time, I moved into product design, where I shape the full experience &mdash; not just what it says, but how it works, scales, and supports people in their daily workflows.</p>
   </section>
 
-  <section class="approach-block reveal">
-    <p class="section-eyebrow">My approach</p>
+  <section class="approach-block">
+    <h2>My approach</h2>
     <ol class="approach-list">
       <li><span>01</span>Research the problem.</li>
       <li><span>02</span>Design the solution.</li>
@@ -77,8 +75,8 @@
     </ol>
   </section>
 
-  <section class="now-block reveal">
-    <p class="section-eyebrow">Right now</p>
+  <section class="now-block">
+    <h2>Right now</h2>
     <div class="now-grid">
       <div class="now-item">
         <div class="now-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18 14 14 0 0 1 0-18Z"/></svg></div>
@@ -111,8 +109,8 @@
     </div>
   </section>
 
-  <section class="skills-section reveal">
-    <p class="section-eyebrow">Skills &amp; expertise</p>
+  <section class="skills-section">
+    <h2>Skills and expertise</h2>
     <div class="skill-pit" id="skillPit" aria-hidden="true"><p class="pit-hint">Grab one and throw it</p></div>
 
     <div class="skill-row">
@@ -162,8 +160,8 @@
     </div>
   </section>
 
-  <section class="faq-section reveal">
-    <p class="section-eyebrow">FAQ</p>
+  <section class="faq-section">
+    <h2>FAQ</h2>
 
     <div class="faq-item">
       <button class="faq-q" aria-expanded="false">
@@ -205,6 +203,7 @@
       </div>
     </div>
   </section>
+  </div>
 </main>
 
 <footer>
@@ -222,4 +221,4 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js" defer></script>
-<script src="script.js?v=2" defer></script>
+<script src="script.js?v=22" defer></script>

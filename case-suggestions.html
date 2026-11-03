@@ -9,8 +9,9 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&display=swap">
-<link rel="stylesheet" href="styles.css?v=2">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap">
+<link rel="stylesheet" href="screens/screens.css?v=50">
+<link rel="stylesheet" href="styles.css?v=30">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
@@ -21,9 +22,6 @@
     <nav class="nav-links">
       <a href="index.html#work">Work</a>
       <a href="about.html">About</a>
-      <a class="icon-link" href="https://www.linkedin.com/in/olgadatsenko/" target="_blank" rel="noopener" aria-label="LinkedIn">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.95v5.66H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
-      </a>
       <a class="btn" href="mailto:olya.datsenko@gmail.com">Email me</a>
     </nav>
     <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
@@ -51,38 +49,33 @@
   </nav>
 </div>
 
-<main id="main" class="wrap">
-  <section class="case-hero">
-    <div class="tags">
-      <span class="tag">B2B</span>
-      <span class="tag">Product design</span>
-      <span class="tag">Cross-platform</span>
-      <span class="tag">0&rarr;1</span>
+<main id="main">
+
+  <header class="case-head" id="hero">
+    <div class="wrap case-head-grid">
+      <div class="case-head-copy">
+        <a class="case-back" href="index.html#work"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>Selected work</a>
+        <h1>Real-time contract collaboration</h1>
+        <p class="case-lede">Reduced contract collaboration time by 29% and increased product stickiness.</p>
+        <p class="case-shift-line"><span class="from">3-day replies</span> <svg class="shift-arrow" width="22" height="12" viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6h19"/><path d="M15.5 1.5 20.5 6l-5 4.5"/></svg><span class="visually-hidden"> became </span> <span class="to">1.5-day replies</span></p>
+      </div>
+      <div class="case-head-visual"><img class="cutout" style="view-transition-name: shot-suggestions; view-transition-class: shot" fetchpriority="high" src="images/sug-hand-1600.webp" srcset="images/sug-hand-800.webp 800w, images/sug-hand-1200.webp 1200w, images/sug-hand-1600.webp 1600w, images/sug-hand-2354.webp 2354w" sizes="(max-width: 860px) 92vw, 560px" width="2354" height="2188" alt="A hand holding a phone showing a suggestion and comment thread on a contract"></div>
+      </div>
+    <div class="wrap"><dl class="case-facts"><div><dt>Domain</dt><dd>Contract collaboration</dd></div><div><dt>Timeline</dt><dd>Q2 2024&ndash;Q1 2025</dd></div><div><dt>Role</dt><dd>Lead designer</dd></div><div><dt>Team</dt><dd><span class="team-stack"><img src="images/avatar-olha.webp" width="128" height="128" alt=""><span class="team-more" aria-hidden="true">+6</span></span><span class="visually-hidden">Olha and 6 others</span></dd></div></dl></div>
     </div>
-    <h1>Real-time contract collaboration</h1>
-    <p class="lede">Reduced contract collaboration time by 29% and increased product stickiness.</p>
-    <p class="stat-shift case-shift"><span class="from">3-day replies</span> <svg class="shift-arrow" width="22" height="12" viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6.5c5-1.2 11-1 19-.4"/><path d="M15.5 2.2 20.4 6l-4.6 3.9"/></svg><span class="visually-hidden"> became </span> <span class="to">1.5-day replies</span></p>
-
-    <div class="case-hero-media">
-      <img style="view-transition-name: shot-suggestions; view-transition-class: shot" fetchpriority="high" src="images/case-collaboration-1600.webp" srcset="images/case-collaboration-800.webp 800w, images/case-collaboration-1200.webp 1200w, images/case-collaboration-1600.webp 1600w, images/case-collaboration-1942.webp 1942w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="1942" height="2188" alt="Hand holding a phone showing an inline suggestion on a contract">
-    </div>
-
-    <div class="meta-grid">
-      <div><span>Domain</span><strong>Contract collaboration</strong></div>
-      <div><span>Timeline</span><strong>Q2 2024&ndash;Q1 2025</strong></div>
-      <div><span>Role</span><strong>Lead designer</strong></div>
-      <div><span>Team</span><strong>+6</strong></div>
-    </div>
-
-    <div class="solution-media"><img src="images/suggestions-1-1600.webp" srcset="images/suggestions-1-800.webp 800w, images/suggestions-1-1200.webp 1200w, images/suggestions-1-1600.webp 1600w, images/suggestions-1-2400.webp 2400w, images/suggestions-1-3600.webp 3600w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="5760" height="3132" alt="Oneflow contract document view with an inline suggestion" loading="lazy" style="max-width:2880px"></div>
-  </section>
-
-  <section class="section-block reveal">
+  </header>
+  <div class="wrap case-layout">
+    <nav class="case-toc" aria-label="On this page">
+      <p>On this page</p>
+      <ol><li><a href="#context">Context</a></li><li><a href="#problem">Problem</a></li><li><a href="#approach">Approach</a></li><li><a href="#results">Results</a></li><li><a href="#constraints">Constraints</a></li><li><a href="#challenges">Challenges</a></li><li><a href="#solutions">Solutions</a></li><li><a href="#learnings">Learnings</a></li></ol>
+    </nav>
+    <div class="case-body">
+  <section class="section-block" id="context">
     <h2>Context</h2>
     <p class="body-text">Oneflow is a contract platform for B2B teams. Users drafted and signed contracts inside Oneflow but switched to Google Docs, Word, or email to propose edits, causing version drift and slow collaboration.</p>
   </section>
 
-  <section class="section-block reveal">
+  <section class="section-block" id="problem">
     <h2>Problem</h2>
     <div class="two-col">
       <div>
@@ -99,98 +92,260 @@
       </div>
       <div class="callout-stat">
         <p class="section-eyebrow">Fragmented workflow</p>
-        <div class="num">4 days</div>
+        <div class="num">4<span class="unit"> days</span></div>
         <div class="label">Slower review cycle</div>
         <div class="why"><strong>Why it matters:</strong> Fragmented collaboration + slow review cycles.</div>
       </div>
     </div>
   </section>
 
-  <section class="section-block reveal">
+  <section class="section-block" id="approach">
     <h2>My approach</h2>
-    <ol class="approach-list" style="gap:18px;">
-      <li style="font-size:1.15rem;"><span>01</span>Mapped flows<small>Mapped collaboration flows to identify friction points</small></li>
-      <li style="font-size:1.15rem;"><span>02</span>Inline Suggestions<small>Designed inline Suggestions cross-platform</small></li>
-      <li style="font-size:1.15rem;"><span>03</span>Bulk notifications<small>Created bulk notifications system to reduce noise and group relevant updates</small></li>
-      <li style="font-size:1.15rem;"><span>04</span>Onboarding flows<small>Tested and iterated on 4 versions with enterprise users based on the onboarding flow data</small></li>
+    <ol class="approach-list approach-timeline">
+      <li><span>01</span>Mapped flows<small>Mapped collaboration flows to identify friction points</small></li>
+      <li><span>02</span>Inline Suggestions<small>Designed inline Suggestions cross-platform</small></li>
+      <li><span>03</span>Bulk notifications<small>Created bulk notifications system to reduce noise and group relevant updates</small></li>
+      <li><span>04</span>Onboarding flows<small>Tested and iterated on 4 versions with enterprise users based on the onboarding flow data</small></li>
     </ol>
   </section>
 
-  <section class="section-block reveal">
+  <section class="section-block" id="results">
     <h2>Results and impact</h2>
-    <div class="results-row">
-      <div class="result-card">
-        <div class="num">35%</div>
-        <div class="label">Feature adoption</div>
-        <div class="detail">3 months post-launch across 5k+ enterprise users</div>
-      </div>
-      <div class="result-card">
-        <div class="num">32%</div>
-        <div class="label">Mobile engagement</div>
-        <div class="detail">Mobile collaboration increased with higher completion rates</div>
-      </div>
-      <div class="result-card">
+    <div class="rs-band" data-rs>
+      <div class="rs-tile rs-lead">
+        <p class="rs-k">Reduced response time</p>
         <div class="num">50%</div>
-        <div class="label">Reduced response time</div>
-        <div class="detail">3 &rarr; 1.5 day average response to collaboration requests</div>
+        <p class="rs-d">Average response to collaboration requests, 3 &rarr; 1.5 days</p>
+        <div class="rs-bars" aria-hidden="true">
+          <div class="rs-bar rs-before"><i></i><span>Before: 3 days</span></div>
+          <div class="rs-bar rs-after"><i></i><span>After: 1.5 days</span></div>
+        </div>
+      </div>
+      <div class="rs-tile">
+        <p class="rs-k">Feature adoption</p>
+        <div class="num">35%</div>
+        <p class="rs-d">3 months post-launch across 5k+ enterprise users</p>
+      </div>
+      <div class="rs-tile">
+        <p class="rs-k">Mobile engagement</p>
+        <div class="num">32%</div>
+        <p class="rs-d">Higher collaboration completion on mobile</p>
       </div>
     </div>
   </section>
 
-  <section class="section-block reveal">
+  <section class="section-block" id="constraints">
     <p class="section-eyebrow">The process</p>
     <h2>Working with constraints</h2>
     <h3 style="margin-top:0;">No "suggestion mode" possible</h3>
     <p class="body-text">I faced one major constraint that shaped my design decisions:</p>
     <p class="body-text">Our architecture didn't support a suggestion-layer. A "true" Suggestion mode wasn't technically feasible with our system.</p>
-    <p class="body-text"><strong>Impact:</strong> Spending months reinventing a "true" Suggestions mode was in no way sustainable, nor scalable. We risked losing the UK customers for whom the feature was a deal breaker.</p>
+    <div class="stake"><p class="stake-k">What was at stake</p><p>Months of rebuild work for a mode that wouldn&rsquo;t scale, or losing the UK customers for whom the feature was a deal breaker.</p></div>
   </section>
 
-  <section class="section-block reveal">
+  <section class="section-block" id="challenges">
     <h2>Key design challenges</h2>
     <p class="body-text">When prototyping the solution, I iterated, tested, and analyzed user feedback. I identified and solved three critical usability issues that were blocking successful collaboration.</p>
 
-    <div class="challenge-card">
-      <h3>Mobile toolbar blocker</h3>
-      <p>On mobile devices, our floating toolbar was completely inaccessible.</p>
-      <p class="impact">Impact: 95% mobile session abandonment rate.</p>
+    <div class="zz">
+      <div class="zz-text"><h3>Mobile toolbar blocker</h3><p>On mobile devices, our floating toolbar was completely inaccessible.</p><p class="impact"><b>95%</b><span>mobile session abandonment rate</span></p></div>
+      <div class="zz-media solution-media"><figure class="scr-notes" data-notes>
+  <div class="phone"><i class="ph-isl"></i><i class="ph-vol"></i><i class="ph-pwr"></i><div class="scr-frame">
+    <div class="scr scr-img" role="img" aria-label="Original mobile document: the Oneflow floating toolbar is hidden behind the browser’s native text menu" style="width:373em;height:842em;font-size:calc(100cqi / 373)">
+      <img class="scr-pic" src="images/sug-toolbar-before.svg" alt="" style="left:0em;top:0em;width:373em;height:842em">
+      <div class="hs-layer" style="--w:373;--h:842">
+        <button class="hs" type="button" style="--x:186;--y:300" data-zones="0 308 373 66" aria-expanded="false"><span class="hs-n">1</span><span class="hs-note">Floating menu is hidden behind the browser’s native menu</span></button>
+      </div>
     </div>
-    <div class="solution-media media-row"><img src="images/suggestions-mobile-before-1416.webp" srcset="images/suggestions-mobile-before-800.webp 800w, images/suggestions-mobile-before-1200.webp 1200w, images/suggestions-mobile-before-1416.webp 1416w" sizes="(max-width: 760px) calc(100vw - 112px), 524px" width="1416" height="1684" alt="Original mobile view where the floating suggestion toolbar is inaccessible" loading="lazy" style="max-width:708px"><img src="images/suggestions-mobile-after-1600.webp" srcset="images/suggestions-mobile-after-800.webp 800w, images/suggestions-mobile-after-1200.webp 1200w, images/suggestions-mobile-after-1600.webp 1600w, images/suggestions-mobile-after-2400.webp 2400w, images/suggestions-mobile-after-2451.webp 2451w" sizes="(max-width: 760px) calc(100vw - 112px), 524px" width="2451" height="2973" alt="Original suggestion drawer where the Reject icon reads as a Close button" loading="lazy" style="max-width:1225px"></div>
-    <div class="challenge-card">
-      <h3>Action hierarchy confusion</h3>
-      <p>8 out of 10 users clicked "Resolve" thinking it would close their suggestion. Instead, it marked feedback as resolved and removed it from view.</p>
-      <p class="impact">Impact: 80% incomplete collaboration review sessions.</p>
-    </div>
-    <div class="challenge-card">
-      <h3>Notification overload</h3>
-      <p>Initial system sent emails for every single suggestion, resulting in important notifications being spammed or ignored.</p>
-      <p class="impact">Impact: 3.2 days average response time.</p>
+  </div></div>
+  <figcaption class="hs-bar"><span class="hs-hint">Select a dot to see what was wrong.</span><button class="hs-all" type="button" aria-pressed="false">Show all notes</button></figcaption>
+  <ol class="hs-list" hidden></ol>
+</figure></div>
     </div>
 
-    <div class="solution-media"><img src="images/suggestions-3-1600.webp" srcset="images/suggestions-3-800.webp 800w, images/suggestions-3-1200.webp 1200w, images/suggestions-3-1600.webp 1600w, images/suggestions-3-1836.webp 1836w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="1836" height="1405" alt="Email notifications sent for every single suggestion" loading="lazy" style="max-width:918px"></div>
+    <div class="zz flip">
+      <div class="zz-text"><h3>Action hierarchy confusion</h3><p>8 out of 10 users clicked "Resolve" thinking it would close their suggestion. Instead, it marked feedback as resolved and removed it from view.</p><p class="impact"><b>80%</b><span>incomplete collaboration review sessions</span></p></div>
+      <div class="zz-media solution-media"><figure class="scr-notes" data-notes>
+  <div class="scr-frame ph-pairf" style="max-width:400px">
+    <div class="scr scr-img scr-pair" role="img" aria-label="Original mobile suggestion cards, stacked: a Delete suggestion with only an X in front, and behind it a Change suggestion with a check and an X" style="width:540em;height:974em;font-size:calc(100cqi / 540)">
+      <i class="ph-bz" style="left:130em;top:0em;width:410em;height:864em"></i>
+      <img class="scr-pic" src="images/sug-confusion-change.svg" alt="" style="left:140em;top:10em;width:390em;height:844em">
+      <i class="ph-is" style="left:279em;top:22em"></i>
+      <i class="ph-bz" style="left:0em;top:110em;width:410em;height:864em"></i>
+      <img class="scr-pic" src="images/sug-confusion-delete.svg" alt="" style="left:10em;top:120em;width:390em;height:844em">
+      <i class="ph-is" style="left:149em;top:132em"></i>
+      <div class="hs-layer" style="--w:540;--h:974">
+        <button class="hs" type="button" style="--x:432;--y:300" data-zones="348 242 40 40;476 134 40 40" aria-expanded="false"><span class="hs-n">1</span><span class="hs-note">The Reject suggestion icon perceived as the Close icon.</span></button>
+      </div>
+    </div>
+  </div>
+  <figcaption class="hs-bar"><span class="hs-hint">Select a dot to see what was wrong.</span><button class="hs-all" type="button" aria-pressed="false">Show all notes</button></figcaption>
+  <ol class="hs-list" hidden></ol>
+</figure></div>
+    </div>
+
+    <div class="zz">
+      <div class="zz-text"><h3>Notification overload</h3><p>Initial system sent emails for every single suggestion, resulting in important notifications being spammed or ignored.</p><p class="impact"><b>3.2 days</b><span>average response time</span></p></div>
+      <div class="zz-media solution-media"><figure class="scr-notes" data-notes>
+  <div class="scr-frame" style="max-width:560px">
+    <div class="scr scr-img" role="img" aria-label="Original notifications: three separate emails, one per suggestion change" style="width:906em;height:536em;font-size:calc(100cqi / 906)">
+      <img class="scr-pic" src="images/sug-emails-before.svg" alt="" style="left:0em;top:0em;width:906em;height:536em">
+      <div class="hs-layer" style="--w:906;--h:536">
+        <button class="hs" type="button" style="--x:660;--y:100" data-zones="0 0 702 62;102 75 700 62;204 142 700 62" aria-expanded="false"><span class="hs-n">1</span><span class="hs-note">One notification per change=loads of notifications.</span></button>
+      </div>
+    </div>
+  </div>
+  <figcaption class="hs-bar"><span class="hs-hint">Select a dot to see what was wrong.</span><button class="hs-all" type="button" aria-pressed="false">Show all notes</button></figcaption>
+  <ol class="hs-list" hidden></ol>
+</figure></div>
+    </div>
+
   </section>
 
-  <section class="section-block reveal">
+  <section class="section-block" id="solutions">
     <h2>Design solutions</h2>
     <p class="body-text">After rounds of validation, here's what I delivered:</p>
+    <div class="solution-media"><figure class="scr-notes scr-ani" data-ani="doc">
+  <div class="try-scroll"><div class="scr-frame sdv-frame" role="img" aria-label="Animation: in a Oneflow document, Ann Connor is typed as a suggested edit replacing Albert Quist, sent, then accepted into the agreement.">
+    <div class="scr sdv" data-state="compose" inert>
+      <div class="sdv-nav"><img class="sdv-logo" src="screens/img/sug/logo.svg" alt="Logoipsum"><span class="sdv-sign"><span>Sign</span></span></div>
+      <div class="sdv-banner"><i></i><span>Document <b>can be signed</b> until 2023-09-30.</span></div>
+      <div class="sdv-page"></div>
+      <div class="sdv-doc">
+        <p class="t-title" style="--c:217"><span>Freelance website development agreement</span></p>
+        <p class="t-h" style="--c:248.5"><span>Agreement overview</span></p>
+        <p class="t-b" style="--c:278.5"><span>This contract is made between: <button class="sdv-edit" type="button" aria-label="Show suggestion: Albert Quist to Ann Connor"><del>Albert Quist</del> <ins>Ann Connor</ins><span class="sdv-old">Albert Quist</span><span class="sdv-new">Ann Connor</span></button></span></p>
+        <p class="t-b" style="--c:303.5"><span>and Sam's Solar Spaces (the "Client"). The Website Wizard agrees to conjure a magical website for the Client.</span></p>
+        <p class="t-h" style="--c:328.5"><span>Payment terms</span></p>
+        <p class="t-b" style="--c:358.5"><span>The Client agrees to pay the Website Wizard 3 000€ for the enchanted website. Payment will be made in two parts: 1<br>500€ for the initial spell casting and 1 500€ once the website is fully brought to life.</span></p>
+        <p class="t-h" style="--c:398.5"><span>Project timeline</span></p>
+        <p class="t-b" style="--c:428.5"><span>The magic will be completed within 4 weeks from the start date, assuming no unexpected curses or hexes.</span></p>
+        <p class="t-h" style="--c:453.5"><span>Revisions</span></p>
+        <p class="t-b" style="--c:483.5"><span>The Client is entitled to two rounds of spell adjustments at no extra cost. Additional tweaks will require an extra fee<br>of 100€ per round.</span></p>
+        <p class="t-h" style="--c:523.5"><span>Ownership and transfer</span></p>
+        <p class="t-b" style="--c:553.5"><span>Upon final payment, ownership of the enchanted website and all associated magic scrolls (aka design files) will<br>transfer to the Client.</span></p>
+        <p class="t-h" style="--c:593.5"><span>Termination</span></p>
+        <p class="t-b" style="--c:623.5"><span>Either party may dissolve the spell with 7 days' written notice. Any work conjured up until the termination must be<br>paid for by the Client.</span></p>
+      </div>
+      <div class="sdv-id"><span>ID 1879725</span></div>
+      <div class="sdv-tools" aria-hidden="true">
+        <i class="is-on"><img src="screens/img/sug/tb-people.svg" alt=""></i><i><img src="screens/img/sug/tb-comment.svg" alt=""></i><i><img src="screens/img/sug/tb-suggest.svg" alt=""></i><i><img src="screens/img/sug/tb-history.svg" alt=""></i>
+      </div>
 
-    <div class="solution-block">
-      <h3>Mobile-first workflow</h3>
-      <p>I redesigned the floating approach entirely, collaborating with engineering to create a sliding toolbar and reusable drawer component that works seamlessly across mobile devices.</p>
-      <p class="result-tag">Result: Research showed 30% of contract reviews happened on mobile (often during commutes), making mobile optimization critical.</p>
+      <form class="sdv-compose" aria-label="Suggest an edit">
+        <label class="sdv-input"><span class="sr-only">Suggested text</span><input type="text" value="Ann Connor" autocomplete="off"></label>
+        <button class="sdv-at" type="button" aria-label="Mention someone"><img src="screens/img/sug/at.svg" alt=""></button>
+        <button class="sdv-send" type="submit" aria-label="Send suggestion"><img src="screens/img/sug/send.svg" alt=""></button>
+        <span class="sdv-chip"><img src="screens/img/sug/globe.svg" alt=""><span>Public</span></span>
+        <img class="sdv-info" src="screens/img/sug/info.svg" alt="">
+      </form>
+
+      <div class="sdv-card" role="dialog" aria-label="Suggestion by Ann Connor">
+        <div class="sdv-who"><span class="sdv-av" style="--bg:#ebbf90"><span>AC</span></span><b>Ann Connor</b><small>Oct 14, 14:39</small></div>
+        <button class="sdv-reject" type="button" aria-label="Reject suggestion"><img src="screens/img/sug/reject.svg" alt=""></button>
+        <button class="sdv-accept" type="button" aria-label="Accept suggestion"><img src="screens/img/sug/accept.svg" alt=""></button>
+        <p class="sdv-chg"><span><b>Change:</b> <i>Albert Quist</i></span></p>
+        <p class="sdv-to"><span><b>To:</b> <i class="sdv-to-v">Ann Connor</i></span></p>
+        <hr>
+        <div class="sdv-reply"><span class="sdv-av" style="--bg:#a85f6c"><span>TW</span></span><b>Tom Wilde</b><small>Oct 14, 14:39</small><p>That’s right!</p></div>
+        <label class="sdv-comment"><span class="sr-only">Comment</span><input type="text" placeholder="Comment..."></label>
+        <button class="sdv-at sdv-at2" type="button" aria-label="Mention someone"><img src="screens/img/sug/at.svg" alt=""></button>
+        <button class="sdv-send sdv-send2" type="button" aria-label="Send comment"><img src="screens/img/sug/send.svg" alt=""></button>
+      </div>
+    </div>
+  </div></div>
+</figure></div>
+
+    <div class="zz flip">
+      <div class="zz-text"><h3>Mobile-first workflow</h3><p>I redesigned the floating approach entirely, collaborating with engineering to create a sliding toolbar and reusable drawer component that works seamlessly across mobile devices.</p><p class="result-tag"><b>30%</b><span>of contract reviews happened on mobile, often during commutes</span><em>Making mobile optimization critical.</em></p></div>
+      <div class="zz-media solution-media"><figure class="scr-notes scr-ani" data-ani="mobile">
+  <div class="phone"><i class="ph-isl"></i><i class="ph-vol"></i><i class="ph-pwr"></i><div class="scr-frame smf-frame" role="img" aria-label="Animation: on a phone, Alex Codeworthy is selected, the Oneflow toolbar slides up, Suggest edit opens the Suggestion sheet, Ann Connor is typed and sent, and the suggestion then opens for replies.">
+    <div class="scr smf" inert>
+      <img class="smf-layer" src="images/sugm-1-idle.svg" alt="" loading="lazy">
+      <i class="smf-hl"></i>
+      <p class="smf-name"><span><del>Alex Codeworthy</del> <ins>Ann Connor</ins></span></p>
+      <div class="smf-part smf-menu"><img src="images/sugm-3-toolbar.svg" alt="" loading="lazy"></div>
+      <div class="smf-barwrap"><div class="smf-bar">
+        <span><img src="screens/img/sug/tb-addcomment.svg" alt=""><b>Add comment</b></span>
+        <span><img src="screens/img/sug/tb-suggestedit.svg" alt=""><b>Suggest edit</b></span>
+        <span><img src="screens/img/sug/tb-suggestdelete.svg" alt=""><b>Suggest delete</b></span>
+      </div></div>
+      <i class="smf-scrim"></i>
+      <div class="smf-part smf-reply"><div class="sms-sheet smf-rsheet">
+        <i class="sms-handle"></i>
+        <p class="sms-title"><span>Suggestion</span></p>
+        <span class="sdv-av sms-av1 smf-ring"><span>MN</span></span>
+        <p class="sms-name1"><span>Sam’s Solar Spaces</span></p>
+        <p class="sms-date1"><span>Oct 14, 14:39</span></p>
+        <span class="sms-kebab"><img src="screens/img/sug/m-kebab.svg" alt=""></span>
+        <p class="sms-chg"><span><b>Change:</b> <i>Alex Codeworthy</i></span></p>
+        <p class="sms-to"><span><b>To:</b> <i>Ann Connor</i></span></p>
+        <i class="sms-rule"></i>
+        <span class="sms-input"><span class="smf-ph">Comment...</span></span>
+        <span class="sms-at"><img src="screens/img/sug/m-at.svg" alt=""></span>
+        <span class="sms-send"><img src="screens/img/sug/send.svg" alt=""></span>
+      </div></div>
+      <div class="smf-part smf-chrome"><img src="images/sugm-1-idle.svg" alt="" loading="lazy"></div>
+      <div class="smf-part smf-kb"><img src="images/sugm-4-keyboard.svg" alt="" loading="lazy"><p class="smf-typed"><span></span></p><i class="smf-send"><img src="screens/img/sug/send.svg" alt=""></i></div>
+    </div>
+  </div></div>
+</figure></div>
     </div>
 
-    <div class="solution-block">
-      <h3>Contextual action system</h3>
-      <p>I redesigned with two-step confirmation: click the three-dot menu to reveal options, then choose "Accept" or "Reject".</p>
-      <p class="result-tag">Result: User testing revealed workflow clarity mattered more than UI simplicity &mdash; reducing cognitive load increased completion rates by 32%.</p>
-      <div class="solution-media media-row"><img src="images/suggestions-actions-1146.webp" srcset="images/suggestions-actions-800.webp 800w, images/suggestions-actions-1146.webp 1146w" sizes="(max-width: 760px) calc(100vw - 112px), 524px" width="1146" height="1134" alt="Suggestion card with a three-dot menu revealing Accept and Reject" loading="lazy" style="max-width:573px"><img src="images/suggestions-email-1220.webp" srcset="images/suggestions-email-800.webp 800w, images/suggestions-email-1200.webp 1200w, images/suggestions-email-1220.webp 1220w" sizes="(max-width: 760px) calc(100vw - 112px), 524px" width="1220" height="1155" alt="Email notification about an accepted suggestion" loading="lazy" style="max-width:610px"></div>
+    <div class="zz">
+      <div class="zz-text"><h3>Contextual action system</h3><p>I redesigned with two-step confirmation: click the three-dot menu to reveal options, then choose "Accept" or "Reject".</p><p class="result-tag"><b>32%</b><span>higher completion rates</span><em>Workflow clarity mattered more than UI simplicity.</em></p></div>
+      <div class="zz-media solution-media"><figure class="scr-notes scr-ani" data-ani="sheet">
+  <div class="phone"><i class="ph-isl"></i><i class="ph-vol"></i><i class="ph-pwr"></i><div class="scr-frame sms-frame" role="img" aria-label="Animation: on mobile, the Suggestion sheet’s ⋮ menu opens and Accept is chosen.">
+    <div class="scr sms" inert>
+      <img class="sms-bg" src="images/sug-panel-bg.svg" alt="">
+      <div class="sms-sheet">
+        <i class="sms-handle"></i>
+        <p class="sms-title"><span>Suggestion</span></p>
+        <span class="sdv-av sms-av1" style="--bg:#8e4957"><span>SM</span></span>
+        <p class="sms-name1"><span>Sam’s Moon Spaces</span></p>
+        <p class="sms-date1"><span>Oct 14, 14:39</span></p>
+        <button class="sms-kebab" type="button" aria-haspopup="menu" aria-expanded="true" aria-label="Suggestion actions"><img src="screens/img/sug/m-kebab.svg" alt=""></button>
+        <p class="sms-chg"><span><b>Change:</b> <i>Axel Codeworthy</i></span></p>
+        <p class="sms-to"><span><b>To:</b> <i>Alex Meadow</i></span></p>
+        <i class="sms-rule"></i>
+        <span class="sdv-av sms-av2" style="--bg:#14532d"><span>AM</span></span>
+        <p class="sms-name2"><span>Alex Meadow</span></p>
+        <p class="sms-date2"><span>Oct 14, 15:21</span></p>
+        <p class="sms-mention"><span>@Sam’s Moon Spaces</span></p>
+        <p class="sms-msg"><span>Yes, that’s the proper name. Thanks!</span></p>
+        <label class="sms-input"><span class="sr-only">Comment</span><input type="text" placeholder="Comment..."></label>
+        <button class="sms-at" type="button" aria-label="Mention someone"><img src="screens/img/sug/m-at.svg" alt=""></button>
+        <button class="sms-send" type="button" aria-label="Send comment"><img src="screens/img/sug/send.svg" alt=""></button>
+        <div class="sms-menu" role="menu">
+          <button type="button" role="menuitem" class="sms-acc"><img src="screens/img/sug/m-accept.svg" alt=""><span>Accept</span></button>
+          <button type="button" role="menuitem" class="sms-rej"><img src="screens/img/sug/m-reject.svg" alt=""><span>Reject</span></button>
+        </div>
+      </div>
+    </div>
+  </div></div>
+</figure></div>
     </div>
 
-    <div class="solution-block">
-      <h3>Smart notification system</h3>
-      <p>We implemented batched notifications with 7-minute intervals, grouping multiple suggestions into digestible updates that reduced email volume by 78%.</p>
-      <p class="result-tag">Result: Users received fewer, more meaningful notifications about contract changes.</p>
+    <div class="zz flip">
+      <div class="zz-text"><h3>Smart notification system</h3><p>We implemented batched notifications with 7-minute intervals, grouping multiple suggestions into digestible updates that reduced email volume by 78%.</p><p class="result-tag"><b>78%</b><span>less email volume</span><em>Users received fewer, more meaningful notifications about contract changes.</em></p></div>
+      <div class="zz-media solution-media"><figure class="scr-notes scr-ani" data-ani="email">
+  <div class="scr-frame sem-frame" role="img" aria-label="Summary email: Suggestion updates, all resolved. 8 accepted, 2 rejected, 2 new replies, with a View changes button.">
+    <div class="scr sem" inert>
+      <p class="sem-from"><span><b>From:</b><br><b>Subject:</b></span></p>
+      <p class="sem-from-v"><span>Company name via Oneflow<br>Suggestions updates: all resolved!</span></p>
+      <i class="sem-badge"><img src="screens/img/sug/e-badge.svg" alt=""></i>
+      <p class="sem-title"><span>Suggestion updates: all resolved!</span></p>
+      <p class="sem-sub"><span>from Sandra Olofsson</span></p>
+      <ul class="sem-list">
+        <li style="--y:294.5"><img src="screens/img/sug/e-acc.svg" alt=""><span><b>8 accepted</b> suggestions</span></li>
+        <li style="--y:343"><img src="screens/img/sug/e-rej.svg" alt=""><span><b>2 rejected</b> suggestions</span></li>
+        <li style="--y:391"><img src="screens/img/sug/e-reply.svg" alt=""><span><b>2 new replies</b> to suggestions</span></li>
+      </ul>
+      <a class="sem-btn" href="#solutions" role="button"><span>View changes</span></a>
+      <p class="sem-id"><span>ID 2383621</span></p>
+    </div>
+  </div>
+</figure></div>
     </div>
 
     <div class="quote-block">
@@ -201,11 +356,70 @@
     <div class="solution-block">
       <h3>Design system components</h3>
       <p>I created reusable components to ensure consistency across the collaboration experience, including notification patterns, action states, and mobile-responsive layouts that became foundational for future product development.</p>
-      <div class="solution-media"><img src="images/suggestions-2-1600.webp" srcset="images/suggestions-2-800.webp 800w, images/suggestions-2-1200.webp 1200w, images/suggestions-2-1600.webp 1600w, images/suggestions-2-2400.webp 2400w, images/suggestions-2-2564.webp 2564w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="2564" height="1698" alt="Collaboration design system components: notifications, action states and mobile layouts" loading="lazy" style="max-width:1282px"></div>
+      <div class="solution-media"><figure class="dsb-fig">
+  <div class="scr-frame dsb-frame" role="img" aria-label="Collaboration design system: Public and Internal chips, Suggestion and Comment composers, accept and reject buttons, the Add comment, Suggest change and Suggest delete toolbar, suggestion, comment and resolved side-panel cards, the colour tokens, and Accepted, Rejected and Resolved badges.">
+    <div class="scr dsb" inert>
+      <section class="ds-band"><p class="ds-cap">Foundations</p><div class="ds-row">
+        <div class="ds-tokens dp sz" style="--l:953.8;--t:29;--w:328;--h:126">
+        <i class="ds-sw dp" style="--l:1.3;--t:2.3;--c:#8EC4E3"></i><span class="ds-hex dp" style="--l:41.9;--t:5.7">#8EC4E3</span><span class="ds-lg dp" style="--l:111.9;--t:6">Suggestions active side panel</span><i class="ds-sw dp" style="--l:1.3;--t:36.3;--c:#D3E8F4"></i><span class="ds-hex dp" style="--l:41.9;--t:39.7">#D3E8F4</span><span class="ds-lg dp" style="--l:111.9;--t:40">Suggestions resolved side panel</span><i class="ds-sw dp" style="--l:1.3;--t:70.3;--c:#FFD063"></i><span class="ds-hex dp" style="--l:41.9;--t:73.7">#FFD063</span><span class="ds-lg dp" style="--l:111.9;--t:74">Comment active side panel</span><i class="ds-sw dp" style="--l:1.3;--t:104.3;--c:#FFF2E4"></i><span class="ds-hex dp" style="--l:41.9;--t:107.7">#FFF3D8</span><span class="ds-lg dp" style="--l:111.9;--t:108">Comment resolved side panel</span>
+      </div><div class="ds-badges dp sz" style="--l:954;--t:233;--w:66;--h:92">
+        <span class="ds-badge ds-ok dp" style="--l:0;--t:0">Accepted</span><span class="ds-badge ds-no dp" style="--l:0;--t:36">Rejected</span><span class="ds-badge ds-ok dp" style="--l:0;--t:72">Resolved</span>
+      </div><div class="ds-chips dp sz" style="--l:28.3;--t:29.4;--w:75;--h:64">
+        <span class="ds-chip ds-pub dp" style="--l:0;--t:0"><img src="screens/img/sug/globe.svg" alt=""><span>Public</span></span><span class="ds-chip ds-int dp" style="--l:0;--t:40"><img src="screens/img/sug/lock.svg" alt=""><span>Internal</span></span>
+      </div>
+      </div></section>
+      <section class="ds-band"><p class="ds-cap">Inputs and actions</p><div class="ds-row">
+        <div class="ds-cc dp sz" style="--l:133;--t:29.4;--w:400;--h:155">
+        <b class="ds-ct dp" style="--l:24;--t:22.9">Suggestion</b>
+        <div class="ds-in dp sz" style="--l:12;--t:59;--w:376;--h:52"><span class="ds-ph dp" style="--l:12;--t:18.5">Suggest a change...</span>
+          <span class="ds-ic dp" style="--l:287.5;--t:8"><img src="screens/img/sug/at.svg" alt=""></span><span class="ds-send dp" style="--l:331.5;--t:8"><img src="screens/img/sug/send.svg" alt=""></span></div>
+        <span class="ds-chip ds-pub dp" style="--l:12;--t:119"><img src="screens/img/sug/globe.svg" alt=""><span>Public</span></span>
+        <span class="ds-info dp" style="--l:87;--t:124"><img src="screens/img/sug/info.svg" alt=""></span>
+      </div>
+        <div class="ds-cc dp sz" style="--l:133;--t:201.4;--w:400;--h:155">
+        <b class="ds-ct dp" style="--l:24;--t:22.9">Comment</b>
+        <div class="ds-in dp sz" style="--l:12;--t:59;--w:376;--h:52"><span class="ds-ph dp" style="--l:12;--t:18.5">Add a comment...</span>
+          <span class="ds-ic dp" style="--l:287.5;--t:8"><img src="screens/img/sug/at.svg" alt=""></span><span class="ds-send dp" style="--l:331.5;--t:8"><img src="screens/img/sug/send.svg" alt=""></span></div>
+        <span class="ds-chip ds-int dp" style="--l:12;--t:119"><img src="screens/img/sug/lock.svg" alt=""><span>Internal</span></span>
+        <span class="ds-info dp" style="--l:92.3;--t:124"><img src="screens/img/sug/info.svg" alt=""></span>
+      </div>
+        <div class="ds-btns dp sz" style="--l:70.1;--t:475.5;--w:88;--h:36">
+        <span class="ds-sq ds-rej dp" style="--l:0;--t:0"><img src="screens/img/sug/reject.svg" alt=""></span><span class="ds-sq ds-acc dp" style="--l:51.7;--t:0"><img src="screens/img/sug/accept.svg" alt=""></span>
+      </div>
+        <div class="ds-tb dp sz" style="--l:70;--t:533.1;--w:463;--h:48.1">
+        <span class="ds-ti"><img class="ds-tbi18" src="screens/img/sug/tb-addcomment.svg" alt=""><b class="ds-tl">Add comment</b></span>
+        <span class="ds-ti"><img class="ds-tbi16" src="screens/img/sug/tb-suggestedit.svg" alt=""><b class="ds-tl">Suggest change</b></span>
+        <span class="ds-ti"><img class="ds-tbi16" src="screens/img/sug/tb-suggestdelete.svg" alt=""><b class="ds-tl">Suggest delete</b></span>
+      </div>
+      </div></section>
+      <section class="ds-band"><p class="ds-cap">Patterns</p><div class="ds-row">
+        <div class="ds-pc dp sz" style="--l:580;--t:29.4;--w:328;--h:264.5;--bar:#8ec4e3">
+        <span class="ds-av dp" style="--l:12;--t:16;--bg:#ebbf90"><span>AC</span></span><b class="ds-nm dp" style="--l:48;--t:12.2">Ann Connor</b><small class="ds-dt dp" style="--l:48;--t:32.8">Oct 14, 14:39</small><span class="ds-sq ds-rej dp" style="--l:228;--t:12"><img src="screens/img/sug/reject.svg" alt=""></span><span class="ds-sq ds-acc dp" style="--l:276;--t:12"><img src="screens/img/sug/accept.svg" alt=""></span>
+        <p class="ds-ln dp" style="--l:12;--t:62.1"><b>Change:</b> <i>Albert Quist</i></p><p class="ds-ln dp" style="--l:12;--t:92.1"><b>To:</b> <i>Ann Connor</i></p><i class="ds-hr dp" style="--l:12;--t:119;--hw:300"></i>
+        <span class="ds-av dp" style="--l:16;--t:132;--bg:#a85f6c"><span>TW</span></span><b class="ds-nm ds-nm2 dp" style="--l:52;--t:131.1">Tom Wilde</b><small class="ds-dt dp" style="--l:52;--t:151">Oct 14, 14:39</small><p class="ds-tx dp" style="--l:52;--t:171.8">That’s right!</p>
+        <div class="ds-in ds-cmt dp sz" style="--l:12;--t:201;--w:300;--h:52"><span class="ds-ph dp" style="--l:16.8;--t:18.1">Comment...</span>
+          <span class="ds-ic dp" style="--l:212;--t:8"><img src="screens/img/sug/at.svg" alt=""></span><span class="ds-send ds-off dp" style="--l:256;--t:8"><img src="screens/img/sug/send-off.svg" alt=""></span></div>
+      </div>
+        <div class="ds-pc dp sz" style="--l:580;--t:310.4;--w:328;--h:234.5;--bar:#fbcc13">
+        <span class="ds-av dp" style="--l:12;--t:16;--bg:#ebbf90"><span>AC</span></span><b class="ds-nm dp" style="--l:48;--t:12.2">Ann Connor</b><small class="ds-dt dp" style="--l:48;--t:32.8">Oct 15, 11:05</small><span class="ds-sq ds-acc dp" style="--l:276;--t:12"><img src="screens/img/sug/accept.svg" alt=""></span>
+        <p class="ds-tx dp" style="--l:12;--t:61.4">This is a nice change!</p><i class="ds-hr dp" style="--l:12;--t:89;--hw:300"></i>
+        <span class="ds-av dp" style="--l:16;--t:102;--bg:#a85f6c"><span>TW</span></span><b class="ds-nm ds-nm2 dp" style="--l:52;--t:101.1">Tom Wilde</b><small class="ds-dt dp" style="--l:52;--t:121.1">Oct 15, 11:18</small><p class="ds-tx dp" style="--l:52;--t:141.8">Let’s keep it.</p>
+        <div class="ds-in ds-cmt dp sz" style="--l:12;--t:171;--w:300;--h:52"><span class="ds-ph dp" style="--l:16.8;--t:18.1">Comment...</span>
+          <span class="ds-ic dp" style="--l:212;--t:8"><img src="screens/img/sug/at.svg" alt=""></span><span class="ds-send ds-off dp" style="--l:256;--t:8"><img src="screens/img/sug/send-off.svg" alt=""></span></div>
+      </div>
+        <div class="ds-pc ds-inset dp sz" style="--l:584.1;--t:561.4;--w:323.4;--h:211.5;--bar:#d3e8f4">
+        <span class="ds-av dp" style="--l:12;--t:16;--bg:#ebbf90"><span>AC</span></span><b class="ds-nm dp" style="--l:48;--t:12.2">Ann Connor</b><small class="ds-dt dp" style="--l:48;--t:32.8">Oct 14, 14:39</small><span class="ds-badge ds-ok dp" style="--l:241.5;--t:12">Accepted</span>
+        <p class="ds-ln dp" style="--l:12;--t:62.1"><b>Change:</b> <i>In laoreet viverra scelerisque.</i></p><p class="ds-ln dp" style="--l:12;--t:92.1"><b>To:</b> <i>Lorem ipsum dolor sit amet.</i></p><i class="ds-hr dp" style="--l:12;--t:119;--hw:295.4"></i>
+        <span class="ds-av dp" style="--l:12;--t:145;--bg:#a85f6c"><span>TW</span></span><b class="ds-nm ds-nm2 dp" style="--l:48;--t:130.6">Tom Wilde</b><small class="ds-dt dp" style="--l:48;--t:150.8">Oct 14, 14:39</small><p class="ds-tx ds-mute dp" style="--l:48;--t:170.9">Accepted suggestion</p>
+      </div>
+      </div></section>
+    </div>
+  </div>
+</figure></div>
     </div>
   </section>
 
-  <section class="section-block reveal">
+  <section class="section-block" id="learnings">
     <h2>Learnings and reflections</h2>
     <div class="learn-grid">
       <div class="learn-col">
@@ -226,22 +440,18 @@
     </div>
   </section>
 
-  <section class="more-projects reveal">
-    <p class="section-eyebrow">More projects</p>
+    </div>
+  </div>
+  <section class="wrap more-section">
+    <h2>More projects</h2>
     <div class="more-grid">
-      <a class="more-card" href="case-approval-flows.html">
-        <img style="view-transition-name: shot-approvals; view-transition-class: shot" src="images/case-approvals-1600.webp" srcset="images/case-approvals-800.webp 800w, images/case-approvals-1200.webp 1200w, images/case-approvals-1600.webp 1600w, images/case-approvals-2400.webp 2400w, images/case-approvals-3600.webp 3600w" sizes="(max-width: 860px) calc(100vw - 64px), 560px" width="5220" height="3364" alt="Contract approval flows case study">
-        <div class="more-card-body">
-          <h4>Contract approval flows</h4>
-          <span class="stat-mini">CSAT 82%</span>
-        </div>
+      <a class="more-field" href="case-approval-flows.html">
+        <div class="more-copy"><h3>Contract approval flows</h3><p><span class="stat-num">82%</span> early adopter CSAT</p></div>
+        <div class="more-visual"><img style="view-transition-name: shot-approvals; view-transition-class: shot" loading="lazy" src="images/case-approvals-1600.webp" srcset="images/case-approvals-800.webp 800w, images/case-approvals-1200.webp 1200w, images/case-approvals-1600.webp 1600w, images/case-approvals-2400.webp 2400w, images/case-approvals-3600.webp 3600w" sizes="(max-width: 760px) 90vw, 560px" width="5220" height="3364" alt=""></div>
       </a>
-      <a class="more-card" href="case-qes.html">
-        <img style="view-transition-name: shot-qes; view-transition-class: shot" src="images/case-signing-1600.webp" srcset="images/case-signing-800.webp 800w, images/case-signing-1200.webp 1200w, images/case-signing-1600.webp 1600w, images/case-signing-2400.webp 2400w, images/case-signing-3600.webp 3600w" sizes="(max-width: 860px) calc(100vw - 64px), 560px" width="4000" height="3000" alt="High-security signing case study">
-        <div class="more-card-body">
-          <h4>High-security signing</h4>
-          <span class="stat-mini">Setup time &darr; 96%</span>
-        </div>
+      <a class="more-field" href="case-qes.html">
+        <div class="more-copy"><h3>High-security signing</h3><p><span class="stat-num">96%</span> less setup time</p></div>
+        <div class="more-visual"><img style="view-transition-name: shot-qes; view-transition-class: shot" loading="lazy" src="images/case-signing-1600.webp" srcset="images/case-signing-800.webp 800w, images/case-signing-1200.webp 1200w, images/case-signing-1600.webp 1600w, images/case-signing-2400.webp 2400w, images/case-signing-3600.webp 3600w" sizes="(max-width: 760px) 90vw, 560px" width="4000" height="3000" alt=""></div>
       </a>
     </div>
   </section>
@@ -261,4 +471,4 @@
   </div>
 </footer>
 
-<script src="script.js?v=2"></script>
+<script src="script.js?v=23"></script>

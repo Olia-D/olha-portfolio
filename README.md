@@ -20,5 +20,12 @@ Pushing to `main` deploys automatically via GitHub Pages (configured in repo Set
 - `index.html` — home page (hero + Oneflow case studies)
 - `about.html` — about page (bio, approach, skills, FAQ)
 - `styles.css` — all styling
-- `script.js` — hero word-cycle, scroll reveal, mobile menu, FAQ accordion
-- `images/` — case study and portrait photos
+- `case-*.html` — case study pages
+- `script.js` — typewriter, nav colour, page transitions, compare slider, counters, contents rail, skills playground, FAQ
+- `images/` — case study screens and portrait, as multi-size WebP
+
+## Credits
+
+- Typeface: [Schibsted Grotesk](https://fonts.google.com/specimen/Schibsted+Grotesk), SIL Open Font License 1.1, loaded from Google Fonts.
+- Physics on the About page: [Matter.js](https://brm.io/matter-js/) 0.19.0, MIT License, loaded from cdnjs.
+- All other code, layout and visual design are original to this site. Product screenshots are Olha's own work at Oneflow.
