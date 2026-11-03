@@ -212,6 +212,22 @@
     document.addEventListener("click", function (e) { if (tocM.open && !tocM.contains(e.target)) tocM.open = false; });
   }
 
+  /* Light / dark switch: follows the system until the visitor picks, then remembers */
+  var themeBtn = document.getElementById("themeToggle");
+  if (themeBtn) {
+    var darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    var current = function () { return document.documentElement.getAttribute("data-theme") || (darkQuery.matches ? "dark" : "light"); };
+    var label = function () { themeBtn.setAttribute("aria-label", current() === "dark" ? "Switch to light theme" : "Switch to dark theme"); };
+    label();
+    themeBtn.addEventListener("click", function () {
+      var next = current() === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+      label();
+    });
+    if (darkQuery.addEventListener) darkQuery.addEventListener("change", label);
+  }
+
   /* Live local time in Stockholm */
   var localTime = document.getElementById("localTime");
   if (localTime && window.Intl) {

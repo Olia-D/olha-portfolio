@@ -1965,3 +1965,153 @@ a.t-tile:hover { background: #0e3230; }
 .t-hero-strip a:hover .t-strip-cap { color: var(--ink); }
 .t-hero-strip a:focus-visible { outline: 3px solid var(--teal); outline-offset: 4px; border-radius: var(--r-md); }
 @media (max-width: 560px) { .t-strip-img { border-radius: var(--r-md); } .t-strip-cap { font-size: var(--fs-2xs); } }
+
+/* =====================================================================
+   Monochrome theme with one outcome accent, small radii, light and dark
+   ===================================================================== */
+:root {
+  --bg: #fff;
+  --paper: #fff;
+  --surface: #f3f3f1;
+  --bg-card: var(--surface);
+  --mist: var(--surface);
+  --sand-tint: var(--surface);
+  --ink: #161616;
+  --ink-soft: #474747;
+  --ink-faint: #666664;
+  --mute: #8b8b88;
+  --line: #e6e6e3;
+  /* the one accent: outcomes only (result numbers, Delivered, Fix) */
+  --out: #123c3a;
+  --out-on-dark: #8fd0c2;
+  --fjord: var(--out);
+  --teal: var(--out);
+  --accent-ink: var(--out);
+  --teal-light: var(--out-on-dark);
+  --accent: var(--ink);
+  --sand: var(--mute);
+  --saffron: var(--out-on-dark);
+  /* emphasis panels are ink, not colour */
+  --emph: #161616;
+  --emph-hover: #2a2a2a;
+  --on-emph: #fff;
+  --nav-bg: rgb(255 255 255 / 0.86);
+  --chip-bg: #fff;
+  /* crisper corners: small items 6, cards 10, panels 14 */
+  --r-sm: 6px;
+  --r-md: 8px;
+  --r-lg: 10px;
+  --r-xl: 14px;
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --bg: #141514;
+  --surface: #1e201f;
+  --bg-card: #1e201f;
+  --mist: #1e201f;
+  --sand-tint: #1e201f;
+  --ink: #f1f1ef;
+  --ink-soft: #c2c4c1;
+  --ink-faint: #9a9d9a;
+  --mute: #8a8d8a;
+  --line: #2e302f;
+  --paper: #f1f1ef;
+  --out: #8fd0c2;
+  --out-on-dark: #8fd0c2;
+  --emph: #2a2d2b;
+  --emph-hover: #333634;
+  --on-emph: #f1f1ef;
+  --nav-bg: rgb(20 21 20 / 0.86);
+  --chip-bg: #1e201f;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #141514;
+    --surface: #1e201f;
+    --bg-card: #1e201f;
+    --mist: #1e201f;
+    --sand-tint: #1e201f;
+    --ink: #f1f1ef;
+    --ink-soft: #c2c4c1;
+    --ink-faint: #9a9d9a;
+    --mute: #8a8d8a;
+    --line: #2e302f;
+    --paper: #f1f1ef;
+    --out: #8fd0c2;
+    --out-on-dark: #8fd0c2;
+    --emph: #2a2d2b;
+    --emph-hover: #333634;
+    --on-emph: #f1f1ef;
+    --nav-bg: rgb(20 21 20 / 0.86);
+    --chip-bg: #1e201f;
+    color-scheme: dark;
+  }
+}
+body { background: var(--bg); color: var(--ink); }
+
+/* emphasis surfaces */
+.rs-lead, .cn-card.cn-done, .t-tile, .t-cta-panel, .field-fjord, .hero-block, .nav.on-dark { background: var(--emph); }
+a.t-tile:hover { background: var(--emph-hover); }
+.t-tile.t-photo { background: var(--surface); }
+.rs-lead .num, .case-body .cn-done .cn-t, .t-quote p, .t-tile, .t-cta-panel { color: var(--on-emph); }
+.rs-after i { background: var(--out-on-dark); }
+.rs-after span { color: #123c3a; }
+/* structural marks in ink, outcomes in the accent */
+.case-body .approach-timeline li::after, .case-toc a.is-current::before, .read-progress { background: var(--ink); }
+.case-body .callout-stat .num, .case-body .zz-text .impact b { color: var(--ink); }
+.case-body .callout-stat .section-eyebrow { color: var(--ink-faint); }
+.case-shift-line .shift-arrow, .nav .logo .dot, .case-body .quote-block::before { color: var(--ink); }
+.case-shift-line .to { color: var(--ink); }
+/* buttons and chips: text takes the page colour so they flip with the theme */
+.btn, .btn-ink, .row-go, .work-filter button[aria-pressed="true"], .ctx-home { color: var(--bg); }
+.btn-light { background: var(--on-emph); color: #161616; }
+.work-row:hover .row-go, .work-row:focus-visible .row-go { background: var(--ink); }
+.btn, .row-go, .row-tags li, .pills li, .case-shift-line, .ctx-chip, .toc-m summary, .tag { border-radius: var(--r-sm); }
+.row-tags li { background: var(--chip-bg); }
+/* chrome that used fixed white */
+.nav, .nav.is-scrolled { background: var(--nav-bg); }
+.ctx-drift, .toc-m ol { background: var(--bg); }
+.toc-m summary { background: color-mix(in srgb, var(--bg) 94%, transparent); }
+.case-facts { background: var(--surface); }
+.case-shift-line { background: var(--surface); }
+.mobile-menu { background: var(--bg); }
+::selection { background: var(--ink); color: var(--bg); }
+
+/* theme switch in the header */
+.theme-toggle { display: inline-grid; place-items: center; width: 40px; height: 40px; margin-left: 4px; padding: 0; border: 0; border-radius: var(--r-sm); background: transparent; color: var(--ink); cursor: pointer; transition: background var(--dur-fast) var(--ease-out); }
+.theme-toggle:hover { background: var(--surface); }
+.theme-toggle svg { width: 20px; height: 20px; }
+.theme-toggle .i-sun { display: none; }
+:root[data-theme="dark"] .theme-toggle .i-sun { display: block; }
+:root[data-theme="dark"] .theme-toggle .i-moon { display: none; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-toggle .i-sun { display: block; }
+  :root:not([data-theme="light"]) .theme-toggle .i-moon { display: none; }
+}
+
+/* dark mode: product screens and design-system boards stay light, framed like prints */
+[data-theme="dark"] .dsb-fig, :root[data-theme="dark"] .qsb-fig, :root[data-theme="dark"] .arb-fig { padding: clamp(20px, 3vw, 36px); background: #fff; border-radius: var(--r-xl); }
+:root[data-theme="dark"] .tools-row img { filter: grayscale(1) invert(1) brightness(1.15); }
+:root[data-theme="dark"] .ds-cap { color: #587a85; }
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .dsb-fig, :root:not([data-theme="light"]) .qsb-fig, :root:not([data-theme="light"]) .arb-fig { padding: clamp(20px, 3vw, 36px); background: #fff; border-radius: var(--r-xl); }
+    :root:not([data-theme="light"]) .tools-row img { filter: grayscale(1) invert(1) brightness(1.15); }
+    :root:not([data-theme="light"]) .ds-cap { color: #587a85; }
+}
+/* header: logo left, everything else (links, theme switch, menu) to the right */
+.nav-inner { justify-content: flex-start; }
+.nav-inner > .logo { margin-right: auto; }
+/* text and controls that had fixed colours */
+.case-facts dd { color: var(--ink); }
+.hs-all { background: var(--bg); border-color: var(--line); color: var(--ink); border-radius: var(--r-sm); }
+.hs-all[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--bg); }
+/* About: icons, skill pills and portrait in the monochrome themes */
+.about-body .now-icon { background: var(--ink); color: var(--bg); }
+.skill-pit [data-group="0"].pit-pill, .skill-pit [data-group="0"].pit-key::before { background: var(--ink); color: var(--bg); }
+.skill-pit [data-group="1"].pit-pill, .skill-pit [data-group="1"].pit-key::before { background: var(--out); color: var(--bg); }
+.skill-pit [data-group="2"].pit-pill, .skill-pit [data-group="2"].pit-key::before { background: var(--bg); color: var(--ink); box-shadow: inset 0 0 0 1px var(--line); }
+.skill-pit [data-group="3"].pit-pill, .skill-pit [data-group="3"].pit-key::before { background: var(--mute); color: var(--bg); }
+.pit-pill { border-radius: var(--r-sm); }
+:root[data-theme="dark"] .about-photo { background: #e4e4e1; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .about-photo { background: #e4e4e1; } }
