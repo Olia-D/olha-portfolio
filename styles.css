@@ -2135,3 +2135,8 @@ a.t-tile:hover { background: var(--emph-hover); }
   .case-head-visual.case-head-bleed img { width: 132%; max-width: none; }
 }
 @media (max-width: 860px) { .case-head-visual.case-head-bleed img { width: 112%; max-width: none; margin-left: -6%; } }
+/* case heroes: image bottom lines up with the before/after line; facts bar sits closer */
+@media (min-width: 861px) { .case-head-grid { align-items: end; } }
+.case-head .case-shift-line { margin-bottom: 0; }
+.case-head { padding-bottom: clamp(32px, 4vw, 56px); }
+@media (min-width: 861px) { .case-head-visual.case-head-bleed img { transform: translateY(14%); } }
