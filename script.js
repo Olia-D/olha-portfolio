@@ -189,19 +189,27 @@
   }
 
   /* Contents rail: mark the section being read */
-  var tocLinks = document.querySelectorAll(".case-toc a");
+  var tocLinks = document.querySelectorAll(".case-toc a, .toc-m a");
+  var tocNow = document.querySelector(".toc-m-now");
   if (tocLinks.length && "IntersectionObserver" in window) {
     var byId = {};
-    tocLinks.forEach(function (a) { byId[a.getAttribute("href").slice(1)] = a; });
+    tocLinks.forEach(function (a) { var id = a.getAttribute("href").slice(1); (byId[id] = byId[id] || []).push(a); });
     var spy = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
         tocLinks.forEach(function (a) { a.classList.remove("is-current"); a.removeAttribute("aria-current"); });
-        var link = byId[entry.target.id];
-        if (link) { link.classList.add("is-current"); link.setAttribute("aria-current", "true"); }
+        (byId[entry.target.id] || []).forEach(function (link) { link.classList.add("is-current"); link.setAttribute("aria-current", "true"); });
+        if (tocNow && byId[entry.target.id]) tocNow.textContent = byId[entry.target.id][0].textContent;
       });
     }, { rootMargin: "-30% 0px -60% 0px" });
     Object.keys(byId).forEach(function (id) { var el = document.getElementById(id); if (el) spy.observe(el); });
+  }
+
+  /* Phone contents: close after choosing a section, or when tapping elsewhere */
+  var tocM = document.querySelector(".toc-m");
+  if (tocM) {
+    tocM.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function () { tocM.open = false; }); });
+    document.addEventListener("click", function (e) { if (tocM.open && !tocM.contains(e.target)) tocM.open = false; });
   }
 
   /* Live local time in Stockholm */

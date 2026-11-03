@@ -2,9 +2,9 @@
 <html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Suggestions Feature – Olha Datsenko, Product Design</title>
+<title>Real-time contract collaboration – Olha Datsenko, Product Design</title>
 <meta name="description" content="How I designed real-time contract collaboration for Oneflow, reducing review time by 29%.">
-<meta property="og:title" content="Suggestions Feature – Olha Datsenko, Product Design">
+<meta property="og:title" content="Real-time contract collaboration – Olha Datsenko, Product Design">
 <meta property="og:image" content="https://olia-d.github.io/olha-portfolio/images/og-collaboration.jpg">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&display=block">
 <link rel="stylesheet" href="screens/screens.css?v=51">
-<link rel="stylesheet" href="styles.css?v=35">
+<link rel="stylesheet" href="styles.css?v=37">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
@@ -68,8 +68,12 @@
   <div class="wrap case-layout">
     <nav class="case-toc" aria-label="On this page">
       <p>On this page</p>
-      <ol><li><a href="#context">Context</a></li><li><a href="#problem">Problem</a></li><li><a href="#approach">Approach</a></li><li><a href="#results">Results</a></li><li><a href="#constraints">Constraints</a></li><li><a href="#challenges">Challenges and fixes</a></li><li><a href="#solutions">Final design</a></li><li><a href="#learnings">Learnings</a></li></ol>
+      <ol><li><a href="#context">Context</a></li><li><a href="#problem">Problem</a></li><li><a href="#results">Results</a></li><li><a href="#constraints">Constraints</a></li><li><a href="#approach">Approach</a></li><li><a href="#challenges">Challenges and fixes</a></li><li><a href="#solutions">Final design</a></li><li><a href="#design-system">Design system</a></li><li><a href="#learnings">Learnings</a></li></ol>
     </nav>
+    <details class="toc-m">
+      <summary><span class="toc-m-k">On this page</span><span class="toc-m-now">Context</span></summary>
+      <ol><li><a href="#context">Context</a></li><li><a href="#problem">Problem</a></li><li><a href="#results">Results</a></li><li><a href="#constraints">Constraints</a></li><li><a href="#approach">Approach</a></li><li><a href="#challenges">Challenges and fixes</a></li><li><a href="#solutions">Final design</a></li><li><a href="#design-system">Design system</a></li><li><a href="#learnings">Learnings</a></li></ol>
+    </details>
     <div class="case-body">
   <section class="section-block" id="context">
     <h2>Context</h2>
@@ -110,16 +114,6 @@
     </div>
   </section>
 
-  <section class="section-block" id="approach">
-    <h2>My approach</h2>
-    <ol class="approach-list approach-timeline">
-      <li><span>01</span>Mapped flows<small>Mapped collaboration flows to identify friction points</small></li>
-      <li><span>02</span>Inline Suggestions<small>Designed inline Suggestions cross-platform</small></li>
-      <li><span>03</span>Bulk notifications<small>Created bulk notifications system to reduce noise and group relevant updates</small></li>
-      <li><span>04</span>Onboarding flows<small>Tested and iterated on 4 versions with enterprise users based on the onboarding flow data</small></li>
-    </ol>
-  </section>
-
   <section class="section-block" id="results">
     <h2>Results and impact</h2>
     <div class="rs-band" data-rs>
@@ -155,14 +149,24 @@
     <div class="stake"><p class="stake-k">What was at stake</p><p>Months of rebuild work for a mode that wouldn&rsquo;t scale, or losing the UK customers for whom the feature was a deal breaker.</p></div>
   </section>
 
+  <section class="section-block" id="approach">
+    <h2>My approach</h2>
+    <ol class="approach-list approach-timeline">
+      <li><span>01</span>Mapped flows<small>Mapped collaboration flows to identify friction points</small></li>
+      <li><span>02</span>Inline Suggestions<small>Designed inline Suggestions cross-platform</small></li>
+      <li><span>03</span>Batched notifications<small>Created a batched notification system to reduce noise and group relevant updates</small></li>
+      <li><span>04</span>Tested onboarding<small>Tested and iterated on 4 onboarding versions with enterprise users, based on onboarding flow data</small></li>
+    </ol>
+  </section>
+
   <section class="section-block" id="challenges">
-    <h2>Challenges and solutions</h2>
+    <h2>Challenges and fixes</h2>
     <p class="body-text">When prototyping the solution, I iterated, tested, and analyzed user feedback. I identified and solved three critical usability issues that were blocking successful collaboration.</p>
 
 
     <div class="pair">
     <div class="zz">
-      <div class="zz-text"><p class="zz-k">Problem</p><h3>Mobile toolbar blocker</h3><p>On mobile devices, our floating toolbar was completely inaccessible.</p><p class="impact"><b>95%</b><span>mobile session abandonment rate</span></p></div>
+      <div class="zz-text"><p class="zz-k">Issue</p><h3>Mobile toolbar blocker</h3><p>On mobile devices, our floating toolbar was completely inaccessible.</p><p class="impact"><b>95%</b><span>mobile session abandonment rate</span></p></div>
       <div class="zz-media solution-media"><figure class="scr-notes" data-notes>
   <div class="phone"><i class="ph-isl"></i><i class="ph-vol"></i><i class="ph-pwr"></i><div class="scr-frame">
     <div class="scr scr-img" role="img" aria-label="Original mobile document: the Oneflow floating toolbar is hidden behind the browser’s native text menu" style="width:373em;height:842em;font-size:calc(100cqi / 373)">
@@ -177,7 +181,7 @@
 </figure></div>
     </div>
     <div class="zz flip">
-      <div class="zz-text"><p class="zz-k">Solution</p><h3>Mobile-first workflow</h3><p>I redesigned the floating approach entirely, collaborating with engineering to create a sliding toolbar and reusable drawer component that works seamlessly across mobile devices.</p><p class="result-tag"><b>30%</b><span>of contract reviews happened on mobile, often during commutes</span><em>Making mobile optimization critical.</em></p></div>
+      <div class="zz-text"><p class="zz-k">Fix</p><h3>Mobile-first workflow</h3><p>I redesigned the floating approach entirely, collaborating with engineering to create a sliding toolbar and reusable drawer component that works seamlessly across mobile devices.</p><p class="result-tag"><b>30%</b><span>of contract reviews happened on mobile, often during commutes</span><em>Making mobile optimization critical.</em></p></div>
       <div class="zz-media solution-media"><figure class="scr-notes scr-ani" data-ani="mobile">
   <div class="phone"><i class="ph-isl"></i><i class="ph-vol"></i><i class="ph-pwr"></i><div class="scr-frame smf-frame" role="img" aria-label="Animation: on a phone, Alex Codeworthy is selected, the Oneflow toolbar slides up, Suggest edit opens the Suggestion sheet, Ann Connor is typed and sent, and the suggestion then opens for replies.">
     <div class="scr smf" inert>
@@ -215,7 +219,7 @@
 
     <div class="pair">
     <div class="zz">
-      <div class="zz-text"><p class="zz-k">Problem</p><h3>Action hierarchy confusion</h3><p>8 out of 10 users clicked "Resolve" thinking it would close their suggestion. Instead, it marked feedback as resolved and removed it from view.</p><p class="impact"><b>80%</b><span>incomplete collaboration review sessions</span></p></div>
+      <div class="zz-text"><p class="zz-k">Issue</p><h3>Action hierarchy confusion</h3><p>8 out of 10 users clicked "Resolve" thinking it would close their suggestion. Instead, it marked feedback as resolved and removed it from view.</p><p class="impact"><b>80%</b><span>incomplete collaboration review sessions</span></p></div>
       <div class="zz-media solution-media"><figure class="scr-notes" data-notes>
   <div class="scr-frame ph-pairf" style="max-width:400px">
     <div class="scr scr-img scr-pair" role="img" aria-label="Original mobile suggestion cards, stacked: a Delete suggestion with only an X in front, and behind it a Change suggestion with a check and an X" style="width:540em;height:974em;font-size:calc(100cqi / 540)">
@@ -235,7 +239,7 @@
 </figure></div>
     </div>
     <div class="zz flip">
-      <div class="zz-text"><p class="zz-k">Solution</p><h3>Contextual action system</h3><p>I redesigned with two-step confirmation: click the three-dot menu to reveal options, then choose "Accept" or "Reject".</p><p class="result-tag"><b>32%</b><span>higher completion rates</span><em>Workflow clarity mattered more than UI simplicity.</em></p></div>
+      <div class="zz-text"><p class="zz-k">Fix</p><h3>Contextual action system</h3><p>I redesigned with two-step confirmation: click the three-dot menu to reveal options, then choose "Accept" or "Reject".</p><p class="result-tag"><b>32%</b><span>higher completion rates</span><em>Workflow clarity mattered more than UI simplicity.</em></p></div>
       <div class="zz-media solution-media"><figure class="scr-notes scr-ani" data-ani="sheet">
   <div class="phone"><i class="ph-isl"></i><i class="ph-vol"></i><i class="ph-pwr"></i><div class="scr-frame sms-frame" role="img" aria-label="Animation: on mobile, the Suggestion sheet’s ⋮ menu opens and Accept is chosen.">
     <div class="scr sms" inert>
@@ -271,7 +275,7 @@
 
     <div class="pair">
     <div class="zz zz-wm">
-      <div class="zz-text"><p class="zz-k">Problem</p><h3>Notification overload</h3><p>Initial system sent emails for every single suggestion, resulting in important notifications being spammed or ignored.</p><p class="impact"><b>3.2 days</b><span>average response time</span></p></div>
+      <div class="zz-text"><p class="zz-k">Issue</p><h3>Notification overload</h3><p>Initial system sent emails for every single suggestion, resulting in important notifications being spammed or ignored.</p><p class="impact"><b>3.2 days</b><span>average response time</span></p></div>
       <div class="zz-media solution-media"><figure class="scr-notes" data-notes>
   <div class="scr-frame" style="max-width:560px">
     <div class="scr scr-img" role="img" aria-label="Original notifications: three separate emails, one per suggestion change" style="width:906em;height:536em;font-size:calc(100cqi / 906)">
@@ -286,7 +290,7 @@
 </figure></div>
     </div>
     <div class="zz zz-wm flip">
-      <div class="zz-text"><p class="zz-k">Solution</p><h3>Smart notification system</h3><p>We implemented batched notifications with 7-minute intervals, grouping multiple suggestions into digestible updates that reduced email volume by 78%.</p><p class="result-tag"><b>78%</b><span>less email volume</span><em>Users received fewer, more meaningful notifications about contract changes.</em></p></div>
+      <div class="zz-text"><p class="zz-k">Fix</p><h3>Smart notification system</h3><p>We implemented batched notifications with 7-minute intervals, grouping multiple suggestions into digestible updates that reduced email volume by 78%.</p><p class="result-tag"><b>78%</b><span>less email volume</span><em>Users received fewer, more meaningful notifications about contract changes.</em></p></div>
       <div class="zz-media solution-media"><figure class="scr-notes scr-ani" data-ani="email">
   <div class="scr-frame sem-frame" role="img" aria-label="Summary email: Suggestion updates, all resolved. 8 accepted, 2 rejected, 2 new replies, with a View changes button.">
     <div class="scr sem" inert>
@@ -369,8 +373,11 @@
       <cite>Customer in a support call</cite>
     </div>
 
+  </section>
+
+  <section class="section-block" id="design-system">
+    <h2>Design system</h2>
     <div class="solution-block">
-      <h3>Design system components</h3>
       <p>I created reusable components to ensure consistency across the collaboration experience, including notification patterns, action states, and mobile-responsive layouts that became foundational for future product development.</p>
       <div class="solution-media"><figure class="dsb-fig">
   <div class="scr-frame dsb-frame" role="img" aria-label="Collaboration design system: Public and Internal chips, Suggestion and Comment composers, accept and reject buttons, the Add comment, Suggest change and Suggest delete toolbar, suggestion, comment and resolved side-panel cards, the colour tokens, and Accepted, Rejected and Resolved badges.">
@@ -439,15 +446,15 @@
     <h2>Learnings and reflections</h2>
     <div class="learn-grid learn-cards">
       <div class="learn-col">
-        <h4>Didn't work</h4>
+        <h3>Didn't work</h3>
         <ul><li>Many enterprise accounts had Suggestions disabled by default, hurting early discoverability</li></ul>
       </div>
       <div class="learn-col">
-        <h4>Surprised me</h4>
+        <h3>Surprised me</h3>
         <ul><li>Users instantly understood Suggestions once they saw one: no learning curve</li></ul>
       </div>
       <div class="learn-col">
-        <h4>Would do differently</h4>
+        <h3>Would do differently</h3>
         <ul>
           <li>Address legacy templates and default states earlier</li>
           <li>Validate mobile interactions sooner</li>
@@ -487,4 +494,4 @@
   </div>
 </footer>
 
-<script src="script.js?v=24"></script>
+<script src="script.js?v=25"></script>
