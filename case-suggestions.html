@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&display=block">
 <link rel="stylesheet" href="screens/screens.css?v=50">
-<link rel="stylesheet" href="styles.css?v=31">
+<link rel="stylesheet" href="styles.css?v=32">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
@@ -73,7 +73,17 @@
     <div class="case-body">
   <section class="section-block" id="context">
     <h2>Context</h2>
-    <p class="body-text">Oneflow is a contract platform for B2B teams. Users drafted and signed contracts inside Oneflow but switched to Google Docs, Word, or email to propose edits, causing version drift and slow collaboration.</p>
+    <div class="ctx-panel">
+      <div class="ctx-copy">
+        <p class="ctx-lead">Teams signed in Oneflow, <span>but edited in Google Docs, Word and email.</span></p>
+        <p class="body-text">Oneflow is a contract platform for B2B teams. Users drafted and signed contracts inside Oneflow but switched to Google Docs, Word, or email to propose edits, causing version drift and slow collaboration.</p>
+      </div>
+      <div class="ctx-drift" role="img" aria-label="Contracts leave Oneflow for Google Docs, Word and email, so versions drift apart">
+        <span class="ctx-chip ctx-home">Oneflow</span>
+        <svg class="ctx-lines" viewBox="0 0 100 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60 C40 60 60 18 100 18 M0 60 H100 M0 60 C40 60 60 102 100 102" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 4" vector-effect="non-scaling-stroke"/></svg>
+        <span class="ctx-out"><span class="ctx-chip">Google Docs</span><span class="ctx-chip">Word</span><span class="ctx-chip">Email</span></span>
+      </div>
+    </div>
   </section>
 
   <section class="section-block" id="problem">
@@ -138,8 +148,10 @@
   <section class="section-block" id="constraints">
     <h2>Working with constraints</h2>
     <h3 style="margin-top:0;">No "suggestion mode" possible</h3>
-    <p class="body-text">I faced one major constraint that shaped my design decisions:</p>
-    <p class="body-text">Our architecture didn't support a suggestion-layer. A "true" Suggestion mode wasn't technically feasible with our system.</p>
+    <div class="cn-pair">
+      <div class="cn-card"><p class="cn-k">Expected</p><p class="cn-t">A true suggestion mode</p><p class="cn-d">Our architecture didn't support a separate suggestion layer, so it wasn't technically feasible.</p></div>
+      <div class="cn-card cn-done"><p class="cn-k">Delivered</p><p class="cn-t">Inline suggestions on the live document</p><p class="cn-d">Built on the existing document, with no separate layer to maintain.</p></div>
+    </div>
     <div class="stake"><p class="stake-k">What was at stake</p><p>Months of rebuild work for a mode that wouldn&rsquo;t scale, or losing the UK customers for whom the feature was a deal breaker.</p></div>
   </section>
 
@@ -421,7 +433,7 @@
 
   <section class="section-block" id="learnings">
     <h2>Learnings and reflections</h2>
-    <div class="learn-grid">
+    <div class="learn-grid learn-cards">
       <div class="learn-col">
         <h4>Didn't work</h4>
         <ul><li>Many enterprise accounts had Suggestions disabled by default, hurting early discoverability</li></ul>
