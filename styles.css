@@ -2155,3 +2155,7 @@ a.t-tile:hover { background: var(--emph-hover); }
   .case-head-visual.case-head-bleed img { width: auto; height: clamp(360px, calc(100svh - 330px), 640px); aspect-ratio: auto; max-width: none; max-height: none; padding: 0; object-fit: fill; transform: none; }
 }
 @media (max-width: 860px) { .case-head-visual.case-head-bleed img { width: 125%; max-width: none; margin-left: 0; padding: 0; } }
+/* wordmark: full name, two-tone, in the site typeface */
+.logo { font-size: 1.15rem; font-weight: 650; letter-spacing: -0.035em; white-space: nowrap; }
+.logo .logo-sur { color: var(--mute); transition: color var(--dur-fast) var(--ease-out); }
+.logo:hover .logo-sur { color: var(--ink); }
