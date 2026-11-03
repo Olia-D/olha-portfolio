@@ -2115,3 +2115,7 @@ a.t-tile:hover { background: var(--emph-hover); }
 .pit-pill { border-radius: var(--r-sm); }
 :root[data-theme="dark"] .about-photo { background: #e4e4e1; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .about-photo { background: #e4e4e1; } }
+/* hero: headline, one supporting line, then straight into the work */
+.t-hero-lede { max-width: 52ch; margin: 24px 0 0; font-size: var(--fs-lg); line-height: 1.55; color: var(--ink-soft); }
+.t-hero { padding-bottom: clamp(56px, 7vw, 96px); }
+.nav .logo .dot, .nav:not(.on-dark) .logo .dot, .mobile-menu .logo .dot { color: var(--ink); }
