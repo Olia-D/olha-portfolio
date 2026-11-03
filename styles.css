@@ -2119,3 +2119,13 @@ a.t-tile:hover { background: var(--emph-hover); }
 .t-hero-lede { max-width: 52ch; margin: 24px 0 0; font-size: var(--fs-lg); line-height: 1.55; color: var(--ink-soft); }
 .t-hero { padding-bottom: clamp(56px, 7vw, 96px); }
 .nav .logo .dot, .nav:not(.on-dark) .logo .dot, .mobile-menu .logo .dot { color: var(--ink); }
+
+/* Suggestions design system: no white card in dark mode; loose labels follow the theme */
+:root[data-theme="dark"] .dsb-fig { background: none; padding: 0; }
+:root[data-theme="dark"] .scr.dsb .ds-hex, :root[data-theme="dark"] .scr.dsb .ds-lg { color: var(--ink); }
+:root[data-theme="dark"] .scr.dsb .ds-cap { color: var(--ink-faint); border-bottom-color: var(--line); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .dsb-fig { background: none; padding: 0; }
+  :root:not([data-theme="light"]) .scr.dsb .ds-hex, :root:not([data-theme="light"]) .scr.dsb .ds-lg { color: var(--ink); }
+  :root:not([data-theme="light"]) .scr.dsb .ds-cap { color: var(--ink-faint); border-bottom-color: var(--line); }
+}
