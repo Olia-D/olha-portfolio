@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&display=block">
 <link rel="stylesheet" href="screens/screens.css?v=50">
-<link rel="stylesheet" href="styles.css?v=32">
+<link rel="stylesheet" href="styles.css?v=33">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
@@ -68,7 +68,7 @@
   <div class="wrap case-layout">
     <nav class="case-toc" aria-label="On this page">
       <p>On this page</p>
-      <ol><li><a href="#context">Context</a></li><li><a href="#problem">Problem</a></li><li><a href="#approach">Approach</a></li><li><a href="#results">Results</a></li><li><a href="#constraints">Constraints</a></li><li><a href="#challenges">Challenges</a></li><li><a href="#solutions">Solutions</a></li><li><a href="#learnings">Learnings</a></li></ol>
+      <ol><li><a href="#context">Context</a></li><li><a href="#problem">Problem</a></li><li><a href="#approach">Approach</a></li><li><a href="#results">Results</a></li><li><a href="#constraints">Constraints</a></li><li><a href="#challenges">Challenges and fixes</a></li><li><a href="#solutions">Final design</a></li><li><a href="#learnings">Learnings</a></li></ol>
     </nav>
     <div class="case-body">
   <section class="section-block" id="context">
@@ -156,11 +156,13 @@
   </section>
 
   <section class="section-block" id="challenges">
-    <h2>Key design challenges</h2>
+    <h2>Challenges and solutions</h2>
     <p class="body-text">When prototyping the solution, I iterated, tested, and analyzed user feedback. I identified and solved three critical usability issues that were blocking successful collaboration.</p>
 
+
+    <div class="pair">
     <div class="zz">
-      <div class="zz-text"><h3>Mobile toolbar blocker</h3><p>On mobile devices, our floating toolbar was completely inaccessible.</p><p class="impact"><b>95%</b><span>mobile session abandonment rate</span></p></div>
+      <div class="zz-text"><p class="zz-k">Problem</p><h3>Mobile toolbar blocker</h3><p>On mobile devices, our floating toolbar was completely inaccessible.</p><p class="impact"><b>95%</b><span>mobile session abandonment rate</span></p></div>
       <div class="zz-media solution-media"><figure class="scr-notes" data-notes>
   <div class="phone"><i class="ph-isl"></i><i class="ph-vol"></i><i class="ph-pwr"></i><div class="scr-frame">
     <div class="scr scr-img" role="img" aria-label="Original mobile document: the Oneflow floating toolbar is hidden behind the browser’s native text menu" style="width:373em;height:842em;font-size:calc(100cqi / 373)">
@@ -174,9 +176,46 @@
   <ol class="hs-list" hidden></ol>
 </figure></div>
     </div>
-
     <div class="zz flip">
-      <div class="zz-text"><h3>Action hierarchy confusion</h3><p>8 out of 10 users clicked "Resolve" thinking it would close their suggestion. Instead, it marked feedback as resolved and removed it from view.</p><p class="impact"><b>80%</b><span>incomplete collaboration review sessions</span></p></div>
+      <div class="zz-text"><p class="zz-k">Solution</p><h3>Mobile-first workflow</h3><p>I redesigned the floating approach entirely, collaborating with engineering to create a sliding toolbar and reusable drawer component that works seamlessly across mobile devices.</p><p class="result-tag"><b>30%</b><span>of contract reviews happened on mobile, often during commutes</span><em>Making mobile optimization critical.</em></p></div>
+      <div class="zz-media solution-media"><figure class="scr-notes scr-ani" data-ani="mobile">
+  <div class="phone"><i class="ph-isl"></i><i class="ph-vol"></i><i class="ph-pwr"></i><div class="scr-frame smf-frame" role="img" aria-label="Animation: on a phone, Alex Codeworthy is selected, the Oneflow toolbar slides up, Suggest edit opens the Suggestion sheet, Ann Connor is typed and sent, and the suggestion then opens for replies.">
+    <div class="scr smf" inert>
+      <img class="smf-layer" src="images/sugm-1-idle.svg" alt="" loading="lazy">
+      <i class="smf-hl"></i>
+      <p class="smf-name"><span><del>Alex Codeworthy</del> <ins>Ann Connor</ins></span></p>
+      <div class="smf-part smf-menu"><img src="images/sugm-3-toolbar.svg" alt="" loading="lazy"></div>
+      <div class="smf-barwrap"><div class="smf-bar">
+        <span><img loading="lazy" decoding="async" src="screens/img/sug/tb-addcomment.svg" alt=""><b>Add comment</b></span>
+        <span><img loading="lazy" decoding="async" src="screens/img/sug/tb-suggestedit.svg" alt=""><b>Suggest edit</b></span>
+        <span><img loading="lazy" decoding="async" src="screens/img/sug/tb-suggestdelete.svg" alt=""><b>Suggest delete</b></span>
+      </div></div>
+      <i class="smf-scrim"></i>
+      <div class="smf-part smf-reply"><div class="sms-sheet smf-rsheet">
+        <i class="sms-handle"></i>
+        <p class="sms-title"><span>Suggestion</span></p>
+        <span class="sdv-av sms-av1 smf-ring"><span>MN</span></span>
+        <p class="sms-name1"><span>Sam’s Solar Spaces</span></p>
+        <p class="sms-date1"><span>Oct 14, 14:39</span></p>
+        <span class="sms-kebab"><img loading="lazy" decoding="async" src="screens/img/sug/m-kebab.svg" alt=""></span>
+        <p class="sms-chg"><span><b>Change:</b> <i>Alex Codeworthy</i></span></p>
+        <p class="sms-to"><span><b>To:</b> <i>Ann Connor</i></span></p>
+        <i class="sms-rule"></i>
+        <span class="sms-input"><span class="smf-ph">Comment...</span></span>
+        <span class="sms-at"><img loading="lazy" decoding="async" src="screens/img/sug/m-at.svg" alt=""></span>
+        <span class="sms-send"><img loading="lazy" decoding="async" src="screens/img/sug/send.svg" alt=""></span>
+      </div></div>
+      <div class="smf-part smf-chrome"><img src="images/sugm-1-idle.svg" alt="" loading="lazy"></div>
+      <div class="smf-part smf-kb"><img src="images/sugm-4-keyboard.svg" alt="" loading="lazy"><p class="smf-typed"><span></span></p><i class="smf-send"><img loading="lazy" decoding="async" src="screens/img/sug/send.svg" alt=""></i></div>
+    </div>
+  </div></div>
+</figure></div>
+    </div>
+    </div>
+
+    <div class="pair">
+    <div class="zz flip">
+      <div class="zz-text"><p class="zz-k">Problem</p><h3>Action hierarchy confusion</h3><p>8 out of 10 users clicked "Resolve" thinking it would close their suggestion. Instead, it marked feedback as resolved and removed it from view.</p><p class="impact"><b>80%</b><span>incomplete collaboration review sessions</span></p></div>
       <div class="zz-media solution-media"><figure class="scr-notes" data-notes>
   <div class="scr-frame ph-pairf" style="max-width:400px">
     <div class="scr scr-img scr-pair" role="img" aria-label="Original mobile suggestion cards, stacked: a Delete suggestion with only an X in front, and behind it a Change suggestion with a check and an X" style="width:540em;height:974em;font-size:calc(100cqi / 540)">
@@ -195,9 +234,44 @@
   <ol class="hs-list" hidden></ol>
 </figure></div>
     </div>
-
     <div class="zz">
-      <div class="zz-text"><h3>Notification overload</h3><p>Initial system sent emails for every single suggestion, resulting in important notifications being spammed or ignored.</p><p class="impact"><b>3.2 days</b><span>average response time</span></p></div>
+      <div class="zz-text"><p class="zz-k">Solution</p><h3>Contextual action system</h3><p>I redesigned with two-step confirmation: click the three-dot menu to reveal options, then choose "Accept" or "Reject".</p><p class="result-tag"><b>32%</b><span>higher completion rates</span><em>Workflow clarity mattered more than UI simplicity.</em></p></div>
+      <div class="zz-media solution-media"><figure class="scr-notes scr-ani" data-ani="sheet">
+  <div class="phone"><i class="ph-isl"></i><i class="ph-vol"></i><i class="ph-pwr"></i><div class="scr-frame sms-frame" role="img" aria-label="Animation: on mobile, the Suggestion sheet’s ⋮ menu opens and Accept is chosen.">
+    <div class="scr sms" inert>
+      <img loading="lazy" decoding="async" class="sms-bg" src="images/sug-panel-bg.svg" alt="">
+      <div class="sms-sheet">
+        <i class="sms-handle"></i>
+        <p class="sms-title"><span>Suggestion</span></p>
+        <span class="sdv-av sms-av1" style="--bg:#8e4957"><span>SM</span></span>
+        <p class="sms-name1"><span>Sam’s Moon Spaces</span></p>
+        <p class="sms-date1"><span>Oct 14, 14:39</span></p>
+        <button class="sms-kebab" type="button" aria-haspopup="menu" aria-expanded="true" aria-label="Suggestion actions"><img loading="lazy" decoding="async" src="screens/img/sug/m-kebab.svg" alt=""></button>
+        <p class="sms-chg"><span><b>Change:</b> <i>Axel Codeworthy</i></span></p>
+        <p class="sms-to"><span><b>To:</b> <i>Alex Meadow</i></span></p>
+        <i class="sms-rule"></i>
+        <span class="sdv-av sms-av2" style="--bg:#14532d"><span>AM</span></span>
+        <p class="sms-name2"><span>Alex Meadow</span></p>
+        <p class="sms-date2"><span>Oct 14, 15:21</span></p>
+        <p class="sms-mention"><span>@Sam’s Moon Spaces</span></p>
+        <p class="sms-msg"><span>Yes, that’s the proper name. Thanks!</span></p>
+        <label class="sms-input"><span class="sr-only">Comment</span><input type="text" placeholder="Comment..."></label>
+        <button class="sms-at" type="button" aria-label="Mention someone"><img loading="lazy" decoding="async" src="screens/img/sug/m-at.svg" alt=""></button>
+        <button class="sms-send" type="button" aria-label="Send comment"><img loading="lazy" decoding="async" src="screens/img/sug/send.svg" alt=""></button>
+        <div class="sms-menu" role="menu">
+          <button type="button" role="menuitem" class="sms-acc"><img loading="lazy" decoding="async" src="screens/img/sug/m-accept.svg" alt=""><span>Accept</span></button>
+          <button type="button" role="menuitem" class="sms-rej"><img loading="lazy" decoding="async" src="screens/img/sug/m-reject.svg" alt=""><span>Reject</span></button>
+        </div>
+      </div>
+    </div>
+  </div></div>
+</figure></div>
+    </div>
+    </div>
+
+    <div class="pair">
+    <div class="zz zz-wm">
+      <div class="zz-text"><p class="zz-k">Problem</p><h3>Notification overload</h3><p>Initial system sent emails for every single suggestion, resulting in important notifications being spammed or ignored.</p><p class="impact"><b>3.2 days</b><span>average response time</span></p></div>
       <div class="zz-media solution-media"><figure class="scr-notes" data-notes>
   <div class="scr-frame" style="max-width:560px">
     <div class="scr scr-img" role="img" aria-label="Original notifications: three separate emails, one per suggestion change" style="width:906em;height:536em;font-size:calc(100cqi / 906)">
@@ -211,12 +285,34 @@
   <ol class="hs-list" hidden></ol>
 </figure></div>
     </div>
+    <div class="zz zz-wm flip">
+      <div class="zz-text"><p class="zz-k">Solution</p><h3>Smart notification system</h3><p>We implemented batched notifications with 7-minute intervals, grouping multiple suggestions into digestible updates that reduced email volume by 78%.</p><p class="result-tag"><b>78%</b><span>less email volume</span><em>Users received fewer, more meaningful notifications about contract changes.</em></p></div>
+      <div class="zz-media solution-media"><figure class="scr-notes scr-ani" data-ani="email">
+  <div class="scr-frame sem-frame" role="img" aria-label="Summary email: Suggestion updates, all resolved. 8 accepted, 2 rejected, 2 new replies, with a View changes button.">
+    <div class="scr sem" inert>
+      <p class="sem-from"><span><b>From:</b><br><b>Subject:</b></span></p>
+      <p class="sem-from-v"><span>Company name via Oneflow<br>Suggestions updates: all resolved!</span></p>
+      <i class="sem-badge"><img loading="lazy" decoding="async" src="screens/img/sug/e-badge.svg" alt=""></i>
+      <p class="sem-title"><span>Suggestion updates: all resolved!</span></p>
+      <p class="sem-sub"><span>from Sandra Olofsson</span></p>
+      <ul class="sem-list">
+        <li style="--y:294.5"><img loading="lazy" decoding="async" src="screens/img/sug/e-acc.svg" alt=""><span><b>8 accepted</b> suggestions</span></li>
+        <li style="--y:343"><img loading="lazy" decoding="async" src="screens/img/sug/e-rej.svg" alt=""><span><b>2 rejected</b> suggestions</span></li>
+        <li style="--y:391"><img loading="lazy" decoding="async" src="screens/img/sug/e-reply.svg" alt=""><span><b>2 new replies</b> to suggestions</span></li>
+      </ul>
+      <a class="sem-btn" href="#solutions" role="button"><span>View changes</span></a>
+      <p class="sem-id"><span>ID 2383621</span></p>
+    </div>
+  </div>
+</figure></div>
+    </div>
+    </div>
 
   </section>
 
   <section class="section-block" id="solutions">
-    <h2>Design solutions</h2>
-    <p class="body-text">After rounds of validation, here's what I delivered:</p>
+    <h2>The final design</h2>
+    <p class="body-text">After rounds of validation, here&rsquo;s the full flow I delivered:</p>
     <div class="solution-media"><figure class="scr-notes scr-ani" data-ani="doc">
   <div class="try-scroll"><div class="scr-frame sdv-frame" role="img" aria-label="Animation: in a Oneflow document, Ann Connor is typed as a suggested edit replacing Albert Quist, sent, then accepted into the agreement.">
     <div class="scr sdv" data-state="compose" inert>
@@ -267,98 +363,6 @@
     </div>
   </div></div>
 </figure></div>
-
-    <div class="zz flip">
-      <div class="zz-text"><h3>Mobile-first workflow</h3><p>I redesigned the floating approach entirely, collaborating with engineering to create a sliding toolbar and reusable drawer component that works seamlessly across mobile devices.</p><p class="result-tag"><b>30%</b><span>of contract reviews happened on mobile, often during commutes</span><em>Making mobile optimization critical.</em></p></div>
-      <div class="zz-media solution-media"><figure class="scr-notes scr-ani" data-ani="mobile">
-  <div class="phone"><i class="ph-isl"></i><i class="ph-vol"></i><i class="ph-pwr"></i><div class="scr-frame smf-frame" role="img" aria-label="Animation: on a phone, Alex Codeworthy is selected, the Oneflow toolbar slides up, Suggest edit opens the Suggestion sheet, Ann Connor is typed and sent, and the suggestion then opens for replies.">
-    <div class="scr smf" inert>
-      <img class="smf-layer" src="images/sugm-1-idle.svg" alt="" loading="lazy">
-      <i class="smf-hl"></i>
-      <p class="smf-name"><span><del>Alex Codeworthy</del> <ins>Ann Connor</ins></span></p>
-      <div class="smf-part smf-menu"><img src="images/sugm-3-toolbar.svg" alt="" loading="lazy"></div>
-      <div class="smf-barwrap"><div class="smf-bar">
-        <span><img loading="lazy" decoding="async" src="screens/img/sug/tb-addcomment.svg" alt=""><b>Add comment</b></span>
-        <span><img loading="lazy" decoding="async" src="screens/img/sug/tb-suggestedit.svg" alt=""><b>Suggest edit</b></span>
-        <span><img loading="lazy" decoding="async" src="screens/img/sug/tb-suggestdelete.svg" alt=""><b>Suggest delete</b></span>
-      </div></div>
-      <i class="smf-scrim"></i>
-      <div class="smf-part smf-reply"><div class="sms-sheet smf-rsheet">
-        <i class="sms-handle"></i>
-        <p class="sms-title"><span>Suggestion</span></p>
-        <span class="sdv-av sms-av1 smf-ring"><span>MN</span></span>
-        <p class="sms-name1"><span>Sam’s Solar Spaces</span></p>
-        <p class="sms-date1"><span>Oct 14, 14:39</span></p>
-        <span class="sms-kebab"><img loading="lazy" decoding="async" src="screens/img/sug/m-kebab.svg" alt=""></span>
-        <p class="sms-chg"><span><b>Change:</b> <i>Alex Codeworthy</i></span></p>
-        <p class="sms-to"><span><b>To:</b> <i>Ann Connor</i></span></p>
-        <i class="sms-rule"></i>
-        <span class="sms-input"><span class="smf-ph">Comment...</span></span>
-        <span class="sms-at"><img loading="lazy" decoding="async" src="screens/img/sug/m-at.svg" alt=""></span>
-        <span class="sms-send"><img loading="lazy" decoding="async" src="screens/img/sug/send.svg" alt=""></span>
-      </div></div>
-      <div class="smf-part smf-chrome"><img src="images/sugm-1-idle.svg" alt="" loading="lazy"></div>
-      <div class="smf-part smf-kb"><img src="images/sugm-4-keyboard.svg" alt="" loading="lazy"><p class="smf-typed"><span></span></p><i class="smf-send"><img loading="lazy" decoding="async" src="screens/img/sug/send.svg" alt=""></i></div>
-    </div>
-  </div></div>
-</figure></div>
-    </div>
-
-    <div class="zz">
-      <div class="zz-text"><h3>Contextual action system</h3><p>I redesigned with two-step confirmation: click the three-dot menu to reveal options, then choose "Accept" or "Reject".</p><p class="result-tag"><b>32%</b><span>higher completion rates</span><em>Workflow clarity mattered more than UI simplicity.</em></p></div>
-      <div class="zz-media solution-media"><figure class="scr-notes scr-ani" data-ani="sheet">
-  <div class="phone"><i class="ph-isl"></i><i class="ph-vol"></i><i class="ph-pwr"></i><div class="scr-frame sms-frame" role="img" aria-label="Animation: on mobile, the Suggestion sheet’s ⋮ menu opens and Accept is chosen.">
-    <div class="scr sms" inert>
-      <img loading="lazy" decoding="async" class="sms-bg" src="images/sug-panel-bg.svg" alt="">
-      <div class="sms-sheet">
-        <i class="sms-handle"></i>
-        <p class="sms-title"><span>Suggestion</span></p>
-        <span class="sdv-av sms-av1" style="--bg:#8e4957"><span>SM</span></span>
-        <p class="sms-name1"><span>Sam’s Moon Spaces</span></p>
-        <p class="sms-date1"><span>Oct 14, 14:39</span></p>
-        <button class="sms-kebab" type="button" aria-haspopup="menu" aria-expanded="true" aria-label="Suggestion actions"><img loading="lazy" decoding="async" src="screens/img/sug/m-kebab.svg" alt=""></button>
-        <p class="sms-chg"><span><b>Change:</b> <i>Axel Codeworthy</i></span></p>
-        <p class="sms-to"><span><b>To:</b> <i>Alex Meadow</i></span></p>
-        <i class="sms-rule"></i>
-        <span class="sdv-av sms-av2" style="--bg:#14532d"><span>AM</span></span>
-        <p class="sms-name2"><span>Alex Meadow</span></p>
-        <p class="sms-date2"><span>Oct 14, 15:21</span></p>
-        <p class="sms-mention"><span>@Sam’s Moon Spaces</span></p>
-        <p class="sms-msg"><span>Yes, that’s the proper name. Thanks!</span></p>
-        <label class="sms-input"><span class="sr-only">Comment</span><input type="text" placeholder="Comment..."></label>
-        <button class="sms-at" type="button" aria-label="Mention someone"><img loading="lazy" decoding="async" src="screens/img/sug/m-at.svg" alt=""></button>
-        <button class="sms-send" type="button" aria-label="Send comment"><img loading="lazy" decoding="async" src="screens/img/sug/send.svg" alt=""></button>
-        <div class="sms-menu" role="menu">
-          <button type="button" role="menuitem" class="sms-acc"><img loading="lazy" decoding="async" src="screens/img/sug/m-accept.svg" alt=""><span>Accept</span></button>
-          <button type="button" role="menuitem" class="sms-rej"><img loading="lazy" decoding="async" src="screens/img/sug/m-reject.svg" alt=""><span>Reject</span></button>
-        </div>
-      </div>
-    </div>
-  </div></div>
-</figure></div>
-    </div>
-
-    <div class="zz flip">
-      <div class="zz-text"><h3>Smart notification system</h3><p>We implemented batched notifications with 7-minute intervals, grouping multiple suggestions into digestible updates that reduced email volume by 78%.</p><p class="result-tag"><b>78%</b><span>less email volume</span><em>Users received fewer, more meaningful notifications about contract changes.</em></p></div>
-      <div class="zz-media solution-media"><figure class="scr-notes scr-ani" data-ani="email">
-  <div class="scr-frame sem-frame" role="img" aria-label="Summary email: Suggestion updates, all resolved. 8 accepted, 2 rejected, 2 new replies, with a View changes button.">
-    <div class="scr sem" inert>
-      <p class="sem-from"><span><b>From:</b><br><b>Subject:</b></span></p>
-      <p class="sem-from-v"><span>Company name via Oneflow<br>Suggestions updates: all resolved!</span></p>
-      <i class="sem-badge"><img loading="lazy" decoding="async" src="screens/img/sug/e-badge.svg" alt=""></i>
-      <p class="sem-title"><span>Suggestion updates: all resolved!</span></p>
-      <p class="sem-sub"><span>from Sandra Olofsson</span></p>
-      <ul class="sem-list">
-        <li style="--y:294.5"><img loading="lazy" decoding="async" src="screens/img/sug/e-acc.svg" alt=""><span><b>8 accepted</b> suggestions</span></li>
-        <li style="--y:343"><img loading="lazy" decoding="async" src="screens/img/sug/e-rej.svg" alt=""><span><b>2 rejected</b> suggestions</span></li>
-        <li style="--y:391"><img loading="lazy" decoding="async" src="screens/img/sug/e-reply.svg" alt=""><span><b>2 new replies</b> to suggestions</span></li>
-      </ul>
-      <a class="sem-btn" href="#solutions" role="button"><span>View changes</span></a>
-      <p class="sem-id"><span>ID 2383621</span></p>
-    </div>
-  </div>
-</figure></div>
-    </div>
 
     <div class="quote-block">
       <p>&ldquo;The new suggestion flow has changed how we work with external counsel. Instead of version chaos over email, we now have a single source of truth with tracked changes.&rdquo;</p>

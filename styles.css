@@ -1823,3 +1823,17 @@ img.cutout { background: none; object-fit: contain; object-position: center bott
   .ctx-drift { padding: 16px; }
   .ctx-chip { padding: 7px 12px; font-size: var(--fs-xs); }
 }
+
+/* ----- problem / solution pairs ----- */
+.case-body .pair + .pair { margin-top: clamp(96px, 11vw, 160px); }
+.case-body .pair > .zz { margin: 0; }
+.case-body .pair > .zz + .zz { margin-top: clamp(48px, 6vw, 80px); }
+.case-body .zz-text .zz-k { margin: 0 0 10px; font-size: var(--fs-xs); font-weight: 500; color: var(--ink-faint); }
+@media (min-width: 861px) {
+  .zz.zz-wm { grid-template-columns: minmax(0, 1fr) minmax(0, 1.45fr); }
+  .zz.zz-wm.flip { grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); }
+}
+/* what was at stake: same width and rhythm as the constraint cards above */
+.case-body .stake { max-width: none; margin: 16px 0 0; padding: clamp(22px, 2.6vw, 30px); border-radius: var(--r-lg); }
+.case-body .stake .stake-k { margin: 0 0 16px; font-size: var(--fs-xs); font-weight: 500; color: var(--ink-faint); }
+.case-body .stake p:not(.stake-k) { font-size: var(--fs-lg); line-height: 1.45; color: var(--ink); max-width: 60ch; }
