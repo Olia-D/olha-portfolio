@@ -2129,3 +2129,9 @@ a.t-tile:hover { background: var(--emph-hover); }
   :root:not([data-theme="light"]) .scr.dsb .ds-hex, :root:not([data-theme="light"]) .scr.dsb .ds-lg { color: var(--ink); }
   :root:not([data-theme="light"]) .scr.dsb .ds-cap { color: var(--ink-faint); border-bottom-color: var(--line); }
 }
+/* Approvals hero: the devices mockup runs larger and bleeds past the column edge */
+@media (min-width: 861px) {
+  .case-head-visual.case-head-bleed { justify-items: start; }
+  .case-head-visual.case-head-bleed img { width: 132%; max-width: none; }
+}
+@media (max-width: 860px) { .case-head-visual.case-head-bleed img { width: 112%; max-width: none; margin-left: -6%; } }
