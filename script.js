@@ -215,7 +215,8 @@
   }
 
   /* Count up big numbers the first time they scroll into view */
-  var counters = document.querySelectorAll(".stat-num, .result-card .num, .callout-stat .num, .rs-tile .num");
+  /* where a results lead exists, it is the one number that counts up */
+  var counters = document.querySelectorAll(document.querySelector("[data-rs]") ? ".rs-lead .num" : ".stat-num, .result-card .num, .callout-stat .num");
   if ("IntersectionObserver" in window && !reduceMotion) {
     var countIO = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -240,6 +241,15 @@
     }, { threshold: 0.6 });
     counters.forEach(function (el) { countIO.observe(el); });
   }
+
+  /* Screen images fade in once loaded instead of popping into an empty frame */
+  document.querySelectorAll(".scr-pic").forEach(function (img) {
+    if (img.complete && img.naturalWidth) return;
+    img.classList.add("is-wait");
+    var done = function () { img.classList.remove("is-wait"); };
+    img.addEventListener("load", done, { once: true });
+    img.addEventListener("error", done, { once: true });
+  });
 
   /* Result bars grow once when the band scrolls into view */
   var rsBand = document.querySelector("[data-rs]");

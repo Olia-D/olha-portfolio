@@ -1752,3 +1752,14 @@ img.cutout { background: none; object-fit: contain; object-position: center bott
   .case-body .approach-timeline li::before { top: 18px; bottom: -2px; left: 7px; right: auto; width: 2px; height: auto; }
   .case-body .approach-timeline li::after { top: 3px; }
 }
+
+/* ----- loading and hierarchy pass ----- */
+.scr.scr-img .scr-pic { background: #eef0f1; transition: opacity 0.4s ease; }
+.scr.scr-img .scr-pic.is-wait { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .scr.scr-img .scr-pic { transition: none; } }
+/* section headings sit below the page title, not level with it */
+.case-body h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 600; letter-spacing: -0.03em; }
+/* one number scale: results lead > problem stat > results cards > inline stats */
+.case-body .callout-stat .num { font-size: clamp(3rem, 5vw, 4.2rem); }
+.case-body .zz-text .impact b, .case-body .zz-text .result-tag b { font-size: 1.6rem; letter-spacing: -0.03em; }
+.case-facts dt { text-transform: none; letter-spacing: 0; }
