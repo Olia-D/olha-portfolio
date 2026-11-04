@@ -2170,12 +2170,14 @@ a.t-tile:hover { background: var(--emph-hover); }
 .mc { position: relative; display: flex; flex-direction: column; overflow: hidden; min-width: 0; border-radius: var(--r-xl); background: var(--surface); color: var(--ink); text-decoration: none; animation: fadeUp var(--dur-slow) var(--ease-out) both; contain: layout paint; }
 .mc:nth-child(1) { animation-delay: 0.2s; } .mc:nth-child(2) { animation-delay: 0.24s; } .mc:nth-child(3) { animation-delay: 0.28s; } .mc:nth-child(4) { animation-delay: 0.32s; } .mc:nth-child(5) { animation-delay: 0.36s; }
 .mc:focus-visible { outline: 3px solid var(--out); outline-offset: 3px; }
-.mc-media { position: relative; display: block; aspect-ratio: 4 / 3; order: 2; margin: 0 var(--mc-pad) var(--mc-pad); }
+.mc-media { position: relative; display: block; aspect-ratio: 4 / 3; order: 1; margin: var(--mc-pad) var(--mc-pad) 0; }
 .mc-media img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: center; }
 .mc[href="case-suggestions.html"] .mc-media { margin-bottom: 0; }
 .mc[href="case-suggestions.html"] .mc-media img { object-position: center bottom; }
-.mc-cap { position: relative; display: grid; grid-template-columns: 1fr auto; grid-template-areas: "name name" "stat arrow"; row-gap: 20px; align-items: end; padding: var(--mc-pad); order: 1; }
-.mc-name { grid-area: name; max-width: 14ch; font-size: var(--phi-2); line-height: 1.08; font-weight: 600; letter-spacing: -0.03em; }
+.mc-cap { position: relative; display: grid; grid-template-columns: 1fr auto; grid-template-areas: "name arrow" "stat arrow"; row-gap: 10px; column-gap: 16px; align-items: end; padding: var(--mc-pad); order: 2; }
+/* the card name is small and bold, sitting on the stat: the headline stays the loudest text */
+.mc-name { grid-area: name; max-width: 24ch; font-size: 1.2rem; line-height: 1.2; font-weight: 700; letter-spacing: -0.015em; }
+.mc-arrow { align-self: end; }
 .mc-stat { grid-area: stat; display: flex; align-items: baseline; gap: 12px; }
 .mc-num { font-size: var(--phi-3); line-height: 1; font-weight: 600; letter-spacing: -0.04em; color: var(--out); font-variant-numeric: tabular-nums; }
 .mc-lab { font-size: var(--phi-1); line-height: 1.3; color: var(--ink-soft); white-space: nowrap; }
@@ -2189,7 +2191,7 @@ a.t-tile:hover { background: var(--emph-hover); }
 .mc:hover .mc-arrow svg + svg, .mc:focus-visible .mc-arrow svg + svg { transform: none; transition-delay: 0.06s; }
 .mc:active .mc-arrow { transform: scale(0.94); }
 .mc:hover .mc-arrow, .mc:focus-visible .mc-arrow { background: var(--ink); color: var(--bg); }
-@media (min-width: 861px) and (hover: none) { .mc-row { grid-template-columns: repeat(3, minmax(0, 1fr)); } .mc-name { font-size: 1.35rem; } .mc-num { font-size: var(--phi-2); } }
+@media (min-width: 861px) and (hover: none) { .mc-row { grid-template-columns: repeat(3, minmax(0, 1fr)); } .mc-name { font-size: 1.1rem; } .mc-num { font-size: var(--phi-2); } }
 
 /* the morph: the open card widens and grows, the rest narrow into strips. Cards keep their places. */
 @media (min-width: 861px) and (hover: hover) {
@@ -2207,8 +2209,8 @@ a.t-tile:hover { background: var(--emph-hover); }
   .mc.is-open .mc-media img { object-position: var(--op, center); }
   /* pictures start where the text column ends: never under the title or the stat */
   .mc-row { --mc-text: max(38%, calc(var(--mc-pad) * 2 + 15rem)); }
-  .mc-cap { position: absolute; inset: 0; grid-template-rows: 1fr auto; row-gap: 0; padding: var(--mc-pad); pointer-events: none; }
-  .mc-name { align-self: start; font-size: clamp(var(--phi-2), 2.2vw, 2.25rem); max-width: 12ch; }
+  .mc-cap { position: absolute; inset: 0; grid-template-rows: 1fr auto auto; grid-template-areas: ". ." "name arrow" "stat arrow"; padding: var(--mc-pad); pointer-events: none; }
+  .mc-name { font-size: clamp(1.1rem, 1.3vw, 1.3rem); }
   /* label: leaves fast (ease-in), arrives once the card has mostly opened (ease-out): title, then stat, then arrow */
   .mc-cap > * { opacity: 0; transform: translateY(10px); transition: opacity 0.15s var(--ease-in), transform 0.15s var(--ease-in); }
   .mc.is-open .mc-cap > * { opacity: 1; transform: none; transition: opacity 0.25s var(--ease-out), transform 0.3s var(--ease-out); }
@@ -2259,3 +2261,4 @@ a.t-tile:hover { background: var(--emph-hover); }
   .tools-belt::before, .tools-belt::after { display: none; }
   .tool, .tool-tip { transition: none; }
 }
+@media (max-width: 860px) { .mc-lab { white-space: normal; } .mc-stat { min-width: 0; } }

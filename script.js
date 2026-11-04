@@ -728,16 +728,22 @@
       var cap = c.querySelector(".mc-cap"), img = c.querySelector(".mc-media img"), btn = c.querySelector(".mc-arrow");
       if (!cap || !img || !btn) return;
       var P = parseFloat(getComputedStyle(cap).paddingLeft), B = btn.offsetWidth;
-      var statW = textW(c.querySelector(".mc-num"), 99) + 12 + textW(c.querySelector(".mc-lab"), 99);
-      var T = P + Math.max(textW(c.querySelector(".mc-name"), 12), statW) + 28;
+      var name = c.querySelector(".mc-name"), num = c.querySelector(".mc-num");
+      var statW = textW(num, 99) + 12 + textW(c.querySelector(".mc-lab"), 99);
+      var nameW = textW(name, 24), T = P + Math.max(nameW, statW) + 32;
+      // height of the name-and-stat block at the bottom of the open card
+      var ncs = getComputedStyle(name), lh = parseFloat(ncs.lineHeight) || parseFloat(ncs.fontSize) * 1.2;
+      var lines = Math.max(1, Math.ceil(textW(name, 99) / Math.max(1, nameW) - 0.01));
+      var blockH = lines * lh + 10 + parseFloat(getComputedStyle(num).fontSize);
       var r = (+img.getAttribute("width")) / (+img.getAttribute("height"));
       var bleed = c.getAttribute("href") === "case-suggestions.html";
       function area(w, h) { var fw = Math.min(w, h * r); return fw * fw / r; }
-      var tall = { t: P, r: 2 * P + B, b: bleed ? 0 : P, l: T }, wide = { t: P, r: P, b: 2 * P + B, l: T };
+      // tall: right of the text, left of the button; wide: across the card, above the text block
+      var tall = { t: P, r: 2 * P + B, b: bleed ? 0 : P, l: T }, wide = { t: P, r: P, b: P + Math.max(blockH, B) + 24, l: P };
       var aT = area(W - tall.l - tall.r, H - tall.t - tall.b), aW = area(W - wide.l - wide.r, H - wide.t - wide.b);
       var box = (bleed || aT >= aW) ? tall : wide;
       c.style.setProperty("--oi", box.t + "px " + box.r + "px " + box.b + "px " + box.l + "px");
-      c.style.setProperty("--op", bleed ? "center bottom" : (box === wide ? "right bottom" : "center"));
+      c.style.setProperty("--op", bleed ? "center bottom" : "center");
     });
   }
   function open(card) {
