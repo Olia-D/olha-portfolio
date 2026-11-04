@@ -2224,10 +2224,5 @@ a.t-tile:hover { background: var(--emph-hover); }
   .mc, .mc-media, .mc-media img, .mc-cap > *, .mc-arrow, .mc-arrow svg, .t-hero-lede { transition: none !important; animation: none !important; }
 }
 
-/* quotes: grey tiles like the cards, so the page has one green and one dark moment (the closing panel) */
-.t-voices .t-tile { background: var(--surface); color: var(--ink); }
-.t-voices a.t-tile:hover { background: color-mix(in srgb, var(--surface) 94%, var(--ink)); }
-.t-voices .t-quote p { color: var(--ink); }
+/* one green: the quote marks use the same outcome green as the stats and the nav underline */
 .t-voices .t-quote p::before { color: var(--out); }
-.t-voices .t-quote .t-src { color: var(--ink-faint); }
-.t-voices a.t-tile:focus-visible { outline-color: var(--out); }
