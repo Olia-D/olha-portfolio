@@ -2159,20 +2159,48 @@ a.t-tile:hover { background: var(--emph-hover); }
 .logo { font-size: 1.15rem; font-weight: 650; letter-spacing: -0.035em; white-space: nowrap; }
 .logo .logo-sur { color: var(--mute); transition: color var(--dur-fast) var(--ease-out); }
 .logo:hover .logo-sur { color: var(--ink); }
-/* homepage hero: copy on the left, portrait with a Stockholm card on the right */
-.t-hero-me { position: relative; margin: 0; }
-.t-hero-me img { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 30%; border-radius: var(--r-xl); background: var(--surface); filter: grayscale(1); }
-.t-hero-where { position: absolute; left: 16px; bottom: 16px; display: flex; align-items: flex-start; gap: 10px; max-width: calc(100% - 32px); padding: 12px 16px; border-radius: var(--r-lg); background: color-mix(in srgb, var(--bg) 92%, transparent); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); font-size: var(--fs-sm); font-weight: 500; line-height: 1.35; color: var(--ink); }
-.t-hero-where .local-time { margin-top: 2px; font-weight: 400; font-size: var(--fs-xs); color: var(--ink-faint); }
-.t-where-dot { flex: none; width: 8px; height: 8px; margin-top: 6px; border-radius: 50%; background: var(--ink); animation: where-pulse 2.4s var(--ease-in-out) infinite; }
-@keyframes where-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
-@media (prefers-reduced-motion: reduce) { .t-where-dot { animation: none; } }
-@media (min-width: 861px) {
-  .t-hero-inner { grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); align-items: center; column-gap: clamp(40px, 6vw, 96px); }
-  .t-hero-me { max-width: 420px; justify-self: end; width: 100%; }
+/* homepage hero: golden-ratio type (16 / 26 / 42 / 68px), then a row of morphing project cards */
+:root { --phi-1: 1rem; --phi-2: 1.618rem; --phi-3: 2.618rem; --phi-4: 4.236rem; --dur-morph: 0.7s; }
+.t-hero { padding: clamp(32px, 5vh, 72px) 0 clamp(48px, 6vw, 88px); }
+.t-hero-inner { display: block; }
+.t-hero-title { max-width: 30ch; font-size: clamp(var(--phi-3), min(4.4vw, 7.2vh), var(--phi-4)); line-height: 1.04; letter-spacing: -0.04em; }
+.t-hero-lede { max-width: 74ch; margin: var(--phi-1) 0 0; font-size: var(--phi-1); line-height: 1.618; color: var(--ink-soft); animation: fadeUp var(--dur-deliberate) 0.1s var(--ease-out) both; }
+.mc-row { --mc-h: clamp(320px, calc(100svh - 390px), 560px); display: grid; gap: 12px; margin-top: var(--phi-3); scroll-margin-top: 96px; }
+.mc { position: relative; display: block; overflow: hidden; min-width: 0; border-radius: var(--r-xl); background: var(--surface); color: var(--ink); text-decoration: none; animation: fadeUp var(--dur-slow) var(--ease-out) both; contain: layout paint; }
+.mc:nth-child(1) { animation-delay: 0.2s; } .mc:nth-child(2) { animation-delay: 0.24s; } .mc:nth-child(3) { animation-delay: 0.28s; } .mc:nth-child(4) { animation-delay: 0.32s; } .mc:nth-child(5) { animation-delay: 0.36s; }
+.mc:focus-visible { outline: 3px solid var(--out); outline-offset: 3px; }
+.mc-media { position: relative; display: block; aspect-ratio: 4 / 3; overflow: hidden; }
+.mc-media img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: var(--fx, 50% 50%); }
+.mc-media img.cutout { object-fit: contain; object-position: center bottom; padding: 7% 8% 0; box-sizing: border-box; }
+.mc-media img.mc-pad { object-position: center 40%; padding: 0 0 13%; transform: scale(1.18); }
+.mc-cap { position: relative; display: grid; gap: 4px; padding: 16px 18px 20px; }
+.mc-name { font-size: var(--phi-2); line-height: 1.15; font-weight: 600; letter-spacing: -0.025em; }
+.mc-meta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 16px; font-size: var(--phi-1); color: var(--ink-soft); }
+.mc-go { display: inline-flex; align-items: center; gap: 6px; font-weight: 500; color: var(--ink); }
+.mc-go svg { transition: transform var(--dur-fast) var(--ease-out); }
+.mc:hover .mc-go svg { transform: translateX(3px); }
+@media (min-width: 640px) and (max-width: 860px) { .mc-name { font-size: 1.3rem; } }
+@media (min-width: 861px) and (hover: none) { .mc-row { grid-template-columns: repeat(3, minmax(0, 1fr)); } .mc-name { font-size: 1.25rem; }  }
+
+/* the morph: the open card widens and grows, the rest narrow into strips. Cards keep their places. */
+@media (min-width: 861px) and (hover: hover) {
+  .mc-row { display: flex; align-items: center; height: var(--mc-h); }
+  .mc { flex: 1 1 0; height: calc(var(--mc-h) * 0.72); aspect-ratio: auto; border-radius: var(--r-lg);
+    transition: flex-grow var(--dur-morph) var(--ease-in-out), height var(--dur-morph) var(--ease-in-out), border-radius var(--dur-morph) var(--ease-in-out); }
+  .mc.is-open { flex-grow: 4.2; height: var(--mc-h); border-radius: var(--r-xl); }
+  /* the picture keeps the open card's size, so strips crop it instead of squashing it */
+  .mc-media { position: absolute; top: 0; bottom: 0; aspect-ratio: auto; left: 50%; right: auto; width: var(--mc-open-w, 100%); transform: translateX(-50%) scale(1.04); transition: transform var(--dur-morph) var(--ease-out); }
+  .mc.is-open .mc-media { transform: translateX(-50%) scale(1); }
+  .mc:not(.is-open) .mc-media img { object-position: var(--fx, 50% 50%); }
+  /* label: leaves fast (ease-in), arrives once the card has mostly opened (ease-out), name then meta */
+  .mc-cap { position: absolute; left: 16px; bottom: 16px; padding: 14px 18px; border-radius: var(--r-lg); background: color-mix(in srgb, var(--bg) 90%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); opacity: 0; transform: translateY(8px); white-space: nowrap; transition: opacity 0.15s var(--ease-in), transform 0.15s var(--ease-in), visibility 0s linear 0.15s; visibility: hidden; }
+  .mc.is-open .mc-cap { opacity: 1; transform: none; visibility: visible; transition: opacity 0.25s var(--ease-out) 0.3s, transform 0.25s var(--ease-out) 0.3s, visibility 0s; }
+  .mc-cap > * { transition: opacity 0.25s var(--ease-out); }
+  .mc:not(.is-open) .mc-cap > * { opacity: 0; }
+  .mc.is-open .mc-meta { transition-delay: 0.34s; }
+  .mc.is-open .mc-name { transition-delay: 0.3s; }
+  .mc-cap { right: auto; max-width: calc(100% - 32px); }
 }
-@media (max-width: 860px) {
-  .t-hero-me { width: min(100%, 360px); margin-top: 40px; }
-  .t-hero-me img { aspect-ratio: 1 / 1; }
+@media (prefers-reduced-motion: reduce) {
+  .mc, .mc-media, .mc-cap, .mc-cap > *, .t-hero-lede { transition: none !important; animation: none !important; }
 }
-@media (min-width: 861px) { .t-hero-me img { max-height: calc(100svh - 230px); } }

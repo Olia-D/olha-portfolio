@@ -693,3 +693,34 @@
   (scr.closest(".phone") || fig).appendChild(btn);
   new IntersectionObserver(function (es) { es.forEach(function (e) { on = e.isIntersecting; clearTimeout(timer); if (on) next(); }); }, { threshold: 0.4 }).observe(scr);
 })();
+
+/* Homepage morph row: the hovered or focused card opens, the rest narrow. Cards keep their places. */
+(function () {
+  var row = document.querySelector(".mc-row");
+  if (!row) return;
+  var cards = [].slice.call(row.querySelectorAll(".mc"));
+  var mq = window.matchMedia("(min-width: 861px) and (hover: hover)");
+  var GROW = 4.2, GAP = 12, intent = null;
+  function size() {
+    // the open card's width, so every card's picture is laid out at that size and strips crop it
+    var n = cards.length, w = row.clientWidth - GAP * (n - 1);
+    row.style.setProperty("--mc-open-w", Math.round(w * GROW / (GROW + n - 1)) + "px");
+    // the open card fills what is left of the first screen, so the whole hero fits in view
+    if (mq.matches) {
+      var top = row.getBoundingClientRect().top + window.scrollY;
+      row.style.setProperty("--mc-h", Math.max(300, Math.min(600, window.innerHeight - top - 32)) + "px");
+    } else row.style.removeProperty("--mc-h");
+  }
+  function open(card) {
+    cards.forEach(function (c) { c.classList.toggle("is-open", c === card); });
+  }
+  cards.forEach(function (c) {
+    // a short hover intent, so sweeping the cursor across the row does not ripple every card
+    c.addEventListener("mouseenter", function () { if (!mq.matches) return; clearTimeout(intent); intent = setTimeout(function () { open(c); }, 120); });
+    c.addEventListener("mouseleave", function () { clearTimeout(intent); });
+    c.addEventListener("focus", function () { clearTimeout(intent); open(c); });
+  });
+  size();
+  window.addEventListener("resize", size);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(size);
+})();
