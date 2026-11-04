@@ -724,35 +724,33 @@
   }
   function fit(W) {
     var H = parseFloat(row.style.getPropertyValue("--mc-h")) || row.clientHeight;
+    // the pills-and-title block is measured on the open card, where it has its full width
+    var openCard = row.querySelector(".mc.is-open") || cards[0], topEl = openCard.querySelector(".mc-top");
+    var topH = topEl ? topEl.offsetHeight : 0;
     cards.forEach(function (c) {
       var cap = c.querySelector(".mc-cap"), img = c.querySelector(".mc-media img"), btn = c.querySelector(".mc-arrow");
       if (!cap || !img || !btn) return;
-      var P = parseFloat(getComputedStyle(cap).paddingLeft), B = btn.offsetWidth;
-      var name = c.querySelector(".mc-name"), num = c.querySelector(".mc-num");
+      var P = parseFloat(getComputedStyle(cap).paddingLeft), B = btn.offsetWidth, gap = 20;
+      var num = c.querySelector(".mc-num"), statH = parseFloat(getComputedStyle(num).fontSize);
       var statW = textW(num, 99) + 12 + textW(c.querySelector(".mc-lab"), 99);
-      var nameW = textW(name, 24), T = P + Math.max(nameW, statW) + 32;
-      // height of the name-and-stat block at the bottom of the open card
-      var ncs = getComputedStyle(name), lh = parseFloat(ncs.lineHeight) || parseFloat(ncs.fontSize) * 1.2;
-      var lines = Math.max(1, Math.ceil(textW(name, 99) / Math.max(1, nameW) - 0.01));
-      var blockH = lines * lh + 10 + parseFloat(getComputedStyle(num).fontSize);
-      var r = (+img.getAttribute("width")) / (+img.getAttribute("height"));
+      var top = P + topH + gap, r = (+img.getAttribute("width")) / (+img.getAttribute("height"));
       var bleed = c.getAttribute("href") === "case-suggestions.html";
-      function area(w, h) { var fw = Math.min(w, h * r); return fw * fw / r; }
-      // tall: right of the text, left of the button; wide: across the card, above the text block
-      var tall = { t: P, r: 2 * P + B, b: bleed ? 0 : P, l: T }, wide = { t: P, r: P, b: P + Math.max(blockH, B) + 24, l: P };
-      var aT = area(W - tall.l - tall.r, H - tall.t - tall.b), aW = area(W - wide.l - wide.r, H - wide.t - wide.b);
-      // the hand photo is empty in its bottom-right corner (measured: nothing below 78% of its height
-      // in the right quarter), so it can run all the way to the right padding, over the button column
+      function area(b) { var w = W - b.l - b.r, h = H - b.t - b.b; if (w <= 0 || h <= 0) return 0; var fw = Math.min(w, h * r); return fw * fw / r; }
+      // the picture sits under the title block and either above the stat row (wide) or beside the stat (tall)
+      var wide = { t: top, r: P, b: P + Math.max(statH, B) + gap, l: P };
+      var tall = { t: top, r: 2 * P + B, b: bleed ? 0 : P, l: P + statW + 32 };
       if (bleed) {
-        var hb = { t: P, r: P, b: 0, l: T }, bw = W - hb.l - hb.r, bh = H - hb.t, fw = Math.min(bw, bh * r), fh = fw / r;
-        var fits = (fw - B) / fw >= 0.75 && (fh - (P + B)) / fh >= 0.78;
-        if (fits) tall = hb;
+        // the hand photo is empty in its bottom-right corner, so it may run over the button column
+        var hb = { t: top, r: P, b: 0, l: P + statW + 32 }, bw = W - hb.l - hb.r, bh = H - hb.t;
+        var fw = Math.min(bw, bh * r), fh = fw / r;
+        if ((fw - B) / fw >= 0.75 && (fh - (P + B)) / fh >= 0.78) tall = hb;
       }
-      var box = (bleed || aT >= aW) ? tall : wide;
+      var box = bleed ? tall : (area(tall) >= area(wide) ? tall : wide);
       c.style.setProperty("--oi", box.t + "px " + box.r + "px " + box.b + "px " + box.l + "px");
       c.style.setProperty("--op", bleed ? "right bottom" : "center");
     });
   }
+
   function open(card) {
     cards.forEach(function (c) { c.classList.toggle("is-open", c === card); });
   }
