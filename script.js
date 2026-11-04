@@ -710,7 +710,35 @@
       var top = row.getBoundingClientRect().top + window.scrollY;
       // leave a thin band at the bottom, so only the tips of the quote cards below show as a teaser
       row.style.setProperty("--mc-h", Math.max(320, Math.min(820, window.innerHeight - top - 56)) + "px");
+      fit(w * GROW / (GROW + n - 1));
     } else row.style.removeProperty("--mc-h");
+  }
+  // For each card, pick the largest picture box that stays clear of the text column and the button:
+  // either the full height left of the button, or the full width above the button row.
+  var ctx = document.createElement("canvas").getContext("2d");
+  function textW(el, maxCh) {
+    var cs = getComputedStyle(el); ctx.font = cs.fontWeight + " " + cs.fontSize + " " + cs.fontFamily;
+    var words = el.textContent.trim().split(/\s+/), limit = maxCh * ctx.measureText("0").width, line = "", widest = 0;
+    words.forEach(function (wd) { var t = line ? line + " " + wd : wd; if (ctx.measureText(t).width > limit && line) { widest = Math.max(widest, ctx.measureText(line).width); line = wd; } else line = t; });
+    return Math.max(widest, ctx.measureText(line).width);
+  }
+  function fit(W) {
+    var H = parseFloat(row.style.getPropertyValue("--mc-h")) || row.clientHeight;
+    cards.forEach(function (c) {
+      var cap = c.querySelector(".mc-cap"), img = c.querySelector(".mc-media img"), btn = c.querySelector(".mc-arrow");
+      if (!cap || !img || !btn) return;
+      var P = parseFloat(getComputedStyle(cap).paddingLeft), B = btn.offsetWidth;
+      var statW = textW(c.querySelector(".mc-num"), 99) + 12 + textW(c.querySelector(".mc-lab"), 13);
+      var T = P + Math.max(textW(c.querySelector(".mc-name"), 12), statW) + 28;
+      var r = (+img.getAttribute("width")) / (+img.getAttribute("height"));
+      var bleed = c.getAttribute("href") === "case-suggestions.html";
+      function area(w, h) { var fw = Math.min(w, h * r); return fw * fw / r; }
+      var tall = { t: P, r: 2 * P + B, b: bleed ? 0 : P, l: T }, wide = { t: P, r: P, b: 2 * P + B, l: T };
+      var aT = area(W - tall.l - tall.r, H - tall.t - tall.b), aW = area(W - wide.l - wide.r, H - wide.t - wide.b);
+      var box = (bleed || aT >= aW) ? tall : wide;
+      c.style.setProperty("--oi", box.t + "px " + box.r + "px " + box.b + "px " + box.l + "px");
+      c.style.setProperty("--op", bleed ? "center bottom" : (box === wide ? "right bottom" : "center"));
+    });
   }
   function open(card) {
     cards.forEach(function (c) { c.classList.toggle("is-open", c === card); });
