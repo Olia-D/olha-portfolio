@@ -741,9 +741,16 @@
       // tall: right of the text, left of the button; wide: across the card, above the text block
       var tall = { t: P, r: 2 * P + B, b: bleed ? 0 : P, l: T }, wide = { t: P, r: P, b: P + Math.max(blockH, B) + 24, l: P };
       var aT = area(W - tall.l - tall.r, H - tall.t - tall.b), aW = area(W - wide.l - wide.r, H - wide.t - wide.b);
+      // the hand photo is empty in its bottom-right corner (measured: nothing below 78% of its height
+      // in the right quarter), so it can run all the way to the right padding, over the button column
+      if (bleed) {
+        var hb = { t: P, r: P, b: 0, l: T }, bw = W - hb.l - hb.r, bh = H - hb.t, fw = Math.min(bw, bh * r), fh = fw / r;
+        var fits = (fw - B) / fw >= 0.75 && (fh - (P + B)) / fh >= 0.78;
+        if (fits) tall = hb;
+      }
       var box = (bleed || aT >= aW) ? tall : wide;
       c.style.setProperty("--oi", box.t + "px " + box.r + "px " + box.b + "px " + box.l + "px");
-      c.style.setProperty("--op", bleed ? "center bottom" : "center");
+      c.style.setProperty("--op", bleed ? "right bottom" : "center");
     });
   }
   function open(card) {
