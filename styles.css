@@ -2193,9 +2193,12 @@ a.t-tile:hover { background: var(--emph-hover); }
     transition: flex-grow var(--dur-morph) var(--ease-in-out), height var(--dur-morph) var(--ease-in-out), border-radius var(--dur-morph) var(--ease-in-out); }
   .mc.is-open { flex-grow: 4.2; height: var(--mc-h); border-radius: var(--r-xl); }
   /* the picture is laid out at the open card's size on its right side; strips show a crop of it */
-  .mc-media { position: absolute; top: 0; bottom: 0; left: 50%; aspect-ratio: auto; width: var(--mc-open-w, 100%); transform: translateX(-66%) scale(1.06); transition: transform var(--dur-morph) var(--ease-in-out); }
+  .mc-media { position: absolute; top: 0; bottom: 0; left: 50%; aspect-ratio: auto; width: var(--mc-open-w, 100%); transform: translateX(var(--sx, -68%)) scale(1.06); transition: transform var(--dur-morph) var(--ease-in-out); }
+  .mc[href="case-approval-flows.html"] { --sx: -88%; }
   .mc.is-open .mc-media { transform: translateX(-50%) scale(1); }
-  .mc-media img.cutout { padding: 8% 2% 0 38%; object-position: center bottom; }
+  /* screens sit above the stat-and-arrow row, so the arrow never covers them */
+  .mc-media img.cutout { padding: 6% 3% 17% 38%; object-position: center bottom; }
+  .mc[href="case-suggestions.html"] .mc-media img.cutout { padding: 4% 9% 12% 40%; -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent 96%); mask-image: linear-gradient(to bottom, #000 82%, transparent 96%); }
   .mc-media img.mc-pad { padding: 9% 0 15% 40%; object-position: 100% 50%; transform: scale(1.08); transform-origin: 100% 50%; }
   .mc-cap { position: absolute; inset: 0; grid-template-rows: 1fr auto; row-gap: 0; padding: var(--mc-pad); pointer-events: none; }
   .mc-name { align-self: start; font-size: clamp(var(--phi-2), 2.9vw, var(--phi-3)); max-width: 13ch; }
