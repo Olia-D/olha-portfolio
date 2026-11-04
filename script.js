@@ -728,7 +728,7 @@
       var cap = c.querySelector(".mc-cap"), img = c.querySelector(".mc-media img"), btn = c.querySelector(".mc-arrow");
       if (!cap || !img || !btn) return;
       var P = parseFloat(getComputedStyle(cap).paddingLeft), B = btn.offsetWidth;
-      var statW = textW(c.querySelector(".mc-num"), 99) + 12 + textW(c.querySelector(".mc-lab"), 13);
+      var statW = textW(c.querySelector(".mc-num"), 99) + 12 + textW(c.querySelector(".mc-lab"), 99);
       var T = P + Math.max(textW(c.querySelector(".mc-name"), 12), statW) + 28;
       var r = (+img.getAttribute("width")) / (+img.getAttribute("height"));
       var bleed = c.getAttribute("href") === "case-suggestions.html";
@@ -752,4 +752,22 @@
   size();
   window.addEventListener("resize", size);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(size);
+})();
+
+/* Tools belt: keep each tooltip inside the visible part of the row, away from the faded edges */
+(function () {
+  var belt = document.querySelector(".tools-belt");
+  if (!belt) return;
+  function place(tool) {
+    var tip = tool.querySelector(".tool-tip"); if (!tip) return;
+    tip.style.setProperty("--tx", "0px");
+    var b = belt.getBoundingClientRect(), t = tool.getBoundingClientRect(), w = tip.offsetWidth, edge = b.width * 0.07;
+    var left = t.left + t.width / 2 - w / 2, min = b.left + edge, max = b.right - edge - w;
+    var shift = left < min ? min - left : (left > max ? max - left : 0);
+    tip.style.setProperty("--tx", Math.round(shift) + "px");
+  }
+  belt.querySelectorAll(".tool").forEach(function (tool) {
+    tool.addEventListener("mouseenter", function () { place(tool); });
+    tool.addEventListener("focus", function () { place(tool); });
+  });
 })();
