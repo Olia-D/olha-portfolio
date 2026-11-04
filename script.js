@@ -708,8 +708,8 @@
     // the open card fills what is left of the first screen, so the whole hero fits in view
     if (mq.matches) {
       var top = row.getBoundingClientRect().top + window.scrollY;
-      // leave about 110px at the bottom, so the tops of the quote cards below show as a teaser
-      row.style.setProperty("--mc-h", Math.max(320, Math.min(660, window.innerHeight - top - 130)) + "px");
+      // leave a thin band at the bottom, so only the tips of the quote cards below show as a teaser
+      row.style.setProperty("--mc-h", Math.max(320, Math.min(820, window.innerHeight - top - 56)) + "px");
     } else row.style.removeProperty("--mc-h");
   }
   function open(card) {

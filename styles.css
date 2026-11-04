@@ -2198,13 +2198,15 @@ a.t-tile:hover { background: var(--emph-hover); }
   .mc-media img { transition: object-position var(--dur-morph) var(--ease-in-out), transform var(--dur-morph) var(--ease-in-out); }
   /* Suggestions: the hand is already cut, so it rests on the bottom edge, left of the button */
   .mc[href="case-suggestions.html"] .mc-media { inset: 16px 16px 0; }
-  .mc[href="case-suggestions.html"].is-open .mc-media { inset: var(--mc-pad) calc(var(--mc-pad) * 2 + var(--mc-btn)) 0 40%; }
+  .mc[href="case-suggestions.html"].is-open .mc-media { inset: var(--mc-pad) calc(var(--mc-pad) * 2 + var(--mc-btn)) 0 var(--mc-text); }
   /* QES: the iPad is centred between the text column and the button */
-  .mc[href="case-qes.html"].is-open .mc-media { inset: var(--mc-pad) calc(var(--mc-pad) * 2 + var(--mc-btn)) var(--mc-pad) 40%; }
+  .mc[href="case-qes.html"].is-open .mc-media { inset: var(--mc-pad) calc(var(--mc-pad) * 2 + var(--mc-btn)) var(--mc-pad) var(--mc-text); }
   /* Approvals: the devices fill the top-right, up to the text and above the button */
-  .mc[href="case-approval-flows.html"].is-open .mc-media { inset: var(--mc-pad) calc(var(--mc-pad) + var(--mc-btn) + 8px) var(--mc-pad) 33%; }
+  .mc[href="case-approval-flows.html"].is-open .mc-media { inset: var(--mc-pad) calc(var(--mc-pad) + var(--mc-btn) + 8px) var(--mc-pad) var(--mc-text); }
   /* the Approvals file carries wide white margins, so it is scaled up from its top-right corner */
-  .mc[href="case-approval-flows.html"].is-open .mc-media img { object-position: center bottom; transform: scale(1.16); transform-origin: 55% bottom; }
+  .mc[href="case-approval-flows.html"].is-open .mc-media img { object-position: right bottom; }
+  /* pictures start where the text column ends: never under the title or the stat */
+  .mc-row { --mc-text: max(38%, calc(var(--mc-pad) * 2 + 15rem)); }
   .mc-cap { position: absolute; inset: 0; grid-template-rows: 1fr auto; row-gap: 0; padding: var(--mc-pad); pointer-events: none; }
   .mc-name { align-self: start; font-size: clamp(var(--phi-2), 2.2vw, 2.25rem); max-width: 12ch; }
   /* label: leaves fast (ease-in), arrives once the card has mostly opened (ease-out): title, then stat, then arrow */
@@ -2215,9 +2217,17 @@ a.t-tile:hover { background: var(--emph-hover); }
   .mc.is-open .mc-arrow { transition: opacity 0.25s var(--ease-out) 0.38s, transform 0.3s var(--ease-out) 0.38s, background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out); }
   .mc:not(.is-open):hover { box-shadow: inset 0 0 0 1px var(--line); }
   /* the quotes below peek into the first screen, so it is clear the page goes on */
-  .t-hero { padding-bottom: 40px; }
+  .t-hero { padding-bottom: 28px; }
   .t-hero + .t-voices { padding-top: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   .mc, .mc-media, .mc-media img, .mc-cap > *, .mc-arrow, .mc-arrow svg, .t-hero-lede { transition: none !important; animation: none !important; }
 }
+
+/* quotes: grey tiles like the cards, so the page has one green and one dark moment (the closing panel) */
+.t-voices .t-tile { background: var(--surface); color: var(--ink); }
+.t-voices a.t-tile:hover { background: color-mix(in srgb, var(--surface) 94%, var(--ink)); }
+.t-voices .t-quote p { color: var(--ink); }
+.t-voices .t-quote p::before { color: var(--out); }
+.t-voices .t-quote .t-src { color: var(--ink-faint); }
+.t-voices a.t-tile:focus-visible { outline-color: var(--out); }
