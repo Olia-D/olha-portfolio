@@ -709,7 +709,7 @@
     if (mq.matches) {
       var top = row.getBoundingClientRect().top + window.scrollY;
       // leave about 110px at the bottom, so the tops of the quote cards below show as a teaser
-      row.style.setProperty("--mc-h", Math.max(300, Math.min(600, window.innerHeight - top - 150)) + "px");
+      row.style.setProperty("--mc-h", Math.max(320, Math.min(660, window.innerHeight - top - 130)) + "px");
     } else row.style.removeProperty("--mc-h");
   }
   function open(card) {

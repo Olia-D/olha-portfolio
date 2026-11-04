@@ -1948,7 +1948,7 @@ img.cutout { background: none; object-fit: contain; object-position: center bott
 a.t-tile:hover { background: #0e3230; }
 
 /* customer voices instead of repeating the card numbers */
-.t-voices { grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 1.5fr); }
+.t-voices { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .t-quote p { margin: 0; font-size: clamp(1.15rem, 1.7vw, 1.45rem); line-height: 1.35; font-weight: 500; letter-spacing: -0.015em; color: #fff; }
 .t-quote p::before { content: "\201C"; display: block; height: 0.55em; margin-bottom: 14px; font-size: 3.4rem; line-height: 1; color: var(--teal-light); }
 .t-quote .t-src { margin-top: 28px; font-size: var(--fs-xs); color: rgb(255 255 255 / 0.7); }
@@ -2161,11 +2161,11 @@ a.t-tile:hover { background: var(--emph-hover); }
 .logo:hover .logo-sur { color: var(--ink); }
 /* homepage hero: golden-ratio type (16 / 26 / 42 / 68px), then a row of morphing project cards */
 :root { --phi-1: 1rem; --phi-2: 1.618rem; --phi-3: 2.618rem; --phi-4: 4.236rem; --dur-morph: 0.7s; }
-.t-hero { padding: clamp(32px, 5vh, 72px) 0 clamp(48px, 6vw, 88px); }
+.t-hero { padding: clamp(24px, 4vh, 56px) 0 clamp(48px, 6vw, 88px); }
 .t-hero-inner { display: block; }
-.t-hero-title { max-width: 30ch; font-size: clamp(var(--phi-3), min(4.4vw, 7.2vh), var(--phi-4)); line-height: 1.04; letter-spacing: -0.04em; }
+.t-hero-title { max-width: 40ch; font-size: clamp(var(--phi-3), min(3.6vw, 6.4vh), var(--phi-4)); line-height: 1.04; letter-spacing: -0.04em; }
 .t-hero-lede { max-width: 74ch; margin: var(--phi-1) 0 0; font-size: var(--phi-1); line-height: 1.618; color: var(--ink-soft); animation: fadeUp var(--dur-deliberate) 0.1s var(--ease-out) both; }
-.mc-row { --mc-h: clamp(320px, calc(100svh - 470px), 560px); --mc-pad: clamp(20px, 2.4vw, 32px); --mc-btn: 52px; display: grid; gap: 12px; margin-top: var(--phi-3); scroll-margin-top: 96px; }
+.mc-row { --mc-h: clamp(320px, calc(100svh - 400px), 620px); --mc-pad: clamp(20px, 2.4vw, 32px); --mc-btn: 52px; display: grid; gap: 12px; margin-top: var(--phi-2); scroll-margin-top: 96px; }
 /* cards follow the theme: light grey on the white page, dark in dark mode */
 .mc { position: relative; display: flex; flex-direction: column; overflow: hidden; min-width: 0; border-radius: var(--r-xl); background: var(--surface); color: var(--ink); text-decoration: none; animation: fadeUp var(--dur-slow) var(--ease-out) both; contain: layout paint; }
 .mc:nth-child(1) { animation-delay: 0.2s; } .mc:nth-child(2) { animation-delay: 0.24s; } .mc:nth-child(3) { animation-delay: 0.28s; } .mc:nth-child(4) { animation-delay: 0.32s; } .mc:nth-child(5) { animation-delay: 0.36s; }
@@ -2198,16 +2198,15 @@ a.t-tile:hover { background: var(--emph-hover); }
   .mc-media img { transition: object-position var(--dur-morph) var(--ease-in-out), transform var(--dur-morph) var(--ease-in-out); }
   /* Suggestions: the hand is already cut, so it rests on the bottom edge, left of the button */
   .mc[href="case-suggestions.html"] .mc-media { inset: 16px 16px 0; }
-  .mc[href="case-suggestions.html"].is-open .mc-media { inset: var(--mc-pad) calc(var(--mc-pad) * 2 + var(--mc-btn)) 0 44%; }
+  .mc[href="case-suggestions.html"].is-open .mc-media { inset: var(--mc-pad) calc(var(--mc-pad) * 2 + var(--mc-btn)) 0 40%; }
   /* QES: the iPad is centred between the text column and the button */
-  .mc[href="case-qes.html"].is-open .mc-media { inset: var(--mc-pad) calc(var(--mc-pad) * 2 + var(--mc-btn)) var(--mc-pad) 44%; }
+  .mc[href="case-qes.html"].is-open .mc-media { inset: var(--mc-pad) calc(var(--mc-pad) * 2 + var(--mc-btn)) var(--mc-pad) 40%; }
   /* Approvals: the devices fill the top-right, up to the text and above the button */
-  .mc[href="case-approval-flows.html"].is-open .mc-media { inset: var(--mc-pad) var(--mc-pad) calc(var(--mc-pad) * 2 + var(--mc-btn)) 44%; }
+  .mc[href="case-approval-flows.html"].is-open .mc-media { inset: var(--mc-pad) calc(var(--mc-pad) + var(--mc-btn) + 8px) var(--mc-pad) 33%; }
   /* the Approvals file carries wide white margins, so it is scaled up from its top-right corner */
-  .mc-media img { transform-origin: right top; }
-  .mc[href="case-approval-flows.html"].is-open .mc-media img { object-position: right top; transform: scale(1.22); }
+  .mc[href="case-approval-flows.html"].is-open .mc-media img { object-position: center bottom; transform: scale(1.16); transform-origin: 55% bottom; }
   .mc-cap { position: absolute; inset: 0; grid-template-rows: 1fr auto; row-gap: 0; padding: var(--mc-pad); pointer-events: none; }
-  .mc-name { align-self: start; font-size: clamp(var(--phi-2), 2.9vw, var(--phi-3)); max-width: 13ch; }
+  .mc-name { align-self: start; font-size: clamp(var(--phi-2), 2.2vw, 2.25rem); max-width: 12ch; }
   /* label: leaves fast (ease-in), arrives once the card has mostly opened (ease-out): title, then stat, then arrow */
   .mc-cap > * { opacity: 0; transform: translateY(10px); transition: opacity 0.15s var(--ease-in), transform 0.15s var(--ease-in); }
   .mc.is-open .mc-cap > * { opacity: 1; transform: none; transition: opacity 0.25s var(--ease-out), transform 0.3s var(--ease-out); }
