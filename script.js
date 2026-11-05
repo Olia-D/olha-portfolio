@@ -769,6 +769,24 @@
 (function () {
   var belt = document.querySelector(".tools-belt");
   if (!belt) return;
+  // Endless loop: one "set" is the visible tools; copies are added until the track is at least
+  // one set wider than the belt, then the track slides by exactly one set and starts over seamlessly.
+  var track = belt.querySelector(".tools-track");
+  var set = [].slice.call(track.querySelectorAll(".tool[tabindex]"));
+  function fill() {
+    if (!set.length) return;
+    var gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    var setW = set.reduce(function (w, el) { return w + el.offsetWidth + gap; }, 0);
+    var need = belt.clientWidth + setW, have = track.scrollWidth;
+    while (have < need) {
+      set.forEach(function (el) { var c = el.cloneNode(true); c.removeAttribute("tabindex"); c.removeAttribute("aria-label"); c.setAttribute("aria-hidden", "true"); track.appendChild(c); });
+      have = track.scrollWidth;
+    }
+    track.style.setProperty("--belt-shift", -Math.round(setW) + "px");
+    track.style.animationDuration = Math.round(setW / 28) + "s";   // about 28px per second at any width
+  }
+  fill();
+  window.addEventListener("resize", fill);
   function place(tool) {
     var tip = tool.querySelector(".tool-tip"); if (!tip) return;
     tip.style.setProperty("--tx", "0px");
