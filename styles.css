@@ -2178,7 +2178,6 @@ a.t-tile:hover { background: var(--emph-hover); }
 .mc-top { grid-area: top; display: grid; gap: 12px; justify-items: start; }
 .mc-pills { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
 .mc-pills li { padding: 4px 10px; border-radius: var(--r-sm); background: var(--bg); color: var(--ink-soft); font-size: 0.8rem; line-height: 1.25; font-weight: 500; white-space: nowrap; }
-.mc-mini { display: none; }
 /* the card name is small and bold, sitting on the stat: the headline stays the loudest text */
 .mc-name { margin: 0; max-width: 24ch; font-size: 1.2rem; line-height: 1.2; font-weight: 700; letter-spacing: -0.015em; }
 .mc-arrow { align-self: end; }
@@ -2205,24 +2204,23 @@ a.t-tile:hover { background: var(--emph-hover); }
   .mc.is-open { flex-grow: 4.2; height: var(--mc-h); border-radius: var(--r-xl); }
   /* the picture's box moves between two placements: in a strip it fits the card with padding,
      in the open card it takes the space the text and the button leave free */
-  .mc-media { position: absolute; margin: 0; aspect-ratio: auto; inset: 16px 16px 64px; transition: inset var(--dur-morph) var(--ease-in-out); }
+  .mc-media { position: absolute; margin: 0; aspect-ratio: auto; inset: var(--ci, 96px 16px 16px); transition: inset var(--dur-morph) var(--ease-in-out); }
   .mc-media img { transition: object-position var(--dur-morph) var(--ease-in-out), transform var(--dur-morph) var(--ease-in-out); }
-  .mc[href="case-suggestions.html"] .mc-media { inset: 16px 16px 64px; }
   /* open: the script picks the largest box that keeps clear of the text and the button (--oi) */
   .mc.is-open .mc-media { inset: var(--oi, var(--mc-pad) calc(var(--mc-pad) * 2 + var(--mc-btn)) var(--mc-pad) var(--mc-text)); }
   .mc.is-open .mc-media img { object-position: var(--op, center); }
   /* pictures start where the text column ends: never under the title or the stat */
   .mc-row { --mc-text: max(38%, calc(var(--mc-pad) * 2 + 15rem)); }
-  .mc-cap { position: absolute; inset: 0; grid-template-rows: auto 1fr auto; grid-template-areas: "top top" ". ." "stat arrow"; padding: var(--mc-pad); pointer-events: none; }
-  /* closed cards carry a small name at the bottom, in the spot where the open card keeps its stat */
-  .mc-mini { display: block; position: absolute; left: 14px; right: 14px; bottom: 14px; font-size: 0.82rem; line-height: 1.25; font-weight: 700; color: var(--ink); opacity: 1; transition: opacity 0.25s var(--ease-out) 0.35s; }
-  .mc.is-open .mc-mini { opacity: 0; transition: opacity 0.12s var(--ease-in); }
-  .mc-name { font-size: clamp(1.1rem, 1.3vw, 1.3rem); }
+  .mc-cap { position: absolute; inset: 0; grid-template-rows: auto 1fr auto; grid-template-areas: "top top" ". ." "stat arrow"; padding: 16px; pointer-events: none; transition: padding var(--dur-morph) var(--ease-in-out); }
+  .mc.is-open .mc-cap { padding: var(--mc-pad); }
+  /* one title for both states: same size, same corner, so it never jumps; only the pills appear above it */
+  .mc-name { font-size: 1.1rem; overflow-wrap: anywhere; }
   /* label: leaves fast (ease-in), arrives once the card has mostly opened (ease-out): title, then stat, then arrow */
   .mc-cap > * { opacity: 0; transform: translateY(10px); transition: opacity 0.15s var(--ease-in), transform 0.15s var(--ease-in); }
   .mc.is-open .mc-cap > * { opacity: 1; transform: none; transition: opacity 0.25s var(--ease-out), transform 0.3s var(--ease-out); }
-  .mc.is-open .mc-top { transition-delay: 0.4s; }
-  .mc-pills { flex-wrap: nowrap; }
+  .mc-cap > .mc-top { opacity: 1; transform: none; }
+  .mc-pills { flex-wrap: nowrap; overflow: hidden; max-width: 100%; opacity: 0; transition: opacity 0.12s var(--ease-in); }
+  .mc.is-open .mc-pills { opacity: 1; transition: opacity 0.25s var(--ease-out) 0.4s; }
   .mc.is-open .mc-stat { transition-delay: 0.44s; }
   .mc.is-open .mc-arrow { transition: opacity 0.25s var(--ease-out) 0.48s, transform 0.3s var(--ease-out) 0.48s, background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out); }
   .mc:not(.is-open):hover { box-shadow: inset 0 0 0 1px var(--line); }
@@ -2231,7 +2229,7 @@ a.t-tile:hover { background: var(--emph-hover); }
   .t-hero + .t-voices { padding-top: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .mc, .mc-media, .mc-media img, .mc-cap > *, .mc-mini, .mc-arrow, .mc-arrow svg, .t-hero-lede { transition: none !important; animation: none !important; }
+  .mc, .mc-media, .mc-media img, .mc-cap, .mc-cap > *, .mc-pills, .mc-arrow, .mc-arrow svg, .t-hero-lede { transition: none !important; animation: none !important; }
 }
 
 /* one bright green for big numbers, quote marks and link underlines.
@@ -2273,3 +2271,9 @@ a.t-tile:hover { background: var(--emph-hover); }
 @media (max-width: 860px) { .mc-lab { white-space: normal; } .mc-stat { min-width: 0; } }
 
 .tools-marquee h2.section-eyebrow { margin: 0; }
+/* tools: a real section heading (the middle step of the 16 / 26 / 42 scale), note and logos as one group,
+   and tighter gaps so the section sits in the page's flow instead of reading like a footer */
+.tools-marquee { padding-top: clamp(24px, 3vw, 40px); padding-bottom: clamp(32px, 4vw, 56px); }
+.tools-marquee h2.section-eyebrow { margin: 0; font-size: var(--phi-2); line-height: 1.2; font-weight: 600; letter-spacing: -0.025em; color: var(--ink); }
+.tools-note { margin-top: 10px; }
+.tools-belt { margin-top: 24px; }

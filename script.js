@@ -722,11 +722,19 @@
     words.forEach(function (wd) { var t = line ? line + " " + wd : wd; if (ctx.measureText(t).width > limit && line) { widest = Math.max(widest, ctx.measureText(line).width); line = wd; } else line = t; });
     return Math.max(widest, ctx.measureText(line).width);
   }
+  function lineCount(el, px) {
+    var cs = getComputedStyle(el); ctx.font = cs.fontWeight + " " + cs.fontSize + " " + cs.fontFamily;
+    var n = 1, line = "";
+    el.textContent.trim().split(/\s+/).forEach(function (wd) { var t = line ? line + " " + wd : wd; if (ctx.measureText(t).width > px && line) { n++; line = wd; } else line = t; });
+    return n;
+  }
   function fit(W) {
     var H = parseFloat(row.style.getPropertyValue("--mc-h")) || row.clientHeight;
     // the pills-and-title block is measured on the open card, where it has its full width
     var openCard = row.querySelector(".mc.is-open") || cards[0], topEl = openCard.querySelector(".mc-top");
     var topH = topEl ? topEl.offsetHeight : 0;
+    var pills = openCard.querySelector(".mc-pills"), pillsH = pills ? pills.offsetHeight : 0;
+    var closedW = W / GROW;
     cards.forEach(function (c) {
       var cap = c.querySelector(".mc-cap"), img = c.querySelector(".mc-media img"), btn = c.querySelector(".mc-arrow");
       if (!cap || !img || !btn) return;
@@ -748,6 +756,10 @@
       var box = bleed ? tall : (area(tall) >= area(wide) ? tall : wide);
       c.style.setProperty("--oi", box.t + "px " + box.r + "px " + box.b + "px " + box.l + "px");
       c.style.setProperty("--op", bleed ? "right bottom" : "center");
+      // closed card: the picture sits below the (reserved) pills row and the title, with 16px padding
+      var name = c.querySelector(".mc-name"), ncs = getComputedStyle(name), lh = parseFloat(ncs.lineHeight) || 20;
+      var lines = lineCount(name, Math.max(40, closedW - 32));
+      c.style.setProperty("--ci", Math.round(16 + pillsH + 12 + lines * lh + 14) + "px 16px " + (bleed ? 0 : 16) + "px 16px");
     });
   }
 
