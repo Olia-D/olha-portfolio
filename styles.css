@@ -2277,3 +2277,7 @@ a.t-tile:hover { background: var(--emph-hover); }
 .tools-marquee h2.section-eyebrow { margin: 0; font-size: var(--phi-2); line-height: 1.2; font-weight: 600; letter-spacing: -0.025em; color: var(--ink); }
 .tools-note { margin-top: 10px; }
 .tools-belt { margin-top: 24px; }
+/* the invisible pills row must not widen the grid: titles wrap inside the card instead of being clipped */
+.mc-cap { grid-template-columns: minmax(0, 1fr) auto; }
+.mc-top, .mc-pills { min-width: 0; max-width: 100%; }
+.mc-pills { overflow: hidden; }
