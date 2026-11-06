@@ -812,3 +812,24 @@
     tool.addEventListener("focus", function () { place(tool); });
   });
 })();
+
+/* About: approach steps. Hover, focus or click shows that step's one-line how. */
+(function () {
+  var list = document.querySelector(".ap-list");
+  if (!list) return;
+  var steps = [].slice.call(list.querySelectorAll(".ap-step")), t = null;
+  function pick(step) {
+    steps.forEach(function (s) {
+      var on = s === step;
+      s.classList.toggle("is-on", on);
+      s.querySelector(".ap-btn").setAttribute("aria-expanded", on ? "true" : "false");
+    });
+  }
+  steps.forEach(function (s) {
+    var b = s.querySelector(".ap-btn");
+    b.addEventListener("click", function () { pick(s); });
+    b.addEventListener("focus", function () { pick(s); });
+    b.addEventListener("mouseenter", function () { clearTimeout(t); t = setTimeout(function () { pick(s); }, 80); });
+    b.addEventListener("mouseleave", function () { clearTimeout(t); });
+  });
+})();

@@ -2281,3 +2281,55 @@ a.t-tile:hover { background: var(--emph-hover); }
 .mc-cap { grid-template-columns: minmax(0, 1fr) auto; }
 .mc-top, .mc-pills { min-width: 0; max-width: 100%; }
 .mc-pills { overflow: hidden; }
+
+/* ===== Type scale, tightened: 13 / 16 / 18 / 26 / 42 / 52–68, weights 400 / 500 / 600 =====
+   One step per role, nothing within a pixel or two of another step. */
+:root { --fs-small: 0.8125rem; --fs-card: 1.125rem; }
+.logo { font-size: var(--fs-card); font-weight: 600; }
+.nav-links a:not(.btn) { font-size: var(--phi-1); }
+/* the closing heading speaks at the headline's level, never above it */
+.t-cta-panel h2 { max-width: 16ch; font-size: clamp(var(--phi-3), min(3.6vw, 6.4vh), var(--phi-4)); line-height: 1.04; letter-spacing: -0.04em; font-weight: 600; }
+.mc-name { font-size: var(--fs-card) !important; font-weight: 600; }
+.t-quote p { font-size: clamp(1.25rem, 1.8vw, var(--phi-2)); line-height: 1.3; }
+.mc-pills li, .tool-tip, .t-quote .t-src, footer .fine { font-size: var(--fs-small); }
+
+/* ===== About: same type scale as the homepage (13 / 16 / 18 / 26 / 52–68), three weights ===== */
+.about-head h1 { font-size: clamp(var(--phi-3), min(3.6vw, 6.4vh), var(--phi-4)); line-height: 1.04; letter-spacing: -0.04em; font-weight: 600; }
+.about-head .about-lede { max-width: 44ch; margin-top: var(--phi-1); font-size: var(--fs-card); line-height: 1.55; color: var(--ink-soft); }
+.about-story .body-text { max-width: 60ch; font-size: var(--fs-card); line-height: 1.618; letter-spacing: 0; color: var(--ink); }
+.about-body h2 { font-size: var(--phi-2); line-height: 1.2; font-weight: 600; letter-spacing: -0.025em; }
+.about-body .now-item h3 { margin: 0 0 6px; font-size: var(--fs-card); font-weight: 600; }
+.about-body .now-item p { font-size: var(--phi-1); }
+.skill-row h3 { font-size: var(--fs-card); font-weight: 600; letter-spacing: -0.01em; }
+.skill-list { margin: 0; font-size: var(--phi-1); line-height: 1.6; color: var(--ink-soft); }
+/* buttons do not inherit the page font on their own */
+.faq-q, .ap-btn { font: inherit; }
+.about-body .faq-q { font-size: var(--fs-card); font-weight: 600; letter-spacing: -0.01em; color: var(--ink); }
+.about-body .faq-a p { font-size: var(--phi-1); line-height: 1.65; }
+
+/* approach: five steps; the chosen one shows its one-line how. Space for every line is kept, so nothing shifts. */
+.ap-list { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 24px; margin: 0; padding: 0; list-style: none; }
+.ap-btn { all: unset; box-sizing: border-box; display: block; width: 100%; padding-top: 16px; border-top: 2px solid var(--line); cursor: pointer; transition: border-color var(--dur-base) var(--ease-out); }
+.ap-btn:focus-visible { outline: 3px solid var(--out); outline-offset: 4px; }
+.ap-n { display: block; margin-bottom: 10px; font-size: var(--fs-small); font-weight: 500; color: var(--out); }
+.ap-t { display: block; font-size: var(--fs-card); line-height: 1.25; font-weight: 600; letter-spacing: -0.01em; color: var(--ink-soft); transition: color var(--dur-base) var(--ease-out); }
+.ap-loop { display: block; margin-top: 10px; color: var(--out); }
+.ap-d { margin: 10px 0 0; font-size: var(--phi-1); line-height: 1.5; color: var(--ink-soft); opacity: 0; transform: translateY(6px); transition: opacity var(--dur-fast) var(--ease-in), transform var(--dur-fast) var(--ease-in); }
+.ap-step.is-on .ap-btn, .ap-btn:hover { border-color: var(--ink); }
+.ap-step.is-on .ap-t, .ap-btn:hover .ap-t { color: var(--ink); }
+.ap-step.is-on .ap-d { opacity: 1; transform: none; transition: opacity var(--dur-base) var(--ease-out) 0.06s, transform var(--dur-base) var(--ease-out) 0.06s; }
+@media (max-width: 860px) {
+  .ap-list { grid-template-columns: 1fr; gap: 20px; }
+  .ap-btn { cursor: default; }
+  .ap-t { color: var(--ink); }
+  .ap-d { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) { .ap-btn, .ap-t, .ap-d { transition: none; } }
+
+/* portrait in dark mode: the photo keeps its light card, so it does not sink into the page */
+:root[data-theme="dark"] .hero-portrait { background: #dcdcd8; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .hero-portrait { background: #dcdcd8; } }
+.about-head h1 .line { display: inline; }
+.about-head h1 .line + .visually-hidden + .line::before { content: " "; }
+.about-body .local-time { font-size: var(--fs-small); }
+@media (min-width: 861px) { .about-head .hero-portrait { max-width: 320px; } }
