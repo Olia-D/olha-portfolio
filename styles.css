@@ -2404,3 +2404,17 @@ a.t-tile:hover { background: var(--emph-hover); }
 .ab-approach .ap-list { margin-top: 10px; }
 .ab-skills { padding-top: 14px; gap: 20px; }
 @media (min-width: 1024px) { .ab-grid { min-height: 0; grid-template-rows: auto; } .ab-portrait { min-height: 0; } }
+/* About, calmer: story, then approach, then three facts, then skills. No icons, one Email me (in the header). */
+.ab-story { grid-column: 3 / 7; grid-row: 1; align-self: end; padding: 8px 4px 12px; }
+.ab-story h1 { max-width: 26ch; font-size: clamp(1.9rem, 2.9vw, var(--phi-3)); }
+.ab-approach { grid-column: 3 / 7; grid-row: 2; }
+.ab-facts { grid-column: 3 / 7; grid-row: 3; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.ab-fact { grid-row: auto; display: flex; flex-direction: column; gap: 6px; }
+.ab-fact p { font-size: 0.9375rem; }
+.ab-portrait { grid-row: 1 / 4; }
+@media (max-width: 1023px) {
+  .ab-story { grid-column: 2 / 3; }
+  .ab-approach, .ab-facts { grid-column: 1 / -1; grid-row: auto; }
+}
+@media (max-width: 640px) { .ab-facts { grid-template-columns: 1fr; } .ab-story { grid-column: 1; } }
+.ab-fact { align-items: flex-start; }
