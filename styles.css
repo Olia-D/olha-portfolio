@@ -2333,3 +2333,74 @@ a.t-tile:hover { background: var(--emph-hover); }
 .about-head h1 .line + .visually-hidden + .line::before { content: " "; }
 .about-body .local-time { font-size: var(--fs-small); }
 @media (min-width: 861px) { .about-head .hero-portrait { max-width: 320px; } }
+
+/* ===== About: the whole page on one screen. Portrait and story are the two big things; facts, approach and
+   contact sit in smaller tiles; skills run along the bottom. Same cards, scale and green as the homepage. ===== */
+.ab-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 12px; padding-top: clamp(20px, 3vh, 40px); padding-bottom: clamp(40px, 6vh, 72px); }
+.ab-tile { position: relative; min-width: 0; padding: 20px; border-radius: var(--r-xl); background: var(--surface); }
+.ab-tile h2 { margin: 0; font-size: var(--phi-1); line-height: 1.3; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); }
+.ab-portrait { grid-column: 1 / 3; grid-row: 1 / 4; margin: 0; padding: 0; overflow: hidden; background: var(--surface); min-height: 420px; }
+.ab-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 64% 26%; filter: grayscale(1); mix-blend-mode: multiply; }
+.ab-story { grid-column: 3 / 7; grid-row: 1; align-self: end; padding: 8px 4px 20px; }
+.ab-story h1 { margin: 0; max-width: 24ch; font-size: clamp(1.9rem, 2.9vw, var(--phi-3)); line-height: 1.08; font-weight: 600; letter-spacing: -0.035em; }
+.ab-story h1 .mute { color: var(--mute); }
+.ab-story p { max-width: 64ch; margin: var(--phi-1) 0 0; font-size: var(--phi-1); line-height: 1.6; color: var(--ink-soft); }
+.ab-fact { grid-row: 2; display: flex; flex-direction: column; gap: 6px; }
+.ab-fact p { margin: 0; font-size: 0.9375rem; line-height: 1.45; color: var(--ink-soft); }
+.ab-fact .local-time { display: block; margin-top: 4px; font-size: var(--fs-small); color: var(--ink-faint); }
+.ab-ico { display: grid; place-items: center; width: 36px; height: 36px; margin-bottom: 6px; border-radius: 50%; background: var(--ink); color: var(--bg); }
+.ab-ico svg { width: 18px; height: 18px; }
+.ab-approach { grid-column: 3 / 6; grid-row: 3; }
+.ab-approach .ap-list { position: relative; margin-top: 14px; gap: 10px; padding-bottom: 3.4em; }
+.ab-approach .ap-btn { padding-top: 10px; }
+.ab-approach .ap-n { margin-bottom: 6px; }
+.ab-approach .ap-t { font-size: 0.9375rem; }
+/* one shared line under the steps for the chosen step's how */
+.ab-approach .ap-d { position: absolute; left: 0; right: 0; bottom: 0; margin: 0; font-size: 0.9375rem; }
+.ab-approach .ap-loop { margin-top: 6px; width: 18px; height: 18px; }
+.ab-contact { grid-column: 6 / 7; grid-row: 3; display: flex; flex-direction: column; justify-content: space-between; gap: 16px; background: var(--emph); color: var(--on-emph); }
+.ab-contact h2 { color: var(--on-emph); font-size: var(--fs-card); line-height: 1.2; }
+.ab-contact-actions { display: grid; gap: 10px; justify-items: start; }
+.ab-li { display: inline-flex; align-items: center; gap: 8px; color: rgb(255 255 255 / 0.78); font-size: 0.9375rem; text-decoration: none; }
+.ab-li:hover { color: #fff; }
+.ab-contact a:focus-visible { outline: 3px solid var(--out-on-dark); outline-offset: 3px; }
+.ab-skills { grid-column: 1 / 7; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; padding: 18px 4px 0; border-top: 1px solid var(--line); }
+.ab-skills h3 { margin: 0 0 4px; font-size: 0.9375rem; font-weight: 600; }
+.ab-skills p { margin: 0; font-size: var(--fs-small); line-height: 1.5; color: var(--ink-soft); }
+:root[data-theme="dark"] .ab-portrait { background: #dcdcd8; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .ab-portrait { background: #dcdcd8; } }
+
+/* on a desktop screen the grid fills what is left of the first view */
+@media (min-width: 1024px) {
+  .ab-grid { min-height: calc(100svh - 80px); grid-template-rows: auto auto 1fr auto; align-content: start; }
+}
+@media (max-width: 1023px) {
+  .ab-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .ab-portrait { grid-column: 1 / 2; grid-row: 1 / 2; min-height: 320px; }
+  .ab-story { grid-column: 2 / 3; grid-row: 1; }
+  .ab-fact { grid-row: auto; }
+  .ab-approach, .ab-contact, .ab-skills { grid-column: 1 / -1; grid-row: auto; }
+  .ab-skills { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) {
+  .ab-grid { grid-template-columns: 1fr; }
+  .ab-portrait, .ab-story { grid-column: 1; }
+  .ab-portrait { grid-row: auto; min-height: 0; aspect-ratio: 4 / 3; }
+  .ab-story { grid-row: auto; }
+  .ab-skills { grid-template-columns: 1fr; gap: 14px; }
+}
+/* below 861px every step shows its line, so they stack instead of sharing one */
+@media (max-width: 860px) { .ab-approach .ap-list { grid-template-columns: 1fr; padding-bottom: 0; } .ab-approach .ap-d { position: static; } }
+/* fit the first screen: tighter story, icon beside the fact title, smaller paddings */
+.ab-grid { gap: 10px; padding-top: clamp(12px, 2vh, 28px); }
+.ab-story { padding: 0 4px 10px; }
+.ab-story h1 { max-width: 30ch; font-size: clamp(1.6rem, 2.3vw, 2.25rem); }
+.ab-story p { max-width: 78ch; margin-top: 12px; font-size: 0.9375rem; line-height: 1.55; }
+.ab-tile { padding: 16px; }
+.ab-fact { display: grid; grid-template-columns: auto 1fr; column-gap: 10px; row-gap: 4px; align-items: center; }
+.ab-fact .ab-ico { width: 28px; height: 28px; margin: 0; }
+.ab-fact .ab-ico svg { width: 15px; height: 15px; }
+.ab-fact p { grid-column: 1 / -1; font-size: 0.875rem; }
+.ab-approach .ap-list { margin-top: 10px; }
+.ab-skills { padding-top: 14px; gap: 20px; }
+@media (min-width: 1024px) { .ab-grid { min-height: 0; grid-template-rows: auto; } .ab-portrait { min-height: 0; } }
