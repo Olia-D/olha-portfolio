@@ -2529,20 +2529,19 @@ a.t-tile:hover { background: var(--emph-hover); }
    The hand leaves (ease-in, 300ms) while the phone arrives (ease-out, 450ms, slight rise). ===== */
 .card-ani { display: none; }
 @media (min-width: 861px) and (hover: hover) and (prefers-reduced-motion: no-preference) {
-  /* the demo phone starts exactly on the phone in the hand photo (same place, size and tilt) and grows to full size;
-     leaving runs it back into the hand. Moving between positions: ease-in-out, 600ms. */
-  .mc-media .card-ani { display: block; position: absolute; top: 3%; left: 50%; height: 94%; aspect-ratio: 320 / 659.3; opacity: 0; pointer-events: none;
+  /* enter: the phone emerges where the hand's phone is and grows into place (700ms, soft settle) while the hand clears
+     quickly (200ms) so there is no ghost behind it. exit: the phone shrinks back (600ms), then the hand returns. */
+  .mc-media .card-ani { display: block; position: absolute; top: 3%; left: 50%; height: 94%; aspect-ratio: 320 / 659.3; opacity: 0; pointer-events: none; will-change: transform, opacity;
     transform: translate(calc(-50% + var(--gx, 0px)), var(--gy, 0px)) rotate(14deg) scale(var(--gs, 0.7));
-    will-change: transform, opacity;
-    transition: transform 0.55s var(--ease-grow), opacity 0.26s var(--ease-in) 0.24s; }
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.18s var(--ease-in) 0.42s; }
   .mc-media .card-ani.run { opacity: 1; transform: translate(-50%, 0) rotate(0deg) scale(1);
-    transition: transform 0.65s var(--ease-grow), opacity 0.32s var(--ease-out); }
+    transition: transform 0.7s cubic-bezier(0.22, 0.8, 0.2, 1), opacity 0.16s var(--ease-out); }
   /* the case-study phone is drawn at its real 320px size and scaled as one piece, so the frame, island and buttons keep their proportions */
   .mc-media .card-ani .scr-ani { position: absolute; top: 0; left: 0; width: 320px; transform: scale(var(--k, 0.6)); transform-origin: 0 0; }
   .mc-media .card-ani .phone { width: 320px; }
   /* keeps the card morph's object-position glide too, so the hand never jumps while the card opens */
-  .mc.has-clip .mc-media > img { transform-origin: 77% 36%; transition: opacity 0.3s var(--ease-out) 0.22s, transform 0.55s var(--ease-grow), object-position var(--dur-morph) var(--ease-in-out); }
-  .mc.has-clip.is-open .mc-media.clip-on > img { opacity: 0; transform: scale(1.04); transition: opacity 0.38s var(--ease-in) 0.1s, transform 0.65s var(--ease-grow), object-position var(--dur-morph) var(--ease-in-out); }
+  .mc.has-clip .mc-media > img { transition: opacity 0.22s var(--ease-out) 0.38s, object-position var(--dur-morph) var(--ease-in-out); }
+  .mc.has-clip.is-open .mc-media.clip-on > img { opacity: 0; transition: opacity 0.2s var(--ease-in), object-position var(--dur-morph) var(--ease-in-out); }
 }
 
 /* Hero, statement first: the four words carry the page; the setup is a quiet line above them */

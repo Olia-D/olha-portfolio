@@ -893,15 +893,18 @@
     clearTimeout(t);
     t = setTimeout(function () {
       if (!hovered || !card.classList.contains("is-open")) return;
-      scale(); playing = true;
+      clearTimeout(resetT); scale(); playing = true;
       ani.classList.add("run"); media.classList.add("clip-on");
       if (demo.aniStart) demo.aniStart();
     }, delay);
   }
+  var resetT = null;
   function stop() {
     clearTimeout(t); playing = false;
     ani.classList.remove("run"); media.classList.remove("clip-on");
-    if (demo.aniStop) demo.aniStop();
+    // reset the demo only after the phone has shrunk away, so its screen never snaps mid-exit
+    clearTimeout(resetT);
+    resetT = setTimeout(function () { if (!playing && demo.aniStop) demo.aniStop(); }, 650);
   }
   card.addEventListener("mouseenter", function () { hovered = true; scale(); start(card.classList.contains("is-open") ? 150 : 820); });
   if (img && !img.complete) img.addEventListener("load", scale); else scale();
