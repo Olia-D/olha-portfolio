@@ -2418,3 +2418,31 @@ a.t-tile:hover { background: var(--emph-hover); }
 }
 @media (max-width: 640px) { .ab-facts { grid-template-columns: 1fr; } .ab-story { grid-column: 1; } }
 .ab-fact { align-items: flex-start; }
+
+/* ===== About, sparse: portrait, headline, one line of facts, the approach row. One box, more air. ===== */
+.ab-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.9fr); column-gap: clamp(32px, 4vw, 64px); row-gap: 0; align-items: end; padding-top: clamp(20px, 4vh, 48px); padding-bottom: clamp(48px, 7vh, 88px); }
+.ab-portrait { grid-column: 1; grid-row: 1 / 3; min-height: clamp(360px, 58vh, 540px); }
+.ab-story { grid-column: 2; grid-row: 1; align-self: end; padding: 0 0 clamp(32px, 5vh, 56px); }
+.ab-story h1 { max-width: 24ch; font-size: clamp(2rem, 3.2vw, var(--phi-3)); }
+.ab-facts-line { max-width: 52ch; margin: 18px 0 0; font-size: var(--fs-card); line-height: 1.55; color: var(--ink-soft); }
+.ab-facts-line .local-time { display: block; margin-top: 6px; font-size: var(--fs-small); color: var(--ink-faint); }
+.ab-approach { grid-column: 2; grid-row: 2; padding: 0; background: none; border-radius: 0; }
+.ab-approach h2 { margin: 0 0 6px; font-size: var(--phi-1); font-weight: 600; }
+.ab-approach .ap-list { gap: 24px; margin-top: 12px; padding-bottom: 3.4em; }
+.ab-approach .ap-t { font-size: var(--phi-1); }
+.ab-approach .ap-d { font-size: var(--phi-1); }
+/* skills: below the fold, a quiet four-column list */
+.ab-skills-sec { padding-top: clamp(48px, 7vw, 96px); }
+.ab-skills-sec h2 { margin: 0 0 20px; }
+.ab-skills-sec .ab-skills { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; padding: 20px 0 0; border-top: 1px solid var(--line); }
+.ab-skills-sec .ab-skills h3 { margin: 0 0 6px; font-size: var(--phi-1); font-weight: 600; }
+.ab-skills-sec .ab-skills p { margin: 0; font-size: 0.9375rem; line-height: 1.55; color: var(--ink-soft); }
+@media (max-width: 1023px) {
+  .ab-grid { grid-template-columns: 1fr; row-gap: 28px; }
+  .ab-portrait, .ab-story, .ab-approach { grid-column: 1; grid-row: auto; }
+  .ab-portrait { min-height: 0; aspect-ratio: 4 / 3; max-width: 520px; }
+  .ab-story { padding-bottom: 0; }
+  .ab-skills-sec .ab-skills { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 640px) { .ab-skills-sec .ab-skills { grid-template-columns: 1fr; gap: 18px; } }
+.ab-story .ab-facts-line { font-size: var(--fs-card); margin-top: 18px; max-width: 52ch; }
