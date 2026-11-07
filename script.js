@@ -747,28 +747,22 @@
     var pills = openCard.querySelector(".mc-pills"), pillsH = pills ? pills.offsetHeight : 0;
     var closedW = W / GROW;
     cards.forEach(function (c) {
-      var cap = c.querySelector(".mc-cap"), img = c.querySelector(".mc-media img"), btn = c.querySelector(".mc-arrow");
-      if (!cap || !img || !btn) return;
+      var cap = c.querySelector(".mc-cap"), media = c.querySelector(".mc-media"), btn = c.querySelector(".mc-arrow");
+      var img = media && media.querySelector(":scope > img");
+      if (!cap || !media || !btn) return;
       var P = parseFloat(getComputedStyle(cap).paddingLeft), B = btn.offsetWidth, gap = 20;
       var num = c.querySelector(".mc-num"), statH = parseFloat(getComputedStyle(num).fontSize);
       var statW = textW(num, 99) + 12 + textW(c.querySelector(".mc-lab"), 99);
       var nameW = textW(c.querySelector(".mc-name"), 24);
-      var top = P + topH + gap, r = (+img.getAttribute("width")) / (+img.getAttribute("height"));
+      var top = P + topH + gap, r = img ? (+img.getAttribute("width")) / (+img.getAttribute("height")) : parseFloat(media.dataset.ratio) || 1;
       var bleed = c.getAttribute("href") === "case-suggestions.html";
       function area(b) { var w = W - b.l - b.r, h = H - b.t - b.b; if (w <= 0 || h <= 0) return 0; var fw = Math.min(w, h * r); return fw * fw / r; }
       // the picture sits under the title block and either above the stat row (wide) or beside the stat (tall)
       var wide = { t: top, r: P, b: P + Math.max(statH, B) + gap, l: P };
       var tall = { t: bleed ? P : top, r: 2 * P + B, b: bleed ? 0 : P, l: bleed ? Math.max(P + statW + 32, P + nameW + 32) : P + statW + 32 };
-      if (bleed) {
-        // the hand photo is empty in its bottom-right corner, so it may run over the button column
-        // the title block sits left of this box, so the picture can start at the top padding
-        var hb = { t: P, r: P, b: 0, l: Math.max(P + statW + 32, P + nameW + 32) }, bw = W - hb.l - hb.r, bh = H - hb.t;
-        var fw = Math.min(bw, bh * r), fh = fw / r;
-        if ((fw - B) / fw >= 0.75 && (fh - (P + B)) / fh >= 0.78) tall = hb;
-      }
       var box = bleed ? tall : (area(tall) >= area(wide) ? tall : wide);
       c.style.setProperty("--oi", box.t + "px " + box.r + "px " + box.b + "px " + box.l + "px");
-      c.style.setProperty("--op", bleed ? "right bottom" : "center");
+      c.style.setProperty("--op", "center");
       // closed card: the picture sits below the (reserved) pills row and the title, with 16px padding
       var name = c.querySelector(".mc-name"), ncs = getComputedStyle(name), lh = parseFloat(ncs.lineHeight) || 20;
       var lines = lineCount(name, Math.max(40, closedW - 32));
@@ -865,85 +859,36 @@
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
 })();
 
-/* Suggestions card: while the pointer is anywhere on the open card, the hand swaps for the live phone demo
-   (the same coded screen as the case study) and plays from the start; leaving the card swaps back.
-   If the card is still opening, the demo waits for the morph to settle. */
+/* Suggestions card: the picture is the coded phone from the case study. It rests on the suggestion sheet and,
+   while the pointer is on the open card, plays the case-study demo from the start; leaving the card resets it. */
 (function () {
-  var card = document.querySelector(".mc.has-clip"), media = card && card.querySelector(".mc-media");
-  var ani = card && card.querySelector(".card-ani"), demo = ani && ani.querySelector("[data-ani]");
-  if (!media || !ani || !demo) return;
-  var mq = window.matchMedia("(min-width: 861px) and (hover: hover) and (prefers-reduced-motion: no-preference)");
+  var card = document.querySelector(".mc.has-demo"), ani = card && card.querySelector(".card-ani");
+  var demo = ani && ani.querySelector("[data-ani]");
+  if (!ani || !demo) return;
+  // the phone is drawn at its real 320px size and scaled as one piece, following the card while it morphs
+  function scale() { ani.style.setProperty("--k", (ani.clientHeight / 659.3).toFixed(4)); }
+  scale();
+  if (window.ResizeObserver) new ResizeObserver(scale).observe(ani); else window.addEventListener("resize", scale);
+  var mq = window.matchMedia("(hover: hover) and (prefers-reduced-motion: no-preference)");
   var t = null, hovered = false, playing = false;
-  var img = media.querySelector(":scope > img");
-  // Corners of the phone's OUTER OUTLINE in the hand photo, as fractions of the image, measured pixel by pixel on
-  // the 2354px original: top and right traced against the transparent background (the photo shows the metal rim
-  // there), left and bottom from the screen edge plus the measured 5px bezel. Order: top-left, top-right,
-  // bottom-right, bottom-left. The demo phone's outer frame is mapped onto them with a perspective transform.
-  var Q = [[0.7107, 0.02776], [1.0030, -0.00565], [0.8187, 0.6982], [0.5322, 0.7057]];
-  function homography(x0, y0, w, h, d) {
-    // maps the rectangle (x0,y0)-(x0+w,y0+h) of the element onto the quad d, as a CSS matrix3d
-    var X0 = d[0][0], Y0 = d[0][1], X1 = d[1][0], Y1 = d[1][1], X2 = d[2][0], Y2 = d[2][1], X3 = d[3][0], Y3 = d[3][1];
-    var dx1 = X1 - X2, dx2 = X3 - X2, dx3 = X0 - X1 + X2 - X3, dy1 = Y1 - Y2, dy2 = Y3 - Y2, dy3 = Y0 - Y1 + Y2 - Y3;
-    var den = dx1 * dy2 - dx2 * dy1, g = (dx3 * dy2 - dx2 * dy3) / den, hh = (dx1 * dy3 - dx3 * dy1) / den;
-    var a = X1 - X0 + g * X1, b = X3 - X0 + hh * X3, c = X0, dd = Y1 - Y0 + g * Y1, e = Y3 - Y0 + hh * Y3, f = Y0;
-    a /= w; dd /= w; g /= w; b /= h; e /= h; hh /= h;
-    // shift so the rectangle starts at (x0, y0), then normalise
-    c -= a * x0 + b * y0; f -= dd * x0 + e * y0; var k = 1 - g * x0 - hh * y0;
-    var m = [a, dd, 0, g, b, e, 0, hh, 0, 0, 1, 0, c, f, 0, k].map(function (n) { return n / k; });
-    m[10] = 1;
-    return "matrix3d(" + m.map(function (n) { return +n.toFixed(7); }).join(",") + ")";
-  }
-  function scale() {
-    var kk = ani.clientHeight / 659.3;
-    ani.style.setProperty("--k", kk.toFixed(4));
-    var mw = media.clientWidth, mh = media.clientHeight, r = img ? img.naturalWidth / img.naturalHeight || 1.076 : 1.076;
-    var dw = Math.min(mw, mh * r), dh = dw / r, il = mw - dw, it = mh - dh;   // contain, right bottom
-    var ah = ani.offsetHeight, aw = ani.offsetWidth, ax = (mw - aw) / 2, ay = mh * 0.03;
-    ani.style.left = Math.round(ax) + "px";
-    var quad = Q.map(function (q) { return [il + dw * q[0] - ax, it + dh * q[1] - ay]; });
-    // the demo's screen sits 10px inside its 320 x 659.3 frame (scaled by kk)
-    var rest = homography(0, 0, aw, ah, quad);
-    if (!ani.classList.contains("run") && ani.style.getPropertyValue("--rest") !== rest) {
-      // a new start pose applies instantly (it must not glide there), then the transitions come back
-      ani.style.transition = "none";
-      ani.style.setProperty("--rest", rest);
-      void getComputedStyle(ani).transform;
-      ani.style.transition = "";
-    } else ani.style.setProperty("--rest", rest);
-  }
-
-
-  window.addEventListener("resize", scale);
   function start(delay) {
-    if (!mq.matches || !hovered || !card.classList.contains("is-open") || playing) return;
+    if (!mq.matches || !hovered || playing || !card.classList.contains("is-open")) return;
     clearTimeout(t);
     t = setTimeout(function () {
       if (!hovered || !card.classList.contains("is-open")) return;
-      clearTimeout(resetT); scale();
-      // commit the freshly measured start pose before switching to the end pose, so the move starts from it
-      void getComputedStyle(ani).transform;
       playing = true;
-      ani.classList.add("run"); media.classList.add("clip-on");
       if (demo.aniStart) demo.aniStart();
     }, delay);
   }
-  var resetT = null;
-  function stop() {
-    clearTimeout(t); playing = false;
-    ani.classList.remove("run"); media.classList.remove("clip-on");
-    // reset the demo only after the phone has shrunk away, so its screen never snaps mid-exit
-    clearTimeout(resetT);
-    resetT = setTimeout(function () { if (!playing && demo.aniStop) demo.aniStop(); }, 1400);
-  }
-  card.addEventListener("mouseenter", function () { hovered = true; start(card.classList.contains("is-open") ? 150 : 900); });
-  if (img && !img.complete) img.addEventListener("load", scale); else scale();
+  function stop() { clearTimeout(t); playing = false; if (demo.aniStop) demo.aniStop(); }
+  card.addEventListener("mouseenter", function () { hovered = true; start(card.classList.contains("is-open") ? 150 : 800); });
   card.addEventListener("mouseleave", function () { hovered = false; stop(); });
-  // when the card opens under the pointer, start once the 700ms morph settles; closing always stops
+  // when the card opens under the pointer, play once the 700ms morph has settled; closing stops it
   var wasOpen = card.classList.contains("is-open");
   new MutationObserver(function () {
     var o = card.classList.contains("is-open");
     if (o === wasOpen) return;
     wasOpen = o;
-    if (o) start(900); else stop();   // after the 700ms morph has fully settled, so the measured pose is final
+    if (o) start(800); else stop();
   }).observe(card, { attributes: true, attributeFilter: ["class"] });
 })();

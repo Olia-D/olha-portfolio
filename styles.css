@@ -2523,27 +2523,15 @@ a.t-tile:hover { background: var(--emph-hover); }
   .ab-portrait { min-height: clamp(300px, 54vh, 680px); }
 }
 
-/* growth curve for the hand-to-phone hand-over: quick to start, long soft settle, no mid-way whip */
-:root { --ease-grow: cubic-bezier(0.32, 0.72, 0, 1); }
-/* ===== Suggestions card: on hover over the picture, the hand crossfades into the live phone demo from the case study.
-   The hand leaves (ease-in, 300ms) while the phone arrives (ease-out, 450ms, slight rise). ===== */
-.card-ani { display: none; }
-@media (min-width: 861px) and (hover: hover) and (prefers-reduced-motion: no-preference) {
-  /* In sequence, so the eye follows one thing at a time.
-     Enter: the demo phone sits exactly on the phone in the photo (perspective-mapped to its four corners),
-            the hand fades away (400ms), then the phone straightens and comes forward (950ms, soft settle).
-     Exit:  the phone moves back into the photo's pose (850ms), then the hand fades back in (400ms). */
-  .mc-media .card-ani { display: block; position: absolute; top: 3%; left: 0; height: 94%; aspect-ratio: 320 / 659.3; opacity: 0; pointer-events: none; will-change: transform, opacity;
-    transform-origin: 0 0; transform: var(--rest, none);
-    transition: transform 0.85s cubic-bezier(0.45, 0, 0.25, 1), opacity 0.12s linear 1.22s; }
-  .mc-media .card-ani.run { opacity: 1; transform: matrix3d(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1);
-    transition: opacity 0.12s linear, transform 0.95s cubic-bezier(0.22, 0.8, 0.2, 1) 0.4s; }
-  /* the case-study phone is drawn at its real 320px size and scaled as one piece, so the frame, island and buttons keep their proportions */
-  .mc-media .card-ani .scr-ani { position: absolute; top: 0; left: 0; width: 320px; transform: scale(var(--k, 0.6)); transform-origin: 0 0; }
-  .mc-media .card-ani .phone { width: 320px; }
-  /* keeps the card morph's object-position glide too, so the hand never jumps while the card opens */
-  .mc.has-clip .mc-media > img { transition: opacity 0.4s var(--ease-out) 0.85s, object-position var(--dur-morph) var(--ease-in-out); }
-  .mc.has-clip.is-open .mc-media.clip-on > img { opacity: 0; transition: opacity 0.4s var(--ease-in) 0.08s, object-position var(--dur-morph) var(--ease-in-out); }
+/* ===== Suggestions card: the picture is the coded phone from the case study, standing straight. On desktop it
+   runs large and is cut by the card's bottom edge; on small screens it fits whole above the caption. It rests on the suggestion sheet and plays the case demo on hover. ===== */
+.mc-media .card-ani { position: absolute; top: 3%; left: 50%; height: 94%; aspect-ratio: 320 / 659.3; transform: translateX(-50%); }
+.mc-media .card-ani .scr-ani { position: absolute; top: 0; left: 0; width: 320px; transform: scale(var(--k, 0.6)); transform-origin: 0 0; }
+.mc-media .card-ani .phone { width: 320px; }
+@media (min-width: 861px) {
+  /* closed, the narrow card shows the top of the phone; open, it sits a little lower so the sheet is in view */
+  .mc-media .card-ani { top: 16%; height: 118%; transition: top var(--dur-morph) var(--ease-in-out), height var(--dur-morph) var(--ease-in-out); }
+  .mc.is-open .mc-media .card-ani { top: 7%; height: 112%; }
 }
 
 /* Hero, statement first: the four words carry the page; the setup is a quiet line above them */
