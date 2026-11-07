@@ -2464,3 +2464,25 @@ a.t-tile:hover { background: var(--emph-hover); }
   .ab-approach .approach-timeline li::before { top: 18px; bottom: -2px; left: 7px; right: auto; width: 2px; height: auto; }
   .ab-approach .approach-timeline li::after { top: 3px; }
 }
+
+/* ===== Line-height and tracking scale: bigger text sits tighter, small and long text gets more air ===== */
+:root {
+  --lh-display: 1.1;  --ls-display: -0.03em;   /* 52-68px */
+  --lh-title: 1.12;                             /* 32-42px */
+  --lh-heading: 1.25; --ls-heading: -0.02em;   /* 26px */
+  --lh-label: 1.35;                             /* 18px titles */
+  --lh-text: 1.6;                               /* 16-18px sentences */
+  --lh-small: 1.5;                              /* 13px */
+}
+.t-hero-title, .t-cta-panel h2 { line-height: var(--lh-display); letter-spacing: var(--ls-display); }
+.ab-story h1 { line-height: var(--lh-title); letter-spacing: var(--ls-display); }
+#tools-h, .about-body h2, .ab-skills-sec h2, .t-quote p { line-height: var(--lh-heading); letter-spacing: var(--ls-heading); }
+.mc-name, .ab-approach .approach-timeline li, .ab-skills h3, .about-body .faq-q { line-height: var(--lh-label); }
+.t-hero-lede, .tools-note, .about-body .faq-a p, .ab-skills p, .ab-approach .approach-timeline li small, .mc-lab { line-height: var(--lh-text); }
+.ab-story .ab-facts-line { line-height: 1.55; }
+.mc-pills li, .tool-tip, .t-quote .t-src, footer .fine { line-height: var(--lh-small); }
+/* space under a heading is at least about 0.6 of its own size */
+#tools-h { margin-bottom: 0; }
+.tools-note { margin-top: 16px; }
+.ab-skills-sec h2, .about-body .faq-section h2 { margin-bottom: 0.7em; }
+.ab-approach h2 { margin-bottom: 10px; }
