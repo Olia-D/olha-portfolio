@@ -2446,3 +2446,5 @@ a.t-tile:hover { background: var(--emph-hover); }
 }
 @media (max-width: 640px) { .ab-skills-sec .ab-skills { grid-template-columns: 1fr; gap: 18px; } }
 .ab-story .ab-facts-line { font-size: var(--fs-card); margin-top: 18px; max-width: 52ch; }
+.ap-list { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 860px) { .ap-list { grid-template-columns: 1fr; } }
