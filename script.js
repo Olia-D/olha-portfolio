@@ -875,10 +875,11 @@
   var mq = window.matchMedia("(min-width: 861px) and (hover: hover) and (prefers-reduced-motion: no-preference)");
   var t = null, hovered = false, playing = false;
   var img = media.querySelector(":scope > img");
-  // Corners of the phone SCREEN in the hand photo, as fractions of the image, measured pixel by pixel on the
-  // 2354px original (edges fitted over 40+ rows and 15 columns): top-left, top-right, bottom-right, bottom-left.
-  // The demo phone's own screen is mapped onto them with a perspective transform, so the two line up 1:1.
-  var Q = [[0.7195, 0.02675], [0.9808, -0.00312], [0.7998, 0.6897], [0.5430, 0.6965]];
+  // Corners of the phone's OUTER OUTLINE in the hand photo, as fractions of the image, measured pixel by pixel on
+  // the 2354px original: top and right traced against the transparent background (the photo shows the metal rim
+  // there), left and bottom from the screen edge plus the measured 5px bezel. Order: top-left, top-right,
+  // bottom-right, bottom-left. The demo phone's outer frame is mapped onto them with a perspective transform.
+  var Q = [[0.7107, 0.02776], [1.0030, -0.00565], [0.8187, 0.6982], [0.5322, 0.7057]];
   function homography(x0, y0, w, h, d) {
     // maps the rectangle (x0,y0)-(x0+w,y0+h) of the element onto the quad d, as a CSS matrix3d
     var X0 = d[0][0], Y0 = d[0][1], X1 = d[1][0], Y1 = d[1][1], X2 = d[2][0], Y2 = d[2][1], X3 = d[3][0], Y3 = d[3][1];
@@ -901,7 +902,7 @@
     ani.style.left = Math.round(ax) + "px";
     var quad = Q.map(function (q) { return [il + dw * q[0] - ax, it + dh * q[1] - ay]; });
     // the demo's screen sits 10px inside its 320 x 659.3 frame (scaled by kk)
-    var rest = homography(10 * kk, 10 * kk, 300 * kk, 639.3 * kk, quad);
+    var rest = homography(0, 0, aw, ah, quad);
     if (!ani.classList.contains("run") && ani.style.getPropertyValue("--rest") !== rest) {
       // a new start pose applies instantly (it must not glide there), then the transitions come back
       ani.style.transition = "none";
