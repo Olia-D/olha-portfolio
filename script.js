@@ -881,8 +881,9 @@
     // 70% of the image height, tilted about 15deg), so the demo phone can grow out of it
     var mw = media.clientWidth, mh = media.clientHeight, r = img ? img.naturalWidth / img.naturalHeight || 1.076 : 1.076;
     var dw = Math.min(mw, mh * r), dh = dw / r, il = mw - dw, it = mh - dh;   // contain, right bottom
-    var px = il + dw * 0.77, py = it + dh * 0.357, ph = dh * 0.704;
+    var px = il + dw * 0.775, py = it + dh * 0.34, ph = dh * 0.665;
     var ah = ani.offsetHeight, ax = mw / 2, ay = mh * 0.03 + ah / 2;
+    // the demo phone's resting pose: exactly on the phone in the photo (place, size, tilt)
     ani.style.setProperty("--gx", Math.round(px - ax) + "px");
     ani.style.setProperty("--gy", Math.round(py - ay) + "px");
     ani.style.setProperty("--gs", (ph / ah).toFixed(4));
@@ -904,7 +905,7 @@
     ani.classList.remove("run"); media.classList.remove("clip-on");
     // reset the demo only after the phone has shrunk away, so its screen never snaps mid-exit
     clearTimeout(resetT);
-    resetT = setTimeout(function () { if (!playing && demo.aniStop) demo.aniStop(); }, 650);
+    resetT = setTimeout(function () { if (!playing && demo.aniStop) demo.aniStop(); }, 1000);
   }
   card.addEventListener("mouseenter", function () { hovered = true; scale(); start(card.classList.contains("is-open") ? 150 : 820); });
   if (img && !img.complete) img.addEventListener("load", scale); else scale();
