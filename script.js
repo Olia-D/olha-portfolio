@@ -901,7 +901,14 @@
     ani.style.left = Math.round(ax) + "px";
     var quad = Q.map(function (q) { return [il + dw * q[0] - ax, it + dh * q[1] - ay]; });
     // the demo's screen sits 10px inside its 320 x 659.3 frame (scaled by kk)
-    ani.style.setProperty("--rest", homography(10 * kk, 10 * kk, 300 * kk, 639.3 * kk, quad));
+    var rest = homography(10 * kk, 10 * kk, 300 * kk, 639.3 * kk, quad);
+    if (!ani.classList.contains("run") && ani.style.getPropertyValue("--rest") !== rest) {
+      // a new start pose applies instantly (it must not glide there), then the transitions come back
+      ani.style.transition = "none";
+      ani.style.setProperty("--rest", rest);
+      void getComputedStyle(ani).transform;
+      ani.style.transition = "";
+    } else ani.style.setProperty("--rest", rest);
   }
 
 
@@ -911,7 +918,10 @@
     clearTimeout(t);
     t = setTimeout(function () {
       if (!hovered || !card.classList.contains("is-open")) return;
-      clearTimeout(resetT); scale(); playing = true;
+      clearTimeout(resetT); scale();
+      // commit the freshly measured start pose before switching to the end pose, so the move starts from it
+      void getComputedStyle(ani).transform;
+      playing = true;
       ani.classList.add("run"); media.classList.add("clip-on");
       if (demo.aniStart) demo.aniStart();
     }, delay);
@@ -924,7 +934,7 @@
     clearTimeout(resetT);
     resetT = setTimeout(function () { if (!playing && demo.aniStop) demo.aniStop(); }, 1400);
   }
-  card.addEventListener("mouseenter", function () { hovered = true; scale(); start(card.classList.contains("is-open") ? 150 : 820); });
+  card.addEventListener("mouseenter", function () { hovered = true; start(card.classList.contains("is-open") ? 150 : 900); });
   if (img && !img.complete) img.addEventListener("load", scale); else scale();
   card.addEventListener("mouseleave", function () { hovered = false; stop(); });
   // when the card opens under the pointer, start once the 700ms morph settles; closing always stops
@@ -933,6 +943,6 @@
     var o = card.classList.contains("is-open");
     if (o === wasOpen) return;
     wasOpen = o;
-    if (o) { setTimeout(scale, 720); start(760); } else stop();
+    if (o) start(900); else stop();   // after the 700ms morph has fully settled, so the measured pose is final
   }).observe(card, { attributes: true, attributeFilter: ["class"] });
 })();
