@@ -709,9 +709,14 @@
     if (mq.matches) {
       var top = row.getBoundingClientRect().top + window.scrollY;
       // leave a thin band at the bottom, so only the tips of the quote cards below show as a teaser
-      row.style.setProperty("--mc-h", Math.max(320, Math.min(820, window.innerHeight - top - 56)) + "px");
+      // The cards take the screen, but always leave a calm gap (at least 48px) and let only the tips of the
+      // quote cards show above the fold (about 64px), on any screen height.
+      var PEEK = 64, GAP = 48, h = Math.max(320, Math.min(1000, window.innerHeight - top - PEEK - GAP));
+      row.style.setProperty("--mc-h", h + "px");
+      var hero = row.closest(".t-hero");
+      if (hero) hero.style.paddingBottom = Math.max(GAP, window.innerHeight - top - h - PEEK) + "px";
       fit(w * GROW / (GROW + n - 1));
-    } else row.style.removeProperty("--mc-h");
+    } else { row.style.removeProperty("--mc-h"); var hr = row.closest(".t-hero"); if (hr) hr.style.paddingBottom = ""; }
   }
   // For each card, pick the largest picture box that stays clear of the text column and the button:
   // either the full height left of the button, or the full width above the button row.
@@ -832,4 +837,22 @@
     b.addEventListener("mouseenter", function () { clearTimeout(t); t = setTimeout(function () { pick(s); }, 80); });
     b.addEventListener("mouseleave", function () { clearTimeout(t); });
   });
+})();
+
+/* About: the first screen is centred in the space above the fold, and the next section's heading
+   always peeks just above it, so the page reads as continuing on any screen height */
+(function () {
+  var grid = document.querySelector(".ab-grid"), next = document.querySelector(".ab-work");
+  if (!grid || !next) return;
+  var PEEK = 72;
+  function place() {
+    var GAP = Math.round(Math.min(96, Math.max(56, window.innerHeight * 0.09)));
+    if (window.innerWidth < 1024) { grid.style.minHeight = ""; next.style.paddingTop = ""; return; }
+    next.style.paddingTop = GAP + "px";
+    var top = grid.getBoundingClientRect().top + window.scrollY;
+    grid.style.minHeight = Math.max(0, window.innerHeight - PEEK - GAP - top) + "px";
+  }
+  place();
+  window.addEventListener("resize", place);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
 })();
