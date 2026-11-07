@@ -875,28 +875,35 @@
   var mq = window.matchMedia("(min-width: 861px) and (hover: hover) and (prefers-reduced-motion: no-preference)");
   var t = null, hovered = false, playing = false;
   var img = media.querySelector(":scope > img");
-  // Outer corners of the phone in the hand photo, as fractions of the image (measured on a grid):
-  // top-left, top-right, bottom-right, bottom-left. The photo is shot at an angle, so the demo phone is
-  // mapped onto these four points with a perspective transform for a 1:1 fit.
-  var Q = [[0.7167, 0.0054], [1.0017, 0.0054], [0.8292, 0.7097], [0.5450, 0.6971]];
-  function homography(w, h, d) {
-    // maps the rectangle (0,0) (w,0) (w,h) (0,h) onto the quad d, as a CSS matrix3d
-    var x0 = d[0][0], y0 = d[0][1], x1 = d[1][0], y1 = d[1][1], x2 = d[2][0], y2 = d[2][1], x3 = d[3][0], y3 = d[3][1];
-    var dx1 = x1 - x2, dx2 = x3 - x2, dx3 = x0 - x1 + x2 - x3, dy1 = y1 - y2, dy2 = y3 - y2, dy3 = y0 - y1 + y2 - y3;
+  // Corners of the phone SCREEN in the hand photo, as fractions of the image, measured pixel by pixel on the
+  // 2354px original (edges fitted over 40+ rows and 15 columns): top-left, top-right, bottom-right, bottom-left.
+  // The demo phone's own screen is mapped onto them with a perspective transform, so the two line up 1:1.
+  var Q = [[0.7195, 0.02675], [0.9808, -0.00312], [0.7998, 0.6897], [0.5430, 0.6965]];
+  function homography(x0, y0, w, h, d) {
+    // maps the rectangle (x0,y0)-(x0+w,y0+h) of the element onto the quad d, as a CSS matrix3d
+    var X0 = d[0][0], Y0 = d[0][1], X1 = d[1][0], Y1 = d[1][1], X2 = d[2][0], Y2 = d[2][1], X3 = d[3][0], Y3 = d[3][1];
+    var dx1 = X1 - X2, dx2 = X3 - X2, dx3 = X0 - X1 + X2 - X3, dy1 = Y1 - Y2, dy2 = Y3 - Y2, dy3 = Y0 - Y1 + Y2 - Y3;
     var den = dx1 * dy2 - dx2 * dy1, g = (dx3 * dy2 - dx2 * dy3) / den, hh = (dx1 * dy3 - dx3 * dy1) / den;
-    var a = x1 - x0 + g * x1, b = x3 - x0 + hh * x3, c = x0, dd = y1 - y0 + g * y1, e = y3 - y0 + hh * y3, f = y0;
+    var a = X1 - X0 + g * X1, b = X3 - X0 + hh * X3, c = X0, dd = Y1 - Y0 + g * Y1, e = Y3 - Y0 + hh * Y3, f = Y0;
     a /= w; dd /= w; g /= w; b /= h; e /= h; hh /= h;
-    return "matrix3d(" + [a, dd, 0, g, b, e, 0, hh, 0, 0, 1, 0, c, f, 0, 1].map(function (n) { return +n.toFixed(6); }).join(",") + ")";
+    // shift so the rectangle starts at (x0, y0), then normalise
+    c -= a * x0 + b * y0; f -= dd * x0 + e * y0; var k = 1 - g * x0 - hh * y0;
+    var m = [a, dd, 0, g, b, e, 0, hh, 0, 0, 1, 0, c, f, 0, k].map(function (n) { return n / k; });
+    m[10] = 1;
+    return "matrix3d(" + m.map(function (n) { return +n.toFixed(7); }).join(",") + ")";
   }
   function scale() {
-    ani.style.setProperty("--k", (ani.clientHeight / 659.3).toFixed(4));
+    var kk = ani.clientHeight / 659.3;
+    ani.style.setProperty("--k", kk.toFixed(4));
     var mw = media.clientWidth, mh = media.clientHeight, r = img ? img.naturalWidth / img.naturalHeight || 1.076 : 1.076;
     var dw = Math.min(mw, mh * r), dh = dw / r, il = mw - dw, it = mh - dh;   // contain, right bottom
     var ah = ani.offsetHeight, aw = ani.offsetWidth, ax = (mw - aw) / 2, ay = mh * 0.03;
     ani.style.left = Math.round(ax) + "px";
     var quad = Q.map(function (q) { return [il + dw * q[0] - ax, it + dh * q[1] - ay]; });
-    ani.style.setProperty("--rest", homography(aw, ah, quad));
+    // the demo's screen sits 10px inside its 320 x 659.3 frame (scaled by kk)
+    ani.style.setProperty("--rest", homography(10 * kk, 10 * kk, 300 * kk, 639.3 * kk, quad));
   }
+
 
   window.addEventListener("resize", scale);
   function start(delay) {
