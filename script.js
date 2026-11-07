@@ -871,7 +871,7 @@
     wasOpen = open;
     clearTimeout(t);
     if (open) {
-      t = setTimeout(function () { clip.classList.add("run"); media.classList.add("clip-on"); }, 550);
+      t = setTimeout(function () { clip.classList.add("run"); media.classList.add("clip-on"); }, 650);  // as the 700ms morph settles
     } else { clip.classList.remove("run"); media.classList.remove("clip-on"); }
   }
   new MutationObserver(sync).observe(card, { attributes: true, attributeFilter: ["class"] });
