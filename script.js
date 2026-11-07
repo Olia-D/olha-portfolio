@@ -746,15 +746,17 @@
       var P = parseFloat(getComputedStyle(cap).paddingLeft), B = btn.offsetWidth, gap = 20;
       var num = c.querySelector(".mc-num"), statH = parseFloat(getComputedStyle(num).fontSize);
       var statW = textW(num, 99) + 12 + textW(c.querySelector(".mc-lab"), 99);
+      var nameW = textW(c.querySelector(".mc-name"), 24);
       var top = P + topH + gap, r = (+img.getAttribute("width")) / (+img.getAttribute("height"));
       var bleed = c.getAttribute("href") === "case-suggestions.html";
       function area(b) { var w = W - b.l - b.r, h = H - b.t - b.b; if (w <= 0 || h <= 0) return 0; var fw = Math.min(w, h * r); return fw * fw / r; }
       // the picture sits under the title block and either above the stat row (wide) or beside the stat (tall)
       var wide = { t: top, r: P, b: P + Math.max(statH, B) + gap, l: P };
-      var tall = { t: top, r: 2 * P + B, b: bleed ? 0 : P, l: P + statW + 32 };
+      var tall = { t: bleed ? P : top, r: 2 * P + B, b: bleed ? 0 : P, l: bleed ? Math.max(P + statW + 32, P + nameW + 32) : P + statW + 32 };
       if (bleed) {
         // the hand photo is empty in its bottom-right corner, so it may run over the button column
-        var hb = { t: top, r: P, b: 0, l: P + statW + 32 }, bw = W - hb.l - hb.r, bh = H - hb.t;
+        // the title block sits left of this box, so the picture can start at the top padding
+        var hb = { t: P, r: P, b: 0, l: Math.max(P + statW + 32, P + nameW + 32) }, bw = W - hb.l - hb.r, bh = H - hb.t;
         var fw = Math.min(bw, bh * r), fh = fw / r;
         if ((fw - B) / fw >= 0.75 && (fh - (P + B)) / fh >= 0.78) tall = hb;
       }
@@ -855,4 +857,19 @@
   place();
   window.addEventListener("resize", place);
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
+})();
+
+/* Suggestions card clip: starts from the beginning each time the card opens, stops when it closes */
+(function () {
+  var card = document.querySelector(".mc.has-clip"), clip = card && card.querySelector(".sclip");
+  if (!clip) return;
+  var t = null;
+  function sync() {
+    clearTimeout(t);
+    if (card.classList.contains("is-open")) {
+      t = setTimeout(function () { clip.classList.add("run"); card.classList.add("clip-on"); }, 550);
+    } else { clip.classList.remove("run"); card.classList.remove("clip-on"); }
+  }
+  new MutationObserver(sync).observe(card, { attributes: true, attributeFilter: ["class"] });
+  sync();
 })();
