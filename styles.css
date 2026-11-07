@@ -2448,3 +2448,19 @@ a.t-tile:hover { background: var(--emph-hover); }
 .ab-story .ab-facts-line { font-size: var(--fs-card); margin-top: 18px; max-width: 52ch; }
 .ap-list { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 @media (max-width: 860px) { .ap-list { grid-template-columns: 1fr; } }
+
+/* About: the approach uses the same timeline as the case studies (dot, line, number, step, one line) */
+.ab-approach .approach-timeline { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0 28px; margin: 22px 0 0; padding: 0; list-style: none; }
+.ab-approach .approach-timeline li { position: relative; display: block; padding: 38px 0 0; border: 0; font-size: var(--fs-card); font-weight: 600; letter-spacing: -0.01em; line-height: 1.25; color: var(--ink); }
+.ab-approach .approach-timeline li::before { content: ""; position: absolute; top: 7px; left: 20px; right: -28px; height: 2px; background: var(--line); }
+.ab-approach .approach-timeline li:last-child::before { display: none; }
+.ab-approach .approach-timeline li::after { content: ""; position: absolute; top: 0; left: 0; width: 16px; height: 16px; border-radius: 50%; background: var(--ink); box-shadow: 0 0 0 4px var(--bg); }
+.ab-approach .approach-timeline li span { display: block; margin: 0 0 6px; font-size: var(--fs-small); font-weight: 500; color: var(--ink-faint); }
+.ab-approach .approach-timeline li small { display: block; margin-top: 8px; font-size: 0.9375rem; font-weight: 400; line-height: 1.5; letter-spacing: 0; color: var(--ink-soft); }
+@media (max-width: 860px) {
+  .ab-approach .approach-timeline { grid-template-columns: 1fr; gap: 0; }
+  .ab-approach .approach-timeline li { padding: 0 0 28px 40px; }
+  .ab-approach .approach-timeline li:last-child { padding-bottom: 0; }
+  .ab-approach .approach-timeline li::before { top: 18px; bottom: -2px; left: 7px; right: auto; width: 2px; height: auto; }
+  .ab-approach .approach-timeline li::after { top: 3px; }
+}
