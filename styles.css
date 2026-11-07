@@ -2530,7 +2530,7 @@ a.t-tile:hover { background: var(--emph-hover); }
   .sclip { display: block; position: absolute; top: 0; left: 50%; height: calc(100% - 24px); aspect-ratio: 1188 / 2250; transform: translateX(-50%); opacity: 0; pointer-events: none; transition: opacity 0.25s var(--ease-in); }
   .mc.is-open .sclip.run { opacity: 1; transition: opacity 0.45s var(--ease-out); }
   .mc.has-clip .mc-media > img { transition: opacity 0.25s var(--ease-out); }
-  .mc.has-clip.is-open.clip-on .mc-media > img { opacity: 0; }
+  .mc.has-clip.is-open .mc-media.clip-on > img { opacity: 0; }
   .mc-media .sclip > * { position: absolute; display: block; }
   .mc-media .sclip .sclip-menu, .mc-media .sclip .sclip-email { height: auto; object-fit: initial; padding: 0; }
   .mc-media .sclip .sclip-phone { inset: 0; width: 100%; height: 100%; object-fit: fill; }

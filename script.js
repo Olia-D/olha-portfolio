@@ -859,16 +859,20 @@
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
 })();
 
-/* Suggestions card clip: starts from the beginning each time the card opens, stops when it closes */
+/* Suggestions card clip: starts from the beginning each time the card opens, stops when it closes.
+   It reacts only when the open state really changes, and never touches the classes it watches. */
 (function () {
-  var card = document.querySelector(".mc.has-clip"), clip = card && card.querySelector(".sclip");
-  if (!clip) return;
-  var t = null;
+  var card = document.querySelector(".mc.has-clip"), clip = card && card.querySelector(".sclip"), media = card && card.querySelector(".mc-media");
+  if (!clip || !media) return;
+  var t = null, wasOpen = null;
   function sync() {
+    var open = card.classList.contains("is-open");
+    if (open === wasOpen) return;
+    wasOpen = open;
     clearTimeout(t);
-    if (card.classList.contains("is-open")) {
-      t = setTimeout(function () { clip.classList.add("run"); card.classList.add("clip-on"); }, 550);
-    } else { clip.classList.remove("run"); card.classList.remove("clip-on"); }
+    if (open) {
+      t = setTimeout(function () { clip.classList.add("run"); media.classList.add("clip-on"); }, 550);
+    } else { clip.classList.remove("run"); media.classList.remove("clip-on"); }
   }
   new MutationObserver(sync).observe(card, { attributes: true, attributeFilter: ["class"] });
   sync();
