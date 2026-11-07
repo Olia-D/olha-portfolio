@@ -865,31 +865,40 @@
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
 })();
 
-/* Suggestions card: hovering the picture in the open card swaps the hand for the live phone demo
-   (the same coded screen as the case study) and plays it from the start; leaving swaps back. */
+/* Suggestions card: while the pointer is anywhere on the open card, the hand swaps for the live phone demo
+   (the same coded screen as the case study) and plays from the start; leaving the card swaps back.
+   If the card is still opening, the demo waits for the morph to settle. */
 (function () {
   var card = document.querySelector(".mc.has-clip"), media = card && card.querySelector(".mc-media");
   var ani = card && card.querySelector(".card-ani"), demo = ani && ani.querySelector("[data-ani]");
   if (!media || !ani || !demo) return;
   var mq = window.matchMedia("(min-width: 861px) and (hover: hover) and (prefers-reduced-motion: no-preference)");
-  var t = null;
+  var t = null, hovered = false, playing = false;
   function scale() { ani.style.setProperty("--k", (ani.clientHeight / 659.3).toFixed(4)); }
   window.addEventListener("resize", scale);
-  function on() {
-    if (!mq.matches || !card.classList.contains("is-open")) return;
+  function start(delay) {
+    if (!mq.matches || !hovered || !card.classList.contains("is-open") || playing) return;
     clearTimeout(t);
-    scale();
-    t = setTimeout(function () { ani.classList.add("run"); media.classList.add("clip-on"); if (demo.aniStart) demo.aniStart(); }, 120);
+    t = setTimeout(function () {
+      if (!hovered || !card.classList.contains("is-open")) return;
+      scale(); playing = true;
+      ani.classList.add("run"); media.classList.add("clip-on");
+      if (demo.aniStart) demo.aniStart();
+    }, delay);
   }
-  function off() {
-    clearTimeout(t);
+  function stop() {
+    clearTimeout(t); playing = false;
     ani.classList.remove("run"); media.classList.remove("clip-on");
     if (demo.aniStop) demo.aniStop();
   }
-  media.addEventListener("mouseenter", on);
-  media.addEventListener("mouseleave", off);
-  // closing the card always swaps back
+  card.addEventListener("mouseenter", function () { hovered = true; start(card.classList.contains("is-open") ? 150 : 820); });
+  card.addEventListener("mouseleave", function () { hovered = false; stop(); });
+  // when the card opens under the pointer, start once the 700ms morph settles; closing always stops
   var wasOpen = card.classList.contains("is-open");
-  new MutationObserver(function () { var o = card.classList.contains("is-open"); if (o !== wasOpen) { wasOpen = o; if (!o) off(); } })
-    .observe(card, { attributes: true, attributeFilter: ["class"] });
+  new MutationObserver(function () {
+    var o = card.classList.contains("is-open");
+    if (o === wasOpen) return;
+    wasOpen = o;
+    if (o) start(700); else stop();
+  }).observe(card, { attributes: true, attributeFilter: ["class"] });
 })();
