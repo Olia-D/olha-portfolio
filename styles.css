@@ -2499,3 +2499,6 @@ a.t-tile:hover { background: var(--emph-hover); }
 @media (max-width: 760px) {
   .wk-list li { grid-template-columns: 1fr; gap: 4px; }
 }
+/* work rows: place and craft only, no years or job titles */
+.wk-list li { grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); }
+@media (max-width: 760px) { .wk-list li { grid-template-columns: 1fr; } }
