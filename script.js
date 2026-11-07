@@ -572,7 +572,13 @@
     function stop() { clearTimeout(timer); timer = null; }
     if (still) { rest(); return; }
     reset();
-    if (loops) {
+    if (fig.hasAttribute("data-manual")) {
+      // driven from outside (the homepage card): start from the beginning on demand, stop and reset on leave
+      fig.aniStart = function () { stop(); i = 0; reset(); on = true; timer = null; play(); };
+      fig.aniStop = function () { on = false; stop(); reset(); };
+      return;
+    }
+    if (loops && !fig.hasAttribute("data-nopause")) {
       var btn = document.createElement("button");
       btn.type = "button"; btn.className = "ani-pause"; btn.setAttribute("aria-pressed", "false");
       btn.setAttribute("aria-label", "Pause animation");
@@ -859,21 +865,28 @@
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
 })();
 
-/* Suggestions card clip: starts from the beginning each time the card opens, stops when it closes.
-   It reacts only when the open state really changes, and never touches the classes it watches. */
+/* Suggestions card: hovering the picture in the open card swaps the hand for the live phone demo
+   (the same coded screen as the case study) and plays it from the start; leaving swaps back. */
 (function () {
-  var card = document.querySelector(".mc.has-clip"), clip = card && card.querySelector(".sclip"), media = card && card.querySelector(".mc-media");
-  if (!clip || !media) return;
-  var t = null, wasOpen = null;
-  function sync() {
-    var open = card.classList.contains("is-open");
-    if (open === wasOpen) return;
-    wasOpen = open;
+  var card = document.querySelector(".mc.has-clip"), media = card && card.querySelector(".mc-media");
+  var ani = card && card.querySelector(".card-ani"), demo = ani && ani.querySelector("[data-ani]");
+  if (!media || !ani || !demo) return;
+  var mq = window.matchMedia("(min-width: 861px) and (hover: hover) and (prefers-reduced-motion: no-preference)");
+  var t = null;
+  function on() {
+    if (!mq.matches || !card.classList.contains("is-open")) return;
     clearTimeout(t);
-    if (open) {
-      t = setTimeout(function () { clip.classList.add("run"); media.classList.add("clip-on"); }, 650);  // as the 700ms morph settles
-    } else { clip.classList.remove("run"); media.classList.remove("clip-on"); }
+    t = setTimeout(function () { ani.classList.add("run"); media.classList.add("clip-on"); if (demo.aniStart) demo.aniStart(); }, 120);
   }
-  new MutationObserver(sync).observe(card, { attributes: true, attributeFilter: ["class"] });
-  sync();
+  function off() {
+    clearTimeout(t);
+    ani.classList.remove("run"); media.classList.remove("clip-on");
+    if (demo.aniStop) demo.aniStop();
+  }
+  media.addEventListener("mouseenter", on);
+  media.addEventListener("mouseleave", off);
+  // closing the card always swaps back
+  var wasOpen = card.classList.contains("is-open");
+  new MutationObserver(function () { var o = card.classList.contains("is-open"); if (o !== wasOpen) { wasOpen = o; if (!o) off(); } })
+    .observe(card, { attributes: true, attributeFilter: ["class"] });
 })();

@@ -2171,9 +2171,9 @@ a.t-tile:hover { background: var(--emph-hover); }
 .mc:nth-child(1) { animation-delay: 0.2s; } .mc:nth-child(2) { animation-delay: 0.24s; } .mc:nth-child(3) { animation-delay: 0.28s; } .mc:nth-child(4) { animation-delay: 0.32s; } .mc:nth-child(5) { animation-delay: 0.36s; }
 .mc:focus-visible { outline: 3px solid var(--out); outline-offset: 3px; }
 .mc-media { position: relative; display: block; aspect-ratio: 4 / 3; order: 1; margin: var(--mc-pad) var(--mc-pad) 0; }
-.mc-media img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: center; }
+.mc-media > img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: center; }
 .mc[href="case-suggestions.html"] .mc-media { margin-bottom: 0; }
-.mc[href="case-suggestions.html"] .mc-media img { object-position: center bottom; }
+.mc[href="case-suggestions.html"] .mc-media > img { object-position: center bottom; }
 .mc-cap { position: relative; display: grid; grid-template-columns: 1fr auto; grid-template-areas: "top top" "stat arrow"; row-gap: 18px; column-gap: 16px; align-items: end; padding: var(--mc-pad); order: 2; }
 .mc-top { grid-area: top; display: grid; gap: 12px; justify-items: start; }
 .mc-pills { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
@@ -2205,10 +2205,10 @@ a.t-tile:hover { background: var(--emph-hover); }
   /* the picture's box moves between two placements: in a strip it fits the card with padding,
      in the open card it takes the space the text and the button leave free */
   .mc-media { position: absolute; margin: 0; aspect-ratio: auto; inset: var(--ci, 96px 16px 16px); transition: inset var(--dur-morph) var(--ease-in-out); }
-  .mc-media img { transition: object-position var(--dur-morph) var(--ease-in-out), transform var(--dur-morph) var(--ease-in-out); }
+  .mc-media > img { transition: object-position var(--dur-morph) var(--ease-in-out), transform var(--dur-morph) var(--ease-in-out); }
   /* open: the script picks the largest box that keeps clear of the text and the button (--oi) */
   .mc.is-open .mc-media { inset: var(--oi, var(--mc-pad) calc(var(--mc-pad) * 2 + var(--mc-btn)) var(--mc-pad) var(--mc-text)); }
-  .mc.is-open .mc-media img { object-position: var(--op, center); }
+  .mc.is-open .mc-media > img { object-position: var(--op, center); }
   /* pictures start where the text column ends: never under the title or the stat */
   .mc-row { --mc-text: max(38%, calc(var(--mc-pad) * 2 + 15rem)); }
   .mc-cap { position: absolute; inset: 0; grid-template-rows: auto 1fr auto; grid-template-areas: "top top" ". ." "stat arrow"; padding: 16px; pointer-events: none; transition: padding var(--dur-morph) var(--ease-in-out); }
@@ -2229,7 +2229,7 @@ a.t-tile:hover { background: var(--emph-hover); }
   .t-hero + .t-voices { padding-top: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .mc, .mc-media, .mc-media img, .mc-cap, .mc-cap > *, .mc-pills, .mc-arrow, .mc-arrow svg, .t-hero-lede { transition: none !important; animation: none !important; }
+  .mc, .mc-media, .mc-media > img, .mc-cap, .mc-cap > *, .mc-pills, .mc-arrow, .mc-arrow svg, .t-hero-lede { transition: none !important; animation: none !important; }
 }
 
 /* one bright green for big numbers, quote marks and link underlines.
@@ -2523,31 +2523,16 @@ a.t-tile:hover { background: var(--emph-hover); }
   .ab-portrait { min-height: clamp(300px, 54vh, 680px); }
 }
 
-/* ===== Suggestions card: a short loop of the real flow, built from the case screens.
-   The suggestion sheet, the menu opens, Accept is tapped, the menu closes. Plays only while the card is open.
-   Hand to phone is a crossfade: the hand leaves (ease-in, 300ms) while the phone arrives (ease-out, 450ms),
-   both starting as the card finishes opening, so nothing moves at the same time as the morph. ===== */
-.sclip { display: none; }
+/* ===== Suggestions card: on hover over the picture, the hand crossfades into the live phone demo from the case study.
+   The hand leaves (ease-in, 300ms) while the phone arrives (ease-out, 450ms, slight rise). ===== */
+.card-ani { display: none; }
 @media (min-width: 861px) and (hover: hover) and (prefers-reduced-motion: no-preference) {
-  .mc-media .sclip { display: block; position: absolute; top: 4%; left: 50%; height: 92%; aspect-ratio: 922 / 1984; padding: 1.6%; box-sizing: content-box;
-    border-radius: 15% / 7%; background: #1b1b1b; box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.12), 0 24px 48px -20px rgb(0 0 0 / 0.35);
-    opacity: 0; transform: translate(-50%, 14px) scale(0.98); pointer-events: none;
-    transition: opacity 0.3s var(--ease-in), transform 0.3s var(--ease-in); }
-  .mc-media .sclip.run { opacity: 1; transform: translate(-50%, 0) scale(1); transition: opacity 0.45s var(--ease-out) 0.08s, transform 0.45s var(--ease-out) 0.08s; }
+  .mc-media .card-ani { display: block; position: absolute; top: 3%; left: 50%; height: 94%; aspect-ratio: 409 / 849; opacity: 0; pointer-events: none;
+    transform: translate(-50%, 14px) scale(0.98); transition: opacity 0.3s var(--ease-in), transform 0.3s var(--ease-in); }
+  .mc-media .card-ani.run { opacity: 1; transform: translate(-50%, 0) scale(1); transition: opacity 0.45s var(--ease-out) 0.08s, transform 0.45s var(--ease-out) 0.08s; }
+  .mc-media .card-ani .scr-ani, .mc-media .card-ani .phone { width: 100%; height: 100%; }
+  .mc-media .card-ani .phone { padding: 4%; border-radius: 13% / 6.2%; }
+  .mc-media .card-ani .phone .scr { border-radius: 10% / 4.8%; }
   .mc.has-clip .mc-media > img { transition: opacity 0.3s var(--ease-in), transform 0.3s var(--ease-in); }
   .mc.has-clip.is-open .mc-media.clip-on > img { opacity: 0; transform: scale(0.98); }
-  .mc-media .sclip .sclip-screen { position: absolute; inset: 1.6%; overflow: hidden; border-radius: 13% / 6%; background: #fff; }
-  .mc-media .sclip .sclip-screen > * { position: absolute; display: block; }
-  .mc-media .sclip .sclip-phone { inset: 0; width: 100%; height: 100%; object-fit: fill; padding: 0; }
-  .mc-media .sclip .sclip-menu { left: -0.9%; top: 46.27%; width: 101.7%; height: auto; padding: 0; object-fit: initial; opacity: 0; transform-origin: 90% 6%; }
-  .sclip-tap { width: 10%; aspect-ratio: 1; margin: -5% 0 0 -5%; border-radius: 50%; background: rgb(22 22 22 / 0.26); opacity: 0; }
-  .sclip-tap1 { left: 91.9%; top: 57.6%; }
-  .sclip-tap2 { left: 83.4%; top: 63.25%; }
-  .sclip.run .sclip-menu { animation: sc-menu 6s var(--ease-out) infinite; }
-  .sclip.run .sclip-tap1 { animation: sc-tap1 6s var(--ease-out) infinite; }
-  .sclip.run .sclip-tap2 { animation: sc-tap2 6s var(--ease-out) infinite; }
 }
-/* 6s loop: hold on the sheet, tap the menu, menu opens, tap Accept, menu closes, hold */
-@keyframes sc-tap1 { 0%, 18% { opacity: 0; transform: scale(0.4); } 21% { opacity: 1; transform: scale(1); } 26%, 100% { opacity: 0; transform: scale(1.5); } }
-@keyframes sc-menu { 0%, 23% { opacity: 0; transform: scale(0.96); } 27%, 52% { opacity: 1; transform: none; } 56%, 100% { opacity: 0; transform: scale(0.98); } }
-@keyframes sc-tap2 { 0%, 46% { opacity: 0; transform: scale(0.4); } 49% { opacity: 1; transform: scale(1); } 54%, 100% { opacity: 0; transform: scale(1.5); } }
