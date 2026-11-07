@@ -2527,14 +2527,18 @@ a.t-tile:hover { background: var(--emph-hover); }
    The hand leaves (ease-in, 300ms) while the phone arrives (ease-out, 450ms, slight rise). ===== */
 .card-ani { display: none; }
 @media (min-width: 861px) and (hover: hover) and (prefers-reduced-motion: no-preference) {
+  /* the demo phone starts exactly on the phone in the hand photo (same place, size and tilt) and grows to full size;
+     leaving runs it back into the hand. Moving between positions: ease-in-out, 600ms. */
   .mc-media .card-ani { display: block; position: absolute; top: 3%; left: 50%; height: 94%; aspect-ratio: 320 / 659.3; opacity: 0; pointer-events: none;
-    transform: translate(-50%, 14px) scale(0.98); transition: opacity 0.3s var(--ease-in), transform 0.3s var(--ease-in); }
-  .mc-media .card-ani.run { opacity: 1; transform: translate(-50%, 0) scale(1); transition: opacity 0.45s var(--ease-out) 0.08s, transform 0.45s var(--ease-out) 0.08s; }
+    transform: translate(calc(-50% + var(--gx, 0px)), var(--gy, 0px)) rotate(14deg) scale(var(--gs, 0.7));
+    transition: transform 0.5s var(--ease-in-out), opacity 0.18s var(--ease-in) 0.34s; }
+  .mc-media .card-ani.run { opacity: 1; transform: translate(-50%, 0) rotate(0deg) scale(1);
+    transition: transform 0.6s var(--ease-in-out), opacity 0.12s var(--ease-out); }
   /* the case-study phone is drawn at its real 320px size and scaled as one piece, so the frame, island and buttons keep their proportions */
   .mc-media .card-ani .scr-ani { position: absolute; top: 0; left: 0; width: 320px; transform: scale(var(--k, 0.6)); transform-origin: 0 0; }
   .mc-media .card-ani .phone { width: 320px; }
-  .mc.has-clip .mc-media > img { transition: opacity 0.3s var(--ease-in), transform 0.3s var(--ease-in); }
-  .mc.has-clip.is-open .mc-media.clip-on > img { opacity: 0; transform: scale(0.98); }
+  .mc.has-clip .mc-media > img { transition: opacity 0.35s var(--ease-in-out) 0.1s; }
+  .mc.has-clip.is-open .mc-media.clip-on > img { opacity: 0; transition-delay: 0.08s; }
 }
 
 /* Hero, statement first: the four words carry the page; the setup is a quiet line above them */

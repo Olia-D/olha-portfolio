@@ -874,7 +874,19 @@
   if (!media || !ani || !demo) return;
   var mq = window.matchMedia("(min-width: 861px) and (hover: hover) and (prefers-reduced-motion: no-preference)");
   var t = null, hovered = false, playing = false;
-  function scale() { ani.style.setProperty("--k", (ani.clientHeight / 659.3).toFixed(4)); }
+  var img = media.querySelector(":scope > img");
+  function scale() {
+    ani.style.setProperty("--k", (ani.clientHeight / 659.3).toFixed(4));
+    // where the phone sits inside the hand photo (measured on the image: centre at 77% / 36%,
+    // 70% of the image height, tilted about 15deg), so the demo phone can grow out of it
+    var mw = media.clientWidth, mh = media.clientHeight, r = img ? img.naturalWidth / img.naturalHeight || 1.076 : 1.076;
+    var dw = Math.min(mw, mh * r), dh = dw / r, il = mw - dw, it = mh - dh;   // contain, right bottom
+    var px = il + dw * 0.77, py = it + dh * 0.357, ph = dh * 0.704;
+    var ah = ani.offsetHeight, ax = mw / 2, ay = mh * 0.03 + ah / 2;
+    ani.style.setProperty("--gx", Math.round(px - ax) + "px");
+    ani.style.setProperty("--gy", Math.round(py - ay) + "px");
+    ani.style.setProperty("--gs", (ph / ah).toFixed(4));
+  }
   window.addEventListener("resize", scale);
   function start(delay) {
     if (!mq.matches || !hovered || !card.classList.contains("is-open") || playing) return;
@@ -891,7 +903,8 @@
     ani.classList.remove("run"); media.classList.remove("clip-on");
     if (demo.aniStop) demo.aniStop();
   }
-  card.addEventListener("mouseenter", function () { hovered = true; start(card.classList.contains("is-open") ? 150 : 820); });
+  card.addEventListener("mouseenter", function () { hovered = true; scale(); start(card.classList.contains("is-open") ? 150 : 820); });
+  if (img && !img.complete) img.addEventListener("load", scale); else scale();
   card.addEventListener("mouseleave", function () { hovered = false; stop(); });
   // when the card opens under the pointer, start once the 700ms morph settles; closing always stops
   var wasOpen = card.classList.contains("is-open");
@@ -899,6 +912,6 @@
     var o = card.classList.contains("is-open");
     if (o === wasOpen) return;
     wasOpen = o;
-    if (o) start(700); else stop();
+    if (o) { setTimeout(scale, 720); start(760); } else stop();
   }).observe(card, { attributes: true, attributeFilter: ["class"] });
 })();
