@@ -875,19 +875,29 @@
   var mq = window.matchMedia("(min-width: 861px) and (hover: hover) and (prefers-reduced-motion: no-preference)");
   var t = null, hovered = false, playing = false;
   var img = media.querySelector(":scope > img");
+  // Outer corners of the phone in the hand photo, as fractions of the image (measured on a grid):
+  // top-left, top-right, bottom-right, bottom-left. The photo is shot at an angle, so the demo phone is
+  // mapped onto these four points with a perspective transform for a 1:1 fit.
+  var Q = [[0.7167, 0.0054], [1.0017, 0.0054], [0.8292, 0.7097], [0.5450, 0.6971]];
+  function homography(w, h, d) {
+    // maps the rectangle (0,0) (w,0) (w,h) (0,h) onto the quad d, as a CSS matrix3d
+    var x0 = d[0][0], y0 = d[0][1], x1 = d[1][0], y1 = d[1][1], x2 = d[2][0], y2 = d[2][1], x3 = d[3][0], y3 = d[3][1];
+    var dx1 = x1 - x2, dx2 = x3 - x2, dx3 = x0 - x1 + x2 - x3, dy1 = y1 - y2, dy2 = y3 - y2, dy3 = y0 - y1 + y2 - y3;
+    var den = dx1 * dy2 - dx2 * dy1, g = (dx3 * dy2 - dx2 * dy3) / den, hh = (dx1 * dy3 - dx3 * dy1) / den;
+    var a = x1 - x0 + g * x1, b = x3 - x0 + hh * x3, c = x0, dd = y1 - y0 + g * y1, e = y3 - y0 + hh * y3, f = y0;
+    a /= w; dd /= w; g /= w; b /= h; e /= h; hh /= h;
+    return "matrix3d(" + [a, dd, 0, g, b, e, 0, hh, 0, 0, 1, 0, c, f, 0, 1].map(function (n) { return +n.toFixed(6); }).join(",") + ")";
+  }
   function scale() {
     ani.style.setProperty("--k", (ani.clientHeight / 659.3).toFixed(4));
-    // where the phone sits inside the hand photo (measured on the image: centre at 77% / 36%,
-    // 70% of the image height, tilted about 15deg), so the demo phone can grow out of it
     var mw = media.clientWidth, mh = media.clientHeight, r = img ? img.naturalWidth / img.naturalHeight || 1.076 : 1.076;
     var dw = Math.min(mw, mh * r), dh = dw / r, il = mw - dw, it = mh - dh;   // contain, right bottom
-    var px = il + dw * 0.775, py = it + dh * 0.34, ph = dh * 0.665;
-    var ah = ani.offsetHeight, ax = mw / 2, ay = mh * 0.03 + ah / 2;
-    // the demo phone's resting pose: exactly on the phone in the photo (place, size, tilt)
-    ani.style.setProperty("--gx", Math.round(px - ax) + "px");
-    ani.style.setProperty("--gy", Math.round(py - ay) + "px");
-    ani.style.setProperty("--gs", (ph / ah).toFixed(4));
+    var ah = ani.offsetHeight, aw = ani.offsetWidth, ax = (mw - aw) / 2, ay = mh * 0.03;
+    ani.style.left = Math.round(ax) + "px";
+    var quad = Q.map(function (q) { return [il + dw * q[0] - ax, it + dh * q[1] - ay]; });
+    ani.style.setProperty("--rest", homography(aw, ah, quad));
   }
+
   window.addEventListener("resize", scale);
   function start(delay) {
     if (!mq.matches || !hovered || !card.classList.contains("is-open") || playing) return;
@@ -905,7 +915,7 @@
     ani.classList.remove("run"); media.classList.remove("clip-on");
     // reset the demo only after the phone has shrunk away, so its screen never snaps mid-exit
     clearTimeout(resetT);
-    resetT = setTimeout(function () { if (!playing && demo.aniStop) demo.aniStop(); }, 1000);
+    resetT = setTimeout(function () { if (!playing && demo.aniStop) demo.aniStop(); }, 1400);
   }
   card.addEventListener("mouseenter", function () { hovered = true; scale(); start(card.classList.contains("is-open") ? 150 : 820); });
   if (img && !img.complete) img.addEventListener("load", scale); else scale();

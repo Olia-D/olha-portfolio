@@ -2530,20 +2530,20 @@ a.t-tile:hover { background: var(--emph-hover); }
 .card-ani { display: none; }
 @media (min-width: 861px) and (hover: hover) and (prefers-reduced-motion: no-preference) {
   /* In sequence, so the eye follows one thing at a time.
-     Enter: the demo phone takes the place of the phone in the photo, the hand fades away (250ms),
-            then the phone straightens and comes forward (650ms, soft settle).
-     Exit:  the phone moves back and tilts into the hand's pose (600ms), then the hand fades back in (250ms). */
-  .mc-media .card-ani { display: block; position: absolute; top: 3%; left: 50%; height: 94%; aspect-ratio: 320 / 659.3; opacity: 0; pointer-events: none; will-change: transform, opacity;
-    transform: translate(calc(-50% + var(--gx, 0px)), var(--gy, 0px)) rotate(14deg) scale(var(--gs, 0.7));
-    transition: transform 0.6s cubic-bezier(0.45, 0, 0.25, 1), opacity 0.1s linear 0.86s; }
-  .mc-media .card-ani.run { opacity: 1; transform: translate(-50%, 0) rotate(0deg) scale(1);
-    transition: opacity 0.1s linear, transform 0.65s cubic-bezier(0.22, 0.8, 0.2, 1) 0.25s; }
+     Enter: the demo phone sits exactly on the phone in the photo (perspective-mapped to its four corners),
+            the hand fades away (400ms), then the phone straightens and comes forward (950ms, soft settle).
+     Exit:  the phone moves back into the photo's pose (850ms), then the hand fades back in (400ms). */
+  .mc-media .card-ani { display: block; position: absolute; top: 3%; left: 0; height: 94%; aspect-ratio: 320 / 659.3; opacity: 0; pointer-events: none; will-change: transform, opacity;
+    transform-origin: 0 0; transform: var(--rest, none);
+    transition: transform 0.85s cubic-bezier(0.45, 0, 0.25, 1), opacity 0.12s linear 1.22s; }
+  .mc-media .card-ani.run { opacity: 1; transform: matrix3d(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1);
+    transition: opacity 0.12s linear, transform 0.95s cubic-bezier(0.22, 0.8, 0.2, 1) 0.4s; }
   /* the case-study phone is drawn at its real 320px size and scaled as one piece, so the frame, island and buttons keep their proportions */
   .mc-media .card-ani .scr-ani { position: absolute; top: 0; left: 0; width: 320px; transform: scale(var(--k, 0.6)); transform-origin: 0 0; }
   .mc-media .card-ani .phone { width: 320px; }
   /* keeps the card morph's object-position glide too, so the hand never jumps while the card opens */
-  .mc.has-clip .mc-media > img { transition: opacity 0.25s var(--ease-out) 0.6s, object-position var(--dur-morph) var(--ease-in-out); }
-  .mc.has-clip.is-open .mc-media.clip-on > img { opacity: 0; transition: opacity 0.25s var(--ease-in) 0.05s, object-position var(--dur-morph) var(--ease-in-out); }
+  .mc.has-clip .mc-media > img { transition: opacity 0.4s var(--ease-out) 0.85s, object-position var(--dur-morph) var(--ease-in-out); }
+  .mc.has-clip.is-open .mc-media.clip-on > img { opacity: 0; transition: opacity 0.4s var(--ease-in) 0.08s, object-position var(--dur-morph) var(--ease-in-out); }
 }
 
 /* Hero, statement first: the four words carry the page; the setup is a quiet line above them */
