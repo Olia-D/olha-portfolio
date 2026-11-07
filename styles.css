@@ -2502,3 +2502,7 @@ a.t-tile:hover { background: var(--emph-hover); }
 /* work rows: place and craft only, no years or job titles */
 .wk-list li { grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); }
 @media (max-width: 760px) { .wk-list li { grid-template-columns: 1fr; } }
+/* About: a short "Lately", like the Now sections on the reference designers' pages */
+.ab-now { padding-top: clamp(48px, 7vw, 96px); }
+.ab-now h2 { margin: 0 0 0.7em; }
+.ab-now p { max-width: 62ch; margin: 0 0 12px; font-size: var(--fs-card); line-height: 1.55; color: var(--ink-soft); }
