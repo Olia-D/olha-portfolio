@@ -873,9 +873,12 @@
   if (!media || !ani || !demo) return;
   var mq = window.matchMedia("(min-width: 861px) and (hover: hover) and (prefers-reduced-motion: no-preference)");
   var t = null;
+  function scale() { ani.style.setProperty("--k", (ani.clientHeight / 659.3).toFixed(4)); }
+  window.addEventListener("resize", scale);
   function on() {
     if (!mq.matches || !card.classList.contains("is-open")) return;
     clearTimeout(t);
+    scale();
     t = setTimeout(function () { ani.classList.add("run"); media.classList.add("clip-on"); if (demo.aniStart) demo.aniStart(); }, 120);
   }
   function off() {
