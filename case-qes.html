@@ -11,9 +11,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&display=block">
-<link rel="stylesheet" href="screens/screens.css?v=51">
+<link rel="stylesheet" href="screens/screens.css?v=56">
 <script>try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<link rel="stylesheet" href="styles.css?v=121">
+<link rel="stylesheet" href="styles.css?v=126">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
@@ -144,7 +144,18 @@
       <p>I didn't even know QES was an option here.</p>
       <cite>User quote</cite>
     </div>
-    <div class="solution-media"><img src="images/qes-problem-marketplace-1600.webp" srcset="images/qes-problem-marketplace-800.webp 800w, images/qes-problem-marketplace-1200.webp 1200w, images/qes-problem-marketplace-1600.webp 1600w, images/qes-problem-marketplace-2400.webp 2400w, images/qes-problem-marketplace-3600.webp 3600w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="4740" height="4212" alt="Annotated original marketplace showing signature providers with no QES information or pricing" loading="lazy" style="max-width:2370px"></div>
+    <div class="solution-media"><figure class="scr-notes qes-notes" data-noside data-notes>
+  <div class="scr-frame">
+    <div class="scr scr-img" role="img" aria-label="The original Electronic IDs page in the Oneflow marketplace: providers listed by brand name in two lists, with no signature levels or prices" style="width:1264em;height:1150em;font-size:calc(100cqi / 1264)">
+      <img loading="lazy" decoding="async" class="scr-pic" src="images/qes-mp-before-1264.webp" srcset="images/qes-mp-before-1264.webp 1264w, images/qes-mp-before-2528.webp 2528w" sizes="(max-width: 1180px) calc(100vw - 64px), 872px" alt="" style="left:0em;top:0em;width:1264em">
+      <div class="hs-layer" style="--w:1264;--h:1150">
+        <button class="hs" type="button" style="--x:1218;--y:128" data-zones="944 95 300 145" aria-expanded="false"><span class="hs-n">1</span><span class="hs-note">No prices anywhere. “Included in your current plan” left users guessing what each signature would cost.</span></button><button class="hs" type="button" style="--x:868;--y:262" data-zones="47 250 835 62" aria-expanded="false"><span class="hs-n">2</span><span class="hs-note">No legal guidance. Nothing said which signature level a contract needs, so compliant choices were guesswork.</span></button><button class="hs" type="button" style="--x:544;--y:667" data-zones="47 483 694 430" aria-expanded="false"><span class="hs-n">3</span><span class="hs-note">QES isn’t named at all. Providers are listed by brand, and some toggles sit off with no reason given.</span></button><button class="hs" type="button" style="--x:600;--y:952" data-zones="47 934 835 92" aria-expanded="false"><span class="hs-n">4</span><span class="hs-note">Two lists, Stand-alone and E-ID Hub, split the same kind of provider for reasons users couldn’t see.</span></button>
+      </div>
+    </div>
+  </div>
+  <figcaption class="hs-bar"><span class="hs-hint">Select a dot to see what was wrong.</span><button class="hs-all" type="button" aria-pressed="false">Show all notes</button></figcaption>
+  <ol class="hs-list" hidden></ol>
+</figure></div>
 
     <div class="challenge-grid">
     <div class="challenge-card">
@@ -160,11 +171,20 @@
       <p>Hidden pricing reduced trust, blocked activation decisions.</p>
     </div>
     </div>
-    <div class="solution-media"><img src="images/qes-problem-template-1248.webp" srcset="images/qes-problem-template-800.webp 800w, images/qes-problem-template-1200.webp 1200w, images/qes-problem-template-1248.webp 1248w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="1248" height="1596" alt="Original template settings with the confusing Signature mode and Basic option" loading="lazy" style="max-width:624px"></div>
-    <div class="challenge-card">
-      <h3>Confusing contract template setup</h3>
-      <p>Users were confused by the "Signature mode" concept and the "Basic" option that included both Advanced and Simple signatures. Many called support, worried that their signature might not be valid.</p>
-      <p class="impact">Impact: 30% increase in support tickets + users questioning signature validity.</p>
+    <div class="zz flip qes-zz">
+      <div class="zz-text"><p class="zz-k">Issue</p><h3>Confusing contract template setup</h3><p>Users were confused by the "Signature mode" concept and the "Basic" option that included both Advanced and Simple signatures. Many called support, worried that their signature might not be valid.</p><p class="impact"><b>30%</b><span>more support tickets, with users questioning signature validity</span></p></div>
+      <div class="zz-media solution-media"><figure class="scr-notes qes-notes" data-notes>
+  <div class="scr-frame">
+    <div class="scr scr-img" role="img" aria-label="The original Template settings panel: a greyed-out Signature mode set to Basic above the Signing method for counterparties" style="width:312em;height:317em;font-size:calc(100cqi / 312)">
+      <img loading="lazy" decoding="async" class="scr-pic" src="images/qes-template-before.svg" sizes="(max-width: 860px) 92vw, 420px" alt="" style="left:0em;top:0em;width:312em">
+      <div class="hs-layer" style="--w:312;--h:317">
+        <button class="hs" type="button" style="--x:296;--y:190" data-zones="16 163 280 56" aria-expanded="false"><span class="hs-n">1</span><span class="hs-note">“Signature mode: Basic” bundled Advanced and Simple signatures together, so users couldn’t tell what they were getting.</span></button><button class="hs" type="button" style="--x:296;--y:250" data-zones="16 224 280 58" aria-expanded="false"><span class="hs-n">2</span><span class="hs-note">A second setting, “Signing method for counterparties”, competed with Signature mode for the same decision.</span></button>
+      </div>
+    </div>
+  </div>
+  <figcaption class="hs-bar"><span class="hs-hint">Select a dot to see what was wrong.</span><button class="hs-all" type="button" aria-pressed="false">Show all notes</button></figcaption>
+  <ol class="hs-list" hidden></ol>
+</figure></div>
     </div>
     <div class="quote-block">
       <p>Why does my BankID end up under Basic? Is it no longer legally valid?</p>
@@ -204,14 +224,45 @@
       <h3>Contract template setup mental model</h3>
       <p>I tested a simple question: "Where would you look to set up secure signatures?" 8 out of 8 users clicked "Signing method" immediately.</p>
       <p class="result-tag">Result: Users already knew where to look. Reused existing mental model.</p>
-      <div class="solution-media media-row"><img class="vec on-white" src="images/qes-testing-options.svg" width="1221" height="781" alt="Test variants: where would you look to set up secure signatures?" loading="lazy"><img src="images/qes-3-1600.webp" srcset="images/qes-3-800.webp 800w, images/qes-3-1200.webp 1200w, images/qes-3-1600.webp 1600w, images/qes-3-2400.webp 2400w, images/qes-3-3600.webp 3600w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="3663" height="2343" alt="Contract template setup with secure signatures under Signing method" loading="lazy" style="max-width:1831px"></div>
+      <div class="solution-media media-row"><img class="vec on-white" src="images/qes-testing-options.svg" width="1221" height="781" alt="Test variants: where would you look to set up secure signatures?" loading="lazy"></div>
+      <div class="solution-media"><figure class="scr-ani qtf-fig" data-ani="tpl">
+  <div class="scr-frame qtf-frame">
+    <div class="scr qtf" role="group" aria-label="Oneflow template editor with Template settings open. Open Signing method and choose a signature level.">
+      <img class="qtf-bg" src="images/qes-editor-1440.webp" srcset="images/qes-editor-1440.webp 1440w, images/qes-editor-2880.webp 2880w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="1440" height="645" alt="" loading="lazy" decoding="async">
+      <span class="qtf-badge" aria-hidden="true"><span class="t">QES</span></span>
+      <div class="qtf-panel"><div class="qtf-scroll"><div class="qtf-in">
+        <p class="qtf-h"><span class="t">Template settings</span></p><svg class="qtf-x" viewBox="0 0 14 14" aria-hidden="true"><path d="M1.5 1.5l11 11M12.5 1.5l-11 11" stroke="#013a4c" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <p class="qtf-acc" style="top:71em"><span class="t">General</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.2 6 8l4-3.8" fill="none" stroke="#013a4c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
+        <p class="qtf-acc" style="top:101em"><span class="t">Text formatting</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.2 6 8l4-3.8" fill="none" stroke="#013a4c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
+        <p class="qtf-acc" style="top:131em"><span class="t">Signing and security</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 7.8 6 4l4 3.8" fill="none" stroke="#013a4c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
+        <p class="qtf-lab" style="top:177em"><span class="t">Signing method</span><svg viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="6.2" fill="none" stroke="#013a4c" stroke-width="1.2"/><path d="M7 6.2v4" stroke="#013a4c" stroke-width="1.3" stroke-linecap="round"/><circle cx="7" cy="4.1" r=".8" fill="#013a4c"/></svg></p>
+        <div class="qtf-field"><button type="button" class="qtf-sel" aria-haspopup="listbox" aria-expanded="false"><span class="t qtf-val">Standard e-signature</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.2 6 8l4-3.8" fill="none" stroke="#99b0b7" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="qtf-menu" role="listbox" aria-label="Signing method"><p class="qtf-gh" style="top:13em"><span class="t">Simple signatures</span></p><p class="qtf-gs" style="top:34em"><span class="t">No ID verification needed</span></p><button type="button" class="qtf-opt" role="option" aria-selected="true" data-v="Standard e-signature" style="top:59em"><span class="t">Standard e-signature</span><svg viewBox="0 0 14 12" aria-hidden="true"><path d="M1 6.5 5 10.5 13 1.5" fill="none" stroke="#013a4c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button type="button" class="qtf-opt" role="option" aria-selected="false" data-v="SMS verification" style="top:115em"><span class="t">SMS verification</span><svg viewBox="0 0 14 12" aria-hidden="true"><path d="M1 6.5 5 10.5 13 1.5" fill="none" stroke="#013a4c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button type="button" class="qtf-opt" role="option" aria-selected="false" data-v="Handwritten signature" style="top:171em"><span class="t">Handwritten signature</span><svg viewBox="0 0 14 12" aria-hidden="true"><path d="M1 6.5 5 10.5 13 1.5" fill="none" stroke="#013a4c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><i class="qtf-rule"></i><p class="qtf-gh" style="top:240em"><span class="t">eID Signatures</span></p><p class="qtf-gs" style="top:260em"><span class="t">Signatory selects eID during signing</span></p><button type="button" class="qtf-opt" role="option" aria-selected="false" data-v="Advanced (AdES) - Secure eID" style="top:285em"><span class="t">Advanced (AdES) - Secure eID</span><svg viewBox="0 0 14 12" aria-hidden="true"><path d="M1 6.5 5 10.5 13 1.5" fill="none" stroke="#013a4c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button type="button" class="qtf-opt" role="option" aria-selected="false" data-v="Qualified (QES) - Highest security eID" style="top:341em"><span class="t">Qualified (QES) - Highest security eID</span><svg viewBox="0 0 14 12" aria-hidden="true"><path d="M1 6.5 5 10.5 13 1.5" fill="none" stroke="#013a4c" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div></div>
+        <p class="qtf-link qtf-cust1" style="top:251em"><svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="1.7" fill="none" stroke="#187bb7" stroke-width="1"/><path d="M6 .8 7 2.2l1.7-.4.5 1.7 1.6.7-.6 1.6.9 1.4-1.4.9.1 1.7-1.7.2L7 11.2 6 10l-1 1.2-1.1-1.4-1.7-.2.1-1.7-1.4-.9.9-1.4-.6-1.6 1.6-.7.5-1.7 1.7.4z" fill="none" stroke="#187bb7" stroke-width="1" stroke-linejoin="round"/></svg><span class="t">Customize options</span></p><p class="qtf-help"><span class="t">Signatory chooses eID during signing</span></p>
+        <p class="qtf-lab" style="top:278em"><span class="t">Delivery channel</span><svg viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="6.2" fill="none" stroke="#013a4c" stroke-width="1.2"/><path d="M7 6.2v4" stroke="#013a4c" stroke-width="1.3" stroke-linecap="round"/><circle cx="7" cy="4.1" r=".8" fill="#013a4c"/></svg></p><p class="qtf-box" style="top:299em"><span class="t">Email</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.2 6 8l4-3.8" fill="none" stroke="#99b0b7" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></p><p class="qtf-link" style="top:344em"><svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="1.7" fill="none" stroke="#187bb7" stroke-width="1"/><path d="M6 .8 7 2.2l1.7-.4.5 1.7 1.6.7-.6 1.6.9 1.4-1.4.9.1 1.7-1.7.2L7 11.2 6 10l-1 1.2-1.1-1.4-1.7-.2.1-1.7-1.4-.9.9-1.4-.6-1.6 1.6-.7.5-1.7 1.7.4z" fill="none" stroke="#187bb7" stroke-width="1" stroke-linejoin="round"/></svg><span class="t">Customize options</span></p>
+        <p class="qtf-lab" style="top:370em"><span class="t">Two-factor authentication</span><svg viewBox="0 0 14 14" aria-hidden="true"><circle cx="7" cy="7" r="6.2" fill="none" stroke="#013a4c" stroke-width="1.2"/><path d="M7 6.2v4" stroke="#013a4c" stroke-width="1.3" stroke-linecap="round"/><circle cx="7" cy="4.1" r=".8" fill="#013a4c"/></svg></p><p class="qtf-box" style="top:391em"><span class="t">Email</span><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.2 6 8l4-3.8" fill="none" stroke="#99b0b7" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></p><p class="qtf-link" style="top:436em"><svg viewBox="0 0 12 12" aria-hidden="true"><circle cx="6" cy="6" r="1.7" fill="none" stroke="#187bb7" stroke-width="1"/><path d="M6 .8 7 2.2l1.7-.4.5 1.7 1.6.7-.6 1.6.9 1.4-1.4.9.1 1.7-1.7.2L7 11.2 6 10l-1 1.2-1.1-1.4-1.7-.2.1-1.7-1.4-.9.9-1.4-.6-1.6 1.6-.7.5-1.7 1.7.4z" fill="none" stroke="#187bb7" stroke-width="1" stroke-linejoin="round"/></svg><span class="t">Customize options</span></p>
+        <p class="qtf-lab" style="top:476em"><span class="t">Signing Period</span></p>
+        <p class="qtf-num" style="top:508em"><span class="t">14</span></p><p class="qtf-p" style="left:85em;top:515em"><span class="t">days after sending</span></p>
+        <p class="qtf-note" style="top:551em"><span class="t">The document can be signed until YYYY-MM-DD</span></p>
+      </div></div></div>
+    </div>
+  </div>
+  <figcaption>Try it: open Signing method and pick a signature level.</figcaption>
+</figure></div>
     </div>
 
     <div class="solution-block">
       <h3>Backend win (bonus)</h3>
       <p>The real breakthrough wasn't visual &mdash; it was simplifying the logic. I worked with engineers to cut conditional checks from 60+ to just 4.</p>
       <p class="result-tag">Result: Simpler code = faster responses. Win-win for users and engineers.</p>
-      <div class="solution-media"><img src="images/qes-backend-1600.webp" srcset="images/qes-backend-800.webp 800w, images/qes-backend-1200.webp 1200w, images/qes-backend-1600.webp 1600w, images/qes-backend-2400.webp 2400w, images/qes-backend-3600.webp 3600w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="3738" height="3066" alt="Simplified signing logic, from 60+ conditional checks to 4" loading="lazy" style="max-width:1869px"></div>
+      <div class="solution-media"><figure class="qbe" data-qbe>
+        <div class="qbe-seg" role="group" aria-label="Show the signing logic">
+          <button type="button" aria-pressed="true" data-k="before">Before: 60+ checks</button><button type="button" aria-pressed="false" data-k="after">After: 4 checks</button>
+        </div>
+        <div class="qbe-stage">
+          <img class="qbe-img qbe-before" src="images/qes-be-legacy-996.webp" srcset="images/qes-be-legacy-996.webp 996w, images/qes-be-legacy-1992.webp 1992w" sizes="(max-width: 1180px) calc(100vw - 64px), 872px" width="996" height="969" alt="Before: the legacy QES configuration matrix, 16 rows crossing feature flag, contract type, signature mode, qualified flag and display modes" loading="lazy" decoding="async">
+          <img class="qbe-img qbe-after" src="images/qes-be-new-825.webp" srcset="images/qes-be-new-825.webp 825w, images/qes-be-new-1650.webp 1650w" sizes="(max-width: 1180px) calc(100vw - 64px), 872px" width="825" height="566" alt="After: the updated logic table, where a signature type is available when it is enabled in the marketplace" loading="lazy" decoding="async">
+        </div>
+      </figure></div>
     </div>
 
     <div class="solution-block">
@@ -250,7 +301,12 @@
     <div class="solution-block">
       <h3>The full marketplace page</h3>
       <p>The redesigned Electronic signatures page end to end: signature levels, eID providers by region, and FAQs.</p>
-      <div class="solution-media"><img class="vec tall" src="images/qes-marketplace-full.svg" width="1444" height="3162" alt="Full redesigned Electronic signatures page in the Oneflow marketplace: signature levels, eID providers by region and FAQs" loading="lazy" decoding="async"></div>
+      <div class="solution-media"><figure class="qscroll">
+        <div class="qscroll-win" tabindex="0" role="region" aria-label="The full redesigned Electronic signatures page, scrollable">
+          <img src="images/qes-mp-full-1224.webp" srcset="images/qes-mp-full-1224.webp 1224w, images/qes-mp-full-2448.webp 2448w" sizes="(max-width: 1180px) calc(100vw - 64px), 872px" width="1224" height="2973" alt="Full redesigned Electronic signatures page in the Oneflow marketplace: signature levels, eID providers by region and FAQs" loading="lazy" decoding="async">
+        </div>
+        <figcaption>Scroll inside the page to see it end to end.</figcaption>
+      </figure></div>
     </div>
   </section>
 
@@ -310,4 +366,4 @@
   </div>
 </footer>
 
-<script src="script.js?v=65"></script>
+<script src="script.js?v=68"></script>

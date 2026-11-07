@@ -771,3 +771,77 @@
 
 /* hidden hotspot bubbles must not widen the page */
 .case-body .zz-media.solution-media { overflow-x: clip; }
+
+/* ----- QES: template setup flow, coded on top of the editor export -------------------------
+   The editor is the original export; the Template settings panel on the right is live code:
+   the Signing method dropdown opens, scrolls the panel like the product does, and sets the level.
+   1em = 1 design px of the 1440 x 645 frame. */
+.qtf-fig { margin: 0; }
+.qtf-frame { position: relative; overflow: hidden; border-radius: 10px; box-shadow: 0 1px 24px rgba(0, 0, 0, 0.15); }
+.scr.qtf { width: 1440em; height: 645em; font-size: calc(100cqi / 1440); background: #fff; color: #013a4c; }
+.qtf-bg { position: absolute; left: 0; top: 0; width: 1440em; height: 645em; display: block; max-width: none; }
+.qtf button { font: inherit; color: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: pointer; text-align: left; }
+.qtf-frame .scr.qtf p { white-space: nowrap; font-size: inherit; line-height: 1; margin: 0; max-width: none; color: #013a4c; letter-spacing: 0; }
+.qtf-frame .scr.qtf p.qtf-link { color: #187bb7; } .qtf-frame .scr.qtf p.qtf-gs, .qtf-frame .scr.qtf p.qtf-help, .qtf-frame .scr.qtf p.qtf-note { color: #587a85; }
+.qtf-frame .scr.qtf p.qtf-note { white-space: normal; }
+.qtf .t { display: block; line-height: 1.2; }
+.qtf-badge { position: absolute; left: 282em; top: 9.5em; width: 37em; height: 20em; display: grid; place-items: center; border: 1.5em solid #013a4c; border-radius: 10em; background: #fff; opacity: 0; transform: scale(.85); transition: opacity .25s ease, transform .3s cubic-bezier(.2, .8, .2, 1); }
+.qtf-badge .t { font-size: 11em; font-weight: 600; }
+.qtf.is-qes .qtf-badge { opacity: 1; transform: none; }
+
+.qtf-panel { position: absolute; left: 1079em; top: 64em; right: 0; bottom: 0; background: #fff; }
+.qtf-scroll { position: absolute; inset: 0; overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #c3d0d5 transparent; }
+.qtf-in { position: relative; height: 650em; }
+.qtf-in > * { position: absolute; left: 41em; }
+.qtf-h { left: 21em !important; top: 23em; } .qtf-h .t { font-size: 23.5em; font-weight: 600; }
+.qtf-x { left: 321em !important; top: 30em; width: 14em; height: 14em; }
+.qtf-acc { left: 21em !important; width: 324em; height: 22em; display: flex; align-items: center; justify-content: space-between; }
+.qtf-acc .t { font-size: 18em; font-weight: 600; }
+.qtf-acc svg, .qtf-sel svg, .qtf-box svg { width: 12em; height: 12em; }
+.qtf-lab { display: flex; align-items: center; gap: 4em; }
+.qtf-lab .t { font-size: 14em; font-weight: 600; }
+.qtf-lab svg { width: 14em; height: 14em; }
+.qtf-link { display: flex; align-items: center; gap: 5em; left: 46em !important; color: #187bb7; }
+.qtf-link .t { font-size: 13em; }
+.qtf-link svg { width: 11em; height: 11em; }
+.qtf-box { width: 280em; height: 40em; display: flex; align-items: center; justify-content: space-between; padding: 0 12em 0 13em; border: 1em solid #d6dfe2; border-radius: 4em; background: #fff; }
+.qtf-box .t { font-size: 14em; }
+.qtf-num { width: 30em; height: 30em; display: grid; place-items: center; border: 1em solid #c3d0d5; border-radius: 3em; }
+.qtf-num .t { font-size: 14em; }
+.qtf-p .t { font-size: 14em; }
+.qtf-note { width: 270em; white-space: normal !important; color: #587a85; }
+.qtf-note .t { font-size: 13em; line-height: 1.6; }
+
+/* the Signing method field */
+.qtf-field { top: 202em; width: 280em; z-index: 2; }
+.qtf-sel { width: 280em; height: 40em; display: flex !important; align-items: center; justify-content: space-between; padding: 0 12em 0 13em !important; border: 1em solid #d6dfe2 !important; border-radius: 4em; background: #fff !important; transition: border-color .15s ease; }
+.qtf-sel .t { font-size: 14em; }
+.qtf-sel:hover { border-color: #99b0b7 !important; }
+.qtf-sel:focus-visible { outline: 2px solid #187bb7; outline-offset: 2px; }
+.qtf-sel svg { transition: transform .2s ease; }
+.qtf.is-open .qtf-sel { border-color: #013a4c !important; border-radius: 4em 4em 0 0; }
+.qtf.is-open .qtf-sel svg { transform: rotate(180deg); }
+.qtf-menu { position: absolute; left: 0; top: 39em; width: 280em; height: 396em; border: 1em solid #013a4c; border-top-color: #d6dfe2; border-radius: 0 0 4em 4em; background: #fff; box-shadow: 0 6em 18em rgb(0 0 0 / .12); opacity: 0; visibility: hidden; transform: translateY(-4em); transition: opacity .16s ease, transform .2s ease, visibility .16s; }
+.qtf.is-open .qtf-menu { opacity: 1; visibility: visible; transform: none; }
+.qtf-menu > * { position: absolute; left: 0; right: 0; }
+.qtf-gh, .qtf-gs { padding-left: 11em; }
+.qtf-gh .t { font-size: 13em; font-weight: 600; }
+.qtf-gs { color: #587a85; } .qtf-gs .t { font-size: 11em; }
+.qtf-opt { white-space: nowrap; height: 56em; display: flex !important; align-items: center; justify-content: space-between; padding: 0 11em !important; transition: background-color .12s ease; }
+.qtf-opt .t { font-size: 13.5em; }
+.qtf-opt:hover, .qtf-opt.is-hover { background: #f2f6f8 !important; }
+.qtf-opt:focus-visible { outline: 2px solid #187bb7; outline-offset: -2px; }
+.qtf-opt svg { width: 14em; height: 12em; opacity: 0; }
+.qtf-opt[aria-selected="true"] svg { opacity: 1; }
+.qtf-rule { top: 227em; height: 1em; background: #d6dfe2; }
+.qtf-help { top: 252em; left: 48em !important; color: #587a85; opacity: 0; transition: opacity .2s ease; }
+.qtf-help .t { font-size: 11.5em; }
+.qtf.is-qes .qtf-help { opacity: 1; }
+.qtf.is-qes .qtf-cust1 { opacity: 0; visibility: hidden; }
+.qtf .ani-cursor { z-index: 6; }
+.qtf-fig figcaption { margin-top: 12px; font-size: 14px; color: var(--ink-faint, #666); text-align: center; }
+
+/* narrow screens: crop to the panel and the edge of the document, so the controls stay readable */
+@container (max-width: 700px) {
+  .scr.qtf { font-size: calc(100cqi / 600); margin-left: -840em; }
+}

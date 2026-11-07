@@ -464,7 +464,7 @@
     var frame = fig.querySelector(".scr-frame");
     function fit() {
       fig.classList.remove("has-side");
-      fig.classList.toggle("has-side", fig.clientWidth - Math.min(frame.offsetWidth, 440) >= 300);
+      fig.classList.toggle("has-side", !fig.hasAttribute("data-noside") && fig.clientWidth - Math.min(frame.offsetWidth, 440) >= 300);
       open().forEach(place);
     }
     fit();
@@ -587,7 +587,7 @@
         btn.setAttribute("aria-label", paused ? "Play animation" : "Pause animation");
         if (paused) { stop(); } else { timer = null; play(); }
       });
-      (scr.closest(".phone") || fig).appendChild(btn);
+      (scr.closest(".phone, .qtf-frame") || fig).appendChild(btn);
     }
     new IntersectionObserver(function (es) {
       es.forEach(function (e) { on = e.isIntersecting; if (on) { timer = null; play(); } else { stop(); } });
@@ -638,6 +638,53 @@
         ],
         function () { menu(false); acc.classList.remove("is-hover"); tap.classList.remove("is-on"); at(tap, 300, 640); },
         function () { menu(true); },
+        true);
+    }
+
+    if (kind === "tpl") {
+      // QES template setup: the Signing method field is live. The demo opens it, scrolls the panel the way the
+      // product does, and picks Qualified; readers can take over at any point, which pauses the demo.
+      var q = fig.querySelector(".qtf"), sel = q.querySelector(".qtf-sel"), val = q.querySelector(".qtf-val");
+      var scroller = q.querySelector(".qtf-scroll"), opts = q.querySelectorAll(".qtf-opt");
+      var qes = opts[opts.length - 1], cur2 = pointer(q, "ani-cursor");
+      var FIELD_BOTTOM = 242, MENU_H = 396, VIEW_H = 581;   // design px inside the panel
+      function scrollTo(y) { var k = scroller.clientHeight / VIEW_H; scroller.scrollTo({ top: y * k, behavior: still ? "auto" : "smooth" }); }
+      function setOpen(o) {
+        q.classList.toggle("is-open", o); sel.setAttribute("aria-expanded", String(o));
+        if (o) scrollTo(FIELD_BOTTOM + MENU_H - VIEW_H + 12); else scrollTo(0);
+      }
+      function choose(btn) {
+        opts.forEach(function (b) { b.setAttribute("aria-selected", String(b === btn)); b.classList.remove("is-hover"); });
+        var v = btn.dataset.v.replace(" eID", "").replace(" - Secure", "");
+        val.textContent = v;
+        q.classList.toggle("is-qes", /QES/.test(v) || /AdES/.test(v));
+        q.querySelector(".qtf-badge .t").textContent = /AdES/.test(v) ? "AdES" : "QES";
+        setOpen(false);
+      }
+      function resetTpl() { setOpen(false); choose(opts[0]); cur2.classList.remove("is-text"); at(cur2, 1000, 560); scroller.scrollTop = 0; }
+      // readers drive it themselves
+      var taken = false;
+      function takeOver() {
+        if (taken) return; taken = true;
+        var b = fig.querySelector(".ani-pause");
+        if (b && b.getAttribute("aria-pressed") !== "true") b.click();
+        cur2.style.opacity = "0";
+      }
+      sel.addEventListener("click", function (e) { if (e.isTrusted) takeOver(); setOpen(!q.classList.contains("is-open")); });
+      opts.forEach(function (b) { b.addEventListener("click", function (e) { if (e.isTrusted) takeOver(); choose(b); sel.focus({ preventScroll: true }); }); });
+      q.addEventListener("keydown", function (e) { if (e.key === "Escape" && q.classList.contains("is-open")) { setOpen(false); sel.focus({ preventScroll: true }); } });
+      document.addEventListener("click", function (e) { if (taken && q.classList.contains("is-open") && !e.target.closest(".qtf-field")) setOpen(false); });
+      player(fig, q, [
+          [900, function () { at(cur2, 1262, 288); }],
+          [800, function () { press(sel); setOpen(true); }],
+          [1200, function () { at(cur2, 1240, 607); }],
+          [700, function () { qes.classList.add("is-hover"); }],
+          [450, function () { press(qes); choose(qes); }],
+          [500, function () { at(cur2, 1000, 560); }],
+          [2800, function () {}]
+        ],
+        function () { if (!taken) resetTpl(); },
+        function () { choose(qes); },
         true);
     }
 
@@ -696,7 +743,7 @@
     paused = !paused; btn.setAttribute("aria-pressed", String(paused)); btn.setAttribute("aria-label", paused ? "Play animation" : "Pause animation");
     clearTimeout(timer); if (!paused) next();
   });
-  (scr.closest(".phone") || fig).appendChild(btn);
+  (scr.closest(".phone, .qtf-frame") || fig).appendChild(btn);
   new IntersectionObserver(function (es) { es.forEach(function (e) { on = e.isIntersecting; clearTimeout(timer); if (on) next(); }); }, { threshold: 0.4 }).observe(scr);
 })();
 
@@ -891,4 +938,17 @@
     wasOpen = o;
     if (o) start(800); else stop();
   }).observe(card, { attributes: true, attributeFilter: ["class"] });
+})();
+
+/* QES backend: before/after switch for the signing logic tables */
+(function () {
+  document.querySelectorAll("[data-qbe]").forEach(function (fig) {
+    var btns = fig.querySelectorAll(".qbe-seg button");
+    btns.forEach(function (b) {
+      b.addEventListener("click", function () {
+        btns.forEach(function (o) { o.setAttribute("aria-pressed", String(o === b)); });
+        fig.dataset.k = b.dataset.k;
+      });
+    });
+  });
 })();

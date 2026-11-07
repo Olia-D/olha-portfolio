@@ -2538,3 +2538,29 @@ a.t-tile:hover { background: var(--emph-hover); }
 .t-hero-title { max-width: none; }
 .t-hero-kicker { display: block; margin-bottom: 10px; font-size: var(--fs-card); line-height: 1.35; font-weight: 500; letter-spacing: -0.01em; color: var(--ink-soft); }
 .t-hero-big { display: block; }
+
+/* ===== QES case: interactive screens ===== */
+.qes-notes .scr-frame { border-radius: 10px; overflow: hidden; box-shadow: 0 1px 24px rgba(0, 0, 0, 0.15); }
+.qes-notes .scr-pic { position: absolute; height: auto; max-width: none; }
+.qes-zz .scr-frame { max-width: 420px; margin-inline: auto; }
+.qes-zz .scr-img { background: #fff; }
+/* backend: one table at a time, switched by a segmented control */
+.qbe { margin: 0; }
+.qbe-seg { display: inline-flex; gap: 4px; padding: 4px; margin: 0 0 16px; border-radius: 999px; background: var(--surface); }
+.qbe-seg button { border: 0; border-radius: 999px; padding: 9px 16px; background: none; font: 500 var(--fs-small, 14px)/1 inherit; font-family: inherit; color: var(--ink-soft); cursor: pointer; transition: background-color var(--dur-fast, .2s) var(--ease-out, ease), color var(--dur-fast, .2s) var(--ease-out, ease); }
+.qbe-seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.qbe-seg button:focus-visible { outline: 2px solid var(--out, #0e9a68); outline-offset: 2px; }
+.qbe-stage { display: grid; border-radius: 10px; background: #fff; box-shadow: 0 1px 24px rgba(0, 0, 0, 0.12); overflow: hidden; }
+/* each table sits in the same grid cell (the zoom script wraps them in buttons) */
+.qbe-stage > * { grid-area: 1 / 1; align-self: start; min-width: 0; transition: opacity .3s var(--ease-out, ease); }
+.case-body .solution-media .qbe-stage img { box-shadow: none; border-radius: 0; }
+.qbe-stage > :has(.qbe-after), .qbe-stage > .qbe-after { opacity: 0; pointer-events: none; justify-self: center; width: min(100%, 825px); }
+.qbe[data-k="after"] .qbe-stage > :has(.qbe-after), .qbe[data-k="after"] .qbe-stage > .qbe-after { opacity: 1; pointer-events: auto; }
+.qbe[data-k="after"] .qbe-stage > :has(.qbe-before), .qbe[data-k="after"] .qbe-stage > .qbe-before { opacity: 0; pointer-events: none; }
+/* full page: a fixed window the reader scrolls inside */
+.qscroll { margin: 0; }
+.qscroll-win { max-height: min(720px, 78vh); overflow-y: auto; overscroll-behavior: contain; border-radius: 10px; background: #fff; box-shadow: 0 1px 24px rgba(0, 0, 0, 0.15); scrollbar-width: thin; }
+.case-body .solution-media .qscroll-win img { border-radius: 0; box-shadow: none; }
+.qscroll-win:focus-visible { outline: 2px solid var(--out, #0e9a68); outline-offset: 3px; }
+.qscroll figcaption { margin-top: 12px; font-size: 14px; color: var(--ink-faint, #666); text-align: center; }
+.qbe-stage .zoom-btn, .qscroll-win .zoom-btn { box-shadow: none; border-radius: 0; background: none; }
