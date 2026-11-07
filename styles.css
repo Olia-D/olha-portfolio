@@ -2536,3 +2536,8 @@ a.t-tile:hover { background: var(--emph-hover); }
   .mc.has-clip .mc-media > img { transition: opacity 0.3s var(--ease-in), transform 0.3s var(--ease-in); }
   .mc.has-clip.is-open .mc-media.clip-on > img { opacity: 0; transform: scale(0.98); }
 }
+
+/* Hero, statement first: the four words carry the page; the setup is a quiet line above them */
+.t-hero-title { max-width: none; }
+.t-hero-kicker { display: block; margin-bottom: 10px; font-size: var(--fs-card); line-height: 1.35; font-weight: 500; letter-spacing: -0.01em; color: var(--ink-soft); }
+.t-hero-big { display: block; }
