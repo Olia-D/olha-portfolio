@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&display=block">
 <link rel="stylesheet" href="screens/screens.css?v=60">
 <script>try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<link rel="stylesheet" href="styles.css?v=133">
+<link rel="stylesheet" href="styles.css?v=134">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
@@ -71,10 +71,6 @@
     </div>
   </header>
   <div class="wrap case-layout">
-    <nav class="case-toc" aria-label="On this page">
-      <p>On this page</p>
-      <ol><li><a href="#context">Context</a></li><li><a href="#problem">Problem</a></li><li><a href="#results">Results</a></li><li><a href="#constraints">Constraints</a></li><li><a href="#approach">Approach</a></li><li><a href="#challenges">Challenges and fixes</a></li><li><a href="#solutions">Final design</a></li><li><a href="#design-system">Design system</a></li><li><a href="#learnings">Learnings</a></li></ol>
-    </nav>
     <details class="toc-m">
       <summary><span class="toc-m-k">On this page</span><span class="toc-m-now">Context</span></summary>
       <ol><li><a href="#context">Context</a></li><li><a href="#problem">Problem</a></li><li><a href="#results">Results</a></li><li><a href="#constraints">Constraints</a></li><li><a href="#approach">Approach</a></li><li><a href="#challenges">Challenges and fixes</a></li><li><a href="#solutions">Final design</a></li><li><a href="#design-system">Design system</a></li><li><a href="#learnings">Learnings</a></li></ol>
@@ -201,7 +197,7 @@
       <div class="zz-text"><p class="zz-k">Fix</p><h3>Signature levels and pricing</h3><p>I rebuilt the marketplace around what users actually needed: “Electronic signatures” with clear security levels, SES for simple documents, AdES for business, QES for legal protection, and the price per signature next to every provider.</p><p class="result-tag"><b>96%</b><span>less setup time</span><em>From a day with support to 15 minutes, self-serve.</em></p></div>
       <div class="zz-media solution-media"><figure class="qscroll">
         <div class="qscroll-win">
-          <img src="images/qes-mp-full-1224.webp" srcset="images/qes-mp-full-1224.webp 1224w, images/qes-mp-full-2448.webp 2448w" sizes="(max-width: 1180px) calc(100vw - 64px), 872px" width="1224" height="2973" alt="Full redesigned Electronic signatures page in the Oneflow marketplace: signature levels, eID providers by region and FAQs" loading="lazy" decoding="async">
+          <img src="images/qes-mp-full-1224.webp" srcset="images/qes-mp-full-1224.webp 1224w, images/qes-mp-full-2448.webp 2448w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="1224" height="2973" alt="Full redesigned Electronic signatures page in the Oneflow marketplace: signature levels, eID providers by region and FAQs" loading="lazy" decoding="async">
         </div>
         <figcaption>The whole redesigned Electronic signatures page.</figcaption>
       </figure></div>
@@ -265,11 +261,11 @@
     <div class="pair">
     <div class="zz">
       <div class="zz-text"><p class="zz-k">Issue</p><h3>A tangled backend</h3><p>Behind Signature mode, the backend crossed feature flags, contract type, signature mode, qualified flags and display modes in one condition matrix, and every check slowed the settings down.</p><p class="impact"><b>60+</b><span>conditional checks</span></p></div>
-      <div class="zz-media solution-media"><img class="qes-shot" src="images/qes-be-legacy-996.webp" srcset="images/qes-be-legacy-996.webp 996w, images/qes-be-legacy-1992.webp 1992w" sizes="(max-width: 1180px) calc(100vw - 64px), 872px" width="996" height="969" alt="Before: the legacy QES configuration matrix, 16 rows crossing feature flag, contract type, signature mode, qualified flag and display modes" loading="lazy" decoding="async"></div>
+      <div class="zz-media solution-media"><img class="qes-shot" src="images/qes-be-legacy-996.webp" srcset="images/qes-be-legacy-996.webp 996w, images/qes-be-legacy-1992.webp 1992w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="996" height="969" alt="Before: the legacy QES configuration matrix, 16 rows crossing feature flag, contract type, signature mode, qualified flag and display modes" loading="lazy" decoding="async"></div>
     </div>
     <div class="zz flip">
       <div class="zz-text"><p class="zz-k">Fix</p><h3>Four rules</h3><p>The real breakthrough wasn’t visual, it was simplifying the logic. With engineers, I cut 60+ checks down to four; the main one: a signature type appears in the dropdown when it’s enabled in the marketplace.</p><p class="result-tag"><b>90%</b><span>faster backend</span><em>About a second faster per response. A win for users and engineers.</em></p></div>
-      <div class="zz-media solution-media"><img class="qes-shot" src="images/qes-be-new-738.webp" srcset="images/qes-be-new-738.webp 738w, images/qes-be-new-1476.webp 1476w" sizes="(max-width: 1180px) calc(100vw - 64px), 872px" width="738" height="470" alt="After: the updated logic table, where a signature type is available when it is enabled in the marketplace" loading="lazy" decoding="async"></div>
+      <div class="zz-media solution-media"><img class="qes-shot" src="images/qes-be-new-738.webp" srcset="images/qes-be-new-738.webp 738w, images/qes-be-new-1476.webp 1476w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="738" height="470" alt="After: the updated logic table, where a signature type is available when it is enabled in the marketplace" loading="lazy" decoding="async"></div>
     </div>
     </div>
   </section>
@@ -279,8 +275,8 @@
     <p class="body-text">The original Electronic IDs page next to the redesigned Electronic signatures page, and the eID hub where admins switch providers on.</p>
     <figure class="compare compare-shot" style="--pos: 50%">
       <div class="compare-frame">
-        <div class="compare-pane compare-after"><img src="images/qes-cmp-after-1224.webp" srcset="images/qes-cmp-after-1224.webp 1224w, images/qes-cmp-after-2448.webp 2448w" sizes="(max-width: 1180px) calc(100vw - 64px), 872px" width="1224" height="841" alt="After: the redesigned Electronic signatures page with SES, AdES and QES levels explained" loading="lazy"></div>
-        <div class="compare-pane compare-before"><img src="images/qes-cmp-before-1224.webp" srcset="images/qes-cmp-before-1224.webp 1224w, images/qes-cmp-before-2448.webp 2448w" sizes="(max-width: 1180px) calc(100vw - 64px), 872px" width="1224" height="841" alt="Before: the original Electronic IDs page, listing providers by brand name" loading="lazy"></div>
+        <div class="compare-pane compare-after"><img src="images/qes-cmp-after-1224.webp" srcset="images/qes-cmp-after-1224.webp 1224w, images/qes-cmp-after-2448.webp 2448w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="1224" height="841" alt="After: the redesigned Electronic signatures page with SES, AdES and QES levels explained" loading="lazy"></div>
+        <div class="compare-pane compare-before"><img src="images/qes-cmp-before-1224.webp" srcset="images/qes-cmp-before-1224.webp 1224w, images/qes-cmp-before-2448.webp 2448w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="1224" height="841" alt="Before: the original Electronic IDs page, listing providers by brand name" loading="lazy"></div>
         <span class="compare-tag compare-tag-before" aria-hidden="true">Before</span>
         <span class="compare-tag compare-tag-after" aria-hidden="true">After</span>
         <span class="compare-handle" aria-hidden="true"></span>

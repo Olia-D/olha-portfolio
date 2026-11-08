@@ -2603,3 +2603,11 @@ a.t-tile:hover { background: var(--emph-hover); }
 /* tall screens show at full length; the sticky text column keeps the story beside them */
 .case-boxed .qscroll-win, .case-boxed .qes-before-win, .case-boxed .qes-hub .qscroll-win { max-height: none; overflow: visible; }
 .case-boxed .solution-media img.narrow { width: 100%; max-width: 380px; margin-inline: auto; }
+
+/* no side table of contents on desktop: the case body takes the full width, and screens get the larger column */
+.case-layout { grid-template-columns: minmax(0, 1fr); }
+.case-toc { display: none; }
+@media (min-width: 861px) {
+  .case-body .zz { grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr); }
+  .case-body .zz.flip { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); }
+}
