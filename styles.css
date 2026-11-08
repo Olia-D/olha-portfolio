@@ -2613,8 +2613,8 @@ a.t-tile:hover { background: var(--emph-hover); }
 }
 
 /* QES compare: both pages at full length, top-aligned; the shorter before page ends on white */
-.compare-shot .compare-frame, .compare-shot .compare-frame:where(*) { aspect-ratio: 1224 / 2253; }
-@media (max-width: 760px) { .compare-shot .compare-frame { aspect-ratio: 1224 / 2253; } }
+.compare-shot .compare-frame, .compare-shot .compare-frame:where(*) { aspect-ratio: 1224 / 2191; }
+@media (max-width: 760px) { .compare-shot .compare-frame { aspect-ratio: 1224 / 2191; } }
 .compare-shot .compare-pane { display: block; padding: 0; }
 .compare-shot .compare-pane img { width: 100%; height: auto; object-fit: initial; }
 /* a quote that belongs to one issue, as a quote block inside its text column */
