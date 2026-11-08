@@ -316,6 +316,23 @@
     var update = function () { fig.style.setProperty("--pos", range.value + "%"); };
     range.addEventListener("input", update);
     update();
+    // a longer after page scrolls inside the frame: the wheel (or a vertical swipe) moves it,
+    // while dragging sideways still moves the split
+    var after = fig.classList.contains("compare-shot") && fig.querySelector(".compare-after");
+    if (after) {
+      var frame = fig.querySelector(".compare-frame");
+      frame.addEventListener("wheel", function (e) {
+        var max = after.scrollHeight - after.clientHeight, t = after.scrollTop;
+        if ((e.deltaY > 0 && t < max - 1) || (e.deltaY < 0 && t > 0)) { after.scrollTop = t + e.deltaY; e.preventDefault(); }
+      }, { passive: false });
+      var y0 = null, x0 = null, s0 = 0;
+      frame.addEventListener("touchstart", function (e) { y0 = e.touches[0].clientY; x0 = e.touches[0].clientX; s0 = after.scrollTop; }, { passive: true });
+      frame.addEventListener("touchmove", function (e) {
+        if (y0 === null) return;
+        var dy = e.touches[0].clientY - y0, dx = e.touches[0].clientX - x0;
+        if (Math.abs(dy) > Math.abs(dx) * 1.2) { after.scrollTop = s0 - dy; }
+      }, { passive: true });
+    }
   });
 
   /* Coded UI illustrations play their small moment once, when they come into view */

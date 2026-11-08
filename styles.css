@@ -1982,8 +1982,8 @@ a.t-tile:hover { background: #0e3230; }
   --mute: #8b8b88;
   --line: #e6e6e3;
   /* the one accent: outcomes only (result numbers, Delivered, Fix) */
-  --out: #0a7d55;
-  --out-on-dark: #34d399;
+  --out: #0e9a68;
+  --out-on-dark: #0e9a68;
   --fjord: var(--out);
   --teal: var(--out);
   --accent-ink: var(--out);
@@ -2016,8 +2016,8 @@ a.t-tile:hover { background: #0e3230; }
   --mute: #8a8d8a;
   --line: #2e302f;
   --paper: #f1f1ef;
-  --out: #34d399;
-  --out-on-dark: #34d399;
+  --out: #0e9a68;
+  --out-on-dark: #0e9a68;
   --emph: #2a2d2b;
   --emph-hover: #333634;
   --on-emph: #f1f1ef;
@@ -2038,8 +2038,8 @@ a.t-tile:hover { background: #0e3230; }
     --mute: #8a8d8a;
     --line: #2e302f;
     --paper: #f1f1ef;
-    --out: #34d399;
-    --out-on-dark: #34d399;
+    --out: #0e9a68;
+    --out-on-dark: #0e9a68;
     --emph: #2a2d2b;
     --emph-hover: #333634;
     --on-emph: #f1f1ef;
@@ -2236,8 +2236,8 @@ a.t-tile:hover { background: var(--emph-hover); }
    #0e9a68 is the brightest green that still reads on white (3.6:1), grey cards (3.2:1) and ink (5.0:1),
    which is enough for large text and graphics; small green text keeps --out (5:1 on white). */
 :root { --out-display: #0e9a68; }
-:root[data-theme="dark"] { --out-display: var(--out); }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --out-display: var(--out); } }
+:root[data-theme="dark"] { --out-display: #0e9a68; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --out-display: #0e9a68; } }
 .mc-num, .t-voices .t-quote p::before { color: var(--out-display); }
 .nav-links a:not(.btn), .mobile-menu nav a:not(.btn), .read-more, footer a.fine-link, .more-card h4 { background-image: linear-gradient(var(--out-display), var(--out-display)); }
 
@@ -2613,8 +2613,10 @@ a.t-tile:hover { background: var(--emph-hover); }
 }
 
 /* QES compare: both pages at full length, top-aligned; the shorter before page ends on white */
-.compare-shot .compare-frame, .compare-shot .compare-frame:where(*) { aspect-ratio: 1224 / 2191; }
-@media (max-width: 760px) { .compare-shot .compare-frame { aspect-ratio: 1224 / 2191; } }
+/* the frame is as tall as the before page; the longer after page scrolls inside it */
+.compare-shot .compare-frame { aspect-ratio: 1264 / 1134; }
+@media (max-width: 760px) { .compare-shot .compare-frame { aspect-ratio: 1264 / 1134; } }
+.compare-shot .compare-after { overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
 .compare-shot .compare-pane { display: block; padding: 0; }
 .compare-shot .compare-pane img { width: 100%; height: auto; object-fit: initial; }
 /* a quote that belongs to one issue, as a quote block inside its text column */
@@ -2642,3 +2644,16 @@ a.t-tile:hover { background: var(--emph-hover); }
 .case-boxed .shot-pad > .scr-frame { box-shadow: none; }
 /* desktop screens inside a box: the box owns the corner radius, the screen itself stays square */
 .qes-notes .scr.scr-img, .qes-notes .scr.scr-img .scr-pic { border-radius: 0; }
+
+/* one green: #0e9a68 everywhere; text on a green bar is white */
+.rs-band .rs-after span { color: #fff; }
+
+/* Issue / Fix: a visible tag, orange dot for the problem, green for the fix */
+.case-body .zz-text .zz-k { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 14px; padding: 5px 12px 5px 10px; border-radius: 999px; font-size: 14px; font-weight: 600; line-height: 1.2; color: var(--ink); }
+.case-body .zz-text .zz-k::before { content: ""; width: 8px; height: 8px; border-radius: 50%; }
+.case-body .pair > .zz:first-child .zz-k { background: #fdeee6; }
+.case-body .pair > .zz:first-child .zz-k::before { background: #ee7a45; }
+.case-body .pair > .zz + .zz .zz-k { background: #e2f4ec; }
+.case-body .pair > .zz + .zz .zz-k::before { background: #0e9a68; }
+:root[data-theme="dark"] .case-body .pair > .zz:first-child .zz-k { background: rgb(238 122 69 / 0.18); }
+:root[data-theme="dark"] .case-body .pair > .zz + .zz .zz-k { background: rgb(14 154 104 / 0.2); }
