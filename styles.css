@@ -2599,3 +2599,7 @@ a.t-tile:hover { background: var(--emph-hover); }
 /* several screens for one issue or fix, stacked in the media column */
 .zz-stack { display: flex; flex-direction: column; gap: clamp(16px, 2vw, 24px); }
 .zz-stack > * { margin: 0; }
+
+/* tall screens show at full length; the sticky text column keeps the story beside them */
+.case-boxed .qscroll-win, .case-boxed .qes-before-win, .case-boxed .qes-hub .qscroll-win { max-height: none; overflow: visible; }
+.case-boxed .solution-media img.narrow { width: 100%; max-width: 380px; margin-inline: auto; }
