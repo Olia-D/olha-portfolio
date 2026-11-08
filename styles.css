@@ -2667,3 +2667,23 @@ a.t-tile:hover { background: var(--emph-hover); }
 /* quotes: left-aligned like the text, capped near the reading width on big screens */
 .case-body .quote-block { max-width: 760px; }
 .case-body .scr-frame.shot-box { border-radius: 8px; }
+
+/* Issue / Fix tags: grey, with an orange (issue) or green (fix) dot */
+.case-body .pair > .zz:first-child .zz-k, .case-body .pair > .zz + .zz .zz-k { background: var(--surface); }
+:root[data-theme="dark"] .case-body .pair > .zz:first-child .zz-k, :root[data-theme="dark"] .case-body .pair > .zz + .zz .zz-k { background: var(--surface); }
+
+/* notes: a card with a leader line to the problem; no dimming; never clipped by the screenshot */
+.hs-dim { display: none !important; }
+.scr-notes .scr, .scr-notes .scr-frame, .scr-notes .shot-box, .scr-notes .qscroll-win { overflow: visible !important; }
+.qes-notes .scr.scr-img .scr-pic, .shot-box .scr.scr-img .scr-pic { border-radius: 7px; }
+.scr-notes.is-seen .hs::after { animation: none; }
+.hs-zone { border-radius: 6px; box-shadow: 0 0 0 2px var(--note); }
+.hs .hs-note, .hs.side .hs-note { left: calc(100% + 30px); right: auto; top: 50%; transform: translateY(-50%); max-width: 250px; }
+.hs .hs-note::before, .hs.side .hs-note::before { content: ""; position: absolute; left: -30px; right: auto; top: 50%; width: 30px; height: 2px; margin: -1px 0 0; border-radius: 1px; background: var(--note); transform: none; }
+.hs.flip .hs-note { left: auto; right: calc(100% + 30px); }
+.hs.flip .hs-note::before { left: auto; right: -30px; }
+.hs.below .hs-note { top: calc(100% + 28px); left: 50%; right: auto; transform: translateX(calc(-50% + var(--dx, 0px))); }
+.hs.below .hs-note::before { top: -28px; left: calc(50% - var(--dx, 0px)); width: 2px; height: 28px; margin: 0 0 0 -1px; }
+.hs-note { z-index: 6; }
+.hs[aria-expanded="true"], .hs:hover { z-index: 7; }
+.hs-note { background: #161616 !important; color: #fff; box-shadow: 0 0 0 1px rgb(255 255 255 / 0.08), 0 18px 36px -18px rgb(0 0 0 / 0.55); }

@@ -500,7 +500,7 @@
       var note = dot.querySelector(".hs-note");
       var li = document.createElement("li");
       li.textContent = note.textContent;
-      list.appendChild(li);
+      if (list) list.appendChild(li);
       note.innerHTML = '<span class="hs-kicker">' + (fig.dataset.tone === "fix" ? "Change " : "Problem ") + (i + 1) + " of " + dots.length + '</span><span class="hs-text"></span>';
       note.lastChild.textContent = li.textContent;
       dot.setAttribute("aria-label", "Note " + (i + 1) + ": " + li.textContent);
@@ -553,12 +553,12 @@
       var dx = Math.min(0, box.right - 8 - r.right) + Math.max(0, box.left + 8 - r.left);
       note.style.setProperty("--dx", dx + "px");
     }
-    all.addEventListener("click", function () {
+    if (all) all.addEventListener("click", function () {
       var on = all.getAttribute("aria-pressed") !== "true";
       all.setAttribute("aria-pressed", String(on));
       all.textContent = on ? "Hide notes" : "Show all notes";
       fig.classList.toggle("show-all", on);
-      list.hidden = !on;
+      if (list) list.hidden = !on;
       dots.forEach(function (d) { d.setAttribute("aria-expanded", "false"); });
       spot(on ? [].slice.call(dots) : []);
     });
