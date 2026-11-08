@@ -2550,7 +2550,7 @@ a.t-tile:hover { background: var(--emph-hover); }
 .qes-before-win { max-height: min(640px, 76vh); }
 .case-boxed .solution-media img.qes-shot { padding: clamp(10px, 2vw, 20px); background: #fff; box-sizing: border-box; }
 .qes-notes .scr-pic { position: absolute; height: auto; max-width: none; }
-.case-boxed .zz:not(.zz-wm) .qes-notes .scr-frame { max-width: 400px; margin-inline: auto; }
+.qes-body .zz:not(.zz-wm) .qes-notes .scr-frame { max-width: 400px; margin-inline: auto; }
 /* full page: a window the reader scrolls inside */
 .qscroll { margin: 0; }
 .qscroll-win { max-height: min(640px, 76vh); overflow-y: auto; overscroll-behavior: contain; background: #fff; scrollbar-width: thin; }

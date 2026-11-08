@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,500;1,400&display=block">
 <link rel="stylesheet" href="screens/screens.css?v=62">
 <script>try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<link rel="stylesheet" href="styles.css?v=138">
+<link rel="stylesheet" href="styles.css?v=139">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
@@ -241,7 +241,19 @@
     <div class="pair">
     <div class="zz">
       <div class="zz-text"><p class="zz-k">Issue</p><h3>Status confusion</h3><p>After documents were renamed to &ldquo;Approval pending&rdquo;, users stayed confused: the document still behaved like a draft, sending mixed signals.</p><p class="impact"><span>More support calls and delayed approvals.</span></p></div>
-      <div class="zz-media solution-media zz-stack"><img class="vec" src="images/apr-status-before.svg" width="1920" height="1180" alt="Before: the contract shows Approval pending while it still behaves like a draft" loading="lazy"></div>
+      <div class="zz-media solution-media"><figure class="scr-notes qes-notes" data-noside data-notes>
+  <div class="scr-frame">
+    <div class="scr scr-img" role="img" aria-label="Before: the contract is labelled Approval pending while it still behaves like a draft" style="width:1920em;height:1180em;font-size:calc(100cqi / 1920)">
+      <img loading="lazy" decoding="async" class="scr-pic" src="images/apr-status-before.svg" alt="" style="left:0em;top:0em;width:1920em;height:1180em">
+      <div class="hs-layer" style="--w:1920;--h:1180">
+        <button class="hs" type="button" style="--x:604;--y:142" data-zones="380 116 214 52" aria-expanded="false"><span class="hs-n">1</span><span class="hs-note">The status says &ldquo;Approval pending&rdquo;, a state users didn&rsquo;t recognise.</span></button>
+        <button class="hs" type="button" style="--x:1384;--y:86" data-zones="270 62 1104 46" aria-expanded="false"><span class="hs-n">2</span><span class="hs-note">Yet the editor stays fully live, so the document still behaves like a draft. Mixed signals.</span></button>
+      </div>
+    </div>
+  </div>
+  <figcaption class="hs-bar"><span class="hs-hint">Select a dot to see what was wrong.</span><button class="hs-all" type="button" aria-pressed="false">Show all notes</button></figcaption>
+  <ol class="hs-list" hidden></ol>
+</figure></div>
     </div>
     <div class="zz flip">
       <div class="zz-text"><p class="zz-k">Fix</p><h3>Back to Draft</h3><p>I renamed the status to &ldquo;Draft &ndash; Approval pending&rdquo;. Users expected drafts to behave like drafts, and now the label said so.</p><p class="result-tag"><span>Labels that match the mental model</span><em>The confusion about document state went away.</em></p></div>
@@ -252,7 +264,20 @@
     <div class="pair">
     <div class="zz">
       <div class="zz-text"><p class="zz-k">Issue</p><h3>Send modal guesswork</h3><p>In tests, the Send modal left users guessing whether messages would go to approvers or signers, which caused hesitation and mistakes.</p><p class="impact"><span>Approvals were delayed because users weren&rsquo;t sure who would be notified.</span></p></div>
-      <div class="zz-media solution-media zz-stack"><img class="vec on-white" src="images/apr-send-old.svg" width="675" height="696" alt="Before: the Confirm sending dialog lists recipients without saying who approves and who signs" loading="lazy"></div>
+      <div class="zz-media solution-media"><figure class="scr-notes qes-notes" data-noside data-notes>
+  <div class="scr-frame">
+    <div class="scr scr-img" role="img" aria-label="Before: the Confirm sending dialog lists recipients without saying who approves and who signs" style="width:675em;height:696em;font-size:calc(100cqi / 675)">
+      <img loading="lazy" decoding="async" class="scr-pic" src="images/apr-send-old.svg" alt="" style="left:0em;top:0em;width:675em;height:696em">
+      <div class="hs-layer" style="--w:675;--h:696">
+        <button class="hs" type="button" style="--x:308;--y:150" data-zones="24 90 278 120" aria-expanded="false"><span class="hs-n">1</span><span class="hs-note">Recipients are listed with no roles: you can&rsquo;t tell approvers from signers.</span></button>
+        <button class="hs" type="button" style="--x:640;--y:474" data-zones="26 404 614 142" aria-expanded="false"><span class="hs-n">2</span><span class="hs-note">One message for everyone. Will it reach the approvers, the signers, or both?</span></button>
+        <button class="hs" type="button" style="--x:566;--y:656" data-zones="570 632 100 46" aria-expanded="false"><span class="hs-n">3</span><span class="hs-note">Send gives no hint of who is notified first, so users hesitated or sent too early.</span></button>
+      </div>
+    </div>
+  </div>
+  <figcaption class="hs-bar"><span class="hs-hint">Select a dot to see what was wrong.</span><button class="hs-all" type="button" aria-pressed="false">Show all notes</button></figcaption>
+  <ol class="hs-list" hidden></ol>
+</figure></div>
     </div>
     <div class="zz flip">
       <div class="zz-text"><p class="zz-k">Fix</p><h3>Send modal makeover</h3><p>A clear visual split between approvers and signatories shows at a glance who receives which message.</p><p class="result-tag"><span>No more guessing who gets notified</span><em>Grouping removed the anxiety about message targeting.</em></p></div>
