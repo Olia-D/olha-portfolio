@@ -2619,3 +2619,14 @@ a.t-tile:hover { background: var(--emph-hover); }
 .compare-shot .compare-pane img { width: 100%; height: auto; object-fit: initial; }
 /* a quote that belongs to one issue, as a quote block inside its text column */
 .zz-text .quote-block.zz-qb { margin: 22px 0 0; }
+
+/* breathing room: a clear pause between an issue and its fix, and a ruled break between problems */
+.case-body .pair > .zz + .zz { margin-top: clamp(72px, 8vw, 120px); }
+.case-body .pair + .pair { margin-top: clamp(80px, 9vw, 128px); padding-top: clamp(80px, 9vw, 128px); border-top: 1px solid var(--line); }
+.case-body .section-block > .body-text + .pair, .case-body .quote-block + .pair { margin-top: clamp(56px, 6vw, 88px); }
+.case-body .pair + .qes-test, .case-body .pair + .quote-block { margin-top: clamp(80px, 9vw, 128px); }
+/* the chosen test option: a green check instead of a label */
+.qes-opt figcaption em.opt-pick { display: inline-grid; place-items: center; width: 22px; height: 22px; padding: 0; border-radius: 50%; background: var(--out, #0e9a68); color: #fff; }
+.qes-opt figcaption em.opt-pick svg { width: 14px; height: 14px; }
+.qes-opt.is-chosen { border-color: var(--out, #0e9a68); }
+.case-body .qes-test + .pair { margin-top: clamp(80px, 9vw, 128px); padding-top: clamp(80px, 9vw, 128px); border-top: 1px solid var(--line); }

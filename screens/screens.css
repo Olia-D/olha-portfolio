@@ -859,3 +859,25 @@
 .scr.qsb .qs-col { display: flex; flex-direction: column; gap: calc(32 * var(--u)); flex: none; }
 .scr.qsb .qs-col > .qp { position: relative; left: auto; top: auto; }
 @container (max-width: 759px) { .scr.qsb .qs-pat { flex-wrap: wrap; } }
+
+/* ----- Approvals: Send document modal, the auto-invite switch is live ------------------
+   Base is the "approval + signing order" export; with the switch off, the modal ends on the
+   Send for approval footer from the other export, and switching on unfolds the message section. */
+.as-fig { margin: 0; }
+.as-wrap { position: relative; max-width: 560px; margin-inline: auto; }
+.as-frame { width: 100%; }
+.scr.as-scr { width: 660em; height: 476em; font-size: calc(100cqi / 660); background: #fff; overflow: hidden; transition: height .55s cubic-bezier(.4, 0, .2, 1); }
+.as-scr.is-on { height: 1211em; }
+.as-scr > img.as-on { position: absolute; left: 0; top: 0; width: 660em; height: 1211em; max-width: none; display: block; }
+.as-foot { position: absolute; left: 0; top: 390em; width: 660em; height: 86em; overflow: hidden; background: #fff; transition: opacity .2s ease; }
+.as-foot img { position: absolute; left: -6em; top: -420em; width: 666em; height: 506em; max-width: none; display: block; }
+.as-scr.is-on .as-foot { opacity: 0; pointer-events: none; }
+.as-tg { font: inherit; position: absolute; left: 406em; top: 354.5em; width: 39em; height: 21em; padding: 0; border: 0; border-radius: 11em; background: #99b0b7; cursor: pointer; transition: background-color .2s ease; }
+.as-tg i { position: absolute; left: 2.5em; top: 2.5em; width: 16em; height: 16em; border-radius: 50%; background: #fff; transition: transform .22s cubic-bezier(.3, .7, .2, 1); display: grid; place-items: center; }
+.as-tg svg { width: 10em; height: 10em; opacity: 0; transition: opacity .15s ease; }
+.as-scr.is-on .as-tg { background: #013a4c; }
+.as-scr.is-on .as-tg i { transform: translateX(18em); }
+.as-scr.is-on .as-tg svg { opacity: 1; }
+.as-tg:focus-visible { outline: 2px solid #187bb7; outline-offset: 3px; }
+.as-tg.is-press { transform: none; filter: brightness(1.12); }
+.as-fig figcaption { margin-top: 12px; font-size: 14px; color: var(--ink-faint, #666); text-align: center; }

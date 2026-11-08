@@ -587,7 +587,7 @@
         btn.setAttribute("aria-label", paused ? "Play animation" : "Pause animation");
         if (paused) { stop(); } else { timer = null; play(); }
       });
-      (scr.closest(".phone, .qtf-wrap") || fig).appendChild(btn);
+      (scr.closest(".phone, .qtf-wrap, .as-wrap") || fig).appendChild(btn);
     }
     new IntersectionObserver(function (es) {
       es.forEach(function (e) { on = e.isIntersecting; if (on) { timer = null; play(); } else { stop(); } });
@@ -701,6 +701,29 @@
         true);
     }
 
+    if (kind === "send") {
+      // Approvals send modal: the auto-invite switch is live; the demo flips it on and off
+      var sc = fig.querySelector(".as-scr"), tg = sc.querySelector(".as-tg"), cur3 = pointer(sc, "ani-cursor");
+      function setOn(o) { sc.classList.toggle("is-on", o); tg.setAttribute("aria-pressed", String(o)); }
+      var took = false;
+      tg.addEventListener("click", function (e) {
+        if (e.isTrusted && !took) { took = true; var b = fig.querySelector(".ani-pause"); if (b && b.getAttribute("aria-pressed") !== "true") b.click(); cur3.style.opacity = "0"; }
+        setOn(!sc.classList.contains("is-on"));
+      });
+      player(fig, sc, [
+          [900, function () { at(cur3, 430, 368); }],
+          [800, function () { press(tg); setOn(true); }],
+          [700, function () { at(cur3, 560, 520); }],
+          [3200, function () { at(cur3, 430, 368); }],
+          [800, function () { press(tg); setOn(false); }],
+          [600, function () { at(cur3, 560, 300); }],
+          [1600, function () {}]
+        ],
+        function () { if (!took) { setOn(false); at(cur3, 560, 300); } },
+        function () { setOn(true); },
+        true);
+    }
+
     if (kind === "email") {
       var s3 = fig.querySelector(".sem");
       player(fig, s3, [[150, function () { s3.classList.add("is-in"); }]],
@@ -756,7 +779,7 @@
     paused = !paused; btn.setAttribute("aria-pressed", String(paused)); btn.setAttribute("aria-label", paused ? "Play animation" : "Pause animation");
     clearTimeout(timer); if (!paused) next();
   });
-  (scr.closest(".phone, .qtf-wrap") || fig).appendChild(btn);
+  (scr.closest(".phone, .qtf-wrap, .as-wrap") || fig).appendChild(btn);
   new IntersectionObserver(function (es) { es.forEach(function (e) { on = e.isIntersecting; clearTimeout(timer); if (on) next(); }); }, { threshold: 0.4 }).observe(scr);
 })();
 
