@@ -2545,6 +2545,9 @@ a.t-tile:hover { background: var(--emph-hover); }
 .qes-body .solution-media .zoom-btn img, .qes-body .qscroll-win img { border: 0; border-radius: 0; box-shadow: none; }
 .qes-body .solution-media .zoom-btn:has(> img.qes-shot), .qes-body .solution-media .zoom-btn:has(> img.vec) { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: #fff; }
 .qes-notes .scr-frame { overflow: hidden; background: #fff; }
+/* the before page scrolls inside its window; its box is on the window, not the screen */
+.qes-body .qes-before-win .scr-frame { border: 0; border-radius: 0; }
+.qes-before-win { max-height: min(640px, 76vh); }
 .qes-body .solution-media img.qes-shot { padding: clamp(10px, 2vw, 20px); background: #fff; box-sizing: border-box; }
 .qes-notes .scr-pic { position: absolute; height: auto; max-width: none; }
 .qes-body .zz:not(.zz-wm) .qes-notes .scr-frame { max-width: 400px; margin-inline: auto; }
