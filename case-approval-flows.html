@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,500;1,400&display=block">
 <link rel="stylesheet" href="screens/screens.css?v=60">
 <script>try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<link rel="stylesheet" href="styles.css?v=131">
+<link rel="stylesheet" href="styles.css?v=132">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
@@ -62,7 +62,7 @@
       <div class="case-head-copy">
         <a class="case-back" href="index.html#work"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>Selected work</a>
         <h1>Contract approval flows</h1>
-        <p class="case-lede">Designed approval workflows that made contract lifecycles trackable, compliant, and fast to review.</p>
+        <p class="case-lede">Made approvals trackable inside the contract: an MVP in 6 weeks, with 82% early-adopter CSAT.</p>
         <p class="case-shift-line"><span class="from">Approvals over email and Slack</span> <svg class="shift-arrow" width="22" height="12" viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6h19"/><path d="M15.5 1.5 20.5 6l-5 4.5"/></svg><span class="visually-hidden"> became </span> <span class="to">Approvals tracked in the contract</span></p>
       </div>
       <div class="case-head-visual case-head-bleed"><img style="view-transition-name: shot-approvals; view-transition-class: shot" fetchpriority="high" src="images/apr-hero-1800.webp" srcset="images/apr-hero-1200.webp 1200w, images/apr-hero-1800.webp 1800w, images/apr-hero-2600.webp 2600w" sizes="(max-width: 860px) 100vw, 1100px" width="3370" height="1873" alt="Oneflow approval flow on a laptop and a phone: the approver view with signing order, and the Document approved confirmation"></div>
@@ -73,19 +73,32 @@
   <div class="wrap case-layout">
     <nav class="case-toc" aria-label="On this page">
       <p>On this page</p>
-      <ol><li><a href="#context">Context</a></li><li><a href="#problem">Problem</a></li><li><a href="#approach">Approach</a></li><li><a href="#results">Results</a></li><li><a href="#constraints">Constraints</a></li><li><a href="#challenges">Challenges</a></li><li><a href="#solutions">Solutions</a></li><li><a href="#learnings">Learnings</a></li></ol>
+      <ol><li><a href="#context">Context</a></li><li><a href="#problem">Problem</a></li><li><a href="#results">Results</a></li><li><a href="#constraints">Constraints</a></li><li><a href="#approach">Approach</a></li><li><a href="#challenges">Challenges and fixes</a></li><li><a href="#solutions">Final design</a></li><li><a href="#design-system">Design system</a></li><li><a href="#learnings">Learnings</a></li></ol>
     </nav>
-    <div class="case-body">
+    <details class="toc-m">
+      <summary><span class="toc-m-k">On this page</span><span class="toc-m-now">Context</span></summary>
+      <ol><li><a href="#context">Context</a></li><li><a href="#problem">Problem</a></li><li><a href="#results">Results</a></li><li><a href="#constraints">Constraints</a></li><li><a href="#approach">Approach</a></li><li><a href="#challenges">Challenges and fixes</a></li><li><a href="#solutions">Final design</a></li><li><a href="#design-system">Design system</a></li><li><a href="#learnings">Learnings</a></li></ol>
+    </details>
+    <div class="case-body case-boxed">
   <section class="section-block" id="context">
     <h2>Context</h2>
-    <p class="body-text">Oneflow is a contract management platform for B2B teams. Approvals happened across email, Slack, and checklists, making it impossible to track who needed to sign and where contracts got blocked.</p>
-    <div class="solution-media"><img class="vec" src="images/apr-overview.svg" width="1920" height="1280" alt="Oneflow contract list next to a draft contract waiting for approval" loading="lazy"></div>
+    <div class="ctx-panel">
+      <div class="ctx-copy">
+        <p class="ctx-lead">Contracts lived in Oneflow, <span>but approvals happened in email, Slack and checklists.</span></p>
+        <p class="body-text">Oneflow is a contract management platform for B2B teams. With approvals scattered across channels, nobody could track who still had to approve, or where a contract was stuck.</p>
+      </div>
+      <div class="ctx-drift" role="img" aria-label="Approvals leave Oneflow for email, Slack and checklists, so nobody can see where a contract is stuck">
+        <span class="ctx-chip ctx-home">Oneflow</span>
+        <svg class="ctx-lines" viewBox="0 0 100 120" preserveAspectRatio="none" aria-hidden="true"><path d="M0 60 C40 60 60 18 100 18 M0 60 H100 M0 60 C40 60 60 102 100 102" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="4 4" vector-effect="non-scaling-stroke"/></svg>
+        <span class="ctx-out"><span class="ctx-chip">Email</span><span class="ctx-chip">Slack</span><span class="ctx-chip">Checklists</span></span>
+      </div>
+    </div>
   </section>
 
   <section class="section-block" id="problem">
     <h2>Problem</h2>
-    <div class="two-col">
-      <div>
+    <div class="two-col pb-pair">
+      <div class="pb-card">
         <p class="section-eyebrow">Research</p>
         <ul class="check-list">
           <li>Analyzed enterprise workflows + support tickets + sales requests</li>
@@ -107,9 +120,45 @@
     </div>
   </section>
 
+
+  <section class="section-block" id="results">
+    <h2>Results and impact</h2>
+    <div class="rs-band" data-rs>
+      <div class="rs-tile rs-lead">
+        <p class="rs-k">Early adopters</p>
+        <div class="num">82%</div>
+        <p class="rs-d">CSAT in a survey after first using the feature</p>
+        <div class="rs-bars" aria-hidden="true">
+          <div class="rs-bar rs-before"><i></i><span>New approval role: months of work</span></div>
+          <div class="rs-bar rs-after rs-tiny" style="--w:14%"><i></i><span>Reused patterns: MVP in 6 weeks</span></div>
+        </div>
+      </div>
+      <div class="rs-tile">
+        <p class="rs-k">To MVP</p>
+        <div class="num">6<span class="unit"> weeks</span></div>
+        <p class="rs-d">Designed and handed off for development</p>
+      </div>
+      <div class="rs-tile">
+        <p class="rs-k">Logic reused</p>
+        <div class="num">70%</div>
+        <p class="rs-d">Most of the backend logic carried over</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-block" id="constraints">
+    <h2>Working with constraints</h2>
+    <h3 style="margin-top:0;">No new roles or states possible</h3>
+    <div class="cn-pair">
+      <div class="cn-card"><p class="cn-k">Expected</p><p class="cn-t">A dedicated Approval role and flow</p><p class="cn-d">A new role or a separate flow would take months to build and add technical debt.</p></div>
+      <div class="cn-card cn-done"><p class="cn-k">Delivered</p><p class="cn-t">Approvals on the existing participant list</p><p class="cn-d">Approval roles added to the participant list, reusing the signing workflow logic.</p></div>
+    </div>
+    <div class="stake"><p class="stake-k">What was at stake</p><p>Months of development instead of weeks, with approvals still lost in email and Slack in the meantime.</p></div>
+  </section>
+
   <section class="section-block" id="approach">
     <h2>My approach</h2>
-    <ol class="approach-list">
+    <ol class="approach-list approach-timeline">
       <li><span>01</span>Mapped flows<small>Mapped real approval workflows across legal, finance, and sales to identify blockers</small></li>
       <li><span>02</span>Designed approval flows<small>Designed Approval Flows supporting simple and parallel flows</small></li>
       <li><span>03</span>Backend compatibility<small>Ensured backend compatibility, reused existing patterns</small></li>
@@ -117,52 +166,15 @@
     </ol>
   </section>
 
-  <section class="section-block" id="results">
-    <h2>Results and impact</h2>
-    <div class="quote-block">
-      <p>This approval flow finally gives us the audit trail we need for compliance, and our sales team can actually see where contracts get stuck.</p>
-      <cite>Enterprise Customer Success Manager</cite>
-    </div>
-    <div class="results-row">
-      <div class="result-card">
-        <div class="num">82%</div>
-        <div class="label">Early adopters CSAT</div>
-        <div class="detail">User survey after using the feature for the first time</div>
-      </div>
-      <div class="result-card">
-        <div class="num">6<span class="unit"> weeks</span></div>
-        <div class="label">To MVP</div>
-        <div class="detail">MVP designed and handed off for development in 6 weeks</div>
-      </div>
-      <div class="result-card">
-        <div class="num">70%</div>
-        <div class="label">Logic reused</div>
-        <div class="detail">Reused most of the backend logic</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-block" id="constraints">
-    <p class="section-eyebrow">The process</p>
-    <h2>Working with constraints</h2>
-    <h3 style="margin-top:0;">No new roles or states possible</h3>
-    <p class="body-text">We had to design the flow entirely within existing architecture:</p>
-    <ul class="check-list">
-      <li>Building a brand new "Approval" role would slow delivery and create technical debt.</li>
-      <li>Creating a new approval flow would take months of development.</li>
-    </ul>
-    <p class="body-text"><strong>Impact:</strong> Months of development vs. weeks &mdash; had to get creative with existing architecture.</p>
-  </section>
 
   <section class="section-block" id="challenges">
-    <h2>Key design challenges</h2>
+    <h2>Challenges and fixes</h2>
+    <p class="body-text">Testing the first flows with enterprise users surfaced three issues, each one about knowing who needs to do what.</p>
 
-    <div class="challenge-card">
-      <h3>Participants clutter</h3>
-      <p>The current Participants tab mixed signers with approvers, creating visual noise and confusion about who needed to do what.</p>
-      <p class="impact">Impact: Users couldn't quickly scan approval status or identify bottlenecks, leading to confusion and lower customer satisfaction.</p>
-    </div>
-    <div class="solution-media"><figure class="scr-notes" data-notes>
+    <div class="pair">
+    <div class="zz">
+      <div class="zz-text"><p class="zz-k">Issue</p><h3>Participants clutter</h3><p>The Participants tab mixed signers with approvers, creating visual noise and confusion about who needed to do what.</p><p class="impact"><span>Users couldn&rsquo;t scan approval status or spot bottlenecks, and satisfaction dropped.</span></p></div>
+      <div class="zz-media solution-media zz-stack"><figure class="scr-notes" data-notes>
   <div class="scr-frame apb-frame">
     <div class="scr apb" role="group" aria-label="Original Participants tab: two parties, add buttons and Save changes">
       <div class="apb-tabs">
@@ -222,57 +234,52 @@
     <button class="hs-all" type="button" aria-pressed="false">Show all notes</button>
   </figcaption>
   <ol class="hs-list" hidden></ol>
-</figure></div>
-    <div class="solution-media"><img class="vec on-white" src="images/apr-cards-before.svg" width="847" height="654" alt="Original participant status cards mixing signers and approvers" loading="lazy"></div>
-    <div class="challenge-card">
-      <h3>Status confusion</h3>
-      <p>After renaming documents to "Approval pending," users stayed confused &mdash; the document still behaved like a draft, creating mixed signals.</p>
-      <p class="impact">Impact: More support calls and confused users, delayed approvals.</p>
+</figure><img class="vec on-white" src="images/apr-cards-before.svg" width="847" height="654" alt="Original participant status cards mixing signers and approvers" loading="lazy"></div>
     </div>
-    <div class="solution-media"><img class="vec" src="images/apr-status-before.svg" width="1920" height="1180" alt="Before: the contract shows Approval pending while it still behaves like a draft" loading="lazy"></div>
-    <div class="challenge-card">
-      <h3>Send modal issues</h3>
-      <p>User tests showed the Send modal left users guessing: would messages go to approvers or signers? This uncertainty caused hesitation and testing mistakes.</p>
-      <p class="impact">Impact: Important approvals delayed because users weren't sure who would get notified.</p>
+    <div class="zz flip">
+      <div class="zz-text"><p class="zz-k">Fix</p><h3>Restructured and unified participants</h3><p>Participants and counterparties are now clearly labeled, with role distinction, status visibility and real-time progress. Instead of separate flows, I extended the existing participant list with approval roles.</p><p class="result-tag"><span>Clear roles, statuses and actions</span><em>A familiar pattern cut build time from months to weeks.</em></p></div>
+      <div class="zz-media solution-media zz-stack"><img class="vec on-white" src="images/apr-participants-after.svg" width="903" height="1478" alt="Restructured participants tab with approvers and signers grouped" loading="lazy"><img class="vec on-white" src="images/apr-cards-after.svg" width="843" height="898" alt="New participant status cards with clear approval states" loading="lazy"></div>
     </div>
-    <div class="solution-media"><img class="vec on-white" src="images/apr-send-before.svg" width="844" height="899" alt="Before: the Send modal did not show who receives which message" loading="lazy"></div>
+    </div>
 
+    <div class="pair">
+    <div class="zz">
+      <div class="zz-text"><p class="zz-k">Issue</p><h3>Status confusion</h3><p>After documents were renamed to &ldquo;Approval pending&rdquo;, users stayed confused: the document still behaved like a draft, sending mixed signals.</p><p class="impact"><span>More support calls and delayed approvals.</span></p></div>
+      <div class="zz-media solution-media zz-stack"><img class="vec" src="images/apr-status-before.svg" width="1920" height="1180" alt="Before: the contract shows Approval pending while it still behaves like a draft" loading="lazy"></div>
+    </div>
+    <div class="zz flip">
+      <div class="zz-text"><p class="zz-k">Fix</p><h3>Back to Draft</h3><p>I renamed the status to &ldquo;Draft &ndash; Approval pending&rdquo;. Users expected drafts to behave like drafts, and now the label said so.</p><p class="result-tag"><span>Labels that match the mental model</span><em>The confusion about document state went away.</em></p></div>
+      <div class="zz-media solution-media zz-stack"><img class="vec" src="images/apr-status-after.svg" width="1920" height="1180" alt="After: the contract shows Draft – Approval pending" loading="lazy"></div>
+    </div>
+    </div>
+
+    <div class="pair">
+    <div class="zz">
+      <div class="zz-text"><p class="zz-k">Issue</p><h3>Send modal guesswork</h3><p>In tests, the Send modal left users guessing whether messages would go to approvers or signers, which caused hesitation and mistakes.</p><p class="impact"><span>Approvals were delayed because users weren&rsquo;t sure who would be notified.</span></p></div>
+      <div class="zz-media solution-media zz-stack"><img class="vec on-white" src="images/apr-send-before.svg" width="844" height="899" alt="Before: the Send modal did not show who receives which message" loading="lazy"></div>
+    </div>
+    <div class="zz flip">
+      <div class="zz-text"><p class="zz-k">Fix</p><h3>Send modal makeover</h3><p>A clear visual split between approvers and signatories shows at a glance who receives which message.</p><p class="result-tag"><span>No more guessing who gets notified</span><em>Grouping removed the anxiety about message targeting.</em></p></div>
+      <div class="zz-media solution-media zz-stack"><img class="vec on-white" src="images/apr-send-after-1.svg" width="666" height="502" alt="New Send document modal with a separate approval section" loading="lazy"><img class="vec on-white" src="images/apr-send-after-2.svg" width="1202" height="1464" alt="The full send flow with approvers and signatories separated" loading="lazy"></div>
+    </div>
+    </div>
   </section>
 
+
   <section class="section-block" id="solutions">
-    <h2>Design solutions</h2>
-
-    <div class="solution-block">
-      <h3>Reuse over rebuild</h3>
-      <p>Extended the participant list UI with approval roles instead of building separate flows. Reused existing signing workflow logic for consistency.</p>
-      <p class="result-tag">Result: Faster delivery, familiar patterns. Cut engineering build time from months to weeks.</p>
+    <h2>The final design</h2>
+    <p class="body-text">The contract list next to a draft waiting for approval, with approvers and signers in one place.</p>
+    <div class="solution-media"><img class="vec" src="images/apr-overview.svg" width="1920" height="1280" alt="Oneflow contract list next to a draft contract waiting for approval" loading="lazy"></div>
+    <div class="quote-block">
+      <p>This approval flow finally gives us the audit trail we need for compliance, and our sales team can actually see where contracts get stuck.</p>
+      <cite>Enterprise Customer Success Manager</cite>
     </div>
+  </section>
 
-    <div class="solution-block">
-      <h3>Renamed state back to Draft</h3>
-      <p>I renamed status to "Draft &ndash; Approval pending" for crystal-clear communication about document state. Users expected drafts to behave like drafts.</p>
-      <p class="result-tag">Result: Clear labeling eliminated confusion. "Draft &ndash; Approval pending" mimicked real user mental models.</p>
-      <div class="solution-media"><img class="vec" src="images/apr-status-after.svg" width="1920" height="1180" alt="After: the contract shows Draft – Approval pending" loading="lazy"></div>
-    </div>
-
-    <div class="solution-block">
-      <h3>Restructured and unified participants</h3>
-      <p>Participants and counterparties are now clearly labeled with role distinction, status visibility, and real-time progress updates.</p>
-      <p class="result-tag">Result: Restructured information hierarchy to reduce cognitive load and improve scanning. Clear roles, statuses, and actions.</p>
-      <div class="solution-media media-row"><img class="vec on-white" src="images/apr-participants-after.svg" width="903" height="1478" alt="Restructured participants tab with approvers and signers grouped" loading="lazy"><img class="vec on-white" src="images/apr-cards-after.svg" width="843" height="898" alt="New participant status cards with clear approval states" loading="lazy"></div>
-    </div>
-
-    <div class="solution-block">
-      <h3>Send modal structure makeover</h3>
-      <p>Introduced clear visual separation between approvers and signatories, with immediate understanding of who receives what messages.</p>
-      <p class="result-tag">Result: Visual grouping eliminated guesswork and reduced user anxiety about message targeting. Clear separation between approvers and signers.</p>
-      <div class="solution-media media-row"><img class="vec on-white" src="images/apr-send-after-1.svg" width="666" height="502" alt="New Send document modal with a separate approval section" loading="lazy"><img class="vec on-white" src="images/apr-send-after-2.svg" width="1202" height="1464" alt="The full send flow with approvers and signatories separated" loading="lazy"></div>
-    </div>
-
-    <div class="solution-block">
-      <h3>Design system updates</h3>
-      <p>Created components for: colors, statuses, buttons, modal filters, participants, avatars, and contract cards.</p>
-      <div class="solution-media"><figure class="arb-fig">
+  <section class="section-block" id="design-system">
+    <h2>Design system</h2>
+    <p class="body-text">Created components for colors, statuses, buttons, modal filters, participants, avatars and contract cards.</p>
+    <div class="solution-media"><figure class="arb-fig">
   <div class="scr-frame arb-frame" role="img" aria-label="Approval design system: participant avatars and approval states, Approve button states, brand colours, the Approval required, Signing order enabled, Sign later enabled, Ready to sign and Single signature badges, AI assist buttons, the participant list in every state, the Approve document modal, and a document list row.">
     <div class="scr arb" inert>
       <section class="ds-band"><p class="ds-cap">Foundations</p><div class="ds-row">
@@ -305,25 +312,25 @@
     </div>
   </div>
 </figure></div>
-    </div>
   </section>
+
 
   <section class="section-block" id="learnings">
     <h2>Learnings and reflections</h2>
-    <div class="learn-grid">
+    <div class="learn-grid learn-cards">
       <div class="learn-col">
-        <h4>Didn't work</h4>
+        <h3>Didn't work</h3>
         <ul>
           <li>Early prototypes didn't cover cases when approvers can also sign the contract</li>
           <li>Adding a proper approval status to contracts would add backend work</li>
         </ul>
       </div>
       <div class="learn-col">
-        <h4>Surprised me</h4>
+        <h3>Surprised me</h3>
         <ul><li>A flexible flow could be built without backend changes</li></ul>
       </div>
       <div class="learn-col">
-        <h4>Would do differently</h4>
+        <h3>Would do differently</h3>
         <ul>
           <li>Involve engineers sooner to avoid rollback and rework related to contract status</li>
           <li>Validate mixed approver/signer roles earlier in the process</li>

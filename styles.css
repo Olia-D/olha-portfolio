@@ -2540,17 +2540,17 @@ a.t-tile:hover { background: var(--emph-hover); }
 .t-hero-big { display: block; }
 
 /* ===== QES case: interactive screens. No shadows: screens sit in a light box ===== */
-.qes-body .solution-media img:not(.scr img), .qes-body .qes-notes .scr-frame, .qes-body .qtf-scrollx, .qes-body .qscroll-win, .qes-body .compare-frame {
+.case-boxed .solution-media img:not(.scr img), .case-boxed .qes-notes .scr-frame, .case-boxed .qtf-scrollx, .case-boxed .qscroll-win, .case-boxed .compare-frame {
   box-shadow: none; border: 1px solid var(--line); border-radius: 8px; }
-.qes-body .solution-media .zoom-btn img, .qes-body .qscroll-win img { border: 0; border-radius: 0; box-shadow: none; }
-.qes-body .solution-media .zoom-btn:has(> img.qes-shot), .qes-body .solution-media .zoom-btn:has(> img.vec) { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: #fff; }
+.case-boxed .solution-media .zoom-btn img, .case-boxed .qscroll-win img { border: 0; border-radius: 0; box-shadow: none; }
+.case-boxed .solution-media .zoom-btn:has(> img.qes-shot), .case-boxed .solution-media .zoom-btn:has(> img.vec) { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: #fff; }
 .qes-notes .scr-frame { overflow: hidden; background: #fff; }
 /* the before page scrolls inside its window; its box is on the window, not the screen */
-.qes-body .qes-before-win .scr-frame { border: 0; border-radius: 0; }
+.case-boxed .qes-before-win .scr-frame { border: 0; border-radius: 0; }
 .qes-before-win { max-height: min(640px, 76vh); }
-.qes-body .solution-media img.qes-shot { padding: clamp(10px, 2vw, 20px); background: #fff; box-sizing: border-box; }
+.case-boxed .solution-media img.qes-shot { padding: clamp(10px, 2vw, 20px); background: #fff; box-sizing: border-box; }
 .qes-notes .scr-pic { position: absolute; height: auto; max-width: none; }
-.qes-body .zz:not(.zz-wm) .qes-notes .scr-frame { max-width: 400px; margin-inline: auto; }
+.case-boxed .zz:not(.zz-wm) .qes-notes .scr-frame { max-width: 400px; margin-inline: auto; }
 /* full page: a window the reader scrolls inside */
 .qscroll { margin: 0; }
 .qscroll-win { max-height: min(640px, 76vh); overflow-y: auto; overscroll-behavior: contain; background: #fff; scrollbar-width: thin; }
@@ -2559,7 +2559,7 @@ a.t-tile:hover { background: var(--emph-hover); }
 .qscroll figcaption, .qtf-fig figcaption { margin-top: 12px; font-size: 14px; color: var(--ink-faint, #666); text-align: center; }
 /* template flow: the whole editor at a readable size, scrolled sideways */
 .qtf-wrap { position: relative; }
-.qes-body .qtf-scrollx { max-width: 100%; overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; scrollbar-width: thin; }
+.case-boxed .qtf-scrollx { max-width: 100%; overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; scrollbar-width: thin; }
 .qtf-scrollx .qtf-frame { width: 900px; max-width: none; border-radius: 0; box-shadow: none; }
 /* test variants: three boxed options */
 .qes-test { margin: clamp(48px, 6vw, 80px) 0 0; }
@@ -2571,8 +2571,8 @@ a.t-tile:hover { background: var(--emph-hover); }
 .qes-opt figcaption { display: grid; gap: 4px; margin: 0 0 14px; font-size: 14px; line-height: 1.45; color: var(--ink-soft); }
 .qes-opt figcaption b { display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600; color: var(--ink); }
 .qes-opt figcaption em { font-style: normal; font-size: 12px; font-weight: 500; padding: 2px 8px; border-radius: 999px; background: var(--ink); color: var(--bg); }
-.qes-body .qes-opt img { display: block; width: 100%; height: auto; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; }
-.qes-body .qes-opt .zoom-btn { border: 0; }
+.case-boxed .qes-opt img { display: block; width: 100%; height: auto; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; }
+.case-boxed .qes-opt .zoom-btn { border: 0; }
 @media (max-width: 760px) { .qes-opts { grid-template-columns: minmax(0, 1fr); } }
 /* compare: both crops share one ratio, so they fill the frame */
 .compare-shot .compare-pane { padding: 0; }
@@ -2596,3 +2596,6 @@ a.t-tile:hover { background: var(--emph-hover); }
 /* final design: the eID hub in the same scroll window as the full page */
 .qes-hub { margin-top: clamp(32px, 4vw, 48px); }
 .qes-hub .qscroll-win { max-height: min(720px, 80vh); }
+/* several screens for one issue or fix, stacked in the media column */
+.zz-stack { display: flex; flex-direction: column; gap: clamp(16px, 2vw, 24px); }
+.zz-stack > * { margin: 0; }
