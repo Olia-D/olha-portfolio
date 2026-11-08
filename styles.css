@@ -2539,28 +2539,38 @@ a.t-tile:hover { background: var(--emph-hover); }
 .t-hero-kicker { display: block; margin-bottom: 10px; font-size: var(--fs-card); line-height: 1.35; font-weight: 500; letter-spacing: -0.01em; color: var(--ink-soft); }
 .t-hero-big { display: block; }
 
-/* ===== QES case: interactive screens ===== */
-.qes-notes .scr-frame { border-radius: 10px; overflow: hidden; box-shadow: 0 1px 24px rgba(0, 0, 0, 0.15); }
+/* ===== QES case: interactive screens. No shadows: screens sit in a light box ===== */
+.qes-body .solution-media img:not(.scr img), .qes-body .qes-notes .scr-frame, .qes-body .qtf-scrollx, .qes-body .qscroll-win, .qes-body .compare-frame {
+  box-shadow: none; border: 1px solid var(--line); border-radius: 8px; }
+.qes-body .solution-media .zoom-btn img, .qes-body .qscroll-win img { border: 0; border-radius: 0; box-shadow: none; }
+.qes-body .solution-media .zoom-btn:has(> img.qes-shot), .qes-body .solution-media .zoom-btn:has(> img.vec) { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: #fff; }
+.qes-notes .scr-frame { overflow: hidden; background: #fff; }
+.qes-body .solution-media img.qes-shot { padding: clamp(10px, 2vw, 20px); background: #fff; box-sizing: border-box; }
 .qes-notes .scr-pic { position: absolute; height: auto; max-width: none; }
-.qes-zz .scr-frame { max-width: 420px; margin-inline: auto; }
-.qes-zz .scr-img { background: #fff; }
-/* backend: one table at a time, switched by a segmented control */
-.qbe { margin: 0; }
-.qbe-seg { display: inline-flex; gap: 4px; padding: 4px; margin: 0 0 16px; border-radius: 999px; background: var(--surface); }
-.qbe-seg button { border: 0; border-radius: 999px; padding: 9px 16px; background: none; font: 500 var(--fs-small, 14px)/1 inherit; font-family: inherit; color: var(--ink-soft); cursor: pointer; transition: background-color var(--dur-fast, .2s) var(--ease-out, ease), color var(--dur-fast, .2s) var(--ease-out, ease); }
-.qbe-seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
-.qbe-seg button:focus-visible { outline: 2px solid var(--out, #0e9a68); outline-offset: 2px; }
-.qbe-stage { display: grid; border-radius: 10px; background: #fff; box-shadow: 0 1px 24px rgba(0, 0, 0, 0.12); overflow: hidden; }
-/* each table sits in the same grid cell (the zoom script wraps them in buttons) */
-.qbe-stage > * { grid-area: 1 / 1; align-self: start; min-width: 0; transition: opacity .3s var(--ease-out, ease); }
-.case-body .solution-media .qbe-stage img { box-shadow: none; border-radius: 0; }
-.qbe-stage > :has(.qbe-after), .qbe-stage > .qbe-after { opacity: 0; pointer-events: none; justify-self: center; width: min(100%, 825px); }
-.qbe[data-k="after"] .qbe-stage > :has(.qbe-after), .qbe[data-k="after"] .qbe-stage > .qbe-after { opacity: 1; pointer-events: auto; }
-.qbe[data-k="after"] .qbe-stage > :has(.qbe-before), .qbe[data-k="after"] .qbe-stage > .qbe-before { opacity: 0; pointer-events: none; }
-/* full page: a fixed window the reader scrolls inside */
+.qes-body .zz:not(.zz-wm) .qes-notes .scr-frame { max-width: 400px; margin-inline: auto; }
+/* full page: a window the reader scrolls inside */
 .qscroll { margin: 0; }
-.qscroll-win { max-height: min(720px, 78vh); overflow-y: auto; overscroll-behavior: contain; border-radius: 10px; background: #fff; box-shadow: 0 1px 24px rgba(0, 0, 0, 0.15); scrollbar-width: thin; }
-.case-body .solution-media .qscroll-win img { border-radius: 0; box-shadow: none; }
-.qscroll-win:focus-visible { outline: 2px solid var(--out, #0e9a68); outline-offset: 3px; }
-.qscroll figcaption { margin-top: 12px; font-size: 14px; color: var(--ink-faint, #666); text-align: center; }
-.qbe-stage .zoom-btn, .qscroll-win .zoom-btn { box-shadow: none; border-radius: 0; background: none; }
+.qscroll-win { max-height: min(640px, 76vh); overflow-y: auto; overscroll-behavior: contain; background: #fff; scrollbar-width: thin; }
+.qscroll-win img { display: block; width: 100%; height: auto; }
+.qscroll-win:focus-visible, .qtf-scrollx:focus-visible { outline: 2px solid var(--out, #0e9a68); outline-offset: 3px; }
+.qscroll figcaption, .qtf-fig figcaption { margin-top: 12px; font-size: 14px; color: var(--ink-faint, #666); text-align: center; }
+/* template flow: the whole editor at a readable size, scrolled sideways */
+.qtf-wrap { position: relative; }
+.qes-body .qtf-scrollx { max-width: 100%; overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; scrollbar-width: thin; }
+.qtf-scrollx .qtf-frame { width: 900px; max-width: none; border-radius: 0; box-shadow: none; }
+/* test variants: three boxed options */
+.qes-test { margin: clamp(48px, 6vw, 80px) 0 0; }
+.qes-test h3 { margin: 0 0 10px; }
+.qes-test > p { max-width: 62ch; }
+.qes-opts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; align-items: start; margin-top: 24px; }
+.qes-opt { margin: 0; padding: 16px; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
+.qes-opt.is-chosen { border-color: var(--ink); }
+.qes-opt figcaption { display: grid; gap: 4px; margin: 0 0 14px; font-size: 14px; line-height: 1.45; color: var(--ink-soft); }
+.qes-opt figcaption b { display: flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 600; color: var(--ink); }
+.qes-opt figcaption em { font-style: normal; font-size: 12px; font-weight: 500; padding: 2px 8px; border-radius: 999px; background: var(--ink); color: var(--bg); }
+.qes-body .qes-opt img { display: block; width: 100%; height: auto; border: 0 !important; border-radius: 0 !important; box-shadow: none !important; }
+.qes-body .qes-opt .zoom-btn { border: 0; }
+@media (max-width: 760px) { .qes-opts { grid-template-columns: minmax(0, 1fr); } }
+/* compare: both crops share one ratio, so they fill the frame */
+.compare-shot .compare-pane { padding: 0; }
+.compare-shot .compare-pane img { object-fit: cover; object-position: top; }

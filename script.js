@@ -587,7 +587,7 @@
         btn.setAttribute("aria-label", paused ? "Play animation" : "Pause animation");
         if (paused) { stop(); } else { timer = null; play(); }
       });
-      (scr.closest(".phone, .qtf-frame") || fig).appendChild(btn);
+      (scr.closest(".phone, .qtf-wrap") || fig).appendChild(btn);
     }
     new IntersectionObserver(function (es) {
       es.forEach(function (e) { on = e.isIntersecting; if (on) { timer = null; play(); } else { stop(); } });
@@ -661,6 +661,9 @@
         q.querySelector(".qtf-badge .t").textContent = /AdES/.test(v) ? "AdES" : "QES";
         setOpen(false);
       }
+      // start the sideways scroller at the settings panel, where the action is
+      var sx = fig.querySelector(".qtf-scrollx");
+      if (sx) { var toEnd = function () { sx.scrollLeft = sx.scrollWidth; }; toEnd(); window.addEventListener("load", toEnd); }
       function resetTpl() { setOpen(false); choose(opts[0]); cur2.classList.remove("is-text"); at(cur2, 1000, 560); scroller.scrollTop = 0; }
       // readers drive it themselves
       var taken = false;
@@ -743,7 +746,7 @@
     paused = !paused; btn.setAttribute("aria-pressed", String(paused)); btn.setAttribute("aria-label", paused ? "Play animation" : "Pause animation");
     clearTimeout(timer); if (!paused) next();
   });
-  (scr.closest(".phone, .qtf-frame") || fig).appendChild(btn);
+  (scr.closest(".phone, .qtf-wrap") || fig).appendChild(btn);
   new IntersectionObserver(function (es) { es.forEach(function (e) { on = e.isIntersecting; clearTimeout(timer); if (on) next(); }); }, { threshold: 0.4 }).observe(scr);
 })();
 
@@ -940,15 +943,4 @@
   }).observe(card, { attributes: true, attributeFilter: ["class"] });
 })();
 
-/* QES backend: before/after switch for the signing logic tables */
-(function () {
-  document.querySelectorAll("[data-qbe]").forEach(function (fig) {
-    var btns = fig.querySelectorAll(".qbe-seg button");
-    btns.forEach(function (b) {
-      b.addEventListener("click", function () {
-        btns.forEach(function (o) { o.setAttribute("aria-pressed", String(o === b)); });
-        fig.dataset.k = b.dataset.k;
-      });
-    });
-  });
-})();
+

@@ -777,7 +777,7 @@
    the Signing method dropdown opens, scrolls the panel like the product does, and sets the level.
    1em = 1 design px of the 1440 x 645 frame. */
 .qtf-fig { margin: 0; }
-.qtf-frame { position: relative; overflow: hidden; border-radius: 10px; box-shadow: 0 1px 24px rgba(0, 0, 0, 0.15); }
+.qtf-frame { position: relative; overflow: hidden; }
 .scr.qtf { width: 1440em; height: 645em; font-size: calc(100cqi / 1440); background: #fff; color: #013a4c; }
 .qtf-bg { position: absolute; left: 0; top: 0; width: 1440em; height: 645em; display: block; max-width: none; }
 .qtf button { font: inherit; color: inherit; background: none; border: 0; padding: 0; margin: 0; cursor: pointer; text-align: left; }
@@ -841,7 +841,4 @@
 .qtf .ani-cursor { z-index: 6; }
 .qtf-fig figcaption { margin-top: 12px; font-size: 14px; color: var(--ink-faint, #666); text-align: center; }
 
-/* narrow screens: crop to the panel and the edge of the document, so the controls stay readable */
-@container (max-width: 700px) {
-  .scr.qtf { font-size: calc(100cqi / 600); margin-left: -840em; }
-}
+

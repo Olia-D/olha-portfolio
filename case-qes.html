@@ -11,9 +11,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&display=block">
-<link rel="stylesheet" href="screens/screens.css?v=56">
+<link rel="stylesheet" href="screens/screens.css?v=57">
 <script>try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<link rel="stylesheet" href="styles.css?v=126">
+<link rel="stylesheet" href="styles.css?v=128">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
@@ -73,9 +73,13 @@
   <div class="wrap case-layout">
     <nav class="case-toc" aria-label="On this page">
       <p>On this page</p>
-      <ol><li><a href="#context">Context</a></li><li><a href="#problem">Problem</a></li><li><a href="#approach">Approach</a></li><li><a href="#results">Results</a></li><li><a href="#challenges">Challenges</a></li><li><a href="#solutions">Solutions</a></li><li><a href="#learnings">Learnings</a></li></ol>
+      <ol><li><a href="#context">Context</a></li><li><a href="#problem">Problem</a></li><li><a href="#approach">Approach</a></li><li><a href="#results">Results</a></li><li><a href="#challenges">Challenges and fixes</a></li><li><a href="#solutions">Final design</a></li><li><a href="#design-system">Design system</a></li><li><a href="#learnings">Learnings</a></li></ol>
     </nav>
-    <div class="case-body">
+    <details class="toc-m">
+      <summary><span class="toc-m-k">On this page</span><span class="toc-m-now">Context</span></summary>
+      <ol><li><a href="#context">Context</a></li><li><a href="#problem">Problem</a></li><li><a href="#approach">Approach</a></li><li><a href="#results">Results</a></li><li><a href="#challenges">Challenges and fixes</a></li><li><a href="#solutions">Final design</a></li><li><a href="#design-system">Design system</a></li><li><a href="#learnings">Learnings</a></li></ol>
+    </details>
+    <div class="case-body qes-body">
   <section class="section-block" id="context">
     <h2>Context</h2>
     <p class="body-text">Oneflow is a contract management platform for B2B teams. Most users never found its most secure signature option &mdash; QES. It was only possible to enable it through support.</p>
@@ -138,13 +142,17 @@
   </section>
 
   <section class="section-block" id="challenges">
-    <h2>Key challenges</h2>
-    <p class="body-text">Why did 85% miss our most secure signature option? Users scanned the marketplace but saw no information about QES &mdash; only confusing structure and provider names. No explanations and hidden pricing.</p>
+    <h2>Challenges and fixes</h2>
+    <p class="body-text">Why did 85% miss our most secure signature option? I traced it to three issues, each blocking a different step on the way to QES.</p>
     <div class="quote-block">
       <p>I didn't even know QES was an option here.</p>
       <cite>User quote</cite>
     </div>
-    <div class="solution-media"><figure class="scr-notes qes-notes" data-noside data-notes>
+
+    <div class="pair">
+    <div class="zz zz-wm">
+      <div class="zz-text"><p class="zz-k">Issue</p><h3>QES hidden in the marketplace</h3><p>Users scanned the Electronic IDs page and found only provider names: no signature levels, no legal guidance, no prices.</p><p class="impact"><b>85%</b><span>of users missed QES</span></p></div>
+      <div class="zz-media solution-media"><figure class="scr-notes qes-notes" data-noside data-notes>
   <div class="scr-frame">
     <div class="scr scr-img" role="img" aria-label="The original Electronic IDs page in the Oneflow marketplace: providers listed by brand name in two lists, with no signature levels or prices" style="width:1264em;height:1150em;font-size:calc(100cqi / 1264)">
       <img loading="lazy" decoding="async" class="scr-pic" src="images/qes-mp-before-1264.webp" srcset="images/qes-mp-before-1264.webp 1264w, images/qes-mp-before-2528.webp 2528w" sizes="(max-width: 1180px) calc(100vw - 64px), 872px" alt="" style="left:0em;top:0em;width:1264em">
@@ -156,23 +164,21 @@
   <figcaption class="hs-bar"><span class="hs-hint">Select a dot to see what was wrong.</span><button class="hs-all" type="button" aria-pressed="false">Show all notes</button></figcaption>
   <ol class="hs-list" hidden></ol>
 </figure></div>
+    </div>
+    <div class="zz zz-wm flip">
+      <div class="zz-text"><p class="zz-k">Fix</p><h3>Signature levels and pricing</h3><p>I rebuilt the marketplace around what users actually needed: “Electronic signatures” with clear security levels, SES for simple documents, AdES for business, QES for legal protection, and the price per signature next to every provider.</p><p class="result-tag"><b>96%</b><span>less setup time</span><em>From a day with support to 15 minutes, self-serve.</em></p></div>
+      <div class="zz-media solution-media"><figure class="qscroll">
+        <div class="qscroll-win" tabindex="0" role="region" aria-label="The full redesigned Electronic signatures page, scrollable">
+          <img src="images/qes-mp-full-1224.webp" srcset="images/qes-mp-full-1224.webp 1224w, images/qes-mp-full-2448.webp 2448w" sizes="(max-width: 1180px) calc(100vw - 64px), 872px" width="1224" height="2973" alt="Full redesigned Electronic signatures page in the Oneflow marketplace: signature levels, eID providers by region and FAQs" loading="lazy" decoding="async">
+        </div>
+        <figcaption>Scroll inside to see the whole page.</figcaption>
+      </figure></div>
+    </div>
+    </div>
 
-    <div class="challenge-grid">
-    <div class="challenge-card">
-      <h3>QES not visible</h3>
-      <p>Users didn't know QES existed; toggle disabled.</p>
-    </div>
-    <div class="challenge-card">
-      <h3>Compliance uncertainty</h3>
-      <p>Missing legal guidance, impossible to make compliant choices.</p>
-    </div>
-    <div class="challenge-card">
-      <h3>Hidden pricing</h3>
-      <p>Hidden pricing reduced trust, blocked activation decisions.</p>
-    </div>
-    </div>
-    <div class="zz flip qes-zz">
-      <div class="zz-text"><p class="zz-k">Issue</p><h3>Confusing contract template setup</h3><p>Users were confused by the "Signature mode" concept and the "Basic" option that included both Advanced and Simple signatures. Many called support, worried that their signature might not be valid.</p><p class="impact"><b>30%</b><span>more support tickets, with users questioning signature validity</span></p></div>
+    <div class="pair">
+    <div class="zz">
+      <div class="zz-text"><p class="zz-k">Issue</p><h3>Confusing contract template setup</h3><p>Users were confused by the “Signature mode” concept and the “Basic” option that included both Advanced and Simple signatures. Many called support, worried that their signature might not be valid.</p><p class="impact"><b>30%</b><span>more support tickets, with users questioning signature validity</span></p></div>
       <div class="zz-media solution-media"><figure class="scr-notes qes-notes" data-notes>
   <div class="scr-frame">
     <div class="scr scr-img" role="img" aria-label="The original Template settings panel: a greyed-out Signature mode set to Basic above the Signing method for counterparties" style="width:312em;height:317em;font-size:calc(100cqi / 312)">
@@ -186,47 +192,10 @@
   <ol class="hs-list" hidden></ol>
 </figure></div>
     </div>
-    <div class="quote-block">
-      <p>Why does my BankID end up under Basic? Is it no longer legally valid?</p>
-      <cite>Customer in a support call</cite>
-    </div>
-  </section>
-
-  <section class="section-block" id="solutions">
-    <h2>Design solutions</h2>
-
-    <div class="solution-block">
-      <h3>Marketplace: signature levels and pricing</h3>
-      <p>I rebuilt the entire marketplace around what users actually needed: "Electronic signatures" with clear security levels &mdash; SES for simple docs, AdES for business, QES for legal protection.</p>
-      <p class="result-tag">Result: Obvious choices, no more guessing games.</p>
-      <figure class="compare" style="--pos: 50%">
-        <div class="compare-frame">
-          <div class="compare-pane compare-after"><img class="compare-vec" src="images/qes-marketplace-after.svg" width="1657" height="1223" alt="After: the redesigned Electronic signatures page with SES, AdES and QES levels" loading="lazy"></div>
-          <div class="compare-pane compare-before"><img alt="Before: the original Electronic IDs marketplace, annotated with the problems users hit" loading="lazy" src="images/qes-problem-marketplace-1600.webp" srcset="images/qes-problem-marketplace-800.webp 800w, images/qes-problem-marketplace-1200.webp 1200w, images/qes-problem-marketplace-1600.webp 1600w, images/qes-problem-marketplace-2400.webp 2400w, images/qes-problem-marketplace-3600.webp 3600w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="4740" height="4212"></div>
-          <span class="compare-tag compare-tag-before" aria-hidden="true">Before</span>
-          <span class="compare-tag compare-tag-after" aria-hidden="true">After</span>
-          <span class="compare-handle" aria-hidden="true"></span>
-          <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Drag to compare the old and new marketplace">
-        </div>
-        <figcaption>Drag to compare the original marketplace with the redesign.</figcaption>
-      </figure>
-      <div class="solution-media"><img src="images/qes-2-1600.webp" srcset="images/qes-2-800.webp 800w, images/qes-2-1200.webp 1200w, images/qes-2-1600.webp 1600w, images/qes-2-2400.webp 2400w, images/qes-2-2565.webp 2565w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="2565" height="1611" alt="Redesigned electronic signature marketplace comparison" loading="lazy" style="max-width:1282px"></div>
-    </div>
-
-    <div class="solution-block">
-      <h3>QES enablement flow</h3>
-      <p>Instead of scattered providers, I created one unified list with smart toggles. Users could enable multiple options, filter by country, and see pricing update instantly.</p>
-      <p class="result-tag">Result: Leveraged existing backend for speed.</p>
-      <div class="solution-media"><img class="vec" src="images/qes-eid-hub.svg" width="1019" height="1596" alt="Unified list of signature providers with toggles, country filter and pricing" loading="lazy"></div>
-    </div>
-
-    <div class="solution-block">
-      <h3>Contract template setup mental model</h3>
-      <p>I tested a simple question: "Where would you look to set up secure signatures?" 8 out of 8 users clicked "Signing method" immediately.</p>
-      <p class="result-tag">Result: Users already knew where to look. Reused existing mental model.</p>
-      <div class="solution-media media-row"><img class="vec on-white" src="images/qes-testing-options.svg" width="1221" height="781" alt="Test variants: where would you look to set up secure signatures?" loading="lazy"></div>
-      <div class="solution-media"><figure class="scr-ani qtf-fig" data-ani="tpl">
-  <div class="scr-frame qtf-frame">
+    <div class="zz zz-wm flip">
+      <div class="zz-text"><p class="zz-k">Fix</p><h3>Signing method, where users already look</h3><p>I asked users where they would set up secure signatures, and all of them went to Signing method. So the levels moved there, grouped into simple and eID signatures, and Signature mode went away.</p><p class="result-tag"><b>8/8</b><span>users looked under Signing method first</span><em>Reusing an existing mental model beat adding a new setting.</em></p></div>
+      <div class="zz-media solution-media"><figure class="scr-ani qtf-fig" data-ani="tpl">
+  <div class="qtf-wrap"><div class="try-scroll qtf-scrollx" tabindex="0" role="region" aria-label="Template editor, scroll sideways to see all of it"><div class="scr-frame qtf-frame">
     <div class="scr qtf" role="group" aria-label="Oneflow template editor with Template settings open. Open Signing method and choose a signature level.">
       <img class="qtf-bg" src="images/qes-editor-1440.webp" srcset="images/qes-editor-1440.webp 1440w, images/qes-editor-2880.webp 2880w" sizes="(max-width: 1180px) calc(100vw - 64px), 1116px" width="1440" height="645" alt="" loading="lazy" decoding="async">
       <span class="qtf-badge" aria-hidden="true"><span class="t">QES</span></span>
@@ -245,30 +214,65 @@
         <p class="qtf-note" style="top:551em"><span class="t">The document can be signed until YYYY-MM-DD</span></p>
       </div></div></div>
     </div>
-  </div>
-  <figcaption>Try it: open Signing method and pick a signature level.</figcaption>
+  </div></div></div>
+  <figcaption>Try it: open Signing method and pick a signature level. Scroll sideways to see the whole editor.</figcaption>
 </figure></div>
     </div>
-
-    <div class="solution-block">
-      <h3>Backend win (bonus)</h3>
-      <p>The real breakthrough wasn't visual &mdash; it was simplifying the logic. I worked with engineers to cut conditional checks from 60+ to just 4.</p>
-      <p class="result-tag">Result: Simpler code = faster responses. Win-win for users and engineers.</p>
-      <div class="solution-media"><figure class="qbe" data-qbe>
-        <div class="qbe-seg" role="group" aria-label="Show the signing logic">
-          <button type="button" aria-pressed="true" data-k="before">Before: 60+ checks</button><button type="button" aria-pressed="false" data-k="after">After: 4 checks</button>
-        </div>
-        <div class="qbe-stage">
-          <img class="qbe-img qbe-before" src="images/qes-be-legacy-996.webp" srcset="images/qes-be-legacy-996.webp 996w, images/qes-be-legacy-1992.webp 1992w" sizes="(max-width: 1180px) calc(100vw - 64px), 872px" width="996" height="969" alt="Before: the legacy QES configuration matrix, 16 rows crossing feature flag, contract type, signature mode, qualified flag and display modes" loading="lazy" decoding="async">
-          <img class="qbe-img qbe-after" src="images/qes-be-new-825.webp" srcset="images/qes-be-new-825.webp 825w, images/qes-be-new-1650.webp 1650w" sizes="(max-width: 1180px) calc(100vw - 64px), 872px" width="825" height="566" alt="After: the updated logic table, where a signature type is available when it is enabled in the marketplace" loading="lazy" decoding="async">
-        </div>
-      </figure></div>
+    </div>
+    <div class="qes-test">
+      <h3>How I tested it</h3>
+      <p>Signature level used to live in its own Signature mode setting, where “Basic” quietly covered both simple and Advanced signatures, and “Qualified” was the only way to QES. I tested three ways to fold the level into Signing method instead:</p>
+      <div class="qes-opts">
+        <figure class="qes-opt"><figcaption><b>Option A</b><span>Most compact, but confusing to users.</span></figcaption><img src="images/qes-option-a.svg" width="320" height="184" alt="Option A: Most compact, but confusing to users." loading="lazy" decoding="async"></figure>
+        <figure class="qes-opt is-chosen"><figcaption><b>Option B <em>Chosen</em></b><span>The most intuitive and clear to users.</span></figcaption><img src="images/qes-option-b.svg" width="320" height="498" alt="Option B: The most intuitive and clear to users." loading="lazy" decoding="async"></figure>
+        <figure class="qes-opt"><figcaption><b>Option C</b><span>Clear, but it cluttered an already busy Settings tab.</span></figcaption><img src="images/qes-option-c.svg" width="312" height="369" alt="Option C: Clear, but it cluttered an already busy Settings tab." loading="lazy" decoding="async"></figure>
+      </div>
     </div>
 
+    <div class="quote-block">
+      <p>Why does my BankID end up under Basic? Is it no longer legally valid?</p>
+      <cite>Customer in a support call</cite>
+    </div>
+
+    <div class="pair">
+    <div class="zz">
+      <div class="zz-text"><p class="zz-k">Issue</p><h3>A tangled backend</h3><p>Behind Signature mode, the backend crossed feature flags, contract type, signature mode, qualified flags and display modes in one condition matrix, and every check slowed the settings down.</p><p class="impact"><b>60+</b><span>conditional checks</span></p></div>
+      <div class="zz-media solution-media"><img class="qes-shot" src="images/qes-be-legacy-996.webp" srcset="images/qes-be-legacy-996.webp 996w, images/qes-be-legacy-1992.webp 1992w" sizes="(max-width: 1180px) calc(100vw - 64px), 872px" width="996" height="969" alt="Before: the legacy QES configuration matrix, 16 rows crossing feature flag, contract type, signature mode, qualified flag and display modes" loading="lazy" decoding="async"></div>
+    </div>
+    <div class="zz flip">
+      <div class="zz-text"><p class="zz-k">Fix</p><h3>Four rules</h3><p>The real breakthrough wasn’t visual, it was simplifying the logic. With engineers, I cut 60+ checks down to four; the main one: a signature type appears in the dropdown when it’s enabled in the marketplace.</p><p class="result-tag"><b>90%</b><span>faster backend</span><em>About a second faster per response. A win for users and engineers.</em></p></div>
+      <div class="zz-media solution-media"><img class="qes-shot" src="images/qes-be-new-738.webp" srcset="images/qes-be-new-738.webp 738w, images/qes-be-new-1476.webp 1476w" sizes="(max-width: 1180px) calc(100vw - 64px), 872px" width="738" height="470" alt="After: the updated logic table, where a signature type is available when it is enabled in the marketplace" loading="lazy" decoding="async"></div>
+    </div>
+    </div>
+  </section>
+
+  <section class="section-block" id="solutions">
+    <h2>The final design</h2>
+    <p class="body-text">The original Electronic IDs page next to the redesigned Electronic signatures page.</p>
+    <figure class="compare compare-shot" style="--pos: 50%">
+      <div class="compare-frame">
+        <div class="compare-pane compare-after"><img src="images/qes-cmp-after-1224.webp" srcset="images/qes-cmp-after-1224.webp 1224w, images/qes-cmp-after-2448.webp 2448w" sizes="(max-width: 1180px) calc(100vw - 64px), 872px" width="1224" height="841" alt="After: the redesigned Electronic signatures page with SES, AdES and QES levels explained" loading="lazy"></div>
+        <div class="compare-pane compare-before"><img src="images/qes-cmp-before-1224.webp" srcset="images/qes-cmp-before-1224.webp 1224w, images/qes-cmp-before-2448.webp 2448w" sizes="(max-width: 1180px) calc(100vw - 64px), 872px" width="1224" height="841" alt="Before: the original Electronic IDs page, listing providers by brand name" loading="lazy"></div>
+        <span class="compare-tag compare-tag-before" aria-hidden="true">Before</span>
+        <span class="compare-tag compare-tag-after" aria-hidden="true">After</span>
+        <span class="compare-handle" aria-hidden="true"></span>
+        <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Drag to compare the old and new marketplace">
+      </div>
+      <figcaption>Drag to compare the original marketplace with the redesign.</figcaption>
+    </figure>
+
     <div class="solution-block">
-      <h3>Design system updates</h3>
-      <p>Extended components for: marketplace toggles, country filter, pricing card, and system messages.</p>
-      <div class="solution-media"><figure class="qsb-fig">
+      <h3>QES enablement flow</h3>
+      <p>Instead of scattered providers, I created one unified list with smart toggles. Users could enable multiple options, filter by country, and see pricing update instantly.</p>
+      <p class="result-tag">Result: Leveraged existing backend for speed.</p>
+      <div class="solution-media"><img class="vec" src="images/qes-eid-hub.svg" width="1019" height="1596" alt="Unified list of signature providers with toggles, country filter and pricing" loading="lazy"></div>
+    </div>
+  </section>
+
+  <section class="section-block" id="design-system">
+    <h2>Design system</h2>
+    <p class="body-text">Extended components for marketplace toggles, the country filter, the pricing card and system messages.</p>
+    <div class="solution-media"><figure class="qsb-fig">
   <div class="scr-frame qsb-frame" role="img" aria-label="Signature design system: SES, AdES and QES level badges, the country dropdown, the Important cost alert, a provider card with AdES and QES toggles, and the Qualified Electronic Signature pricing card.">
     <div class="scr qsb" inert>
       <section class="ds-band"><p class="ds-cap">Foundations</p><div class="ds-row"><span class="qs-b qs-ses qp" style="--l:0;--t:0;--w:36">SES</span><span class="qs-b qs-ades qp" style="--l:0;--t:0;--w:43">AdES</span><span class="qs-b qs-off qp" style="--l:0;--t:0;--w:43">AdES</span><span class="qs-b qs-qes qp" style="--l:0;--t:0;--w:37">QES</span><span class="qs-b qs-off qp" style="--l:0;--t:0;--w:37">QES</span></div></section>
@@ -296,18 +300,6 @@
     </div>
   </div>
 </figure></div>
-    </div>
-
-    <div class="solution-block">
-      <h3>The full marketplace page</h3>
-      <p>The redesigned Electronic signatures page end to end: signature levels, eID providers by region, and FAQs.</p>
-      <div class="solution-media"><figure class="qscroll">
-        <div class="qscroll-win" tabindex="0" role="region" aria-label="The full redesigned Electronic signatures page, scrollable">
-          <img src="images/qes-mp-full-1224.webp" srcset="images/qes-mp-full-1224.webp 1224w, images/qes-mp-full-2448.webp 2448w" sizes="(max-width: 1180px) calc(100vw - 64px), 872px" width="1224" height="2973" alt="Full redesigned Electronic signatures page in the Oneflow marketplace: signature levels, eID providers by region and FAQs" loading="lazy" decoding="async">
-        </div>
-        <figcaption>Scroll inside the page to see it end to end.</figcaption>
-      </figure></div>
-    </div>
   </section>
 
   <section class="section-block" id="learnings">
@@ -366,4 +358,4 @@
   </div>
 </footer>
 
-<script src="script.js?v=68"></script>
+<script src="script.js?v=69"></script>
