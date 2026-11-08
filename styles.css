@@ -1574,7 +1574,7 @@ img.on-sage { background: #d1d8d0; object-fit: cover; object-position: right cen
 :root {
   --bg: #fff;
   --paper: #fff;
-  --surface: #f3f3f1;
+  --surface: #f2f3f4;
   --ink: #161616;
   --ink-soft: #474747;
   --ink-faint: #666664;
@@ -1972,7 +1972,7 @@ a.t-tile:hover { background: #0e3230; }
 :root {
   --bg: #fff;
   --paper: #fff;
-  --surface: #f3f3f1;
+  --surface: #f2f3f4;
   --bg-card: var(--surface);
   --mist: var(--surface);
   --sand-tint: var(--surface);
@@ -2657,3 +2657,13 @@ a.t-tile:hover { background: var(--emph-hover); }
 .case-body .pair > .zz + .zz .zz-k::before { background: #0e9a68; }
 :root[data-theme="dark"] .case-body .pair > .zz:first-child .zz-k { background: rgb(238 122 69 / 0.18); }
 :root[data-theme="dark"] .case-body .pair > .zz + .zz .zz-k { background: rgb(14 154 104 / 0.2); }
+
+/* one rule for screenshots: desktop screens sit in a white box with a 1px line and 8px corners;
+   phones keep their device frame */
+.shot-box { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: #fff; box-shadow: none; }
+.shot-box .scr, .shot-box .scr.scr-img .scr-pic { border-radius: 0; }
+.shot-pad { background: #fff; }
+
+/* quotes: left-aligned like the text, capped near the reading width on big screens */
+.case-body .quote-block { max-width: 760px; }
+.case-body .scr-frame.shot-box { border-radius: 8px; }
