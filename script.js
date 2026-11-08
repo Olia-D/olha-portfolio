@@ -649,9 +649,12 @@
       var qes = opts[opts.length - 1], cur2 = pointer(q, "ani-cursor");
       var FIELD_BOTTOM = 242, MENU_H = 396, VIEW_H = 581;   // design px inside the panel
       function scrollTo(y) { var k = scroller.clientHeight / VIEW_H; scroller.scrollTo({ top: y * k, behavior: still ? "auto" : "smooth" }); }
+      var NEED = FIELD_BOTTOM + MENU_H - VIEW_H + 12;   // panel scroll that shows the whole menu
+      function shown() { return scroller.scrollTop / (scroller.clientHeight / VIEW_H); }
+      // opening only scrolls when the menu would be cut off; closing never moves the panel
       function setOpen(o) {
         q.classList.toggle("is-open", o); sel.setAttribute("aria-expanded", String(o));
-        if (o) scrollTo(FIELD_BOTTOM + MENU_H - VIEW_H + 12); else scrollTo(0);
+        if (o && shown() < NEED - 2) scrollTo(NEED);
       }
       function choose(btn) {
         opts.forEach(function (b) { b.setAttribute("aria-selected", String(b === btn)); b.classList.remove("is-hover"); });
@@ -677,14 +680,21 @@
       opts.forEach(function (b) { b.addEventListener("click", function (e) { if (e.isTrusted) takeOver(); choose(b); sel.focus({ preventScroll: true }); }); });
       q.addEventListener("keydown", function (e) { if (e.key === "Escape" && q.classList.contains("is-open")) { setOpen(false); sel.focus({ preventScroll: true }); } });
       document.addEventListener("click", function (e) { if (taken && q.classList.contains("is-open") && !e.target.closest(".qtf-field")) setOpen(false); });
+      // one thing moves at a time: the panel scrolls first (like a wheel), then the pointer goes to the field,
+      // the menu opens in place, the pick lands, and the panel eases back before the loop starts again
+      var top0 = 64 - 0;   // panel top in the screen, design px
       player(fig, q, [
-          [900, function () { at(cur2, 1262, 288); }],
+          [900, function () { at(cur2, 1262, 430); }],
+          [800, function () { scrollTo(NEED); }],
+          [800, function () { at(cur2, 1262, top0 + 222 - NEED); }],
           [800, function () { press(sel); setOpen(true); }],
-          [1200, function () { at(cur2, 1240, 607); }],
+          [1000, function () { at(cur2, 1240, top0 + 611 - NEED); }],
           [700, function () { qes.classList.add("is-hover"); }],
           [450, function () { press(qes); choose(qes); }],
-          [500, function () { at(cur2, 1000, 560); }],
-          [2800, function () {}]
+          [600, function () { at(cur2, 1000, 560); }],
+          [2600, function () { scrollTo(0); }],
+          [900, function () { choose(opts[0]); }],
+          [1400, function () {}]
         ],
         function () { if (!taken) resetTpl(); },
         function () { choose(qes); },

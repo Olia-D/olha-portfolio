@@ -821,8 +821,8 @@
 .qtf-sel svg { transition: transform .2s ease; }
 .qtf.is-open .qtf-sel { border-color: #013a4c !important; border-radius: 4em 4em 0 0; }
 .qtf.is-open .qtf-sel svg { transform: rotate(180deg); }
-.qtf-menu { position: absolute; left: 0; top: 39em; width: 280em; height: 396em; border: 1em solid #013a4c; border-top-color: #d6dfe2; border-radius: 0 0 4em 4em; background: #fff; box-shadow: 0 6em 18em rgb(0 0 0 / .12); opacity: 0; visibility: hidden; transform: translateY(-4em); transition: opacity .16s ease, transform .2s ease, visibility .16s; }
-.qtf.is-open .qtf-menu { opacity: 1; visibility: visible; transform: none; }
+.qtf-menu { position: absolute; left: 0; top: 39em; width: 280em; height: 396em; border: 1em solid #013a4c; border-top-color: #d6dfe2; border-radius: 0 0 4em 4em; background: #fff; box-shadow: 0 6em 18em rgb(0 0 0 / .12); opacity: 0; visibility: hidden; transition: opacity .18s ease, visibility .18s; }
+.qtf.is-open .qtf-menu { opacity: 1; visibility: visible; }
 .qtf-menu > * { position: absolute; left: 0; right: 0; }
 .qtf-gh, .qtf-gs { padding-left: 11em; }
 .qtf-gh .t { font-size: 13em; font-weight: 600; }
@@ -837,8 +837,14 @@
 .qtf-help { top: 252em; left: 48em !important; color: #587a85; opacity: 0; transition: opacity .2s ease; }
 .qtf-help .t { font-size: 11.5em; }
 .qtf.is-qes .qtf-help { opacity: 1; }
+.qtf-cust1 { transition: opacity .2s ease, visibility .2s; }
 .qtf.is-qes .qtf-cust1 { opacity: 0; visibility: hidden; }
 .qtf .ani-cursor { z-index: 6; }
+/* clicks here feel like the product: a quiet pressed state, never a size change */
+.qtf .is-press { transform: none; }
+.qtf-sel.is-press { border-color: #013a4c !important; }
+.qtf-opt.is-press { background: #e6edf0 !important; }
+.qtf-val { transition: opacity .15s ease; }
 .qtf-fig figcaption { margin-top: 12px; font-size: 14px; color: var(--ink-faint, #666); text-align: center; }
 
 
