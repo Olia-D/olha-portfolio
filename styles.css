@@ -2640,3 +2640,5 @@ a.t-tile:hover { background: var(--emph-hover); }
 .case-boxed .solution-media .shot-pad img.shot-panel { width: 100%; max-width: 367px; margin-inline: auto; display: block; }
 .shot-pad > .zoom-btn { max-width: 367px; }
 .case-boxed .shot-pad > .scr-frame { box-shadow: none; }
+/* desktop screens inside a box: the box owns the corner radius, the screen itself stays square */
+.qes-notes .scr.scr-img, .qes-notes .scr.scr-img .scr-pic { border-radius: 0; }
