@@ -848,3 +848,14 @@
 .qtf-fig figcaption { margin-top: 12px; font-size: 14px; color: var(--ink-faint, #666); text-align: center; }
 
 
+
+/* QES design system: colour tokens like Suggestions, and patterns in two even columns */
+.scr.qsb .qs-tokens { display: grid; gap: calc(12 * var(--u)); margin-right: calc(24 * var(--u)); }
+.scr.qsb .qs-tok { display: grid; grid-template-columns: calc(22 * var(--u)) calc(76 * var(--u)) auto; align-items: center; gap: calc(12 * var(--u)); font-size: calc(13 * var(--u)); }
+.scr.qsb .qs-tok i { width: calc(22 * var(--u)); height: calc(22 * var(--u)); border-radius: 50%; background: var(--c); }
+.scr.qsb .qs-tok b { font-weight: 500; color: #013a4c; }
+.scr.qsb .qs-tok em { font-style: normal; color: #587a85; }
+.scr.qsb .qs-pat { flex-wrap: nowrap; }
+.scr.qsb .qs-col { display: flex; flex-direction: column; gap: calc(32 * var(--u)); flex: none; }
+.scr.qsb .qs-col > .qp { position: relative; left: auto; top: auto; }
+@container (max-width: 759px) { .scr.qsb .qs-pat { flex-wrap: wrap; } }

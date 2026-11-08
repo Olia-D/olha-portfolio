@@ -2577,3 +2577,22 @@ a.t-tile:hover { background: var(--emph-hover); }
 /* compare: both crops share one ratio, so they fill the frame */
 .compare-shot .compare-pane { padding: 0; }
 .compare-shot .compare-pane img { object-fit: cover; object-position: top; }
+
+/* ===== QES, matched to Suggestions ===== */
+/* context: a short step diagram in place of the drift diagram */
+.ctx-steps { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; padding: clamp(20px, 2.6vw, 32px); background: var(--bg); border-radius: var(--r-lg); }
+.ctx-arrow { position: relative; width: 12px; height: 30px; flex: none; }
+.ctx-arrow::before { content: ""; position: absolute; top: 4px; bottom: 6px; left: 50%; border-left: 1.2px dashed var(--mute); }
+.ctx-arrow::after { content: ""; position: absolute; bottom: 3px; left: 50%; width: 6px; height: 6px; border-right: 1.2px solid var(--mute); border-bottom: 1.2px solid var(--mute); transform: translateX(-50%) rotate(45deg); }
+.ctx-steps .ctx-home { background: var(--ink); color: var(--bg); }
+.ctx-note { margin-top: 10px; font-size: var(--fs-xs); color: var(--ink-faint); }
+/* results: when the after bar is tiny, its label sits on the dark track */
+.rs-tiny { --w: 4%; }
+.rs-band .rs-tiny span { color: rgb(255 255 255 / 0.9); }
+/* a quote that belongs to one issue, inside its text column */
+.zz-quote { margin: 22px 0 0; padding: 2px 0 2px 16px; border-left: 2px solid var(--line); }
+.zz-quote p { margin: 0; font-size: var(--fs-md, 1.05rem); line-height: 1.45; color: var(--ink); }
+.zz-quote cite { display: block; margin-top: 8px; font-style: normal; font-size: var(--fs-xs); color: var(--ink-faint); }
+/* final design: the eID hub in the same scroll window as the full page */
+.qes-hub { margin-top: clamp(32px, 4vw, 48px); }
+.qes-hub .qscroll-win { max-height: min(720px, 80vh); }

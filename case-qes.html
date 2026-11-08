@@ -11,9 +11,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:ital,wght@0,400..900;1,400..900&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,400;0,500;0,600;1,400&display=block">
-<link rel="stylesheet" href="screens/screens.css?v=59">
+<link rel="stylesheet" href="screens/screens.css?v=60">
 <script>try{var t=localStorage.getItem("theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
-<link rel="stylesheet" href="styles.css?v=129">
+<link rel="stylesheet" href="styles.css?v=131">
 
 <a class="skip-link" href="#main">Skip to content</a>
 
@@ -62,7 +62,7 @@
       <div class="case-head-copy">
         <a class="case-back" href="index.html#work"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5"/><path d="m11 18-6-6 6-6"/></svg>Selected work</a>
         <h1>High-security signing</h1>
-        <p class="case-lede">Users couldn't discover Oneflow's most secure signing option (QES), creating a major gap between product capability and adoption.</p>
+        <p class="case-lede">Made QES self-serve: setup went from a day with support to 15 minutes.</p>
         <p class="case-shift-line"><span class="from">1 day with support</span> <svg class="shift-arrow" width="22" height="12" viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 6h19"/><path d="M15.5 1.5 20.5 6l-5 4.5"/></svg><span class="visually-hidden"> became </span> <span class="to">15 minutes, self-serve</span></p>
       </div>
       <div class="case-head-visual case-head-bleed"><img style="view-transition-name: shot-qes; view-transition-class: shot" fetchpriority="high" src="images/qes-ipad-hero-1900.webp" srcset="images/qes-ipad-hero-1300.webp 1300w, images/qes-ipad-hero-1900.webp 1900w, images/qes-ipad-hero-2600.webp 2600w" sizes="(max-width: 860px) 100vw, 1100px" width="3170" height="2400" alt="Oneflow electronic signatures marketplace on an iPad"></div>
@@ -73,22 +73,31 @@
   <div class="wrap case-layout">
     <nav class="case-toc" aria-label="On this page">
       <p>On this page</p>
-      <ol><li><a href="#context">Context</a></li><li><a href="#problem">Problem</a></li><li><a href="#approach">Approach</a></li><li><a href="#results">Results</a></li><li><a href="#challenges">Challenges and fixes</a></li><li><a href="#solutions">Final design</a></li><li><a href="#design-system">Design system</a></li><li><a href="#learnings">Learnings</a></li></ol>
+      <ol><li><a href="#context">Context</a></li><li><a href="#problem">Problem</a></li><li><a href="#results">Results</a></li><li><a href="#constraints">Constraints</a></li><li><a href="#approach">Approach</a></li><li><a href="#challenges">Challenges and fixes</a></li><li><a href="#solutions">Final design</a></li><li><a href="#design-system">Design system</a></li><li><a href="#learnings">Learnings</a></li></ol>
     </nav>
     <details class="toc-m">
       <summary><span class="toc-m-k">On this page</span><span class="toc-m-now">Context</span></summary>
-      <ol><li><a href="#context">Context</a></li><li><a href="#problem">Problem</a></li><li><a href="#approach">Approach</a></li><li><a href="#results">Results</a></li><li><a href="#challenges">Challenges and fixes</a></li><li><a href="#solutions">Final design</a></li><li><a href="#design-system">Design system</a></li><li><a href="#learnings">Learnings</a></li></ol>
+      <ol><li><a href="#context">Context</a></li><li><a href="#problem">Problem</a></li><li><a href="#results">Results</a></li><li><a href="#constraints">Constraints</a></li><li><a href="#approach">Approach</a></li><li><a href="#challenges">Challenges and fixes</a></li><li><a href="#solutions">Final design</a></li><li><a href="#design-system">Design system</a></li><li><a href="#learnings">Learnings</a></li></ol>
     </details>
     <div class="case-body qes-body">
   <section class="section-block" id="context">
     <h2>Context</h2>
-    <p class="body-text">Oneflow is a contract management platform for B2B teams. Most users never found its most secure signature option &mdash; QES. It was only possible to enable it through support.</p>
+    <div class="ctx-panel">
+      <div class="ctx-copy">
+        <p class="ctx-lead">Oneflow offered QES, <span>but only support could switch it on.</span></p>
+        <p class="body-text">Oneflow is a contract management platform for B2B teams. Most users never found its most secure signature option, QES. The only way to enable it was a support ticket.</p>
+      </div>
+      <div class="ctx-steps" role="img" aria-label="To get QES, a customer opened a support ticket and waited about a day for it to be enabled">
+        <span class="ctx-chip">Customer</span><i class="ctx-arrow" aria-hidden="true"></i><span class="ctx-chip">Support ticket</span><i class="ctx-arrow" aria-hidden="true"></i><span class="ctx-chip ctx-home">QES enabled</span>
+        <span class="ctx-note">about a day later</span>
+      </div>
+    </div>
   </section>
 
   <section class="section-block" id="problem">
     <h2>Problem</h2>
-    <div class="two-col">
-      <div>
+    <div class="two-col pb-pair">
+      <div class="pb-card">
         <p class="section-eyebrow">Research</p>
         <ul class="check-list">
           <li>Analyzed 30+ support tickets</li>
@@ -108,11 +117,51 @@
         <div class="why"><strong>Why it matters:</strong> Lost upsell opportunities + legal/compliance risk for enterprise accounts.</div>
       </div>
     </div>
+    <div class="quote-block">
+      <p>I didn't even know QES was an option here.</p>
+      <cite>User quote</cite>
+    </div>
+  </section>
+
+
+  <section class="section-block" id="results">
+    <h2>Results and impact</h2>
+    <div class="rs-band" data-rs>
+      <div class="rs-tile rs-lead">
+        <p class="rs-k">Setup time cut</p>
+        <div class="num">96%</div>
+        <p class="rs-d">From a day with support to 15 minutes, self-serve</p>
+        <div class="rs-bars" aria-hidden="true">
+          <div class="rs-bar rs-before"><i></i><span>Before: 1 day with support</span></div>
+          <div class="rs-bar rs-after rs-tiny"><i></i><span>After: 15 minutes, self-serve</span></div>
+        </div>
+      </div>
+      <div class="rs-tile">
+        <p class="rs-k">Support tickets</p>
+        <div class="num">30%</div>
+        <p class="rs-d">Fewer tickets: users understood what they were signing</p>
+      </div>
+      <div class="rs-tile">
+        <p class="rs-k">Backend performance</p>
+        <div class="num">90%</div>
+        <p class="rs-d">Simplified logic, about a second faster per response</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-block" id="constraints">
+    <h2>Working with constraints</h2>
+    <h3 style="margin-top:0;">No single list of providers possible</h3>
+    <div class="cn-pair">
+      <div class="cn-card"><p class="cn-k">Expected</p><p class="cn-t">One list for every signature provider</p><p class="cn-d">The backend kept stand-alone eIDs and the E-ID Hub apart, so merging them wasn&rsquo;t technically possible.</p></div>
+      <div class="cn-card cn-done"><p class="cn-k">Delivered</p><p class="cn-t">An eID hub on the existing backend</p><p class="cn-d">Providers grouped by signature level, with AdES and QES toggles, a country filter and prices per signature.</p></div>
+    </div>
+    <div class="stake"><p class="stake-k">What was at stake</p><p>A backend rebuild before anything shipped, or more lost QES upsells and compliance risk for enterprise accounts.</p></div>
   </section>
 
   <section class="section-block" id="approach">
     <h2>My approach</h2>
-    <ol class="approach-list">
+    <ol class="approach-list approach-timeline">
       <li><span>01</span>Marketplace IA redesign<small>Redesigned marketplace IA to surface QES prominently</small></li>
       <li><span>02</span>QES setup flow redesign<small>Document and template setup redesign</small></li>
       <li><span>03</span>Validation<small>Ran 3 testing rounds with enterprise users</small></li>
@@ -120,34 +169,9 @@
     </ol>
   </section>
 
-  <section class="section-block" id="results">
-    <h2>Results and impact</h2>
-    <div class="results-row">
-      <div class="result-card">
-        <div class="num">96%</div>
-        <div class="label">Setup time cut</div>
-        <div class="detail">1 day with support &rarr; 15 minutes solo</div>
-      </div>
-      <div class="result-card">
-        <div class="num">30%</div>
-        <div class="label">Support ticket reduction</div>
-        <div class="detail">Users understood what they were signing</div>
-      </div>
-      <div class="result-card">
-        <div class="num">90%</div>
-        <div class="label">Backend performance boost</div>
-        <div class="detail">Simplified logic, 1-second faster response</div>
-      </div>
-    </div>
-  </section>
-
   <section class="section-block" id="challenges">
     <h2>Challenges and fixes</h2>
     <p class="body-text">Why did 85% miss our most secure signature option? I traced it to three issues, each blocking a different step on the way to QES.</p>
-    <div class="quote-block">
-      <p>I didn't even know QES was an option here.</p>
-      <cite>User quote</cite>
-    </div>
 
     <div class="pair">
     <div class="zz zz-wm">
@@ -186,7 +210,7 @@
 
     <div class="pair">
     <div class="zz">
-      <div class="zz-text"><p class="zz-k">Issue</p><h3>Confusing contract template setup</h3><p>Users were confused by the “Signature mode” concept and the “Basic” option that included both Advanced and Simple signatures. Many called support, worried that their signature might not be valid.</p><p class="impact"><b>30%</b><span>more support tickets, with users questioning signature validity</span></p></div>
+      <div class="zz-text"><p class="zz-k">Issue</p><h3>Confusing contract template setup</h3><p>Users were confused by the “Signature mode” concept and the “Basic” option that included both Advanced and Simple signatures. Many called support, worried that their signature might not be valid.</p><p class="impact"><b>30%</b><span>more support tickets, with users questioning signature validity</span></p><blockquote class="zz-quote"><p>&ldquo;Why does my BankID end up under Basic? Is it no longer legally valid?&rdquo;</p><cite>Customer in a support call</cite></blockquote></div>
       <div class="zz-media solution-media"><figure class="scr-notes qes-notes" data-notes>
   <div class="scr-frame">
     <div class="scr scr-img" role="img" aria-label="The original Template settings panel: a greyed-out Signature mode set to Basic above the Signing method for counterparties" style="width:312em;height:317em;font-size:calc(100cqi / 312)">
@@ -237,10 +261,6 @@
       </div>
     </div>
 
-    <div class="quote-block">
-      <p>Why does my BankID end up under Basic? Is it no longer legally valid?</p>
-      <cite>Customer in a support call</cite>
-    </div>
 
     <div class="pair">
     <div class="zz">
@@ -256,7 +276,7 @@
 
   <section class="section-block" id="solutions">
     <h2>The final design</h2>
-    <p class="body-text">The original Electronic IDs page next to the redesigned Electronic signatures page.</p>
+    <p class="body-text">The original Electronic IDs page next to the redesigned Electronic signatures page, and the eID hub where admins switch providers on.</p>
     <figure class="compare compare-shot" style="--pos: 50%">
       <div class="compare-frame">
         <div class="compare-pane compare-after"><img src="images/qes-cmp-after-1224.webp" srcset="images/qes-cmp-after-1224.webp 1224w, images/qes-cmp-after-2448.webp 2448w" sizes="(max-width: 1180px) calc(100vw - 64px), 872px" width="1224" height="841" alt="After: the redesigned Electronic signatures page with SES, AdES and QES levels explained" loading="lazy"></div>
@@ -269,12 +289,12 @@
       <figcaption>Drag to compare the original marketplace with the redesign.</figcaption>
     </figure>
 
-    <div class="solution-block">
-      <h3>QES enablement flow</h3>
-      <p>Instead of scattered providers, I created one unified list with smart toggles. Users could enable multiple options, filter by country, and see pricing update instantly.</p>
-      <p class="result-tag">Result: Leveraged existing backend for speed.</p>
-      <div class="solution-media"><img class="vec" src="images/qes-eid-hub.svg" width="1019" height="1596" alt="Unified list of signature providers with toggles, country filter and pricing" loading="lazy"></div>
-    </div>
+    <div class="solution-media qes-hub"><figure class="qscroll">
+      <div class="qscroll-win" tabindex="0" role="region" aria-label="The eID hub, scrollable">
+        <img src="images/qes-eid-hub.svg" width="1019" height="1596" alt="Unified list of signature providers with toggles, country filter and pricing" loading="lazy">
+      </div>
+      <figcaption>The eID hub: AdES and QES toggles per provider, a country filter and prices per signature. Scroll inside to see it all.</figcaption>
+    </figure></div>
   </section>
 
   <section class="section-block" id="design-system">
@@ -283,12 +303,12 @@
     <div class="solution-media"><figure class="qsb-fig">
   <div class="scr-frame qsb-frame" role="img" aria-label="Signature design system: SES, AdES and QES level badges, the country dropdown, the Important cost alert, a provider card with AdES and QES toggles, and the Qualified Electronic Signature pricing card.">
     <div class="scr qsb" inert>
-      <section class="ds-band"><p class="ds-cap">Foundations</p><div class="ds-row"><span class="qs-b qs-ses qp" style="--l:0;--t:0;--w:36">SES</span><span class="qs-b qs-ades qp" style="--l:0;--t:0;--w:43">AdES</span><span class="qs-b qs-off qp" style="--l:0;--t:0;--w:43">AdES</span><span class="qs-b qs-qes qp" style="--l:0;--t:0;--w:37">QES</span><span class="qs-b qs-off qp" style="--l:0;--t:0;--w:37">QES</span></div></section>
+      <section class="ds-band"><p class="ds-cap">Foundations</p><div class="ds-row"><div class="qs-tokens"><span class="qs-tok"><i style="--c:#509DD1"></i><b>#509DD1</b><em>SES level</em></span><span class="qs-tok"><i style="--c:#187BB7"></i><b>#187BB7</b><em>AdES level</em></span><span class="qs-tok"><i style="--c:#0F5987"></i><b>#0F5987</b><em>QES level</em></span><span class="qs-tok"><i style="--c:#3CC885"></i><b>#3CC885</b><em>Enabled toggle</em></span><span class="qs-tok"><i style="--c:#EF9B4E"></i><b>#EF9B4E</b><em>Cost alert</em></span></div><span class="qs-b qs-ses qp" style="--l:0;--t:0;--w:36">SES</span><span class="qs-b qs-ades qp" style="--l:0;--t:0;--w:43">AdES</span><span class="qs-b qs-off qp" style="--l:0;--t:0;--w:43">AdES</span><span class="qs-b qs-qes qp" style="--l:0;--t:0;--w:37">QES</span><span class="qs-b qs-off qp" style="--l:0;--t:0;--w:37">QES</span></div></section>
       <section class="ds-band"><p class="ds-cap">Inputs and actions</p><div class="ds-row"><div class="qs-dd qp sz" style="--l:572;--t:8;--w:302;--h:267">
         <div class="qs-dtrig"><img class="qs-flag" src="screens/img/qes/globe.webp" alt=""><span>All countries and regions</span><img class="qs-chev" src="screens/img/qes/chevron.svg" alt=""></div>
         <div class="qs-row qs-sel"><img class="qs-flag" src="screens/img/qes/globe.webp" alt=""><span>All countries and regions</span><img class="qs-check" src="screens/img/qes/check.svg" alt=""></div><div class="qs-row"><img class="qs-flag" src="screens/img/qes/eu.webp" alt=""><span>EU/EEA</span></div><div class="qs-row"><img class="qs-flag" src="screens/img/qes/be.webp" alt=""><span>Belgium</span></div><div class="qs-row"><img class="qs-flag" src="screens/img/qes/ee.webp" alt=""><span>Estonia</span></div>
       </div></div></section>
-      <section class="ds-band"><p class="ds-cap">Patterns</p><div class="ds-row"><div class="qs-alert qp sz" style="--l:16.5;--t:325.5;--w:459;--h:111">
+      <section class="ds-band"><p class="ds-cap">Patterns</p><div class="ds-row qs-pat"><div class="qs-col"><div class="qs-alert qp sz" style="--l:16.5;--t:325.5;--w:459;--h:111">
         <svg class="qs-ai" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12" fill="#ef9b4e"/><path d="M12 8v5" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="16" r="1" fill="#fff"/></svg>
         <div class="qs-at"><b>Important</b><p>Enabling QES may result in additional costs per signature, based on provider terms. Please review provider pricing details before activation.</p></div>
         <img class="qs-x" src="screens/img/qes/close.svg" alt="">
@@ -298,7 +318,7 @@
         <span class="qs-pc qp" style="--l:13.6;--t:127.81">Countries: Estonia</span>
         <i class="qs-tg qp" style="--l:13;--t:161.9"><u></u></i><span class="qs-b qs-ades qp" style="--l:61;--t:160.9;--w:43">AdES</span><span class="qs-pr qp" style="--r:14.7;--t:165.15">SEK 3</span>
         <i class="qs-tg qs-on qp" style="--l:13;--t:191.9"><u><img class="qs-tc" src="screens/img/qes/togglecheck.svg" alt=""></u></i><span class="qs-b qs-qes qp" style="--l:61;--t:190.9;--w:37">QES</span><span class="qs-pr qp" style="--r:14.7;--t:195.15">SEK 35</span>
-      </div><div class="qs-card qp sz" style="--l:921;--t:8;--w:247.3;--h:541">
+      </div></div><div class="qs-card qp sz" style="--l:921;--t:8;--w:247.3;--h:541">
         <b class="qs-ct qp" style="--l:80.5;--t:34.57">QES</b><span class="qs-b qs-qes qp" style="--l:131.2;--t:36;--w:37">QES</span>
         <p class="qs-ctt qp" style="--l:0;--t:73.14;--w:247.3">Qualified Electronic<br>Signature</p>
         <p class="qs-cp qp" style="--l:16.6;--t:129.73">Signature with the highest<br>legal value. Requires strong<br>identity verification and a<br>qualified certificate issued by a<br>Qualified Trust Service<br>Provider.</p>
@@ -312,20 +332,20 @@
 
   <section class="section-block" id="learnings">
     <h2>Learnings and reflections</h2>
-    <div class="learn-grid">
+    <div class="learn-grid learn-cards">
       <div class="learn-col">
-        <h4>Didn't work</h4>
+        <h3>Didn't work</h3>
         <ul><li>Combining all providers into one list wasn't technically possible due to backend constraints</li></ul>
       </div>
       <div class="learn-col">
-        <h4>Surprised me</h4>
+        <h3>Surprised me</h3>
         <ul>
           <li>Pricing transparency increased conversion</li>
           <li>Backend simplification (60&rarr;4 checks) was possible</li>
         </ul>
       </div>
       <div class="learn-col">
-        <h4>Would do differently</h4>
+        <h3>Would do differently</h3>
         <ul>
           <li>Test terminology with non-technical users earlier</li>
           <li>Involve CSM in initial research</li>
