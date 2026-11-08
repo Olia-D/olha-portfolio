@@ -2630,3 +2630,13 @@ a.t-tile:hover { background: var(--emph-hover); }
 .qes-opt figcaption em.opt-pick svg { width: 14px; height: 14px; }
 .qes-opt.is-chosen { border-color: var(--out, #0e9a68); }
 .case-body .qes-test + .pair { margin-top: clamp(80px, 9vw, 128px); padding-top: clamp(80px, 9vw, 128px); border-top: 1px solid var(--line); }
+
+/* narrow panels: the before and after share one full-width grey box, with the panel at the same scale */
+.shot-pad { display: flex; justify-content: center; align-items: flex-start; padding: clamp(20px, 3vw, 40px); border: 1px solid var(--line); border-radius: 8px; background: #f2f6f8; }
+.shot-pad > .scr-frame, .shot-pad > .zoom-btn, .shot-pad > img { width: 100%; }
+.case-boxed .shot-pad .zoom-btn { border: 0 !important; background: none !important; overflow: visible !important; }
+.qes-body .shot-pad > .scr-frame { max-width: 400px; }
+.shot-pad > .apb-frame { max-width: 400px; margin: 0 auto; }
+.case-boxed .solution-media .shot-pad img.shot-panel { width: 100%; max-width: 367px; margin-inline: auto; display: block; }
+.shot-pad > .zoom-btn { max-width: 367px; }
+.case-boxed .shot-pad > .scr-frame { box-shadow: none; }
